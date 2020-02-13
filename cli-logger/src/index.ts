@@ -102,6 +102,7 @@ export class Logger{
             memcached: "🧠",
             open: "👀",
             optimize: "🌟",
+            python: "🐍",
             server: "💻",
             setup: "💿",
             tamland: "🍆",
@@ -201,11 +202,10 @@ export class Logger{
             error = false
         } = options;
 
-        const testLabel = `${ label } ${ String(error) }`;
         const formattedMessage = this.format(label, String(message), color, error);
         const blank = started ? this.formatLabel(`${ nonBreakingCharacter }`) : "";
 
-        if(lastLabel !== testLabel && label && started){
+        if(lastLabel !== label && label && started){
 
             const cursor = getCursorPosition.sync();
 
@@ -213,7 +213,7 @@ export class Logger{
 
         }
 
-        lastLabel = testLabel;
+        lastLabel = label;
 
         formattedMessage.split("\n").forEach((line): void => {
 
@@ -246,6 +246,13 @@ export class Logger{
         label: string;
     }): void{
 
+        const column = getCursorPosition.sync().col;
+
+        const {
+            label = this.defaultLabel,
+            error = false
+        } = options ?? {};
+
         // Normalize new line characters
         let output = (message ?? "")
         .replace(/\r\n/gu, "\n")
@@ -265,60 +272,63 @@ export class Logger{
 
         [this.carryAnsi] = match ? match : [""];
 
-        const {
-            label = this.defaultLabel,
-            error = false
-        } = options ?? {};
+        const firstLabel = this.formatLabel(label);
+        const newFirstLabel = label !== lastLabel;
+        const blankLabel = this.formatLabel(`${ nonBreakingCharacter }`);
 
-        let lbl = this.formatLabel(label);
-
-        const testLabel = `${ label } ${ String(error) }`;
-        const blank = started ? this.formatLabel(`${ nonBreakingCharacter }`) : "";
-        const cursor = getCursorPosition.sync();
-
-        /*
-         * If this you're writing to the first col and your first character is a
-         * new line, replace it with a label
-         */
-        if(cursor.col === 1){
-            output = output.replace(/^\n/gu, `${ lbl } `);
+        if(column === 1 || newFirstLabel){
+            lastLabel = label;
         }
 
-        // If this is the first of a repeating label series
-        if(lastLabel !== testLabel){
+        // Don't want the lint autofix to contract this
+        // eslint-disable-next-line arrow-body-style
+        const labelledOutputArray = output.split("\n").map((line) => {
 
-            // Add a blank log above it
-            console.log(cursor.col > 1 ? `\n${ blank }` : blank);
+            const lineLabel = this.formatLabel(label);
+            const newLineLabel = label !== lastLabel;
+            const lbl = newLineLabel ? `${ column === 1 ? blankLabel : `\n${ lineLabel } ` }\n${ lineLabel }` : lineLabel;
 
-            // Add a label
-            process.stdout.write(`${ lbl } `);
+            lastLabel = label;
 
-            // Set the last label
-            lastLabel = testLabel;
+            return this.inLineFormat(line)
+            // Replace all clear lines with positional line writes
+            // eslint-disable-next-line no-control-regex
+            .replace(/[\u001B]\[K\n/gu, `\u001B[K\u001B[${ stripAnsi(lbl).length + 2 }G`)
+            // Replace all new lines with new lines and labels
+            .replace(/\n/gu, `\n${ lbl } `)
+            // Replace all clear lines with positional line writes
+            // eslint-disable-next-line no-control-regex
+            .replace(/[\u001B]\[1G/gu, `\u001B[0K${ lbl } \u001B[${ stripAnsi(lbl).length + 2 }G`);
 
-            // Get another label so you won't have double bolding
-            lbl = this.formatLabel(label);
+        });
+
+        const lbl = this.formatLabel(label);
+
+        lastLabel = label;
+
+        const labelledOutput = labelledOutputArray.join(`\n${ lbl } `);
+
+        if(column === 1){
+
+            if(newFirstLabel){
+
+                process.stdout.write(`${ blankLabel }\n${ firstLabel } ${ labelledOutput }`);
+
+            }else{
+
+                process.stdout.write(`${ firstLabel }`);
+
+            }
+
+        }else if(newFirstLabel){
+
+            process.stdout.write(`\n${ blankLabel }\n${ firstLabel } ${ labelledOutput }`);
+
+        }else{
+
+            process.stdout.write(`${ labelledOutput }`);
 
         }
-
-        output = output
-        // Replace all clear lines with positional line writes
-        // eslint-disable-next-line no-control-regex
-        .replace(/[\u001B]\[K\n/gu, `\u001B[K\u001B[${ stripAnsi(lbl).length + 2 }G`)
-        // Replace all new lines with new lines and labels
-        .replace(/\n/gu, `\n${ lbl } `)
-        // Replace all clear lines with positional line writes
-        // eslint-disable-next-line no-control-regex
-        .replace(/[\u001B]\[1G/gu, `\u001B[0K${ lbl }\u001B[${ stripAnsi(lbl).length + 2 }G`);
-
-        // If a new label was writen into the output set the last label
-        if(output.includes(lbl)){
-            lastLabel = testLabel;
-        }else if(cursor.col === 1){
-            output = `${ lbl } ${ output }`;
-        }
-
-        process.stdout.write(`${ this.inLineFormat(output) }`);
 
     }
 
@@ -332,7 +342,7 @@ export class Logger{
 
     }
 
-    private formatLabel(string: string, error = false): string{
+    private formatLabel(string: string, error = false, first = false): string{
 
         const label = stripAnsi(string);
         const clearedLabel = label;
@@ -344,7 +354,7 @@ export class Logger{
         const firstColor = error ? this.colors.errorLabelColor : this.colors.labelColor;
         const secondColor = error ? this.colors.errorLabelColorRepeat : this.colors.labelColorRepeat;
 
-        const color = label === lastFormattedLabel ? secondColor : firstColor;
+        const color = label === lastFormattedLabel && !first ? secondColor : firstColor;
 
         if(label.trim()){
             lastFormattedLabel = label;

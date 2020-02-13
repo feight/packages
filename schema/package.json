@@ -1,0 +1,46 @@
+{
+  "name": "@newsteam/schema",
+  "version": "0.0.1",
+  "description": "Assemble Schema",
+  "main": "lib",
+  "types": "lib",
+  "sideEffects": false,
+  "scripts": {
+    "build": "bash ../build.sh",
+    "clean": "rm -rf lib",
+    "test": "bash ../test.sh"
+  },
+  "browserslist": "node 12",
+  "engines": {
+    "node": ">= 12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sweetlikepete/assemble.git"
+  },
+  "author": "News Team (https://www.newsteam.co.za)",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/sweetlikepete/assemble/issues"
+  },
+  "homepage": "https://github.com/sweetlikepete/assemble/tree/master#readme",
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "@hapi/joi": "^17.1.0",
+    "json5": "^2.1.1"
+  },
+  "devDependencies": {
+    "@tamland/babel": "0.0.32",
+    "@tamland/eslint": "0.0.64",
+    "@tamland/jasmine": "0.0.1",
+    "@types/hapi__joi": "^16.0.6",
+    "@types/json5": "0.0.30",
+    "@types/node": "^13.1.8",
+    "typescript": "^3.7.5"
+  }
+}
