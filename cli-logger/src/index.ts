@@ -100,7 +100,7 @@ export class Logger{
             kill: "💀",
             lint: "🔎",
             memcached: "🧠",
-            open: "👀",
+            open: "🌍",
             optimize: "🌟",
             python: "🐍",
             server: "💻",

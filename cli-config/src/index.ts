@@ -31,11 +31,13 @@ export interface Config{
 
 export class NewsTeamConfig{
 
+    cwd: string;
     firestore: firestore.NewsTeamFirestoreConfig;
     server: server.NewsTeamServerConfig;
 
     constructor(config: Config){
 
+        this.cwd = process.cwd();
         this.firestore = new firestore.NewsTeamFirestoreConfig(config.firestore);
         this.server = new server.NewsTeamServerConfig(config.server);
 

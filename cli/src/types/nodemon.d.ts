@@ -9,11 +9,14 @@ declare module "nodemon" {
                     [id: string]: string | boolean | number;
                 },
                 ext: string,
+                execMap?: {
+                    [id: string]: string;
+                },
                 script: string,
                 stdout: boolean,
                 watch: string[]
             }
-        ): void;
+        ): typeof nodemon;
 
         emit(
             event: string,
@@ -22,12 +25,12 @@ declare module "nodemon" {
         on(
             event: string,
             callback: () => void
-        ): void;
+        ): typeof nodemon;
 
         on(
             event: "restart",
             callback: (files: string[]) => void
-        ): void;
+        ): typeof nodemon;
 
         stderr: typeof process.stderr
         stdout: typeof process.stdout

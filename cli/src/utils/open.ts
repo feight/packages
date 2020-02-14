@@ -8,7 +8,7 @@ import { logger } from "@newsteam/cli-logger";
 const label = "open";
 
 
-export const open = async function(path: string): Promise<void>{
+export const open = async function(path: string, initialDelay = 0): Promise<void>{
 
     try{
 
@@ -18,8 +18,6 @@ export const open = async function(path: string): Promise<void>{
 
             let attemptsBeforeRamping = 5;
             let rampingFactor = 1;
-
-            logger.log(`Opening ${ path } in your default browser`, { label });
 
             const test = (retry = 1): void => {
 
@@ -53,7 +51,13 @@ export const open = async function(path: string): Promise<void>{
 
             };
 
-            test();
+            setTimeout(() => {
+
+                logger.log(`Opening ${ path } in your default browser`, { label });
+
+                test();
+
+            }, initialDelay);
 
         });
 
