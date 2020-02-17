@@ -16,6 +16,7 @@ import { logger } from "@newsteam/cli-logger";
 
 import packageJSON from "../../package.json";
 import { localTask } from "../tasks/local";
+import { setupTask } from "../tasks/setup";
 
 
 // This is dodgy, but the typing of this in globals.d.ts is kinda wierd
@@ -38,5 +39,15 @@ program
     watch: !options.production
 }));
 
+program
+.command("setup")
+.action(async (): Promise<void> => {
+
+    await setupTask();
+
+    // Needed because this often hangs
+    process.exit();
+
+});
 
 program.parse(process.argv);

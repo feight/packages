@@ -1,0 +1,56 @@
+{
+  "name": "@newsteam/cli-tasks",
+  "version": "0.0.0",
+  "description": "This package provides a collection of cli tasks.",
+  "main": "lib",
+  "types": "lib",
+  "scripts": {
+    "build": "bash ../build.sh",
+    "postinstall": "npm link @newsteam/cli-utils && npm link @newsteam/cli-logger",
+    "prepublishOnly": "bash ../publish.sh",
+    "test": "bash ../test.sh"
+  },
+  "engines": {
+    "node": ">= 12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/feight/packages"
+  },
+  "author": "News Team (https://www.newsteam.io)",
+  "contributors": [
+    {
+      "name": "Peter Bodechtel",
+      "url": "https://www.sweetlikepete.com"
+    }
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/feight/packages/issues"
+  },
+  "keywords": [
+    "newsteam",
+    "@newsteam"
+  ],
+  "homepage": "https://github.com/feight/packages/tree/master/packages/cli-tasks#readme",
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "@tamland/jasmine": "0.0.2",
+    "fs-extra": "^8.1.0",
+    "hasha": "^5.2.0",
+    "node-fetch": "^2.6.0",
+    "nodemon": "^2.0.2"
+  },
+  "devDependencies": {
+    "@tamland/babel": "^0.0.33",
+    "@tamland/eslint": "^0.0.65",
+    "@types/fs-extra": "^8.0.1",
+    "@types/node": "^13.7.1",
+    "@types/node-fetch": "^2.5.4"
+  }
+}

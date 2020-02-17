@@ -272,19 +272,17 @@ export class Logger{
 
         [this.carryAnsi] = match ? match : [""];
 
-        const firstLabel = this.formatLabel(label);
+        const firstLabel = this.formatLabel(label, error);
         const newFirstLabel = label !== lastLabel;
-        const blankLabel = this.formatLabel(`${ nonBreakingCharacter }`);
+        const blankLabel = this.formatLabel(`${ nonBreakingCharacter }`, error);
 
         if(column === 1 || newFirstLabel){
             lastLabel = label;
         }
 
-        // Don't want the lint autofix to contract this
-        // eslint-disable-next-line arrow-body-style
         const labelledOutputArray = output.split("\n").map((line) => {
 
-            const lineLabel = this.formatLabel(label);
+            const lineLabel = this.formatLabel(label, error);
             const newLineLabel = label !== lastLabel;
             const lbl = newLineLabel ? `${ column === 1 ? blankLabel : `\n${ lineLabel } ` }\n${ lineLabel }` : lineLabel;
 
@@ -302,7 +300,7 @@ export class Logger{
 
         });
 
-        const lbl = this.formatLabel(label);
+        const lbl = this.formatLabel(label, error);
 
         lastLabel = label;
 

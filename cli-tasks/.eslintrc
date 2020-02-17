@@ -1,0 +1,7 @@
+{
+  "extends": "@tamland",
+  "rules": {
+    "security/detect-non-literal-fs-filename": "off",
+    "no-sync": "off"
+  }
+}

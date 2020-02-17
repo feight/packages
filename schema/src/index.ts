@@ -168,11 +168,6 @@ export const validateSchema = function<TValue>(value: TValue, schema: Validation
         abortEarly: false
     });
 
-    /*
-     * The types are lying. After you extend Joi this type can't be
-     * relied on anymore.
-     */
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     const errors = result.error?.details ?? [];
 
     return {

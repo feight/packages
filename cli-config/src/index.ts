@@ -5,8 +5,7 @@ import "reflect-metadata";
 import { rcFile } from "rc-config-loader";
 import { Validate } from "@newsteam/schema";
 
-import * as firestore from "./firestore";
-import * as server from "./server";
+import * as local from "./local";
 
 
 const overrides: Config = rcFile("newsteam")?.config ?? {};
@@ -23,8 +22,7 @@ export type Target = "client" | "server";
 
 export interface Config{
 
-    firestore?: firestore.FirestoreConfig;
-    server?: server.ServerConfig;
+    local?: local.LocalConfig;
 
 }
 
@@ -32,14 +30,14 @@ export interface Config{
 export class NewsTeamConfig{
 
     cwd: string;
-    firestore: firestore.NewsTeamFirestoreConfig;
-    server: server.NewsTeamServerConfig;
+
+    local: local.NewsTeamLocalConfig;
 
     constructor(config: Config){
 
         this.cwd = process.cwd();
-        this.firestore = new firestore.NewsTeamFirestoreConfig(config.firestore);
-        this.server = new server.NewsTeamServerConfig(config.server);
+
+        this.local = new local.NewsTeamLocalConfig(config.local);
 
     }
 
