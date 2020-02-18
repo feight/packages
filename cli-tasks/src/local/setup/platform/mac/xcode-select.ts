@@ -7,7 +7,7 @@ import { spawn } from "@newsteam/cli-utils";
 const label = "setup";
 
 
-export const localXcodeSetupTask = async function(): Promise<void>{
+export const localXcodeSelectSetupTask = async function(): Promise<void>{
 
     let installed = "";
 

@@ -1,36 +1,33 @@
 
 
 import {
-    localBrewSetupTask,
     localGCloudSetupTask,
-    localJavaSetupTask,
-    localPipSetupTask,
-    localRubySetupTask,
-    localXcodeSetupTask
+    localPackageSetupTask,
+    localPlatformSetupTask
 } from "@newsteam/cli-tasks";
 
 
 export const setupTask = async function(): Promise<void>{
 
-    await localXcodeSetupTask();
+    await localPlatformSetupTask();
 
-    await localGCloudSetupTask();
-    await localGCloudSetupTask("core");
-    await localGCloudSetupTask("beta");
-    await localGCloudSetupTask("cloud-datastore-emulator");
-    await localGCloudSetupTask("cloud-firestore-emulator");
-    await localGCloudSetupTask("app-engine-python");
-    await localGCloudSetupTask("app-engine-python-extras");
+    await localGCloudSetupTask(
+        "core",
+        "beta",
+        "cloud-datastore-emulator",
+        "cloud-firestore-emulator",
+        "app-engine-python",
+        "app-engine-python-extras"
+    );
 
-    await localPipSetupTask();
-    await localRubySetupTask();
-    await localJavaSetupTask();
-
-    await localBrewSetupTask();
-    await localBrewSetupTask("graphicsmagick");
-    await localBrewSetupTask("imagemagick");
-    await localBrewSetupTask("memcached");
-    await localBrewSetupTask("mysql");
-    await localBrewSetupTask("mysql-client");
+    await localPackageSetupTask(
+        "pip",
+        "java",
+        "graphicsmagick",
+        "imagemagick",
+        "memcached",
+        "mysql",
+        "mysql-client"
+    );
 
 };

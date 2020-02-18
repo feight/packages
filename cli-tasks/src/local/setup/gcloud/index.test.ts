@@ -5,7 +5,7 @@ import "jasmine";
 
 import {
     localGCloudSetupTask
-} from "../..";
+} from "../../..";
 
 
 describe("{ localGCloudSetupTask }", () => {
