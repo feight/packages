@@ -1,6 +1,6 @@
 
 
-import openBrowsers from "open-browsers";
+import open from "open-browsers";
 import request from "request";
 import { logger } from "@newsteam/cli-logger";
 
@@ -8,7 +8,7 @@ import { logger } from "@newsteam/cli-logger";
 const label = "open";
 
 
-export const open = async function(path: string, initialDelay = 0): Promise<void>{
+export const openBrowserTask = async function(path: string, initialDelay = 0): Promise<void>{
 
     try{
 
@@ -41,7 +41,7 @@ export const open = async function(path: string, initialDelay = 0): Promise<void
 
                     }else{
 
-                        openBrowsers(path);
+                        open(path);
 
                         resolve();
 

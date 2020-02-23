@@ -265,6 +265,12 @@ const convert = {
         return schema;
 
     },
+    regex(schema: Joi.ObjectSchema, value?: ObjectSchemaDefinition["regex"]): Joi.ObjectSchema{
+        // This is chilled because @types/hapi__joi is out of date
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        return typeof value === "undefined" ? schema : schema.regex(true);
+    },
     rename(schema: Joi.ObjectSchema, value?: ObjectSchemaDefinition["rename"]): Joi.ObjectSchema{
 
         if(typeof value !== "undefined"){
@@ -412,6 +418,11 @@ export interface ObjectSchemaDefinition extends AnySchemaDefinition{
     };
 
     /**
+     * Requires the object to be a RegExp object.
+     */
+    regex?: true;
+
+    /**
      * Renames a key to another name (deletes the renamed key).
      */
     rename?: Rename | Rename[];
@@ -454,6 +465,7 @@ export const objectSchemaToJoi = function(type: ObjectSchema): Joi.AnySchema{
         schema = convert.or(schema, type.or);
         schema = convert.oxor(schema, type.oxor);
         schema = convert.pattern(schema, type.pattern);
+        schema = convert.regex(schema, type.regex);
         schema = convert.rename(schema, renames);
         schema = convert.xor(schema, type.xor);
         schema = convert.with(schema, type.with);

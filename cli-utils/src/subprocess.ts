@@ -10,6 +10,9 @@ import { logger } from "@newsteam/cli-logger";
 const pty = require("node-pty");
 
 
+const execOptions = { maxBuffer: 512000 };
+
+
 // eslint-disable-next-line max-lines-per-function
 export const exec = function(options: {
     command: string;
@@ -42,7 +45,7 @@ export const exec = function(options: {
                 logger.command(label, bashCmd);
             }
 
-            const subprocess = childProcess.exec(cmd, (error, stdout): void => {
+            const subprocess = childProcess.exec(cmd, execOptions, (error, stdout): void => {
 
                 if(error){
 
@@ -102,6 +105,7 @@ export const exec = function(options: {
                 subprocess.stdout.on("end", (): void => {
 
                     if(!detatch){
+                        process.stdin.unref();
                         process.stdin.end();
                     }
 
@@ -189,6 +193,7 @@ export const spawn = function(options: {
                 term.destroy();
 
                 if(!detatch){
+                    process.stdin.unref();
                     process.stdin.end();
                 }
 

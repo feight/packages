@@ -13,8 +13,12 @@ import "regenerator-runtime/runtime";
 import program from "commander";
 import { config } from "@newsteam/cli-config";
 import { logger } from "@newsteam/cli-logger";
+import { cleanCacheTask } from "@newsteam/cli-tasks";
 
 import packageJSON from "../../package.json";
+import { buildTask } from "../tasks/build";
+import { cleanTask } from "../tasks/clean";
+import { linkTask } from "../tasks/link";
 import { localTask } from "../tasks/local";
 import { setupTask } from "../tasks/setup";
 
@@ -30,6 +34,31 @@ program.version(packageJSON.version);
 
 
 program
+.command("build")
+.option("-p, --platform [platform]", "device platform (defaults to 'web')")
+.option("--production", "run the build in production mode")
+.action(async (options): Promise<void> => buildTask(config, {
+    mode: options.production ? "production" : "development",
+    platform: options.platform || "web"
+}));
+
+
+program
+.command("clean")
+.action(async (): Promise<void> => cleanTask(config, { cache: true }));
+
+
+program
+.command("clean-cache")
+.action(async (): Promise<void> => cleanCacheTask());
+
+
+program
+.command("link")
+.action(async (): Promise<void> => linkTask(true));
+
+
+program
 .command("local")
 .option("-p, --platform [platform]", "device platform (defaults to 'web')")
 .option("--production", "run the local server as close to production as possible (defaults to false)")
@@ -39,15 +68,10 @@ program
     watch: !options.production
 }));
 
+
 program
 .command("setup")
-.action(async (): Promise<void> => {
+.action(async (): Promise<void> => setupTask());
 
-    await setupTask();
-
-    // Needed because this often hangs
-    process.exit();
-
-});
 
 program.parse(process.argv);

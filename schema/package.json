@@ -35,12 +35,12 @@
     "json5": "^2.1.1"
   },
   "devDependencies": {
-    "@tamland/babel": "0.0.32",
-    "@tamland/eslint": "0.0.64",
-    "@tamland/jasmine": "0.0.1",
-    "@types/hapi__joi": "^16.0.6",
+    "@tamland/babel": "0.0.33",
+    "@tamland/eslint": "0.0.65",
+    "@tamland/jasmine": "0.0.2",
+    "@types/hapi__joi": "^16.0.11",
     "@types/json5": "0.0.30",
-    "@types/node": "^13.1.8",
+    "@types/node": "^13.7.4",
     "typescript": "^3.7.5"
   }
 }

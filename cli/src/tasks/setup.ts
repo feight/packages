@@ -23,6 +23,7 @@ export const setupTask = async function(): Promise<void>{
     await localPackageSetupTask(
         "pip",
         "java",
+        "openssl",
         "graphicsmagick",
         "imagemagick",
         "memcached",

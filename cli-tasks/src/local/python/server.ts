@@ -60,7 +60,7 @@ const output = (color?: string): (data: any) => void => (data: any): void => {
                 if((/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}.*?\s200\s-/gu).test(line)){
 
                     logger.log(line, {
-                        color: "#555",
+                        color: "#222",
                         label
                     });
 

@@ -20,7 +20,17 @@ export const fail = function(label: string, message: string): void{
 };
 
 
-export const print = function(label: string, color = "#ffffff"): stream.Transform{
+export const print = function(options: {
+    color?: string;
+    label?: string;
+    tag?: string;
+} = {}): stream.Transform{
+
+    const {
+        color,
+        label = "gulp",
+        tag = ""
+    } = options;
 
     return through({ objectMode: true }, function blank(
         file: vinyl,
@@ -32,9 +42,9 @@ export const print = function(label: string, color = "#ffffff"): stream.Transfor
             return done();
         }
 
-        logger.log(file.path, {
+        logger.log(`${ tag ? `${ tag } ` : "" }${ file.path }`, {
             color,
-            label: label || "gulp"
+            label
         });
 
         // Not invalid since that function is bound by the through library

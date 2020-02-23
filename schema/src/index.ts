@@ -168,10 +168,10 @@ export const validateSchema = function<TValue>(value: TValue, schema: Validation
         abortEarly: false
     });
 
-    const errors = result.error?.details ?? [];
+    const errors: Joi.ValidationErrorItem[] = result.error?.details ?? [];
 
     return {
-        errors: errors.map((error) => error.message),
+        errors: errors.map((error: Joi.ValidationErrorItem) => error.message),
         value
     };
 
@@ -200,7 +200,7 @@ export class Validate{
 
                             compiled[key] = {
                                 items: {
-                                    type: "string"
+                                    type: "any"
                                 },
                                 type: "array"
                             };
@@ -285,7 +285,8 @@ export class Validate{
 
 export const validate = function(propertySchema: Schema){
 
-    // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+    // Since target could be of any type, this is unavoidable
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
     return function value(target: any, propertyKey: string): void{
 
         Validate.register(target, propertyKey, propertySchema);

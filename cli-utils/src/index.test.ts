@@ -7,7 +7,6 @@ import {
     gulp,
     exec,
     kill,
-    open,
     prompt,
     spawn
 } from ".";
@@ -40,17 +39,6 @@ describe("{ kill }", () => {
     it("is defined", () => {
 
         expect(kill).toBeDefined();
-
-    });
-
-});
-
-
-describe("{ open }", () => {
-
-    it("is defined", () => {
-
-        expect(open).toBeDefined();
 
     });
 

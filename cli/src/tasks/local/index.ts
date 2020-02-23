@@ -9,11 +9,14 @@ import {
     localFirestoreEmulatorTask,
     localMemcachedEmulatorTask,
     localPythonVirtualenvTask,
-    localPythonServerTask
+    localPythonServerTask,
+    openBrowserTask
 } from "@newsteam/cli-tasks";
-import {
-    open
-} from "@newsteam/cli-utils";
+
+import { localWatchTask } from "./watch";
+
+import { buildTask } from "../build";
+import { linkTask } from "../link";
 
 
 export interface LocalTaskOptions{
@@ -27,9 +30,14 @@ export const localTask = async function(config: NewsTeamConfig, options: LocalTa
 
     const openDelay = 2000;
 
+    await linkTask();
+
+    await buildTask(config, options);
+
     await localPythonVirtualenvTask();
 
     await Promise.all([
+        localWatchTask(config),
         localMemcachedEmulatorTask(),
         localFirestoreEmulatorTask(config.local.emulators.firestore),
         localPythonServerTask({
@@ -44,7 +52,7 @@ export const localTask = async function(config: NewsTeamConfig, options: LocalTa
                 /* eslint-enable @typescript-eslint/naming-convention */
             }
         }),
-        open(`http://localhost:${ config.local.python.server.port }`, openDelay)
+        openBrowserTask(`http://localhost:${ config.local.python.server.port }`, openDelay)
     ]);
 
 };

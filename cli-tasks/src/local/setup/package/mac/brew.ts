@@ -46,7 +46,8 @@ export const brewFormulae = [
     "imagemagick",
     "memcached",
     "mysql",
-    "mysql-client"
+    "mysql-client",
+    "openssl"
 ] as const;
 
 export type BrewFormula = typeof brewFormulae[number];

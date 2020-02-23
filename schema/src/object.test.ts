@@ -264,6 +264,19 @@ new Test(`${ name }<pattern>`, method, [
     ]
 ]).run();
 
+new Test(`${ name }<regex>`, method, [
+    [
+        // This is chilled because @types/hapi__joi is out of date
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        Joi.object().regex(),
+        {
+            regex: true,
+            type: "object"
+        }
+    ]
+]).run();
+
 new Test(`${ name }<rename>`, method, [
 
     [

@@ -92,7 +92,9 @@ export class Logger{
 
         this.emojis = {
             anonymous: "🤔",
+            build: "🔧",
             clean: "🧻",
+            console: "🎮",
             datastore: "💾",
             deploy: "💩",
             error: "💥",
@@ -100,12 +102,15 @@ export class Logger{
             kill: "💀",
             lint: "🔎",
             memcached: "🧠",
+            npm: "🍅",
             open: "🌍",
             optimize: "🌟",
             python: "🐍",
             server: "💻",
             setup: "💿",
+            symlink: "🔗",
             tamland: "🍆",
+            watch: "😳",
             webpack: "📦",
             ...options.emojis ?? {}
         };
@@ -218,7 +223,7 @@ export class Logger{
         formattedMessage.split("\n").forEach((line): void => {
 
             const cursor = getCursorPosition.sync();
-            const output = this.inLineFormat(line);
+            const output = color ? line : this.inLineFormat(line);
 
             console.log(cursor.col > 1 ? `\n${ output }` : output);
 
@@ -241,6 +246,7 @@ export class Logger{
 
     }
 
+    // eslint-disable-next-line max-lines-per-function
     write(message? : string, options?: {
         error?: boolean;
         label: string;
@@ -254,10 +260,7 @@ export class Logger{
         } = options ?? {};
 
         // Normalize new line characters
-        let output = (message ?? "")
-        .replace(/\r\n/gu, "\n")
-        .replace(/\n\r/gu, "\n")
-        .replace(/\r/gu, "\n");
+        let output = message ?? "";
 
         /*
          * Test if there are any unclosed terminal color literals
@@ -291,8 +294,9 @@ export class Logger{
             return this.inLineFormat(line)
             // Replace all clear lines with positional line writes
             // eslint-disable-next-line no-control-regex
-            .replace(/[\u001B]\[K\n/gu, `\u001B[K\u001B[${ stripAnsi(lbl).length + 2 }G`)
+            .replace(/[\u001B]\[K/gu, `\u001B[K\u001B[${ stripAnsi(lbl).length + 2 }G`)
             // Replace all new lines with new lines and labels
+            .replace(/\r/gu, `\r${ lbl } `)
             .replace(/\n/gu, `\n${ lbl } `)
             // Replace all clear lines with positional line writes
             // eslint-disable-next-line no-control-regex

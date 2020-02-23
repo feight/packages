@@ -6,6 +6,7 @@
   "types": "lib",
   "scripts": {
     "build": "bash ../build.sh",
+    "link": "npm link @newsteam/schema",
     "prepublishOnly": "bash ../publish.sh",
     "test": "bash ../test.sh"
   },
@@ -40,6 +41,8 @@
     "lib"
   ],
   "dependencies": {
+    "deepmerge": "^4.2.2",
+    "fs-extra": "^8.1.0",
     "rc-config-loader": "^3.0.0",
     "reflect-metadata": "^0.1.13"
   },
@@ -47,6 +50,10 @@
     "@tamland/babel": "^0.0.33",
     "@tamland/eslint": "^0.0.65",
     "@tamland/jasmine": "0.0.2",
-    "@types/node": "^13.5.1"
+    "@types/deepmerge": "^2.2.0",
+    "@types/fs-extra": "^8.1.0",
+    "@types/html-minifier": "^3.5.3",
+    "@types/node": "^13.5.1",
+    "html-minifier": "^4.0.0"
   }
 }

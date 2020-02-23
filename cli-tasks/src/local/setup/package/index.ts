@@ -9,6 +9,7 @@ export const packages = [
     "memcached",
     "mysql",
     "mysql-client",
+    "openssl",
     "pip",
     "java"
 ] as const;

@@ -7,7 +7,7 @@ import { spawn } from "@newsteam/cli-utils";
 const label = "setup";
 
 
-export const localPipSetupTask = async function(): Promise<void>{
+export const upgradePip = async function(executable: "pip" | "pip3" = "pip"): Promise<void>{
 
     let version = "";
 
@@ -21,7 +21,7 @@ export const localPipSetupTask = async function(): Promise<void>{
 
     }catch(error){
 
-        logger.error("Could not determine the latest version of pip", { label });
+        logger.error(`Could not determine the latest version of ${ executable }`, { label });
 
     }
 
@@ -32,7 +32,7 @@ export const localPipSetupTask = async function(): Promise<void>{
     ] = version.split(".").map((chunk: string) => Number(chunk));
 
     const installedRaw = await spawn({
-        command: "pip -V",
+        command: `${ executable } -V`,
         detatch: true
     });
 
@@ -53,17 +53,25 @@ export const localPipSetupTask = async function(): Promise<void>{
     ){
 
         await spawn({
-            command: "pip install --upgrade pip",
+            command: `${ executable } install --upgrade pip`,
             label
         });
 
     }else{
 
-        logger.log("✔ pip", {
+        logger.log(`✔ ${ executable }`, {
             color: "#00ff00",
             label
         });
 
     }
+
+};
+
+
+export const localPipSetupTask = async function(): Promise<void>{
+
+    await upgradePip("pip");
+    await upgradePip("pip3");
 
 };
