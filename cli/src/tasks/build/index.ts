@@ -61,7 +61,7 @@ export const buildTask = async function(config: NewsTeamConfig, options: BuildTa
 
     if(
         options.mode === "production" ||
-        config.local.console === true
+        config.local.console
     ){
 
         await buildConsoleTask();

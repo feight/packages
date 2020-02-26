@@ -7,10 +7,7 @@ import strip from "strip-color";
 import stripAnsi from "strip-ansi";
 import { rjust } from "justify-text";
 import table from "text-table";
-import {
-    TestError,
-    TestErrorData
-} from "@newsteam/cli-errors";
+import { TestError } from "@newsteam/cli-errors";
 
 
 const nonBreakingCharacterCode = 160;
@@ -88,7 +85,7 @@ export class Logger{
             labelBgColor: options.colors?.labelBgColor ?? "#222222",
             labelColor: options.colors?.labelColor ?? "#eeeeee",
             labelColorRepeat: options.colors?.labelColorRepeat ?? "#555555",
-            lintErrorMessageColor: options.colors?.lintErrorMessageColor ?? "#999999",
+            lintErrorMessageColor: options.colors?.lintErrorMessageColor ?? "#cccccc",
             status200: options.colors?.status200 ?? "#00ff00",
             status300: options.colors?.status300 ?? "#ffff00",
             status400: options.colors?.status400 ?? "#ff0000",
@@ -161,7 +158,12 @@ export class Logger{
                             line
                         } = errorItem;
 
-                        const errorPointer = `${ chalk.hex(this.colors.errorFileName)(file) }${ line && column ? `:${ line }:${ column }` : "" }`;
+                        const errorPointer = [
+                            chalk.red(error.description || error.name),
+                            "\n",
+                            chalk.hex(this.colors.errorFileName)(file),
+                            line && column ? `:${ line }:${ column }` : ""
+                        ].join("");
 
                         if(column && line){
 

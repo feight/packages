@@ -11,7 +11,6 @@ import { logger } from "@newsteam/cli-logger";
 import { label } from ".";
 
 
-// eslint-disable-next-line max-lines-per-function
 export const buildReleaseTask = async function(config: NewsTeamConfig): Promise<void>{
 
     const stdout = await exec({

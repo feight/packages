@@ -94,7 +94,7 @@ const convert = {
 
         if(typeof value !== "undefined"){
 
-            return value === true ? schema.sparse() : schema.sparse(false);
+            return value ? schema.sparse() : schema.sparse(false);
 
         }
 

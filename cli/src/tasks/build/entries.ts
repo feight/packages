@@ -42,12 +42,8 @@ export const buildEntriesTask = async function(config: NewsTeamConfig): Promise<
 
     const getFolders = (directory: string, filelist: string[] = []): string[] => {
 
-        // This is ok because it only happens during the build
-        // eslint-disable-next-line no-sync
         fs.readdirSync(directory).forEach((file): void => {
 
-            // This is ok because it only happens during the build
-            // eslint-disable-next-line no-sync
             if(fs.statSync(`${ directory }/${ file }`).isDirectory()){
                 filelist.push(`${ directory }/${ file }`);
                 // Given the recursive naturn of this function, we'll allow it
@@ -67,8 +63,6 @@ export const buildEntriesTask = async function(config: NewsTeamConfig): Promise<
 
     folders.forEach((folder) => {
 
-        // This is ok because it only happens during the build
-        /* eslint-disable no-sync */
         const jsExists = fs.existsSync(path.join("src/publication/custom/pages", folder, "index.js"));
         const scssExists = fs.existsSync(path.join("src/publication/custom/pages", folder, "index.scss"));
         const scssContent = scssExists ? `require("custom/pages/${ folder }/index.scss");` : "";
@@ -78,7 +72,6 @@ export const buildEntriesTask = async function(config: NewsTeamConfig): Promise<
         fs.ensureDirSync(outputFolder);
 
         writeFileSync(path.join(outputFolder, "index.js"), `${ scssContent }\n${ jsContent }`);
-        /* eslint-enable no-sync */
 
     });
 

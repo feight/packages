@@ -11,16 +11,18 @@ import {
     TestErrorData
 } from "@newsteam/cli-errors";
 
-import { label } from ".";
+import { label } from "..";
 
 
-export class SettingsTestError extends TestError{
+export class SettingsSchemaValidationError extends TestError{
 
     constructor(data: TestErrorData[]){
 
         super(data);
 
-        this.name = "SettingsTestError";
+        this.name = "SettingsSchemaValidationError";
+
+        this.description = "Settings Schema Validation Error";
 
     }
 
@@ -41,7 +43,7 @@ export interface TestSettingsTaskOptions{
 
 export const testSettingsTask = async function(options: TestSettingsTaskOptions): Promise<void>{
 
-    const fileErrors: TestErrorData[] = [];
+    const errors: TestErrorData[] = [];
 
     await Promise.all(options.validations.map(async (validation: SettingsSchemaTests) => {
 
@@ -58,10 +60,10 @@ export const testSettingsTask = async function(options: TestSettingsTaskOptions)
 
             if(result.errors.length > 0){
 
-                fileErrors.push({
+                errors.push({
                     errors: result.errors.map((error) => ({
                         file,
-                        message: error.message
+                        message: error.stack || error.message
                     })),
                     file
                 });
@@ -72,9 +74,9 @@ export const testSettingsTask = async function(options: TestSettingsTaskOptions)
 
     }));
 
-    if(fileErrors.length > 0){
+    if(errors.length > 0){
 
-        throw new SettingsTestError(fileErrors);
+        throw new SettingsSchemaValidationError(errors);
 
     }
 
