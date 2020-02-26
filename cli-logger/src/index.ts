@@ -7,6 +7,10 @@ import strip from "strip-color";
 import stripAnsi from "strip-ansi";
 import { rjust } from "justify-text";
 import table from "text-table";
+import {
+    TestError,
+    TestErrorData
+} from "@newsteam/cli-errors";
 
 
 const nonBreakingCharacterCode = 160;
@@ -34,6 +38,7 @@ export interface LintErrorFile{
 
 export interface LoggerColors{
     errorColor: string;
+    errorFileName: string;
     errorLabelBgColor: string;
     errorLabelColor: string;
     errorLabelColorRepeat: string;
@@ -75,6 +80,7 @@ export class Logger{
 
         this.colors = {
             errorColor: options.colors?.errorColor ?? "#ff0000",
+            errorFileName: options.colors?.errorFileName ?? "ffae00",
             errorLabelBgColor: options.colors?.errorLabelBgColor ?? "#7a170e",
             errorLabelColor: options.colors?.errorLabelColor ?? "#eeeeee",
             errorLabelColorRepeat: options.colors?.errorLabelColorRepeat ?? "#eeeeee",
@@ -94,6 +100,7 @@ export class Logger{
             anonymous: "🤔",
             build: "🔧",
             clean: "🧻",
+            config: "🧬",
             console: "🎮",
             datastore: "💾",
             deploy: "💩",
@@ -107,9 +114,11 @@ export class Logger{
             optimize: "🌟",
             python: "🐍",
             server: "💻",
+            settings: "🧬",
             setup: "💿",
             symlink: "🔗",
             tamland: "🍆",
+            test: "🔬",
             watch: "😳",
             webpack: "📦",
             ...options.emojis ?? {}
@@ -126,72 +135,88 @@ export class Logger{
 
     }
 
-    error(message: string | Error = "", options: { color?: string | true; label?: string } = {}): void{
+    error(error: string | Error | TestError = "", options: { color?: string | true; label?: string } = {}): void{
 
         const {
             color = this.colors.errorColor,
-            label = this.defaultLabel
+            label = "error"
         } = options;
 
-        let formattedLabel = label;
-        let formattedMessage = message;
+        if(error instanceof TestError){
 
-        if(!message){
-            formattedLabel = "Error";
-            formattedMessage = label;
-        }
+            error.data.forEach((testError) => {
 
-        if(formattedMessage instanceof Error){
+                const {
+                    errors,
+                    file
+                } = testError;
 
-            if(formattedMessage.stack && formattedMessage.name){
+                if(errors.length > 0){
 
-                formattedMessage = `${ formattedMessage.name }\n\n${ formattedMessage.stack }`;
+                    const errorOutput = errors.map((errorItem): string => {
 
-            }else if(formattedMessage.message){
+                        const {
+                            message,
+                            column,
+                            line
+                        } = errorItem;
 
-                formattedMessage = formattedMessage.message;
+                        const errorPointer = `${ chalk.hex(this.colors.errorFileName)(file) }${ line && column ? `:${ line }:${ column }` : "" }`;
 
-            }
+                        if(column && line){
 
-        }
+                            const errorFrame = codeframe.get({
+                                column,
+                                file,
+                                line
+                            });
 
-        this.log(String(formattedMessage), {
-            color: color === true ? undefined : color,
-            error: true,
-            label: formattedLabel
-        });
+                            return `${ errorPointer }\n${ chalk.hex(this.colors.lintErrorMessageColor)(message) }\n\n${ String(errorFrame) }\n`;
 
-    }
+                        }
 
-    lint(files: LintErrorFile[]): void{
+                        return `${ errorPointer }\n${ chalk.hex(this.colors.lintErrorMessageColor)(message) }\n`;
 
-        files.forEach((errorFile): void => {
+                    }).join("\n");
 
-            if(errorFile.errors.length > 0){
-
-                const errorOutput = errorFile.errors.map((error): string => {
-
-                    const errorFrame = codeframe.get({
-                        column: error.column,
-                        file: errorFile.filePath,
-                        line: error.line - 1
+                    this.log(errorOutput, {
+                        error: true,
+                        label
                     });
 
-                    const errorPointer = `${ errorFile.filePath }:${ error.line }:${ error.column }`;
+                }
 
-                    return `${ errorPointer }\n${ chalk.hex(this.colors.lintErrorMessageColor)(error.message) }\n\n${ String(errorFrame) }\n`;
+            });
 
-                }).join("\n");
+        }else if(error instanceof Error){
 
-                this.log(errorOutput, {
-                    label: "lint"
-                });
+            let output = "";
 
-                process.stdout.write("\u0007");
+            if(error.stack && error.name){
+
+                output = `${ error.name }\n\n${ error.stack }`;
+
+            }else if(error.message){
+
+                output = error.message;
 
             }
 
-        });
+            this.log(String(output), {
+                color: color === true ? undefined : color,
+                error: true,
+                label
+            });
+
+        }else{
+
+            this.log("", {
+                color: color === true ? undefined : color,
+                error: true,
+                label
+            });
+
+        }
 
     }
 
@@ -246,7 +271,6 @@ export class Logger{
 
     }
 
-    // eslint-disable-next-line max-lines-per-function
     write(message? : string, options?: {
         error?: boolean;
         label: string;

@@ -6,9 +6,11 @@ import {
     minifyHTMLTask
 } from "@newsteam/cli-tasks";
 
-import { buildStaticAssetsTask } from "../../build/static";
-import { buildYamlTask } from "../../build/yaml";
-import { configurator } from "../../configurator";
+import { buildRSSTask } from "../build/rss";
+import { buildSettingsTask } from "../build/settings";
+import { buildStaticAssetsTask } from "../build/static";
+import { buildYamlTask } from "../build/yaml";
+import { configurator } from "../configurator";
 
 
 export const label = "watch";
@@ -25,6 +27,14 @@ export const localWatchTask = async function(config: NewsTeamConfig): Promise<vo
     };
 
     await Promise.all([
+        buildRSSTask({
+            ...configs.buildRSSTask,
+            ...watchConfig
+        }),
+        buildSettingsTask({
+            ...configs.buildSettingsTask,
+            ...watchConfig
+        }),
         buildStaticAssetsTask({
             ...configs.buildStaticAssetsTask,
             ...watchConfig

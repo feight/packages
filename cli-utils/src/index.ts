@@ -10,6 +10,10 @@ import {
     exec,
     spawn
 } from "./subprocess";
+import {
+    watch,
+    WatchOptions
+} from "./watch";
 
 
 export {
@@ -18,5 +22,7 @@ export {
     kill,
     prompt,
     PromptChoice,
-    spawn
+    spawn,
+    watch,
+    WatchOptions
 };

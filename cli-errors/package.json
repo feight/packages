@@ -1,12 +1,11 @@
 {
-  "name": "@newsteam/cli-logger",
+  "name": "@newsteam/cli-errors",
   "version": "0.0.0",
-  "description": "This package provides a logger for command line interfaces",
+  "description": "This package provides a collection of cli error classes.",
   "main": "lib",
   "types": "lib",
   "scripts": {
     "build": "bash ../build.sh",
-    "link": "npm link @newsteam/cli-errors",
     "prepublishOnly": "bash ../publish.sh",
     "test": "bash ../test.sh"
   },
@@ -35,26 +34,13 @@
     "newsteam",
     "@newsteam"
   ],
-  "homepage": "https://github.com/feight/packages/tree/master/packages/logger#readme",
+  "homepage": "https://github.com/feight/packages/tree/master/packages/cli-errors#readme",
   "files": [
     "lib"
   ],
-  "dependencies": {
-    "chalk": "^3.0.0",
-    "codeframe": "^0.0.1",
-    "justify-text": "^1.1.0",
-    "magicdawn-get-cursor-position": "^1.0.5",
-    "node-pty": "^0.9.0",
-    "strip-ansi": "^6.0.0",
-    "strip-color": "^0.1.0",
-    "text-table": "^0.2.0"
-  },
   "devDependencies": {
-    "@tamland/babel": "^0.0.33",
-    "@tamland/eslint": "^0.0.65",
     "@tamland/jasmine": "0.0.2",
-    "@types/node": "^13.7.1",
-    "@types/strip-color": "^0.1.0",
-    "@types/text-table": "^0.2.1"
+    "@tamland/babel": "^0.0.33",
+    "@tamland/eslint": "^0.0.65"
   }
 }

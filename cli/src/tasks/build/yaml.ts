@@ -5,8 +5,11 @@ import path from "path";
 import yaml from "js-yaml";
 import fs from "fs-extra";
 import snake from "to-snake-case";
-import chokidar from "chokidar";
 import { logger } from "@newsteam/cli-logger";
+import {
+    watch,
+    WatchOptions
+} from "@newsteam/cli-utils";
 
 
 // This function can read any yaml
@@ -56,93 +59,56 @@ const snakeify = (object: { [id: string]: any }): { [id: string]: any } => {
 };
 
 
-const buildYaml = async function(options: BuildYamlTaskOptions): Promise<void>{
-
-    const environmentsRaw = await fs.readFile(options.paths.environments, "utf8");
-    const handlersExist = fs.existsSync(options.paths.handlers);
-    const handlersRaw = handlersExist ? fs.readFileSync(options.paths.handlers).toString() : "[]";
-    const environments = JSON.parse(environmentsRaw);
-    const handlers = JSON.parse(handlersRaw);
-    const environment = environments[options?.environment ?? "default"] || environments.default;
-    const base = readYaml(path.join(process.cwd(), options.paths.yaml));
-    const environmentInstance = environment.instance;
-    const instanceClass = environmentInstance?.class ? environmentInstance.class : base.instance_class;
-    const automaticScaling = environmentInstance?.scaling ? environmentInstance.scaling : base.automatic_scaling;
-
-    // Prepend custom handlers
-    base.handlers = handlers.concat(base.handlers);
-
-    /*
-     *  Enforce secure at a handler level across all routes and snakeify
-     *  each handlers properties
-     */
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    base.handlers = base.handlers.map((handler: any) => snakeify({
-        ...handler,
-        secure: handler.secure === "never" ? "never" : "always"
-    }));
-
-    // Overriding GAE configuration, we can't change these
-    base.instance_class = instanceClass;
-    base.automatic_scaling = snakeify(automaticScaling);
-
-    const outputPath = path.join(process.cwd(), options.destination, "app.yaml");
-
-    logger.log(`generated ${ outputPath }`, { label: options.label ?? "build" });
-
-    writeYaml(outputPath, base);
-
-};
-
-
-export interface BuildYamlTaskOptions{
+export interface BuildYamlTaskOptions extends WatchOptions{
     destination: string;
     environment?: string;
-    ignoreInitial?: boolean;
     label?: string;
     paths: {
         handlers: string;
         environments: string;
         yaml: string;
     };
-    watch?: boolean;
 }
 
 
 export const buildYamlTask = async function(options: BuildYamlTaskOptions): Promise<void>{
 
-    if(options.watch){
+    await watch(options, async (): Promise<void> => {
 
-        await new Promise(() => {
+        const environmentsRaw = await fs.readFile(options.paths.environments, "utf8");
+        const handlersExist = fs.existsSync(options.paths.handlers);
+        const handlersRaw = handlersExist ? fs.readFileSync(options.paths.handlers).toString() : "[]";
+        const environments = JSON.parse(environmentsRaw);
+        const handlers = JSON.parse(handlersRaw);
+        const environment = environments[options?.environment ?? "default"] || environments.default;
+        const base = readYaml(path.join(process.cwd(), options.paths.yaml));
+        const environmentInstance = environment.instance;
+        const instanceClass = environmentInstance?.class ? environmentInstance.class : base.instance_class;
+        const automaticScaling = environmentInstance?.scaling ? environmentInstance.scaling : base.automatic_scaling;
 
-            const watchCallback = (): void => {
+        // Prepend custom handlers
+        base.handlers = handlers.concat(base.handlers);
 
-                // eslint-disable-next-line @typescript-eslint/no-floating-promises
-                buildYaml(options);
+        /*
+         *  Enforce secure at a handler level across all routes and snakeify
+         *  each handlers properties
+         */
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        base.handlers = base.handlers.map((handler: any) => snakeify({
+            ...handler,
+            secure: handler.secure === "never" ? "never" : "always"
+        }));
 
-            };
+        // Overriding GAE configuration, we can't change these
+        base.instance_class = instanceClass;
+        base.automatic_scaling = snakeify(automaticScaling);
 
-            const watcher = chokidar.watch([
-                options.paths.handlers,
-                options.paths.environments,
-                options.paths.yaml
-            ], {
-                ignoreInitial: options.ignoreInitial ?? false,
-                persistent: true,
-                useFsEvents: false
-            });
+        const outputPath = path.join(process.cwd(), options.destination, "app.yaml");
 
-            watcher
-            .on("add", watchCallback)
-            .on("change", watchCallback)
-            .on("unlink", watchCallback);
+        logger.log(`generated ${ outputPath }`, { label: options.label ?? "build" });
 
-        });
+        writeYaml(outputPath, base);
 
-    }else{
-
-        await buildYaml(options);
-
-    }
+    });
 
 };

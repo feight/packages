@@ -21,6 +21,7 @@ import { cleanTask } from "../tasks/clean";
 import { linkTask } from "../tasks/link";
 import { localTask } from "../tasks/local";
 import { setupTask } from "../tasks/setup";
+import { testTask } from "../tasks/test";
 
 
 // This is dodgy, but the typing of this in globals.d.ts is kinda wierd
@@ -72,6 +73,10 @@ program
 program
 .command("setup")
 .action(async (): Promise<void> => setupTask());
+
+program
+.command("test")
+.action(async (): Promise<void> => testTask(config));
 
 
 program.parse(process.argv);

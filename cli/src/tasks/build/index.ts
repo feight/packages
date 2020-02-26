@@ -14,6 +14,8 @@ import {
 import { buildConsoleTask } from "./console";
 import { buildEntriesTask } from "./entries";
 import { buildReleaseTask } from "./release";
+import { buildSettingsTask } from "./settings";
+import { buildRSSTask } from "./rss";
 import { buildStaticAssetsTask } from "./static";
 import { buildYamlTask } from "./yaml";
 
@@ -37,7 +39,11 @@ export const buildTask = async function(config: NewsTeamConfig, options: BuildTa
 
     await cleanTask(config);
 
+    await buildSettingsTask({ ...configs.buildSettingsTask });
+
     await minifyHTMLTask({ ...configs.minifyHTMLTask });
+
+    await buildRSSTask({ ...configs.buildRSSTask });
 
     await buildStaticAssetsTask({ ...configs.buildStaticAssetsTask });
 

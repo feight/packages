@@ -8,7 +8,8 @@ import {
     exec,
     kill,
     prompt,
-    spawn
+    spawn,
+    watch
 } from ".";
 
 
@@ -61,6 +62,17 @@ describe("{ spawn }", () => {
     it("is defined", () => {
 
         expect(spawn).toBeDefined();
+
+    });
+
+});
+
+
+describe("{ watch }", () => {
+
+    it("is defined", () => {
+
+        expect(watch).toBeDefined();
 
     });
 
