@@ -4,15 +4,15 @@ import "jasmine";
 
 
 import {
-    CLIError
+    TestError
 } from ".";
 
 
-describe("{ CLIError }", () => {
+describe("{ TestError }", () => {
 
     it("is defined", () => {
 
-        expect(CLIError).toBeDefined();
+        expect(TestError).toBeDefined();
 
     });
 

@@ -7,12 +7,9 @@
 
 */
 
-import {
-    NewsTeamConfig
-} from "@newsteam/cli-config";
-import {
-    MinifyHTMLTaskOptions
-} from "@newsteam/cli-tasks/lib/minify/html";
+import { NewsTeamConfig } from "@newsteam/cli-config";
+import { EslintLintTaskOptions } from "@newsteam/cli-tasks/lib/lint/eslint";
+import { MinifyHTMLTaskOptions } from "@newsteam/cli-tasks/lib/minify/html";
 
 import { BuildRSSTaskOptions } from "./build/rss";
 import { BuildSettingsTaskOptions } from "./build/settings";
@@ -31,6 +28,8 @@ export interface Configuration{
 
     buildYamlTask: BuildYamlTaskOptions;
 
+    eslintLintTask: EslintLintTaskOptions;
+
     minifyHTMLTask: MinifyHTMLTaskOptions;
 
     testSettingsTask: TestSettingsTaskOptions;
@@ -38,10 +37,12 @@ export interface Configuration{
 }
 
 
+// eslint-disable-next-line max-lines-per-function
 export const configurator = function(config: NewsTeamConfig): Configuration{
 
     const destination = config.paths.build;
     const source = config.paths.source;
+
 
     return {
         buildRSSTask: {
@@ -57,11 +58,7 @@ export const configurator = function(config: NewsTeamConfig): Configuration{
         },
         buildStaticAssetsTask: {
             destination,
-            glob: [
-                "src/publication/base/static/**/*.*",
-                "src/publication/custom/static/**/*.*",
-                "src/publication/shared/static/**/*.*"
-            ]
+            glob: "src/publication/{base,custom,shared}/static/**/*.*"
         },
         buildYamlTask: {
             destination,
@@ -75,6 +72,20 @@ export const configurator = function(config: NewsTeamConfig): Configuration{
                 handlers: config.paths.settings.handlers,
                 yaml: config.paths.yaml
             }
+        },
+        eslintLintTask: {
+            destination,
+            glob: [
+                "src/publication/{base,custom,shared}/**/*.{js,jsx}",
+                "src/settings/**/*.{js,jsx}"
+            ],
+            ignore: [
+                "*.json",
+                "*.min.js",
+                "**/node_modules/**/*.{js,jsx}",
+                "**/static/**/*.{js,jsx}"
+            ],
+            source
         },
         minifyHTMLTask: {
             config: config.htmlmin.options,

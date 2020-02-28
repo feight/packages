@@ -24,8 +24,6 @@ export const localPackageSetupTaskMac = async function(packages: Package[]): Pro
 
     }
 
-    // There isn't a good way to await an array of promises in sequence
-    // eslint-disable-next-line no-loops/no-loops
     for(const pack of packages){
 
         if(brewFormulae.includes(pack as typeof brewFormulae[number])){

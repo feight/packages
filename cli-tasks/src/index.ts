@@ -2,6 +2,7 @@
 import { buildModernizrTask } from "./build/modernizr";
 import { cleanCacheTask } from "./cache/clean";
 import { cleanTask } from "./clean";
+import { eslintLintTask } from "./lint/eslint";
 import { localFirestoreEmulatorTask } from "./local/emulators/firestore";
 import { localMemcachedEmulatorTask } from "./local/emulators/memcached";
 import { localPythonServerTask } from "./local/python/server";
@@ -17,6 +18,7 @@ export {
     buildModernizrTask,
     cleanCacheTask,
     cleanTask,
+    eslintLintTask,
     localFirestoreEmulatorTask,
     localMemcachedEmulatorTask,
     localPythonServerTask,

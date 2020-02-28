@@ -50,8 +50,8 @@
     "vinyl": "^2.2.0"
   },
   "devDependencies": {
-    "@tamland/babel": "^0.0.34",
-    "@tamland/eslint": "^0.0.67",
+    "@tamland/babel": "^0.0.35",
+    "@tamland/eslint": "^0.0.69",
     "@tamland/jasmine": "0.0.3",
     "@types/chokidar": "^2.1.3",
     "@types/fs-extra": "^8.1.0",

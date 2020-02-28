@@ -20,8 +20,8 @@ interface Cache{
 
 const getCache = async function(): Promise<Cache>{
 
-    const directory = path.join(process.cwd(), "node_modules/.cache");
-    const filename = path.join(directory, "newsteam-cli.json");
+    const directory = path.join(process.cwd(), "node_modules/.cache/@newsteam/cli-tasks");
+    const filename = path.join(directory, "virtualenv.json");
     const exists = await fs.pathExists(filename);
 
     let cache: Cache = {};
@@ -44,8 +44,8 @@ const getCache = async function(): Promise<Cache>{
 
 const setCache = async function(cache: Cache): Promise<void>{
 
-    const directory = path.join(process.cwd(), "node_modules/.cache");
-    const filename = path.join(directory, "newsteam-cli.json");
+    const directory = path.join(process.cwd(), "node_modules/.cache/@newsteam/cli-tasks");
+    const filename = path.join(directory, "virtualenv.json");
 
     await fs.ensureDir(directory);
     await fs.writeFile(filename, JSON.stringify(cache));

@@ -3,6 +3,7 @@
 import { NewsTeamConfig } from "@newsteam/cli-config";
 import { TestError } from "@newsteam/cli-errors";
 import { logger } from "@newsteam/cli-logger";
+import { eslintLintTask } from "@newsteam/cli-tasks";
 
 import { testSettingsTask } from "./settings";
 import { testSharedSettingsTask } from "./settings/shared";
@@ -26,6 +27,12 @@ export const testTask = async function(config: NewsTeamConfig): Promise<void>{
 
     try{
         await testSharedSettingsTask();
+    }catch(error){
+        errors.push(error);
+    }
+
+    try{
+        await eslintLintTask({ ...configs.eslintLintTask });
     }catch(error){
         errors.push(error);
     }

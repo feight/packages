@@ -7,7 +7,7 @@ import strip from "strip-color";
 import stripAnsi from "strip-ansi";
 import { rjust } from "justify-text";
 import table from "text-table";
-import { TestError } from "@newsteam/cli-errors";
+import { CLIError } from "@newsteam/cli-errors";
 
 
 const nonBreakingCharacterCode = 160;
@@ -132,21 +132,21 @@ export class Logger{
 
     }
 
-    error(error: string | Error | TestError = "", options: { color?: string | true; label?: string } = {}): void{
+    error(error: string | Error | CLIError = "", options: { color?: string | true; label?: string } = {}): void{
 
         const {
             color = this.colors.errorColor,
             label = "error"
         } = options;
 
-        if(error instanceof TestError){
+        if(error instanceof CLIError){
 
-            error.data.forEach((testError) => {
+            error.data.forEach((cliError) => {
 
                 const {
                     errors,
                     file
-                } = testError;
+                } = cliError;
 
                 if(errors.length > 0){
 
@@ -212,7 +212,7 @@ export class Logger{
 
         }else{
 
-            this.log("", {
+            this.log(error, {
                 color: color === true ? undefined : color,
                 error: true,
                 label

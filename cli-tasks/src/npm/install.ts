@@ -14,8 +14,6 @@ const label = "npm";
 
 export const npmInstallTask = async function(...manifests: string[]): Promise<void>{
 
-    // There isn't a good way to await an array of promises in sequence
-    // eslint-disable-next-line no-loops/no-loops
     for(const manifest of manifests){
 
         const exists = fs.existsSync(manifest);

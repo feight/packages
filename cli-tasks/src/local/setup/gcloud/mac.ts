@@ -119,8 +119,6 @@ export const localGCloudSetupTaskMac = async function(components: GCloudComponen
 
     await installGCloudMac();
 
-    // There isn't a good way to await an array of promises in sequence
-    // eslint-disable-next-line no-loops/no-loops
     for(const element of components){
 
         // eslint-disable-next-line no-await-in-loop

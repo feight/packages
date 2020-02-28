@@ -4,15 +4,15 @@ import "jasmine";
 
 
 import {
-    CLIError
+    LintError
 } from ".";
 
 
-describe("{ CLIError }", () => {
+describe("{ LintError }", () => {
 
     it("is defined", () => {
 
-        expect(CLIError).toBeDefined();
+        expect(LintError).toBeDefined();
 
     });
 

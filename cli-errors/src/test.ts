@@ -1,17 +1,15 @@
 
 
-export interface TestErrorData{
-    file: string;
-    errors: {
-        column?: number;
-        file: string;
-        line?: number;
-        message: string;
-    }[];
-}
+import {
+    CLIError,
+    CLIErrorData
+} from "./cli";
 
 
-export class TestError extends Error{
+export type TestErrorData = CLIErrorData;
+
+
+export class TestError extends CLIError{
 
     data: TestErrorData[];
 
@@ -19,7 +17,7 @@ export class TestError extends Error{
 
     constructor(data: TestErrorData[]){
 
-        super("TestError");
+        super(data);
 
         this.data = data;
 
