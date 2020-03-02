@@ -36,11 +36,11 @@
   },
   "devDependencies": {
     "@tamland/babel": "0.0.35",
-    "@tamland/eslint": "0.0.69",
+    "@tamland/eslint": "0.0.72",
     "@tamland/jasmine": "0.0.3",
     "@types/hapi__joi": "^16.0.12",
     "@types/json5": "0.0.30",
-    "@types/node": "^13.7.6",
-    "typescript": "^3.8.2"
+    "@types/node": "^13.7.7",
+    "typescript": "^3.8.3"
   }
 }

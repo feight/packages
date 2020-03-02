@@ -218,7 +218,10 @@ export class Validate{
 
                     case "string" :
 
-                        compiled[key] = "string";
+                        compiled[key] = {
+                            allow: "",
+                            type: "string"
+                        };
 
                         break;
 

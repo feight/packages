@@ -2,14 +2,10 @@
 
 import path from "path";
 
-import cache from "gulp-cache";
-import fs from "fs-extra";
-import eslint from "gulp-eslint";
-import gulp from "gulp";
-import gulpIf from "gulp-if";
+import { CLIEngine } from "eslint";
 import vinyl from "vinyl";
+import { logger } from "@newsteam/cli-logger";
 import {
-    gulp as gulpUtils,
     watch,
     WatchOptions
 } from "@newsteam/cli-utils";
@@ -17,11 +13,6 @@ import {
     LintError,
     LintErrorData
 } from "@newsteam/cli-errors";
-import { logger } from "@newsteam/cli-logger";
-import { CLIEngine } from "eslint";
-
-
-const rawPackageJSON = String(fs.readFileSync(path.join(process.cwd(), "package.json")));
 
 
 export class ESLintError extends LintError{
@@ -45,17 +36,10 @@ export interface ESLintFile extends vinyl{
 }
 
 
-export interface EslintTaskConfig{
-    cache: boolean;
-    fix: boolean;
-    warnFileIgnored: boolean;
-
-}
-
-
 export interface EslintLintTaskOptions extends WatchOptions{
-    config?: EslintTaskConfig;
+    cache?: boolean;
     destination: string;
+    fix?: boolean;
     source: string;
     label?: string;
 }
@@ -65,20 +49,12 @@ export const eslintLintTask = async function(options: EslintLintTaskOptions): Pr
 
     const label = options.label ?? "lint";
 
-    const config: EslintTaskConfig = {
-        cache: true,
-        fix: false,
-        warnFileIgnored: true,
-        ...options.config
-    };
-
     const eslintCLI = new CLIEngine({
-        cache: config.cache,
+        cache: options.cache ?? true,
         cacheLocation: "node_modules/.cache/@newsteam/cli-tasks/.eslintcache",
-        fix: config.fix,
+        fix: options.fix ?? false,
         useEslintrc: true
     });
-
 
     await watch(options, async (files: string[]): Promise<void> => {
 
@@ -92,7 +68,7 @@ export const eslintLintTask = async function(options: EslintLintTaskOptions): Pr
 
                 const report = eslintCLI.executeOnFiles([file]);
 
-                if(config.fix){
+                if(options.fix){
                     CLIEngine.outputFixes(report);
                 }
 
@@ -109,8 +85,6 @@ export const eslintLintTask = async function(options: EslintLintTaskOptions): Pr
                         })),
                         file
                     });
-
-                    // Console.log(result.messages);
 
                 }
 

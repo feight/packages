@@ -16,7 +16,7 @@ import {
 
 const convert = {
     allow(schema: Joi.Schema, value: AnySchemaDefinition["allow"]): Joi.Schema{
-        return value ? schema.allow(...Array.isArray(value) ? value : [value]) : schema;
+        return typeof value === "undefined" ? schema : schema.allow(...Array.isArray(value) ? value : [value]);
     },
     custom(schema: Joi.Schema, value: AnySchemaDefinition["custom"]): Joi.Schema{
         return value ? schema.custom(value.method, value.description) : schema;

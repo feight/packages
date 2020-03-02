@@ -38,6 +38,14 @@ fi
 rsync -rv --include '*/' --include '*.scss' --exclude '*' --prune-empty-dirs src/ lib/ &&
 echo 'copied scss assets'
 
+# Copy js assets
+rsync -rv --include '*/' --include '*.js' --exclude '*' --prune-empty-dirs src/ lib/ &&
+echo 'copied js assets'
+
+# Copy json assets
+rsync -rv --include '*/' --include '*.json' --exclude '*' --prune-empty-dirs src/ lib/ &&
+echo 'copied json assets'
+
 # Generate typescript declarations
 tsc --emitDeclarationOnly &&
 echo 'generated .d.ts assets'

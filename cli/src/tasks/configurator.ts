@@ -8,9 +8,14 @@
 */
 
 import { NewsTeamConfig } from "@newsteam/cli-config";
-import { EslintLintTaskOptions } from "@newsteam/cli-tasks/lib/lint/eslint";
-import { MinifyHTMLTaskOptions } from "@newsteam/cli-tasks/lib/minify/html";
+import {
+    BuildModernizrTaskOptions,
+    EslintLintTaskOptions,
+    MinifyHTMLTaskOptions
+} from "@newsteam/cli-tasks";
 
+
+import { BuildEntriesTaskOptions } from "./build/entries";
 import { BuildRSSTaskOptions } from "./build/rss";
 import { BuildSettingsTaskOptions } from "./build/settings";
 import { BuildStaticAssetsTaskOptions } from "./build/static";
@@ -19,6 +24,10 @@ import { TestSettingsTaskOptions } from "./test/settings";
 
 
 export interface Configuration{
+
+    buildEntriesTask: BuildEntriesTaskOptions;
+
+    buildModernizrTask: BuildModernizrTaskOptions;
 
     buildRSSTask: BuildRSSTaskOptions;
 
@@ -37,28 +46,44 @@ export interface Configuration{
 }
 
 
-// eslint-disable-next-line max-lines-per-function
 export const configurator = function(config: NewsTeamConfig): Configuration{
 
     const destination = config.paths.build;
     const source = config.paths.source;
 
-
     return {
+        buildEntriesTask: {
+            destination,
+            glob: [
+                "src/publication/custom/pages/*/index.{js,scss}",
+                "src/publication/custom/pages/**/index.{js,scss}",
+                "src/publication/custom/app/entry/index.{js,scss}",
+                "src/publication/custom/app/push/index.js",
+                "src/publication/custom/app/entry/amp/index.scss",
+                "src/publication/custom/app/entry/mobile/index.scss"
+            ],
+            source
+        },
+        buildModernizrTask: {
+            config: config.modernizr.config,
+            destination,
+            filename: config.paths.modernizr.filename,
+            glob: config.paths.modernizr.glob
+        },
         buildRSSTask: {
             destination,
-            glob: config.rss.glob,
-            ignore: config.rss.ignore,
+            glob: config.paths.rss.glob,
+            ignore: config.paths.rss.ignore,
             source
         },
         buildSettingsTask: {
             destination,
-            glob: "src/publication/{base,custom,shared}/settings/**/*.{js,json}",
+            glob: config.paths.settings.glob,
             source
         },
         buildStaticAssetsTask: {
             destination,
-            glob: "src/publication/{base,custom,shared}/static/**/*.*"
+            glob: config.paths.static.glob
         },
         buildYamlTask: {
             destination,
@@ -75,72 +100,19 @@ export const configurator = function(config: NewsTeamConfig): Configuration{
         },
         eslintLintTask: {
             destination,
-            glob: [
-                "src/publication/{base,custom,shared}/**/*.{js,jsx}",
-                "src/settings/**/*.{js,jsx}"
-            ],
-            ignore: [
-                "*.json",
-                "*.min.js",
-                "**/node_modules/**/*.{js,jsx}",
-                "**/static/**/*.{js,jsx}"
-            ],
+            glob: config.paths.javascript.glob,
+            ignore: config.paths.javascript.ignore,
             source
         },
         minifyHTMLTask: {
             config: config.htmlmin.options,
             destination,
-            glob: config.htmlmin.glob,
-            ignore: config.htmlmin.ignore,
+            glob: config.paths.html.glob,
+            ignore: config.paths.html.ignore,
             source
         },
         testSettingsTask: {
-            validations: [
-                {
-                    glob: "src/publication/shared/settings/index.json",
-                    optional: true,
-                    schema: "src/settings/schema/shared/index.json"
-                },
-                {
-                    glob: "src/publication/{base,custom}/settings/index.json",
-                    schema: "src/settings/schema/index.json"
-                },
-                {
-                    glob: "src/publication/{base,custom,shared}/widgets/*/index.json",
-                    schema: "src/settings/schema/widget.json"
-                },
-                {
-                    glob: [
-                        "src/publication/custom/settings/publications/*/index.json",
-                        "src/publication/custom/settings/publication.json"
-                    ],
-                    schema: "src/settings/schema/publication.json"
-                },
-                {
-                    glob: "src/publication/custom/settings/account.json",
-                    schema: "src/settings/schema/account.json"
-                },
-                {
-                    glob: "src/publication/custom/settings/cosmosd.json",
-                    schema: "src/settings/schema/cosmosd.json"
-                },
-                {
-                    glob: "src/publication/custom/settings/environments.json",
-                    schema: "src/settings/schema/environments.json"
-                },
-                {
-                    glob: "src/publication/custom/settings/handlers.json",
-                    schema: "src/settings/schema/handlers.json"
-                },
-                {
-                    glob: "src/publication/custom/settings/mappings.json",
-                    schema: "src/settings/schema/mappings.json"
-                },
-                {
-                    glob: "src/publication/custom/settings/offers.json",
-                    schema: "src/settings/schema/offers.json"
-                }
-            ]
+            validations: config.paths.settings.validations
         }
     };
 

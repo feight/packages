@@ -40,6 +40,16 @@ new Test(`${ name }`, method, [
     ]
 ]).run();
 
+new Test(`${ name }.allow("")`, method, [
+    [
+        Joi.string().allow(""),
+        {
+            allow: "",
+            type: "string"
+        }
+    ]
+]).run();
+
 new Test(`${ name }<alphanum>`, method, [
     [
         Joi.string().alphanum(),

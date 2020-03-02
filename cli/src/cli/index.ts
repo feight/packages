@@ -3,7 +3,8 @@
 
     eslint
 
-    @typescript-eslint/no-misused-promises: "off"
+    require-await: "off",
+    @typescript-eslint/no-misused-promises: "off",
 
 */
 
@@ -43,21 +44,25 @@ program
     platform: options.platform || "web"
 }));
 
-
 program
 .command("clean")
 .action(async (): Promise<void> => cleanTask(config, { cache: true }));
-
 
 program
 .command("clean-cache")
 .action(async (): Promise<void> => cleanCacheTask());
 
-
 program
 .command("link")
 .action(async (): Promise<void> => linkTask(true));
 
+program
+.command("lint")
+.option("--fix", "attempt to fix lint issues automatically (defaults to false)")
+.action(async (options): Promise<void> => testTask(config, {
+    fix: options.fix,
+    tests: false
+}));
 
 program
 .command("local")
@@ -69,14 +74,16 @@ program
     watch: !options.production
 }));
 
-
 program
 .command("setup")
 .action(async (): Promise<void> => setupTask());
 
 program
 .command("test")
-.action(async (): Promise<void> => testTask(config));
+.option("--fix", "attempt to fix lint issues automatically (defaults to false)")
+.action(async (options): Promise<void> => testTask(config, {
+    fix: options.fix
+}));
 
 
 program.parse(process.argv);

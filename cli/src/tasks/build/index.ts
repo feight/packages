@@ -39,25 +39,25 @@ export const buildTask = async function(config: NewsTeamConfig, options: BuildTa
 
     await cleanTask(config);
 
-    await buildSettingsTask({ ...configs.buildSettingsTask });
+    await buildEntriesTask(configs.buildEntriesTask);
 
-    await minifyHTMLTask({ ...configs.minifyHTMLTask });
+    return;
 
-    await buildRSSTask({ ...configs.buildRSSTask });
+    await buildModernizrTask(configs.buildModernizrTask);
 
-    await buildStaticAssetsTask({ ...configs.buildStaticAssetsTask });
+    await buildRSSTask(configs.buildRSSTask);
+
+    await buildSettingsTask(configs.buildSettingsTask);
+
+    await minifyHTMLTask(configs.minifyHTMLTask);
+
+    await buildStaticAssetsTask(configs.buildStaticAssetsTask);
 
     await buildReleaseTask(config);
 
-    await npmInstallTask(...config.npm.manifests);
+    await npmInstallTask(...config.paths.npm.manifests);
 
-    await buildEntriesTask(config);
-
-    await buildModernizrTask({
-        config: config.modernizr,
-        destination: config.paths.build,
-        label
-    });
+    await buildYamlTask(configs.buildYamlTask);
 
     if(
         options.mode === "production" ||
@@ -67,7 +67,5 @@ export const buildTask = async function(config: NewsTeamConfig, options: BuildTa
         await buildConsoleTask();
 
     }
-
-    await buildYamlTask({ ...configs.buildYamlTask });
 
 };

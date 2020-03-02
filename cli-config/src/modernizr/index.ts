@@ -1,24 +1,34 @@
 
 
-import { defaults } from "../defaults";
+import { rcFile } from "rc-config-loader";
+import merge from "deepmerge";
+
+import { ModernizrConfig } from "./types";
 
 
-export interface ModernizrConfig{
-
-    addFeatures?: string[];
-
-}
+const modernizrConfig: ModernizrConfig = {
+    ...merge.all([
+        rcFile("modernizr", {
+            configFileName: ".modernizr",
+            cwd: __dirname
+        })?.config ?? {},
+        rcFile("modernizr", {
+            configFileName: ".modernizr",
+            cwd: process.cwd()
+        })?.config ?? {}
+    ], {
+        arrayMerge: (target, source) => target.concat(source.filter((item) => !target.includes(item)))
+    })
+};
 
 
 export class NewsTeamModernizrConfig{
 
-    addFeatures: string[];
+    config: ModernizrConfig;
 
-    constructor(config?: ModernizrConfig){
+    constructor(){
 
-        this.addFeatures = defaults.modernizr.addFeatures
-        .concat(config?.addFeatures ?? [])
-        .filter((value, index, self) => self.indexOf(value) === index);
+        this.config = modernizrConfig;
 
     }
 

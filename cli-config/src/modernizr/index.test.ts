@@ -2,8 +2,6 @@
 
 import "jasmine";
 
-import { defaults } from "../defaults";
-
 import { config } from "..";
 
 
@@ -13,12 +11,12 @@ describe("{ config.modernizr }", () => {
         expect(config.modernizr).toBeDefined();
     });
 
-    it("config.modernizr.addFeatures is defined", () => {
-        expect(config.modernizr.addFeatures).toBeDefined();
+    it("config.modernizr.config is defined", () => {
+        expect(config.modernizr.config).toBeDefined();
     });
 
-    it("config.modernizr.addFeatures defaults correctly", () => {
-        expect(config.modernizr.addFeatures).toEqual(defaults.modernizr.addFeatures);
+    it("config.modernizr.config['feature-detects'] is defined", () => {
+        expect(config.modernizr.config["feature-detects"]).toBeDefined();
     });
 
 });

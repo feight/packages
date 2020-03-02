@@ -3,9 +3,11 @@ import {
     NewsTeamConfig
 } from "@newsteam/cli-config";
 import {
+    buildModernizrTask,
     minifyHTMLTask
 } from "@newsteam/cli-tasks";
 
+import { buildEntriesTask } from "../build/entries";
 import { buildRSSTask } from "../build/rss";
 import { buildSettingsTask } from "../build/settings";
 import { buildStaticAssetsTask } from "../build/static";
@@ -27,6 +29,14 @@ export const localWatchTask = async function(config: NewsTeamConfig): Promise<vo
     };
 
     await Promise.all([
+        buildEntriesTask({
+            ...configs.buildEntriesTask,
+            ...watchConfig
+        }),
+        buildModernizrTask({
+            ...configs.buildModernizrTask,
+            ...watchConfig
+        }),
         buildRSSTask({
             ...configs.buildRSSTask,
             ...watchConfig

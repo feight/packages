@@ -14,27 +14,51 @@ import { configurator } from "../configurator";
 export const label = "test";
 
 
-export const testTask = async function(config: NewsTeamConfig): Promise<void>{
+export interface TestTaskOptions{
+    lints?: boolean;
+    tests?: boolean;
+    fix?: boolean;
+}
+
+
+export const testTask = async function(config: NewsTeamConfig, options: TestTaskOptions): Promise<void>{
 
     const configs = configurator(config);
     const errors: TestError[] = [];
 
-    try{
-        await testSettingsTask({ ...configs.testSettingsTask });
-    }catch(error){
-        errors.push(error);
+    const {
+        lints = true,
+        tests = true,
+        fix = false
+    } = options;
+
+    if(tests){
+
+        try{
+            await testSettingsTask({ ...configs.testSettingsTask });
+        }catch(error){
+            errors.push(error);
+        }
+
+        try{
+            await testSharedSettingsTask();
+        }catch(error){
+            errors.push(error);
+        }
+
     }
 
-    try{
-        await testSharedSettingsTask();
-    }catch(error){
-        errors.push(error);
-    }
+    if(lints){
 
-    try{
-        await eslintLintTask({ ...configs.eslintLintTask });
-    }catch(error){
-        errors.push(error);
+        try{
+            await eslintLintTask({
+                ...configs.eslintLintTask,
+                fix
+            });
+        }catch(error){
+            errors.push(error);
+        }
+
     }
 
     errors.forEach((error) => {

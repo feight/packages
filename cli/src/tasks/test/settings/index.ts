@@ -6,6 +6,7 @@ import { Validator } from "jsonschema";
 import glob from "globby";
 import fs from "fs-extra";
 import { logger } from "@newsteam/cli-logger";
+import { SettingsSchemaTests } from "@newsteam/cli-config";
 import {
     TestError,
     TestErrorData
@@ -26,13 +27,6 @@ export class SettingsSchemaValidationError extends TestError{
 
     }
 
-}
-
-
-export interface SettingsSchemaTests{
-    glob: string | string[];
-    optional?: boolean;
-    schema: string;
 }
 
 

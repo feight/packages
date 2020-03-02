@@ -10,8 +10,6 @@ import * as htmlmin from "./htmlmin";
 import * as local from "./local";
 import * as paths from "./paths";
 import * as modernizr from "./modernizr";
-import * as npm from "./npm";
-import * as rss from "./rss";
 
 
 const cwd = process.cwd();
@@ -34,6 +32,10 @@ export type Platform = "desktop" | "mobile" | "web";
 export type Target = "client" | "server";
 
 
+export { ModernizrConfig } from "./modernizr/types";
+export { SettingsSchemaTests } from "./paths/settings";
+
+
 export interface Config{
 
     local?: local.LocalConfig;
@@ -51,13 +53,9 @@ export class NewsTeamConfig{
 
     local: local.NewsTeamLocalConfig;
 
-    npm: npm.NewsTeamNPMConfig;
-
     modernizr: modernizr.NewsTeamModernizrConfig;
 
     paths: paths.NewsTeamPathsConfig;
-
-    rss: rss.NewsTeamRSSConfig;
 
     constructor(config: Config){
 
@@ -67,13 +65,9 @@ export class NewsTeamConfig{
 
         this.local = new local.NewsTeamLocalConfig(config.local);
 
-        this.npm = new npm.NewsTeamNPMConfig();
-
-        this.modernizr = new modernizr.NewsTeamModernizrConfig(config.modernizr);
+        this.modernizr = new modernizr.NewsTeamModernizrConfig();
 
         this.paths = new paths.NewsTeamPathsConfig();
-
-        this.rss = new rss.NewsTeamRSSConfig();
 
     }
 

@@ -47,8 +47,8 @@
     "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
-    "@tamland/babel": "^0.0.34",
-    "@tamland/eslint": "^0.0.67",
+    "@tamland/babel": "^0.0.35",
+    "@tamland/eslint": "^0.0.72",
     "@tamland/jasmine": "0.0.3",
     "@types/deepmerge": "^2.2.0",
     "@types/fs-extra": "^8.1.0",

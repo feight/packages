@@ -2,6 +2,6 @@
   "name": "@newsteam/packages",
   "version": "0.0.1",
   "dependencies": {
-    "@tamland/eslint": "0.0.68"
+    "@tamland/eslint": "0.0.72"
   }
 }

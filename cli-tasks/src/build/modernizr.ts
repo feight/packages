@@ -2,18 +2,20 @@
 
 import path from "path";
 
+import fs from "fs-extra";
+import modernizr from "modernizr";
 import { logger } from "@newsteam/cli-logger";
-import modernizr from "gulp-modernizr-build";
-import minify from "gulp-babel-minify";
-import gulp from "gulp";
+import { ModernizrConfig } from "@newsteam/cli-config";
+import {
+    watch,
+    WatchOptions
+} from "@newsteam/cli-utils";
 
 
-export interface BuildModernizrTaskOptions{
-    config: {
-        addFeatures: string[];
-    };
-    destination?: string;
-    filename?: string;
+export interface BuildModernizrTaskOptions extends WatchOptions{
+    config: ModernizrConfig;
+    destination: string;
+    filename: string;
     label?: string;
 }
 
@@ -22,27 +24,30 @@ export const buildModernizrTask = async function(options: BuildModernizrTaskOpti
 
     const {
         config,
-        destination = "src/build",
-        filename = "modernizr.js",
+        destination,
+        filename,
         label = "build"
     } = options;
 
-    await new Promise((resolve) => {
+    await watch(options, async (): Promise<void> => {
 
-        gulp.src(__filename)
-        .pipe(modernizr(filename, {
-            quiet: true,
-            ...config
-        }))
-        .pipe(minify({}, {
-            comments: false
-        }))
-        .pipe(gulp.dest(destination))
-        .on("finish", (): void => {
+        await new Promise((resolve) => {
 
-            logger.log(`modernizr ${ path.resolve(path.join(destination, filename)) }`, { label });
+            /*
+             * These parens are necessary and the modernizr typing is broken so
+             * we need to treat it as any until that gets resolved
+             */
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-extra-parens
+            (modernizr as any).build(config, async (result: string) => {
 
-            resolve();
+                await fs.ensureDir(destination);
+                await fs.writeFile(path.join(destination, filename), result);
+
+                logger.log(`modernizr ${ path.resolve(path.join(destination, filename)) }`, { label });
+
+                resolve();
+
+            });
 
         });
 
