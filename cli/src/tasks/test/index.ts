@@ -1,6 +1,5 @@
 
 
-import { NewsTeamConfig } from "@newsteam/cli-config";
 import { TestError } from "@newsteam/cli-errors";
 import { logger } from "@newsteam/cli-logger";
 import { eslintLintTask } from "@newsteam/cli-tasks";
@@ -8,6 +7,7 @@ import { eslintLintTask } from "@newsteam/cli-tasks";
 import { testSettingsTask } from "./settings";
 import { testSharedSettingsTask } from "./settings/shared";
 
+import { NewsTeamConfig } from "../../config";
 import { configurator } from "../configurator";
 
 

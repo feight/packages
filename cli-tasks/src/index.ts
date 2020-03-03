@@ -1,44 +1,25 @@
 
-import {
+export {
     buildModernizrTask,
     BuildModernizrTaskOptions
 } from "./build/modernizr";
-import { cleanCacheTask } from "./cache/clean";
-import { cleanTask } from "./clean";
-import {
+export { cleanCacheTask } from "./cache/clean";
+export { cleanTask } from "./clean";
+export {
     eslintLintTask,
     EslintLintTaskOptions
 } from "./lint/eslint";
-import { localFirestoreEmulatorTask } from "./local/emulators/firestore";
-import { localMemcachedEmulatorTask } from "./local/emulators/memcached";
-import { localPythonServerTask } from "./local/python/server";
-import { localPythonVirtualenvTask } from "./local/python/virtualenv";
-import { localGCloudSetupTask } from "./local/setup/gcloud";
-import { localPackageSetupTask } from "./local/setup/package";
-import { localPlatformSetupTask } from "./local/setup/platform";
-import {
+export { localFirestoreEmulatorTask } from "./local/emulators/firestore";
+export { localMemcachedEmulatorTask } from "./local/emulators/memcached";
+export { localPythonServerTask } from "./local/python/server";
+export { localPythonVirtualenvTask } from "./local/python/virtualenv";
+export { localGCloudSetupTask } from "./local/setup/gcloud";
+export { localPackageSetupTask } from "./local/setup/package";
+export { localPlatformSetupTask } from "./local/setup/platform";
+export {
     minifyHTMLTask,
     MinifyHTMLTaskOptions
 } from "./minify/html";
-import { npmInstallTask } from "./npm/install";
-import { openBrowserTask } from "./open/browser";
-
-export {
-    buildModernizrTask,
-    BuildModernizrTaskOptions,
-    cleanCacheTask,
-    cleanTask,
-    eslintLintTask,
-    EslintLintTaskOptions,
-    localFirestoreEmulatorTask,
-    localMemcachedEmulatorTask,
-    localPythonServerTask,
-    localPythonVirtualenvTask,
-    localGCloudSetupTask,
-    localPackageSetupTask,
-    localPlatformSetupTask,
-    minifyHTMLTask,
-    MinifyHTMLTaskOptions,
-    npmInstallTask,
-    openBrowserTask
-};
+export { ModernizrConfig } from "./build/modernizr/types";
+export { npmInstallTask } from "./npm/install";
+export { openBrowserTask } from "./open/browser";

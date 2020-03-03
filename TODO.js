@@ -60,8 +60,8 @@ gulp.task("local", gulp.series(
             // () => linters.scss.custom.watch(),
             // () => watch(paths.py, conf.watch, batch(linters.py)),
             // () => watch(paths.rss, conf.watch, batch(builders.rss)),
-            () => watch(paths.settingsWatch, conf.watch, batch(builders.settings)),
-            () => watch(paths.settingsWatch, conf.watch, batch(linters.settings)),
+            // () => watch(paths.settingsWatch, conf.watch, batch(builders.settings)),
+            // () => watch(paths.settingsWatch, conf.watch, batch(linters.settings)),
             // () => watch(paths.staticWatch, conf.watch, builders.static),
             // () => watch(paths.yamlWatch, conf.watch, builders.yaml),
             () => watch(paths.widgetsWatch, conf.watch, builders.widgets)
@@ -133,13 +133,13 @@ gulp.task("test", require("./tasks/test"));
 const lint = gulp.parallel(
     () => linters.html.base.run(),
     () => linters.html.custom.run(),
-    () => linters.js.base.run(),
-    () => linters.js.custom.run(),
+    //() => linters.js.base.run(),
+    //() => linters.js.custom.run(),
     (callback) => linters.py(gulp.src(paths.py, { base: conf.source }), callback, false),
     () => linters.scss.base.run(),
     () => linters.scss.custom.run(),
     linters.lint,
-    linters.settings
+    //linters.settings
 );
 
 /*

@@ -5,11 +5,12 @@ import path from "path";
 import fs from "fs-extra";
 import modernizr from "modernizr";
 import { logger } from "@newsteam/cli-logger";
-import { ModernizrConfig } from "@newsteam/cli-config";
 import {
     watch,
     WatchOptions
 } from "@newsteam/cli-utils";
+
+import { ModernizrConfig } from "./types";
 
 
 export interface BuildModernizrTaskOptions extends WatchOptions{

@@ -1,10 +1,11 @@
 
 
-import { NewsTeamConfig } from "@newsteam/cli-config";
 import {
     cleanCacheTask,
     cleanTask as clean
 } from "@newsteam/cli-tasks";
+
+import { NewsTeamConfig } from "../config";
 
 
 interface CleanTaskOptions{

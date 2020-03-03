@@ -3,9 +3,10 @@
 import path from "path";
 
 import fs from "fs-extra";
-import { NewsTeamConfig } from "@newsteam/cli-config";
 import { exec } from "@newsteam/cli-utils";
 import { logger } from "@newsteam/cli-logger";
+
+import { NewsTeamConfig } from "../../config";
 
 
 import { label } from ".";

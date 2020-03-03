@@ -6,11 +6,12 @@ import { Validator } from "jsonschema";
 import glob from "globby";
 import fs from "fs-extra";
 import { logger } from "@newsteam/cli-logger";
-import { SettingsSchemaTests } from "@newsteam/cli-config";
 import {
     TestError,
     TestErrorData
 } from "@newsteam/cli-errors";
+
+import { SettingsSchemaTests } from "../../../config";
 
 import { label } from "..";
 

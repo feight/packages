@@ -1,12 +1,12 @@
 
 import {
-    NewsTeamConfig
-} from "@newsteam/cli-config";
-import {
     buildModernizrTask,
     minifyHTMLTask
 } from "@newsteam/cli-tasks";
 
+import {
+    NewsTeamConfig
+} from "../../config";
 import { buildEntriesTask } from "../build/entries";
 import { buildRSSTask } from "../build/rss";
 import { buildSettingsTask } from "../build/settings";

@@ -7,7 +7,6 @@
 
 */
 
-import { NewsTeamConfig } from "@newsteam/cli-config";
 import {
     BuildModernizrTaskOptions,
     EslintLintTaskOptions,
@@ -21,6 +20,8 @@ import { BuildSettingsTaskOptions } from "./build/settings";
 import { BuildStaticAssetsTaskOptions } from "./build/static";
 import { BuildYamlTaskOptions } from "./build/yaml";
 import { TestSettingsTaskOptions } from "./test/settings";
+
+import { NewsTeamConfig } from "../config";
 
 
 export interface Configuration{

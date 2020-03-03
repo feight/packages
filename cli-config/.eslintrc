@@ -1,6 +1,0 @@
-{
-  "extends": "@tamland",
-  "rules": {
-    "import/exports-last": "off"
-  }
-}

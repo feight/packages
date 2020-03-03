@@ -1,11 +1,6 @@
 
 
 import {
-    Mode,
-    Platform,
-    NewsTeamConfig
-} from "@newsteam/cli-config";
-import {
     localFirestoreEmulatorTask,
     localMemcachedEmulatorTask,
     localPythonVirtualenvTask,
@@ -15,6 +10,11 @@ import {
 
 import { localWatchTask } from "./watch";
 
+import {
+    Mode,
+    Platform,
+    NewsTeamConfig
+} from "../../config";
 import { buildTask } from "../build";
 import { linkTask } from "../link";
 

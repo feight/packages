@@ -2,8 +2,7 @@
 
 import { rcFile } from "rc-config-loader";
 import merge from "deepmerge";
-
-import { ModernizrConfig } from "./types";
+import { ModernizrConfig } from "@newsteam/cli-tasks";
 
 
 const modernizrConfig: ModernizrConfig = {

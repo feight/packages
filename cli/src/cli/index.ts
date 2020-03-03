@@ -12,10 +12,10 @@ import "core-js/stable";
 import "regenerator-runtime/runtime";
 
 import program from "commander";
-import { config } from "@newsteam/cli-config";
 import { logger } from "@newsteam/cli-logger";
 import { cleanCacheTask } from "@newsteam/cli-tasks";
 
+import { config } from "../config";
 import packageJSON from "../../package.json";
 import { buildTask } from "../tasks/build";
 import { cleanTask } from "../tasks/clean";

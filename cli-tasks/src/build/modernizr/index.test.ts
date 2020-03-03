@@ -5,7 +5,7 @@ import "jasmine";
 
 import {
     buildModernizrTask
-} from "..";
+} from ".";
 
 
 describe("{ buildModernizrTask }", () => {

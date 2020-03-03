@@ -1,11 +1,6 @@
 
 
 import {
-    Mode,
-    Platform,
-    NewsTeamConfig
-} from "@newsteam/cli-config";
-import {
     buildModernizrTask,
     minifyHTMLTask,
     npmInstallTask
@@ -19,6 +14,11 @@ import { buildRSSTask } from "./rss";
 import { buildStaticAssetsTask } from "./static";
 import { buildYamlTask } from "./yaml";
 
+import {
+    Mode,
+    Platform,
+    NewsTeamConfig
+} from "../../config";
 import { cleanTask } from "../clean";
 import { configurator } from "../configurator";
 
