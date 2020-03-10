@@ -1,0 +1,28 @@
+
+
+import merge from "webpack-merge";
+import { Configuration } from "webpack";
+
+import fileLoader from "../../../../shared/loaders/file";
+import { Options } from "../../../..";
+
+
+export const files = function(
+    config: Configuration,
+    options: Options
+): Configuration{
+
+    return merge(config, {
+        module: {
+            rules: [
+                // .txt and .json file extensions
+                {
+                    exclude: /node_modules/u,
+                    test: /\.(?:txt)$/u,
+                    use: [fileLoader(config, options)]
+                }
+            ]
+        }
+    });
+
+};

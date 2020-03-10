@@ -14,7 +14,7 @@ gulp.task("build", gulp.series(
     //    builders.yaml
     // ),
     // builders.settings,
-    builders.widgets,
+    // builders.widgets,
     // () => require("./tasks/build/clients.js")(conf),
     // args.fast ? async () => {} : lint,
     // (callback) => builders.html(gulp.src(paths.html.base, { base: conf.source }), callback, false),
@@ -64,7 +64,7 @@ gulp.task("local", gulp.series(
             // () => watch(paths.settingsWatch, conf.watch, batch(linters.settings)),
             // () => watch(paths.staticWatch, conf.watch, builders.static),
             // () => watch(paths.yamlWatch, conf.watch, builders.yaml),
-            () => watch(paths.widgetsWatch, conf.watch, builders.widgets)
+            // () => watch(paths.widgetsWatch, conf.watch, builders.widgets)
         ),
         // () => require("./tasks/local/server")(conf.local.server),
         // () => require("./tasks/local/open")(conf.local.open.path)

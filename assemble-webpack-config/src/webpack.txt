@@ -1,0 +1,250 @@
+
+
+const glob = require("glob");
+const path = require("path");
+const webpack = require("webpack");
+
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+const FileListPlugin = require("webpack-file-list-plugin");
+const DebugWebpackPlugin = require("debug-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+const getEntries = require("./../entries");
+
+
+const entrypoints = function(){
+
+    const base = glob.sync("src/publication/base/pages/**/index.js");
+    const custom = glob.sync("src/publication/custom/pages/**/index.js");
+    const devices = glob.sync("src/publication/custom/devices/*/pages/**/index.js");
+
+    const entries = getEntries();
+
+    // The push entrypoint can't be derived from the app so we're just going to add it manually
+    Object.assign(entries, {
+        push: "./src/build/entries/push/index.js"
+    });
+
+    const pageEntries = base.reduce((result, item) => {
+
+        result[item.replace(/src\/publication\/base\/(.*?)\/index.js$/, "$1")] = `./${ item }`;
+
+        return result;
+
+    }, {});
+
+    const customEntries = custom.reduce((result, item) => {
+
+        result[item.replace(/src\/publication\/custom\/(.*?)\/index.js$/, "$1")] = `./${ item }`;
+
+        return result;
+
+    }, {});
+
+    const deviceEntries = devices.reduce((result, item) => {
+
+        result[item.replace(/src\/publication\/custom\/devices\/(.*?)\/index.js$/, "devices/$1")] = `./${ item }`;
+
+        return result;
+
+    }, {});
+
+    return Object.assign(entries, deviceEntries, customEntries, pageEntries);
+
+};
+
+
+module.exports = (args) => {
+
+    const base = process.cwd();
+
+    const plugins = [
+        new webpack.optimize.ModuleConcatenationPlugin(),
+        new FileListPlugin({
+            filename: "chunks.json",
+            path: path.resolve(base, "src/build")
+        }),
+        new webpack.DefinePlugin({
+            "process.env.CLIENT": JSON.stringify("browser"),
+            "process.env.NODE_ENV": JSON.stringify("production")
+        }),
+        new DebugWebpackPlugin({
+            debug: false
+        }),
+        new MiniCssExtractPlugin({
+            cache: true,
+            chunkFilename: "build/publication/[id].[chunkhash].bundle.css",
+            filename: "build/chunks/[name].[chunkhash].bundle.css"
+        })
+    ];
+
+    if(args.watch){
+
+        plugins.push(new BundleAnalyzerPlugin({
+            analyzerHost: "127.0.0.1",
+            analyzerMode: "server",
+            analyzerPort: args.analyzerPort,
+            defaultSizes: "parsed",
+            generateStatsFile: false,
+            logLevel: "info",
+            openAnalyzer: false,
+            reportFilename: "report.html",
+            statsFilename: "stats.json",
+            statsOptions: null
+        }));
+
+    }
+
+    return {
+
+        /*
+         *  This has to be toggled while watching for now because of an issue in
+         *  the mini-css-extract-plugin where css files are not emitted while
+         *  the cache is enabled. For more information have a look at this...
+         *  https://github.com/webpack-contrib/mini-css-extract-plugin/issues/23
+         */
+        // cache: true,
+        // The minification plugin stop being compatible with the source-maps devtool
+        // devtool: global.deploy ? false : "source-map",
+        // entry: entrypoints(),
+        // mode: global.deploy ? "production" : "development",
+        module: {
+            rules: [
+                {
+                    test: require.resolve("jquery"),
+                    use: [
+                        {
+                            loader: "expose-loader",
+                            options: "jQuery"
+                        },
+                        {
+                            loader: "expose-loader",
+                            options: "$"
+                        }
+                    ]
+                },
+                {
+                    test: /.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+                    use: [
+                        {
+                            loader: "file-loader",
+                            options: {
+                                name: "[name].[hash].[ext]",
+                                outputPath: "build/publication/fonts/"
+                            }
+                        }
+                    ]
+                },
+                {
+                    test: /.(gif|png|jpg|jpeg?)(\?[a-z0-9]+)?$/,
+                    use: [
+                        {
+                            loader: "file-loader",
+                            options: {
+                                name: "[name].[hash].[ext]",
+                                outputPath: "build/publication/images/"
+                            }
+                        }
+                    ]
+                },
+                {
+                    test: /^(.{0,3}|.*(?!\.min).{4})\.(js|jsx)$/,
+                    use: [
+                        {
+                            loader: "babel-loader",
+                            options: require("./babel.js").webpack
+                        }
+                    ]
+                },
+                {
+                    test: /\.min\.css$/,
+                    use: [
+                        MiniCssExtractPlugin.loader,
+                        {
+                            loader: "css-loader",
+                            options: {
+                                sourceMap: false
+                            }
+                        }
+                    ]
+                },
+                {
+                    test: /^(.{0,3}|.*(?!\.min).{4})\.(css|scss)$/,
+                    use: [
+                        MiniCssExtractPlugin.loader,
+                        {
+                            loader: "css-loader",
+                            options: {
+                                sourceMap: false
+                            }
+                        },
+                        {
+                            loader: "clean-css-loader",
+                            options: require("./cleancss.js")
+                        },
+                        {
+                            loader: "postcss-loader",
+                            options: require("./postcss.js")
+                        },
+                        {
+                            loader: "sass-loader",
+                            options: require("./sass.js")
+                        }
+                    ]
+                },
+                {
+                    test: /\.html$/,
+                    use: [
+                        {
+                            loader: "html-loader",
+                            options: {
+                                collapseWhitespace: true,
+                                minimize: true,
+                                removeComments: true
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        // output: {
+        //     filename: "build/chunks/[name].[chunkhash].bundle.js",
+        //     path: path.resolve(base, "src"),
+        //     publicPath: "/"
+        // },
+        plugins,
+        // resolve: {
+        //     alias: require("./alias.js"),
+        //     /*
+        //      * The order of these is significant. It determinds which extension
+        //      * will be matched when the dependency is defined without a file
+        //      * extension in the path
+        //      */
+        //     extensions: [
+        //         ".js",
+        //         ".jsx",
+        //         ".scss",
+        //         ".css",
+        //         ".html"
+        //     ],
+        //     modules: [
+        //         "node_modules",
+        //         "src/publication/custom/node_modules",
+        //         "src"
+        //     ],
+        //     symlinks: false
+        // },
+        // stats: {
+        //     warnings: false
+        // },
+        // watch: args.watch,
+        // watchOptions: {
+        //     aggregateTimeout: 300,
+        //     ignored: [
+        //         "**/chunks.json",
+        //         "node_modules"
+        //     ]
+        // }
+    };
+
+};

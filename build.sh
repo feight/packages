@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 function build {
     babel src --ignore '**/*.d.ts,src/cli,**/node_modules' --out-dir lib --extensions '.js,.jsx,.ts,.tsx'
 }
@@ -47,7 +49,7 @@ rsync -rv --include '*/' --include '*.json' --exclude '*' --prune-empty-dirs src
 echo 'copied json assets'
 
 # Generate typescript declarations
-tsc --emitDeclarationOnly &&
+tsc --emitDeclarationOnly
 echo 'generated .d.ts assets'
 
 # Copy typescript declarations

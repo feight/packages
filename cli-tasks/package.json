@@ -40,6 +40,9 @@
     "lib"
   ],
   "dependencies": {
+    "@newsteam/cli-errors": "file:../cli-errors/newsteam-cli-errors-0.0.0.tgz",
+    "@newsteam/cli-logger": "file:../cli-logger/newsteam-cli-logger-0.0.0.tgz",
+    "@newsteam/cli-utils": "file:../cli-utils/newsteam-cli-utils-0.0.0.tgz",
     "del": "^5.1.0",
     "eslint": "^6.8.0",
     "fs-extra": "^8.1.0",
