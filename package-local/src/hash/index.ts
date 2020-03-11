@@ -19,6 +19,10 @@ export const getSourceCodeHash = async function(directory: string): Promise<stri
 
     const sourceCodeHash = await hashElement(directory, {
         files: {
+            exclude: [
+                "package-local.json",
+                "*.tgz"
+            ],
             include: [
                 "*.js",
                 "*.jsx",
@@ -28,7 +32,11 @@ export const getSourceCodeHash = async function(directory: string): Promise<stri
                 "*.json"
             ]
         },
-        folders: { exclude: ["node_modules"] }
+        folders: {
+            exclude: [
+                "node_modules"
+            ]
+        }
     });
 
     return sourceCodeHash.hash;

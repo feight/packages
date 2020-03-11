@@ -23,6 +23,7 @@ interface Publication{
 const getPublications = async function(): Promise<Publication[]>{
 
     const configsPaths = await globby([
+        "X",
         "publications/*/settings/index.json",
         "publications/*/*/settings/index.json"
     ]);

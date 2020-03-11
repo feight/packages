@@ -11,9 +11,9 @@
     "prepublishOnly": "bash ../publish.sh",
     "test": "bash ../test.sh"
   },
-  "browserslist": "node 8",
+  "browserslist": "node 12",
   "engines": {
-    "node": ">= 8"
+    "node": ">= 12"
   },
   "bin": {
     "assemble": "./lib/cli/index.js"
