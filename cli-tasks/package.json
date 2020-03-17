@@ -6,7 +6,7 @@
   "types": "lib",
   "scripts": {
     "build": "bash ../build.sh",
-    "link": "npm link @newsteam/cli-utils && npm link @newsteam/cli-logger && npm link @newsteam/cli-errors",
+    "npm-install-local": "npm link @newsteam/npm-install-local && npm-install-local",
     "prepublishOnly": "bash ../publish.sh",
     "test": "bash ../test.sh"
   },
@@ -40,9 +40,6 @@
     "lib"
   ],
   "dependencies": {
-    "@newsteam/cli-errors": "file:../cli-errors/newsteam-cli-errors-0.0.0.tgz",
-    "@newsteam/cli-logger": "file:../cli-logger/newsteam-cli-logger-0.0.0.tgz",
-    "@newsteam/cli-utils": "file:../cli-utils/newsteam-cli-utils-0.0.0.tgz",
     "del": "^5.1.0",
     "eslint": "^6.8.0",
     "fs-extra": "^8.1.0",
@@ -60,7 +57,7 @@
   },
   "devDependencies": {
     "@tamland/babel": "^0.0.35",
-    "@tamland/eslint": "^0.0.71",
+    "@tamland/eslint": "^0.0.74",
     "@tamland/jasmine": "0.0.3",
     "@types/del": "^4.0.0",
     "@types/eslint": "^6.1.8",
@@ -71,10 +68,16 @@
     "@types/gulp-install": "^0.6.31",
     "@types/gulp-replace": "0.0.31",
     "@types/modernizr": "^3.5.3",
-    "@types/node": "^13.7.6",
+    "@types/node": "^13.9.0",
     "@types/node-fetch": "^2.5.5",
     "@types/request": "^2.48.4",
     "html-minifier": "^4.0.0",
     "vinyl": "^2.2.0"
+  },
+  "localDependencies": {
+    "@newsteam/cli-errors": "../cli-errors",
+    "@newsteam/cli-logger": "../cli-logger",
+    "@newsteam/cli-utils": "../cli-utils",
+    "@newsteam/package-json": "../package-json"
   }
 }

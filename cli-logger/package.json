@@ -6,7 +6,7 @@
   "types": "lib",
   "scripts": {
     "build": "bash ../build.sh",
-    "link": "npm link @newsteam/cli-errors",
+    "npm-install-local": "npm link @newsteam/npm-install-local && npm-install-local",
     "prepublishOnly": "bash ../publish.sh",
     "test": "bash ../test.sh"
   },
@@ -40,7 +40,6 @@
     "lib"
   ],
   "dependencies": {
-    "@newsteam/cli-errors": "file:../cli-errors/newsteam-cli-errors-0.0.0.tgz",
     "@types/text-table": "^0.2.1",
     "chalk": "^3.0.0",
     "codeframe": "^0.0.1",
@@ -53,9 +52,12 @@
   },
   "devDependencies": {
     "@tamland/babel": "^0.0.35",
-    "@tamland/eslint": "^0.0.69",
+    "@tamland/eslint": "^0.0.74",
     "@tamland/jasmine": "0.0.3",
-    "@types/node": "^13.7.6",
+    "@types/node": "^13.9.1",
     "@types/strip-color": "^0.1.0"
+  },
+  "localDependencies": {
+    "@newsteam/cli-errors": "../cli-errors"
   }
 }

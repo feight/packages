@@ -11,20 +11,17 @@ export const resolve = function(
     options: Options
 ): Configuration{
 
-    const alias: {
-        [key: string]: string;
-    } = {
-        base: path.resolve(options.cwd, "src/publication/base"),
-        build: path.resolve(options.cwd, "src/build"),
-        custom: path.resolve(options.cwd, "src/publication/custom"),
-        modernizr$: path.resolve(path.join(options.cwd, ".modernizr.js")),
-        settings: path.resolve(options.cwd, "src/settings"),
-        shared: path.resolve(options.cwd, "src/publication/shared")
-    };
 
     return {
         resolve: {
-            alias,
+            alias: {
+                base: path.resolve(options.cwd, "src/publication/base"),
+                build: path.resolve(options.cwd, "src/build"),
+                custom: path.resolve(options.cwd, "src/publication/custom"),
+                modernizr$: path.resolve(path.join(options.cwd, ".modernizr.js")),
+                settings: path.resolve(options.cwd, "src/settings"),
+                shared: path.resolve(options.cwd, "src/publication/shared")
+            },
 
             /*
              * The order of these is significant. It determinds which extension
@@ -42,8 +39,9 @@ export const resolve = function(
                 ".html"
             ],
             mainFields: [
-                "main",
-                "module"
+                "browser",
+                "module",
+                "main"
             ],
             modules: [
                 "node_modules",

@@ -1,0 +1,47 @@
+{
+  "name": "@newsteam/assemble-settings",
+  "version": "0.0.2",
+  "description": "Assemble framework settings.",
+  "main": "lib",
+  "types": "lib",
+  "scripts": {
+    "build": "bash ../build.sh",
+    "prepublishOnly": "bash ../publish.sh",
+    "test": "bash ../test.sh"
+  },
+  "engines": {
+    "node": ">= 12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/feight/packages"
+  },
+  "author": "News Team (https://www.newsteam.io)",
+  "contributors": [
+    {
+      "name": "Peter Bodechtel",
+      "url": "https://www.sweetlikepete.com"
+    }
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/feight/packages/issues"
+  },
+  "keywords": [
+    "newsteam",
+    "@newsteam"
+  ],
+  "homepage": "https://github.com/feight/packages/tree/master/packages/assemble-settings#readme",
+  "files": [
+    "lib"
+  ],
+  "devDependencies": {
+    "@tamland/babel": "^0.0.35",
+    "@tamland/eslint": "^0.0.74",
+    "@tamland/jasmine": "0.0.3"
+  },
+  "dependencies": {}
+}

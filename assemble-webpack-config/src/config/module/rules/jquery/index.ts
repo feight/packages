@@ -3,6 +3,8 @@
 import merge from "webpack-merge";
 import { Configuration } from "webpack";
 
+import { cacheLoader } from "../../../../shared/loaders/cache";
+
 
 export const jquery = function(
     config: Configuration
@@ -12,10 +14,9 @@ export const jquery = function(
         module: {
             rules: [
                 {
-                    // Doesn't matter this isn't present here
-                    // eslint-disable-next-line node/no-missing-require
                     test: require.resolve("jquery"),
                     use: [
+                        cacheLoader(),
                         {
                             loader: "expose-loader",
                             options: "jQuery"

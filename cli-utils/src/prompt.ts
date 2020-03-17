@@ -31,12 +31,16 @@ export const prompt = async function(id: string, choices: PromptChoice[]): Promi
         // eslint-disable-next-line security/detect-non-literal-fs-filename
         const raw = await fs.readFile(previousPath);
 
+        // No real choice here, we're read JSON
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         previous = JSON.parse(raw.toString())[key];
 
     }
 
     if(choices.length === 1){
 
+        // No real choice here, we're read JSON
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
         return choices[0].value;
 
     }

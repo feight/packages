@@ -22,11 +22,16 @@ const awaitServerScript = function(script: string): Promise<string>{
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const output = (color?: string): (data: any) => void => (data: any): void => {
 
+    // This is actually quite safe since all objects have a toString method
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
     const string = data.toString();
 
     try{
 
-        const log = JSON.parse(string);
+        const log = JSON.parse(string) as {
+            message?: string;
+            level?: "warn" | "error";
+        };
 
         if(log.message){
 
@@ -55,7 +60,9 @@ const output = (color?: string): (data: any) => void => (data: any): void => {
 
         if(string){
 
-            string.replace(/\n$/gu, "").split("\n").forEach((line: string) => {
+            String(string)
+            .replace(/\n$/gu, "").split("\n")
+            .forEach((line: string) => {
 
                 if((/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}.*?\s200\s-/gu).test(line)){
 

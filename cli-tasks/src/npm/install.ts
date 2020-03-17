@@ -7,6 +7,7 @@ import gulp from "gulp";
 import install from "gulp-install";
 import cache from "gulp-cache";
 import { logger } from "@newsteam/cli-logger";
+import { getPackageJson } from "@newsteam/package-json";
 
 
 const label = "npm";
@@ -20,26 +21,37 @@ export const npmInstallTask = async function(...manifests: string[]): Promise<vo
 
         if(exists){
 
-            logger.log(`install ${ path.resolve(manifest) }`, { label });
-
             // eslint-disable-next-line no-await-in-loop
-            await new Promise((resolve) => {
+            const packageJson = await getPackageJson(manifest);
 
-                gulp.src([`./${ manifest }`])
-                .pipe(cache(
-                    install(),
-                    {
-                        name: "install"
-                    }
-                ))
-                .pipe(gulp.dest(path.dirname(manifest)))
-                .on("finish", (): void => {
+            if(packageJson.localDependencies){
 
-                    resolve();
+                logger.log(`Local dependencies found in ${ path.resolve(manifest) }. Please install dependencies manually`, { label });
+
+            }else{
+
+                logger.log(`install ${ path.resolve(manifest) }`, { label });
+
+                // eslint-disable-next-line no-await-in-loop
+                await new Promise((resolve) => {
+
+                    gulp.src([`./${ manifest }`])
+                    .pipe(cache(
+                        install(),
+                        {
+                            name: "install"
+                        }
+                    ))
+                    .pipe(gulp.dest(path.dirname(manifest)))
+                    .on("finish", (): void => {
+
+                        resolve();
+
+                    });
 
                 });
 
-            });
+            }
 
         }else{
 

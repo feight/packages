@@ -3,7 +3,7 @@
 import { NewLoader } from "webpack";
 
 
-export default function loader(): NewLoader{
+export const babelLoader = function(): NewLoader{
 
     /*
      * This loader transpiles JavaScript files using Babel.
@@ -46,4 +46,4 @@ export default function loader(): NewLoader{
         }
     };
 
-}
+};

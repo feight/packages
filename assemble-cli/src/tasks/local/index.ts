@@ -16,7 +16,6 @@ import {
     NewsTeamConfig
 } from "../../config";
 import { buildTask } from "../build";
-import { linkTask } from "../link";
 
 
 export interface LocalTaskOptions{
@@ -29,8 +28,6 @@ export interface LocalTaskOptions{
 export const localTask = async function(config: NewsTeamConfig, options: LocalTaskOptions): Promise<void>{
 
     const openDelay = 2000;
-
-    await linkTask();
 
     await buildTask(config, options);
 

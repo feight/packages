@@ -7,6 +7,13 @@ import { spawn } from "@newsteam/cli-utils";
 const label = "setup";
 
 
+export interface PipVersionJson{
+    info: {
+        version: string;
+    };
+}
+
+
 export const upgradePip = async function(executable: "pip" | "pip3" = "pip"): Promise<void>{
 
     let version = "";
@@ -15,7 +22,7 @@ export const upgradePip = async function(executable: "pip" | "pip3" = "pip"): Pr
 
         const versionsRequest = await fetch("https://pypi.org/pypi/pip/json");
         const versionsText = await versionsRequest.text();
-        const versions = JSON.parse(versionsText);
+        const versions = JSON.parse(versionsText) as PipVersionJson;
 
         version = versions.info.version;
 

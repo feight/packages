@@ -15,7 +15,10 @@ import program from "commander";
 import { logger } from "@newsteam/cli-logger";
 import { cleanCacheTask } from "@newsteam/cli-tasks";
 
-import { config } from "../config";
+import {
+    config,
+    Platform
+} from "../config";
 import packageJSON from "../../package.json";
 import { buildTask } from "../tasks/build";
 import { cleanTask } from "../tasks/clean";
@@ -23,6 +26,20 @@ import { linkTask } from "../tasks/link";
 import { localTask } from "../tasks/local";
 import { setupTask } from "../tasks/setup";
 import { testTask } from "../tasks/test";
+
+
+interface BuildOptions{
+    production: boolean;
+    platform?: Platform;
+}
+
+interface LintOptions{
+    fix: boolean;
+}
+
+type LocalOptions = BuildOptions;
+
+type TestOptions = LintOptions;
 
 
 // This is dodgy, but the typing of this in globals.d.ts is kinda wierd
@@ -39,9 +56,9 @@ program
 .command("build")
 .option("-p, --platform [platform]", "device platform (defaults to 'web')")
 .option("--production", "run the build in production mode")
-.action(async (options): Promise<void> => buildTask(config, {
+.action(async (options: BuildOptions): Promise<void> => buildTask(config, {
     mode: options.production ? "production" : "development",
-    platform: options.platform || "web"
+    platform: options.platform ?? "web"
 }));
 
 program
@@ -59,7 +76,7 @@ program
 program
 .command("lint")
 .option("--fix", "attempt to fix lint issues automatically (defaults to false)")
-.action(async (options): Promise<void> => testTask(config, {
+.action(async (options: LintOptions): Promise<void> => testTask(config, {
     fix: options.fix,
     tests: false
 }));
@@ -68,9 +85,9 @@ program
 .command("local")
 .option("-p, --platform [platform]", "device platform (defaults to 'web')")
 .option("--production", "run the local server as close to production as possible (defaults to false)")
-.action(async (options): Promise<void> => localTask(config, {
+.action(async (options: LocalOptions): Promise<void> => localTask(config, {
     mode: options.production ? "production" : "development",
-    platform: options.platform || "web",
+    platform: options.platform ?? "web",
     watch: !options.production
 }));
 
@@ -81,7 +98,7 @@ program
 program
 .command("test")
 .option("--fix", "attempt to fix lint issues automatically (defaults to false)")
-.action(async (options): Promise<void> => testTask(config, {
+.action(async (options: TestOptions): Promise<void> => testTask(config, {
     fix: options.fix
 }));
 

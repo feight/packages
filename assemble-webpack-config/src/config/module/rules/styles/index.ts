@@ -1,7 +1,5 @@
 
 
-import path from "path";
-
 import merge from "webpack-merge";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import {
@@ -10,6 +8,7 @@ import {
 } from "webpack";
 import postcssConfig from "@tamland/postcss-config";
 
+import { cacheLoader } from "../../../../shared/loaders/cache";
 import { Options } from "../../../..";
 
 
@@ -111,6 +110,7 @@ export const styles = function(
                 {
                     test: /\.min\.css$/u,
                     use: [
+                        cacheLoader(),
                         miniCssExtractPlugin(config, options),
                         cssLoader()
                     ]
@@ -118,6 +118,7 @@ export const styles = function(
                 {
                     test: /^(.{0,3}|.*(?!\.min).{4})\.(css|scss)$/u,
                     use: [
+                        cacheLoader(),
                         miniCssExtractPlugin(config, options),
                         cssLoader(),
                         cleanCssLoader(),

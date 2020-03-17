@@ -10,15 +10,24 @@ import {
     watch,
     WatchOptions
 } from "@newsteam/cli-utils";
+import {
+    AppYaml,
+    AssembleEnvironment,
+    AssembleEnvironments
+} from "@newsteam/assemble-settings";
 
 
-// This function can read any yaml
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const readYaml = function(file: string): any{
+const readYaml = function(file: string): AppYaml{
 
     const exists = fs.existsSync(file);
 
-    return exists ? yaml.safeLoad(fs.readFileSync(file).toString()) : {};
+    if(!exists){
+
+        throw new Error(`Could not read app.yaml: ${ file }`);
+
+    }
+
+    return yaml.safeLoad(fs.readFileSync(file).toString()) as AppYaml;
 
 };
 
@@ -75,39 +84,42 @@ export const buildYamlTask = async function(options: BuildYamlTaskOptions): Prom
 
     await watch(options, async (): Promise<void> => {
 
+        const appYamlPath = path.join(process.cwd(), options.paths.yaml);
         const environmentsRaw = await fs.readFile(options.paths.environments, "utf8");
         const handlersExist = fs.existsSync(options.paths.handlers);
         const handlersRaw = handlersExist ? fs.readFileSync(options.paths.handlers).toString() : "[]";
-        const environments = JSON.parse(environmentsRaw);
-        const handlers = JSON.parse(handlersRaw);
-        const environment = environments[options?.environment ?? "default"] || environments.default;
-        const base = readYaml(path.join(process.cwd(), options.paths.yaml));
+        const environments: AssembleEnvironments = JSON.parse(environmentsRaw);
+        const handlers: AppYaml["handlers"] = JSON.parse(handlersRaw);
+        const environment: AssembleEnvironment = environments[options?.environment ?? "default"];
+        const appYaml = readYaml(appYamlPath);
         const environmentInstance = environment.instance;
-        const instanceClass = environmentInstance?.class ? environmentInstance.class : base.instance_class;
-        const automaticScaling = environmentInstance?.scaling ? environmentInstance.scaling : base.automatic_scaling;
+        const instanceClass = environmentInstance?.class ? environmentInstance.class : appYaml.instance_class;
+        const automaticScaling = environmentInstance?.scaling ? environmentInstance.scaling : appYaml.automatic_scaling;
 
         // Prepend custom handlers
-        base.handlers = handlers.concat(base.handlers);
+        appYaml.handlers = handlers.concat(appYaml.handlers);
 
         /*
          *  Enforce secure at a handler level across all routes and snakeify
          *  each handlers properties
          */
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        base.handlers = base.handlers.map((handler: any) => snakeify({
+        appYaml.handlers = appYaml.handlers.map((handler) => snakeify({
             ...handler,
             secure: handler.secure === "never" ? "never" : "always"
-        }));
+        })) as AppYaml["handlers"];
 
         // Overriding GAE configuration, we can't change these
-        base.instance_class = instanceClass;
-        base.automatic_scaling = snakeify(automaticScaling);
+        appYaml.instance_class = instanceClass;
+
+        if(automaticScaling){
+            appYaml.automatic_scaling = snakeify(automaticScaling) as AppYaml["automatic_scaling"];
+        }
 
         const outputPath = path.join(process.cwd(), options.destination, "app.yaml");
 
         logger.log(`generated ${ outputPath }`, { label: options.label ?? "build" });
 
-        writeYaml(outputPath, base);
+        writeYaml(outputPath, appYaml);
 
     });
 

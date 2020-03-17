@@ -1,3 +1,13 @@
+
+/*
+
+    make the cache dependencies check the version as well as the dependencies for a rebuild
+
+    get rid of fs-extra in favour of fs.promises where possible
+
+*/
+
+
 gulp.task("build", gulp.series(
     // clean,
     // gulp.parallel(

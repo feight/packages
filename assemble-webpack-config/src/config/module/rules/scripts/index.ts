@@ -3,14 +3,13 @@
 import merge from "webpack-merge";
 import { Configuration } from "webpack";
 
-import babelLoader from "../../../../shared/loaders/babel";
+import { babelLoader } from "../../../../shared/loaders/babel";
+import { cacheLoader } from "../../../../shared/loaders/cache";
 
 
 export const scripts = function(
     config: Configuration
 ): Configuration{
-
-    const loader = babelLoader();
 
     return merge(config, {
         module: {
@@ -18,7 +17,7 @@ export const scripts = function(
                 // Modernizr integration
                 {
                     loader: "modernizr-loader",
-                    test: /\.modernizrrc.js$/gu
+                    test: /\.modernizrrc.js$/u
                 },
                 // .mjs script extension
                 {
@@ -30,19 +29,28 @@ export const scripts = function(
                      * shaking of external dependencies where possible.
                      */
                     type: "javascript/auto",
-                    use: [loader]
+                    use: [
+                        cacheLoader(),
+                        babelLoader()
+                    ]
                 },
                 // .js and .jsx script extensions
                 {
                     exclude: /node_modules/u,
                     test: /\.jsx?$/u,
-                    use: [loader]
+                    use: [
+                        cacheLoader(),
+                        babelLoader()
+                    ]
                 },
                 // .ts and .tsx script extensions
                 {
                     exclude: /node_modules/u,
                     test: /\.tsx?$/u,
-                    use: [loader]
+                    use: [
+                        cacheLoader(),
+                        babelLoader()
+                    ]
                 }
             ]
         }

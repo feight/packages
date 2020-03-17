@@ -3,6 +3,8 @@
 import merge from "webpack-merge";
 import { Configuration } from "webpack";
 
+import { cacheLoader } from "../../../../shared/loaders/cache";
+
 
 export const html = function(config: Configuration): Configuration{
 
@@ -12,14 +14,17 @@ export const html = function(config: Configuration): Configuration{
                 // .html file extensions
                 {
                     test: /\.html$/u,
-                    use: {
-                        loader: "html-loader",
-                        options: {
-                            collapseWhitespace: true,
-                            minimize: true,
-                            removeComments: true
+                    use: [
+                        cacheLoader(),
+                        {
+                            loader: "html-loader",
+                            options: {
+                                collapseWhitespace: true,
+                                minimize: true,
+                                removeComments: true
+                            }
                         }
-                    }
+                    ]
                 }
             ]
         }

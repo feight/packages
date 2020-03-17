@@ -269,6 +269,7 @@ const convert = {
         // This is chilled because @types/hapi__joi is out of date
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call
         return typeof value === "undefined" ? schema : schema.regex(true);
     },
     rename(schema: Joi.ObjectSchema, value?: ObjectSchemaDefinition["rename"]): Joi.ObjectSchema{
@@ -447,6 +448,7 @@ export interface ObjectSchemaDefinition extends AnySchemaDefinition{
 
 export const objectSchemaToJoi = function(type: ObjectSchema): Joi.AnySchema{
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
     let schema = extendedJoi.object();
 
     if(type !== "object"){

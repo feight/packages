@@ -3,8 +3,9 @@
 import merge from "webpack-merge";
 import { Configuration } from "webpack";
 
-import fileLoader from "../../../../shared/loaders/file";
+import { fileLoader } from "../../../../shared/loaders/file";
 import { Options } from "../../../..";
+import { cacheLoader } from "../../../../shared/loaders/cache";
 
 
 export const images = function(
@@ -15,6 +16,7 @@ export const images = function(
     return merge(config, {
         module: {
             rules: [
+                cacheLoader(),
                 // .png .jpg .jpeg .gif .webp and .ico image extensions
                 {
                     test: /\.(?:png|jpg|jpeg|gif|webp)$/u,

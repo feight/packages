@@ -16,6 +16,10 @@ import {
     watch,
     WatchOptions
 } from "@newsteam/cli-utils";
+import {
+    AssembleSettings,
+    AssembleWidgetSettings
+} from "@newsteam/assemble-settings";
 
 
 const createJSBundle = (mappings: Record<string, string>): string => {
@@ -95,7 +99,7 @@ export const buildWidgetsTask = async function(options: BuildWidgetsTaskOptions)
         const rawSettings = await fs.readFile("src/publication/custom/settings/index.json", "utf8");
         const rawSharedSettings = await fs.readFile("src/publication/shared/settings/index.json", "utf8");
 
-        let settings = null;
+        let settings: AssembleSettings;
 
         try{
             settings = JSON.parse(rawSettings);
@@ -103,7 +107,7 @@ export const buildWidgetsTask = async function(options: BuildWidgetsTaskOptions)
             throw new Error("Settings file could not be parsed as valid json");
         }
 
-        let sharedSettings = null;
+        let sharedSettings: AssembleSettings;
 
         try{
             sharedSettings = JSON.parse(rawSharedSettings);
@@ -111,13 +115,11 @@ export const buildWidgetsTask = async function(options: BuildWidgetsTaskOptions)
             throw new Error("Shared settings file could not be parsed as valid json");
         }
 
-        const settingsWidgets = settings.widgets || sharedSettings.widgets || [];
+        const settingsWidgets = settings?.widgets ?? sharedSettings?.widgets ?? [];
 
         settingsWidgets.push("error");
 
-        // We'll just yolo this for now
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const widgets: Record<string, any> = {};
+        const widgets: Record<string, AssembleWidgetSettings> = {};
 
         roots.forEach((root) => {
 
@@ -130,10 +132,17 @@ export const buildWidgetsTask = async function(options: BuildWidgetsTaskOptions)
 
                 if(fs.existsSync(metaPath)){
 
-                    const meta = JSON.parse(fs.readFileSync(metaPath, "utf8"));
+                    const meta: AssembleWidgetSettings = JSON.parse(fs.readFileSync(metaPath, "utf8"));
 
                     if(
-                        // If the widget itself hasn't been flagged as disabled
+
+                        /*
+                         * If the widget itself hasn't been flagged as disabled
+                         *
+                         * This is a necessary conditional - the lint rule has a
+                         * bug in it
+                         */
+                        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                         meta.disabled !== true &&
 
                         /*
@@ -153,6 +162,7 @@ export const buildWidgetsTask = async function(options: BuildWidgetsTaskOptions)
                     ){
 
                         meta.paths = {
+                            ...meta.paths,
                             origin: path.relative(source, root)
                         };
 

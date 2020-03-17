@@ -15,11 +15,11 @@ export const output = function(
 
     return {
         output: {
-            chunkFilename: hash ? "[chunkhash].js" : "[id].js",
-            filename: hash ? "[chunkhash].js" : "[name].js",
+            chunkFilename: `build/chunks/${ hash ? "[chunkhash].js" : "[id].js" }`,
+            filename: `build/chunks/${ hash ? "[chunkhash].js" : "[name].js" }`,
             hashSalt: "salty",
             path: path.join(options.cwd, "src"),
-            publicPath: "/build/chunks/"
+            publicPath: "/"
         }
     };
 

@@ -41,6 +41,7 @@
   "devDependencies": {
     "@tamland/jasmine": "0.0.3",
     "@tamland/babel": "^0.0.35",
-    "@tamland/eslint": "^0.0.72"
-  }
+    "@tamland/eslint": "^0.0.74"
+  },
+  "dependencies": {}
 }

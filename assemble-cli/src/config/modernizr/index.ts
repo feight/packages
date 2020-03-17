@@ -16,6 +16,8 @@ const modernizrConfig: ModernizrConfig = {
             cwd: process.cwd()
         })?.config ?? {}
     ], {
+        // This is safe in this context
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
         arrayMerge: (target, source) => target.concat(source.filter((item) => !target.includes(item)))
     })
 };

@@ -3,7 +3,8 @@
 import merge from "webpack-merge";
 import { Configuration } from "webpack";
 
-import fileLoader from "../../../../shared/loaders/file";
+import { cacheLoader } from "../../../../shared/loaders/cache";
+import { fileLoader } from "../../../../shared/loaders/file";
 import { Options } from "../../../..";
 
 
@@ -15,6 +16,7 @@ export const files = function(
     return merge(config, {
         module: {
             rules: [
+                cacheLoader(),
                 // .txt and .json file extensions
                 {
                     exclude: /node_modules/u,

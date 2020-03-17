@@ -9,6 +9,7 @@ import {
     prompt,
     PromptChoice
 } from "@newsteam/cli-utils";
+import { AssembleSettings } from "@newsteam/assemble-settings";
 
 
 interface Publication{
@@ -23,14 +24,13 @@ interface Publication{
 const getPublications = async function(): Promise<Publication[]>{
 
     const configsPaths = await globby([
-        "X",
         "publications/*/settings/index.json",
         "publications/*/*/settings/index.json"
     ]);
 
     const publications = configsPaths.map((pth) => {
 
-        const config = JSON.parse(fs.readFileSync(pth).toString());
+        const config: AssembleSettings = JSON.parse(fs.readFileSync(pth).toString());
         const publicationFolder = path.join(path.dirname(path.resolve(pth)), "..");
         const publicationFolderName = path.basename(publicationFolder);
         const publicationParentFolderName = path.basename(path.join(publicationFolder, ".."));

@@ -8,7 +8,7 @@ import {
 import { Options } from "../..";
 
 
-export default function loader(
+export const fileLoader = function(
     config: Configuration,
     options: Options
 ): NewLoader{
@@ -29,4 +29,4 @@ export default function loader(
         }
     };
 
-}
+};

@@ -2,8 +2,6 @@
 
 import path from "path";
 
-import DuplicatePackageCheckerPlugin from "duplicate-package-checker-webpack-plugin";
-import merge from "webpack-merge";
 import AssetsPlugin from "assets-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import webpack from "webpack";
@@ -32,10 +30,26 @@ export const plugins = function(
             "process.env.NODE_ENV": JSON.stringify("production")
         }),
         new MiniCssExtractPlugin({
-            chunkFilename: hash ? "[chunkhash].css" : "[id].css",
-            filename: hash ? "[chunkhash].css" : "[name].css"
+            chunkFilename: `build/chunks/${ hash ? "[chunkhash].js" : "[id].css" }`,
+            filename: `build/chunks/${ hash ? "[chunkhash].js" : "[name].css" }`
         })
-    ];
+    ].concat(options.watch ? [
+        new webpack.NoEmitOnErrorsPlugin()
+    ] : [
+        // Don't show progress during the watch, it messes up the other output
+        new webpack.ProgressPlugin({
+            activeModules: false,
+            entries: true,
+            modules: true,
+            modulesCount: 10000
+
+        /*
+         * Needed because the type definitions for this plugin don't match
+         * the documentation
+         */
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } as any)
+    ]);
 
     if(options.watch){
 

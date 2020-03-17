@@ -81,6 +81,19 @@ export const localBrewSetupTask = async function(): Promise<void>{
 
 };
 
+
+export type BrewInfoJson = {
+    installed: {
+        version: string;
+    }[];
+    // This is brew info --json format, we don't pick it
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    linked_keg: string;
+    versions: {
+        stable: string;
+    };
+}[];
+
 export const localBrewPackageSetupTask = async function(formula: BrewFormula): Promise<void>{
 
     const list = await exec({
@@ -99,7 +112,7 @@ export const localBrewPackageSetupTask = async function(formula: BrewFormula): P
         detatch: true
     });
 
-    const [latest] = JSON.parse(rawJSON);
+    const [latest] = JSON.parse(rawJSON) as BrewInfoJson;
     const latestStable = latest.versions.stable;
     const [installed] = latest.installed;
     const updated =

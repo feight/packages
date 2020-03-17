@@ -22,6 +22,7 @@ const convert = {
         return value ? schema.custom(value.method, value.description) : schema;
     },
     default(schema: Joi.Schema, value: AnySchemaDefinition["default"]): Joi.Schema{
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         return value ? schema.default(value.type === "reference" ? referenceToJoi(value) : value) : schema;
     },
     description(schema: Joi.Schema, value: AnySchemaDefinition["description"]): Joi.Schema{

@@ -216,6 +216,7 @@ export interface ArraySchemaDefinition extends AnySchemaDefinition{
 
 export const arraySchemaToJoi = function(type: ArraySchema): Joi.AnySchema{
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     let schema = extendedJoi.array();
 
     if(type !== "array"){

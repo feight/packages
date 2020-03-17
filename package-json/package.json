@@ -1,0 +1,44 @@
+{
+  "name": "@newsteam/package-json",
+  "version": "0.0.1",
+  "description": "Assemble Schema",
+  "main": "lib",
+  "types": "lib",
+  "sideEffects": false,
+  "scripts": {
+    "build": "bash ../build.sh",
+    "clean": "rm -rf lib",
+    "test": "bash ../test.sh"
+  },
+  "browserslist": "node 12",
+  "engines": {
+    "node": ">= 12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/feight/packages.git"
+  },
+  "author": "News Team (https://www.newsteam.co.za)",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/feight/packages/issues"
+  },
+  "homepage": "https://github.com/feight/packages/tree/master/packages/package-json#readme",
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "fs-extra": "^8.1.0"
+  },
+  "devDependencies": {
+    "@tamland/babel": "0.0.35",
+    "@tamland/eslint": "0.0.74",
+    "@tamland/jasmine": "0.0.3",
+    "@types/fs-extra": "^8.1.0",
+    "@types/node": "^13.9.0",
+    "typescript": "^3.8.3"
+  }
+}

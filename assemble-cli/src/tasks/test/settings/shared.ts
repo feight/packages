@@ -37,8 +37,10 @@ const getKeys = function(object: any, current?: string): string[]{
 
         keys.push(current ? `${ current }.${ key }` : key);
 
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         if(typeof object[key] === "object" && !Array.isArray(object[key])){
 
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
             keys = keys.concat(getKeys(object[key], current ? `${ current }.${ key }` : key));
 
         }
@@ -57,9 +59,11 @@ const getDescendantProperty = function(object: any, desc: string): any{
     const array = desc.split(".");
 
     // I'll be honest, I got this from stack overflow, lets just roll with it
-    // eslint-disable-next-line no-param-reassign, no-empty
+    // eslint-disable-next-line no-param-reassign, no-empty, @typescript-eslint/no-unsafe-member-access
     while(array.length && (object = object[array.shift() || -1])){}
 
+    // Can be any object
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return object;
 
 };

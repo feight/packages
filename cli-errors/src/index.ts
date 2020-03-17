@@ -1,24 +1,16 @@
 
 
-import {
+export {
     CLIError,
     CLIErrorData
 } from "./cli";
-import {
+
+export {
     LintError,
     LintErrorData
 } from "./lint";
-import {
+
+export {
     TestError,
     TestErrorData
 } from "./test";
-
-
-export {
-    CLIError,
-    CLIErrorData,
-    LintError,
-    LintErrorData,
-    TestError,
-    TestErrorData
-};

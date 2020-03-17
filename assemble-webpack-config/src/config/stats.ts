@@ -14,6 +14,7 @@ export const stats = function(): Configuration{
 
     return {
         stats: {
+            assets: false,
             builtAt: false,
             colors: true,
             entrypoints: false,

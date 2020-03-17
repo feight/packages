@@ -1,13 +1,26 @@
 
 
+/*
+
+    eslint
+
+    global-require: "off",
+    @typescript-eslint/no-require-imports: "off",
+    @typescript-eslint/no-var-requires: "off",
+    import/no-dynamic-require: "off",
+    security/detect-non-literal-require: "off",
+
+*/
+
+
 import path from "path";
 
-import webpack from "webpack";
+import asciichart from "asciichart";
+import fs from "fs-extra";
+import glob from "globby";
 import { logger } from "@newsteam/cli-logger";
-import {
-    kill,
-    spawn
-} from "@newsteam/cli-utils";
+import SpeedMeasurePlugin, { SpeedMeasureWebpackPluginData } from "speed-measure-webpack-plugin";
+import webpack, { Configuration } from "webpack";
 
 import {
     Mode,
@@ -15,47 +28,37 @@ import {
 } from "../../config";
 
 
-const statsOptions = {
-    builtAt: false,
-    colors: true,
-    entrypoints: false,
-    hash: false,
-    modules: false,
-    timings: false,
-    version: false
-};
+const label = "webpack";
 
+const buildStatsFolder = path.join(process.cwd(), ".webpack/build-stats");
 
-const log = (
-    label: string,
-    tag: string
-): (
-    error?: Error,
-    stats?: webpack.Stats
-) => void => (error, stats): void => {
+const printBuildStatistics = function(): void{
 
-    if(error){
+    const files = glob.sync(path.join(buildStatsFolder, "*.json"));
+    const max = 50;
 
-        logger.error(error);
+    files.sort((fileA: string, fileB: string) => fileA > fileB ? 1 : -1);
 
-        process.exit();
+    const data = files.map((file): SpeedMeasureWebpackPluginData => {
 
-    }else{
+        const raw = fs.readFileSync(file).toString();
 
-        if(stats){
+        return JSON.parse(raw) as SpeedMeasureWebpackPluginData;
 
-            logger.log("", { label });
-            logger.log(stats.toString(statsOptions), { label });
-            logger.log("", { label });
+    });
 
-        }
+    // This is converting compileTime in milliseconds to seconds
+    // eslint-disable-next-line no-magic-numbers
+    const compileTimes = data.map((item) => item.misc.compileTime / 1000).slice(Math.max(data.length - max, 1));
 
-        logger.log(`${ tag }`, { label });
-        logger.log("", { label });
-
-    }
+    logger.log("", { label });
+    logger.log(asciichart.plot(compileTimes), { label });
+    logger.log("", { label });
 
 };
+
+
+const zeroPad = (number: number, places: number): string => String(number).padStart(places, "0");
 
 
 export interface BuildWebpackTaskOptions{
@@ -66,6 +69,7 @@ export interface BuildWebpackTaskOptions{
 }
 
 
+// eslint-disable-next-line max-lines-per-function
 export const buildWebpackTask = async function(options: BuildWebpackTaskOptions): Promise<void>{
 
     const {
@@ -75,76 +79,98 @@ export const buildWebpackTask = async function(options: BuildWebpackTaskOptions)
         watch = false
     } = options;
 
-    // We'll allow this for now
-    // eslint-disable-next-line no-async-promise-executor, @typescript-eslint/no-misused-promises
-    await new Promise(async (resolve): Promise<void> => {
+    // eslint-disable-next-line max-lines-per-function
+    await new Promise((resolve): void => {
 
-        const label = "webpack";
-
-        // eslint-disable-next-line global-require, @typescript-eslint/no-require-imports
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
         require("ts-node").register({
             project: "./tsconfig.json"
         });
 
         // This doesn't present any danger and is necessary in this case.
-        // eslint-disable-next-line max-len
-        // eslint-disable-next-line import/no-dynamic-require, security/detect-non-literal-require, global-require, @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires
-        const webpackConfig = require(path.relative(__dirname, path.resolve(config))).default({
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+        const webpackConfig: Configuration = require(path.relative(__dirname, path.resolve(config))).default({
             platform
         }, {
             mode,
             watch
         });
 
-        // This doesn't present any danger and is necessary in this case.
-        // eslint-disable-next-line max-len
-        // eslint-disable-next-line import/no-dynamic-require, security/detect-non-literal-require, global-require, @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires
-        const webpackConfigX = require(path.relative(__dirname, path.resolve("automation/config/webpack.js")))({
-            platform
-        }, {
-            mode,
-            watch
-        });
+        // If things go tits up try this: path.resolve("automation/config/webpack.js") instead of path.resolve(config)
 
-        console.log(webpackConfigX);
-        console.log(webpackConfig);
+        const compiler = webpack(new SpeedMeasurePlugin({
+            disable: mode !== "development",
+            outputFormat: (blob: SpeedMeasureWebpackPluginData): void => {
 
-        const compiler = webpack(webpackConfig);
+                const date = new Date();
+                const year = date.getFullYear();
+                const month = zeroPad(date.getMonth() + 1, 2);
+                const day = zeroPad(date.getDate(), 2);
+                const hours = zeroPad(date.getHours(), 2);
+                const minutes = zeroPad(date.getMinutes(), 2);
+                const seconds = zeroPad(date.getSeconds(), 2);
 
-        if(watch){
+                fs.ensureDirSync(buildStatsFolder);
 
-            if(webpackConfig.devServer){
+                fs.writeFileSync(
+                    path.join(buildStatsFolder, `${ year }-${ month }-${ day }-${ hours }:${ minutes }:${ seconds }.json`),
+                    JSON.stringify(blob, null, 2)
+                );
 
-                await kill("webpack-dev-server");
+            }
+        }).wrap(webpackConfig));
 
-                await spawn({
-                    command: [
-                        "webpack-dev-server",
-                        `--mode=${ mode }`,
-                        "--watch",
-                        `--env.platform=${ platform }`
-                    ].join(" "),
-                    label
-                });
+        const output = (
+            tag: string
+        ): (
+            error?: Error,
+            stats?: webpack.Stats
+        ) => void => (error, stats): void => {
+
+            if(error){
+
+                logger.error(error);
+
+                process.exit();
 
             }else{
 
-                compiler.watch({
-                    aggregateTimeout: 600,
-                    ignored: [
-                        "node_modules"
-                    ],
-                    poll: false
-                },
-                (error, stats): void => {
+                if(stats){
 
-                    log(label, `Watching ${ path.resolve(config) }`)(error, stats);
+                    const statsString = stats.toString(webpackConfig.stats);
 
-                    logger.log("");
+                    if(statsString){
 
-                });
+                        logger.log("", { label });
+                        logger.log(statsString, { label });
+                        logger.log("", { label });
+
+                    }
+
+                }
+
+                logger.log(`${ tag }`, { label });
 
             }
+
+        };
+
+        if(watch){
+
+            compiler.watch({
+                aggregateTimeout: 600,
+                ignored: [
+                    "node_modules"
+                ],
+                poll: false
+            },
+            (error, stats): void => {
+
+                output(`Watching ${ path.resolve(config) }`)(error, stats);
+
+                logger.log("");
+
+            });
 
         }else{
 
@@ -154,9 +180,11 @@ export const buildWebpackTask = async function(options: BuildWebpackTaskOptions)
 
             compiler.run((error, stats): void => {
 
-                log(label, `Completed ${ path.resolve(config) }`)(error, stats);
+                output(`Completed ${ path.resolve(config) }`)(error, stats);
 
-                resolve();
+                printBuildStatistics();
+
+                resolve("");
 
             });
 

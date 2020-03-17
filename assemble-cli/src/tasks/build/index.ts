@@ -16,6 +16,7 @@ import { buildYamlTask } from "./yaml";
 import { buildWebpackTask } from "./webpack";
 import { buildWidgetsTask } from "./widgets";
 
+import { linkTask } from "../link";
 import {
     Mode,
     Platform,
@@ -39,27 +40,29 @@ export const buildTask = async function(config: NewsTeamConfig, options: BuildTa
 
     const configs = configurator(config);
 
-    // Await cleanTask(config);
+    await cleanTask(config);
 
-    // await buildEntriesTask(configs.buildEntriesTask);
+    await linkTask();
 
-    // await buildModernizrTask(configs.buildModernizrTask);
+    await buildEntriesTask(configs.buildEntriesTask);
 
-    // await buildRSSTask(configs.buildRSSTask);
+    await buildModernizrTask(configs.buildModernizrTask);
 
-    // await buildSettingsTask(configs.buildSettingsTask);
+    await buildRSSTask(configs.buildRSSTask);
 
-    // await minifyHTMLTask(configs.minifyHTMLTask);
+    await buildSettingsTask(configs.buildSettingsTask);
 
-    // await buildStaticAssetsTask(configs.buildStaticAssetsTask);
+    await minifyHTMLTask(configs.minifyHTMLTask);
 
-    // await buildReleaseTask(config);
+    await buildStaticAssetsTask(configs.buildStaticAssetsTask);
 
-    // await npmInstallTask(...config.paths.npm.manifests);
+    await buildReleaseTask(config);
 
-    // await buildWidgetsTask(configs.buildWidgetsTask);
+    await npmInstallTask(...config.paths.npm.manifests);
 
-    // await buildYamlTask(configs.buildYamlTask);
+    await buildWidgetsTask(configs.buildWidgetsTask);
+
+    await buildYamlTask(configs.buildYamlTask);
 
     await buildWebpackTask({
         config: "./.webpack.config.ts",

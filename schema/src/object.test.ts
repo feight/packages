@@ -269,6 +269,7 @@ new Test(`${ name }<regex>`, method, [
         // This is chilled because @types/hapi__joi is out of date
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
         Joi.object().regex(),
         {
             regex: true,

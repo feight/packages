@@ -31,6 +31,8 @@ export const openBrowserTask = async function(path: string, initialDelay = 0): P
 
                             rampingFactor = 2;
 
+                            // Unaviodable since type typing for "request" types error as any
+                            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
                             logger.log(error.message, { label });
 
                             logger.log(`Opening ${ path } in your default browser: retry in ${ retry } ${ retry === 1 ? "second" : "seconds" }`, { label });

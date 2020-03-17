@@ -77,7 +77,7 @@ export const exec = function(options: {
 
                 if(proc !== null){
 
-                    proc.pipe(through.obj((string, encoding, done): void => {
+                    proc.pipe(through.obj((string: string, encoding, done): void => {
 
                         let formattedString = string;
 
@@ -160,6 +160,7 @@ export const spawn = function(options: {
 
             const [cm, ...args] = bashCmd.split(" ");
 
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
             const term = pty.spawn(cm, args, {
                 cols: 500,
                 cwd,
@@ -172,6 +173,7 @@ export const spawn = function(options: {
 
             const response: string[] = [];
 
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
             term.on("data", (data: string): void => {
 
                 response.push(data);
@@ -188,8 +190,10 @@ export const spawn = function(options: {
 
             });
 
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
             term.on("exit", (code: number): void => {
 
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
                 term.destroy();
 
                 if(!detatch){

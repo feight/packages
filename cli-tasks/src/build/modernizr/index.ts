@@ -38,7 +38,7 @@ export const buildModernizrTask = async function(options: BuildModernizrTaskOpti
              * These parens are necessary and the modernizr typing is broken so
              * we need to treat it as any until that gets resolved
              */
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-extra-parens
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
             (modernizr as any).build(config, async (result: string) => {
 
                 await fs.ensureDir(destination);

@@ -3,6 +3,8 @@
 import merge from "webpack-merge";
 import { Configuration } from "webpack";
 
+import { cacheLoader } from "../../../../shared/loaders/cache";
+
 
 export const json = function(config: Configuration): Configuration{
 
@@ -13,7 +15,10 @@ export const json = function(config: Configuration): Configuration{
                 {
                     test: /\.json$/u,
                     type: "javascript/auto",
-                    use: ["json-loader"]
+                    use: [
+                        cacheLoader(),
+                        "json-loader"
+                    ]
                 }
             ]
         }
