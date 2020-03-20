@@ -11,21 +11,6 @@ import {
 import { label } from ".";
 
 
-const writeFile = async function(filename: string, contents: string): Promise<void>{
-
-    const exists = fs.existsSync(filename);
-    const existing = exists ? (await fs.readFile(filename)).toString() : undefined;
-
-    if(existing !== contents){
-
-        await fs.writeFile(filename, contents, "utf8");
-
-        logger.log(`entry ${ path.resolve(filename) }`, { label });
-
-    }
-
-};
-
 const getFolders = (directory: string, filelist: string[] = []): string[] => {
 
     fs.readdirSync(directory).forEach((file): void => {
@@ -65,6 +50,8 @@ export const buildEntriesTask = async function(options: BuildEntriesTaskOptions)
             destination
         } = options;
 
+        const writes: [string, string][] = [];
+
         const folders = getFolders("src/publication/base/pages")
         .map((folder) => path.relative("src/publication/base/pages", folder))
         .filter((folder) => !folder.includes("includes"));
@@ -79,9 +66,7 @@ export const buildEntriesTask = async function(options: BuildEntriesTaskOptions)
 
             fs.ensureDirSync(outputFolder);
 
-            // It's fine if these promises run sequentially - we don't need performance here
-            // eslint-disable-next-line no-await-in-loop
-            await writeFile(path.join(outputFolder, "index.js"), `${ scssContent }\n${ jsContent }`);
+            writes.push([path.join(outputFolder, "index.js"), `${ scssContent }\n${ jsContent }`]);
 
         }
 
@@ -95,30 +80,49 @@ export const buildEntriesTask = async function(options: BuildEntriesTaskOptions)
         const entryOutputFolder = path.join(destination, "entries/entry");
         const entryPushOutputFolder = path.join(destination, "entries/push");
 
-        await fs.ensureDir(entryOutputFolder);
-        await fs.ensureDir(entryPushOutputFolder);
-
-        await Promise.all([
-            writeFile(path.join(entryOutputFolder, "index.js"), entryJsContent),
-            writeFile(path.join(entryPushOutputFolder, "index.js"), entryPushJsContent),
-            writeFile(path.join(entryOutputFolder, "index.scss"), entryScssContent)
-        ]);
+        writes.push([path.join(entryOutputFolder, "index.js"), entryJsContent]);
+        writes.push([path.join(entryPushOutputFolder, "index.js"), entryPushJsContent]);
+        writes.push([path.join(entryOutputFolder, "index.scss"), entryScssContent]);
 
         const ampScssExists = fs.existsSync("src/publication/custom/app/entry/amp/index.scss");
         const ampScssContent = `@import "${ ampScssExists ? "custom" : "base" }/app/entry/amp/index.scss";`;
         const ampOutputFolder = path.join(destination, "entries/amp");
 
-        await fs.ensureDir(ampOutputFolder);
-
-        await writeFile(path.join(ampOutputFolder, "index.scss"), ampScssContent);
+        writes.push([path.join(ampOutputFolder, "index.scss"), ampScssContent]);
 
         const mobileScssExists = fs.existsSync("src/publication/custom/app/entry/mobile/index.scss");
         const mobileScssContent = mobileScssExists ? "@import \"custom/app/entry/mobile/index.scss\";" : "";
         const mobileOutputFolder = path.join(destination, "entries/mobile");
 
-        await fs.ensureDir(mobileOutputFolder);
+        writes.push([path.join(mobileOutputFolder, "index.scss"), mobileScssContent]);
 
-        await writeFile(path.join(mobileOutputFolder, "index.scss"), mobileScssContent);
+        const bar = logger.progress({
+            label,
+            tag: "entries",
+            total: writes.length
+        });
+
+        await Promise.all(writes.map(async (write) => {
+
+            const [filename, contents] = write;
+
+            const exists = fs.existsSync(filename);
+            const existing = exists ? (await fs.readFile(filename)).toString() : undefined;
+
+            if(existing !== contents){
+
+                await fs.ensureDir(path.dirname(filename));
+                await fs.writeFile(filename, contents, "utf8");
+
+            }
+
+            if(options.watch){
+                logger.log(`built entry ${ path.resolve(filename) }`, { label });
+            }else{
+                bar.tick();
+            }
+
+        }));
 
     });
 

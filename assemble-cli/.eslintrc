@@ -4,7 +4,8 @@
     "compat/compat": "off",
     "import/named": "off",
     "security/detect-non-literal-fs-filename": "off",
+    "no-await-in-loop": "off",
     "no-process-exit": "off",
     "no-sync": "off"
   }
-}
+}            // eslint-disable-next-line no-await-in-loop

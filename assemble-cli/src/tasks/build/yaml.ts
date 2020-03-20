@@ -82,7 +82,21 @@ export interface BuildYamlTaskOptions extends WatchOptions{
 
 export const buildYamlTask = async function(options: BuildYamlTaskOptions): Promise<void>{
 
+    const label = options.label ?? "build";
+
+    const bar = logger.progress({
+        label,
+        tag: "app.yaml",
+        total: 2
+    });
+
     await watch(options, async (): Promise<void> => {
+
+        if(!options.watch){
+
+            bar.tick();
+
+        }
 
         const appYamlPath = path.join(process.cwd(), options.paths.yaml);
         const environmentsRaw = await fs.readFile(options.paths.environments, "utf8");
@@ -117,7 +131,15 @@ export const buildYamlTask = async function(options: BuildYamlTaskOptions): Prom
 
         const outputPath = path.join(process.cwd(), options.destination, "app.yaml");
 
-        logger.log(`generated ${ outputPath }`, { label: options.label ?? "build" });
+        if(options.watch){
+
+            logger.log(`built app.yaml ${ outputPath }`, { label });
+
+        }else{
+
+            bar.tick();
+
+        }
 
         writeYaml(outputPath, appYaml);
 

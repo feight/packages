@@ -19,9 +19,10 @@ export const html = function(config: Configuration): Configuration{
                         {
                             loader: "html-loader",
                             options: {
-                                collapseWhitespace: true,
-                                minimize: true,
-                                removeComments: true
+                                minimize: {
+                                    collapseWhitespace: true,
+                                    removeComments: true
+                                }
                             }
                         }
                     ]

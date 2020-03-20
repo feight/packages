@@ -14,6 +14,14 @@ import { label } from ".";
 
 export const buildReleaseTask = async function(config: NewsTeamConfig): Promise<void>{
 
+    const bar = logger.progress({
+        label,
+        tag: "release info",
+        total: 2
+    });
+
+    bar.tick();
+
     const stdout = await exec({
         command: "git log --merges --max-count=500",
         detatch: true
@@ -88,6 +96,6 @@ export const buildReleaseTask = async function(config: NewsTeamConfig): Promise<
         "utf8"
     );
 
-    logger.log(`releases ${ file }`, { label });
+    bar.tick();
 
 };

@@ -36,7 +36,7 @@ export const linkTask = async function(force?: boolean): Promise<void>{
 
     const linkPath = await fs.realpath(path.join(cwd, "src/publication/custom"));
 
-    logger.log(linkPath, {
+    logger.log(path.relative(cwd, linkPath), {
         color: "#00ff00",
         label
     });

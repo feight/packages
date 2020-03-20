@@ -65,6 +65,7 @@ export interface BuildWebpackTaskOptions{
     config: string;
     mode?: Mode;
     platform?: Platform;
+    profile?: boolean;
     watch?: boolean;
 }
 
@@ -76,6 +77,7 @@ export const buildWebpackTask = async function(options: BuildWebpackTaskOptions)
         config,
         mode = "production",
         platform = "web",
+        profile = false,
         watch = false
     } = options;
 
@@ -98,7 +100,7 @@ export const buildWebpackTask = async function(options: BuildWebpackTaskOptions)
 
         // If things go tits up try this: path.resolve("automation/config/webpack.js") instead of path.resolve(config)
 
-        const compiler = webpack(new SpeedMeasurePlugin({
+        const compiler = webpack(profile ? new SpeedMeasurePlugin({
             disable: mode !== "development",
             outputFormat: (blob: SpeedMeasureWebpackPluginData): void => {
 
@@ -118,7 +120,7 @@ export const buildWebpackTask = async function(options: BuildWebpackTaskOptions)
                 );
 
             }
-        }).wrap(webpackConfig));
+        }).wrap(webpackConfig) : webpackConfig);
 
         const output = (
             tag: string
@@ -174,15 +176,13 @@ export const buildWebpackTask = async function(options: BuildWebpackTaskOptions)
 
         }else{
 
-            logger.log(`Building ${ path.resolve(config) }`, {
-                label
-            });
+            compiler.run((): void => {
 
-            compiler.run((error, stats): void => {
+                if(profile){
 
-                output(`Completed ${ path.resolve(config) }`)(error, stats);
+                    printBuildStatistics();
 
-                printBuildStatistics();
+                }
 
                 resolve("");
 

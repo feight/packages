@@ -30,6 +30,12 @@ export const buildModernizrTask = async function(options: BuildModernizrTaskOpti
         label = "build"
     } = options;
 
+    const bar = logger.progress({
+        label,
+        tag: "modernizr",
+        total: 1
+    });
+
     await watch(options, async (): Promise<void> => {
 
         await new Promise((resolve) => {
@@ -44,7 +50,15 @@ export const buildModernizrTask = async function(options: BuildModernizrTaskOpti
                 await fs.ensureDir(destination);
                 await fs.writeFile(path.join(destination, filename), result);
 
-                logger.log(`modernizr ${ path.resolve(path.join(destination, filename)) }`, { label });
+                if(options.watch){
+
+                    logger.log(`built modernizr ${ path.resolve(path.join(destination, filename)) }`, { label });
+
+                }else{
+
+                    bar.tick();
+
+                }
 
                 resolve();
 

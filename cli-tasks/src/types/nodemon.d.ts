@@ -12,6 +12,7 @@ declare module "nodemon" {
                 execMap?: {
                     [id: string]: string;
                 },
+                ignore: string[],
                 script: string,
                 stdout: boolean,
                 watch: string[]

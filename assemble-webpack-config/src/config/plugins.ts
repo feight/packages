@@ -6,9 +6,12 @@ import AssetsPlugin from "assets-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import webpack from "webpack";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
-
+import { logger } from "@newsteam/cli-logger";
 
 import { Options } from "..";
+
+
+const label = "webpack";
 
 
 export const plugins = function(
@@ -16,6 +19,11 @@ export const plugins = function(
 ): webpack.Configuration{
 
     const hash = options.mode !== "development" || !options.watch;
+
+    const bar = logger.progress({
+        label,
+        total: 100
+    });
 
     const webpackPlugins = [
         new webpack.optimize.ModuleConcatenationPlugin(),
@@ -40,6 +48,11 @@ export const plugins = function(
         new webpack.ProgressPlugin({
             activeModules: false,
             entries: true,
+            handler: (percentage: number) => {
+
+                bar.update(percentage);
+
+            },
             modules: true,
             modulesCount: 10000
 

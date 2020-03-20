@@ -15,6 +15,14 @@ const label = "npm";
 
 export const npmInstallTask = async function(...manifests: string[]): Promise<void>{
 
+    const bar = logger.progress({
+        label,
+        tag: "install",
+        total: manifests.length
+    });
+
+    const warnings: string[] = [];
+
     for(const manifest of manifests){
 
         const exists = fs.existsSync(manifest);
@@ -26,11 +34,9 @@ export const npmInstallTask = async function(...manifests: string[]): Promise<vo
 
             if(packageJson.localDependencies){
 
-                logger.log(`Local dependencies found in ${ path.resolve(manifest) }. Please install dependencies manually`, { label });
+                warnings.push(`Local dependencies found in ${ path.resolve(manifest) }. Please install dependencies manually`);
 
             }else{
-
-                logger.log(`install ${ path.resolve(manifest) }`, { label });
 
                 // eslint-disable-next-line no-await-in-loop
                 await new Promise((resolve) => {
@@ -55,11 +61,25 @@ export const npmInstallTask = async function(...manifests: string[]): Promise<vo
 
         }else{
 
-            logger.log(`Could not find npm manifest ${ manifest }`, { label });
+            warnings.push(`Could not find npm manifest ${ manifest }`);
 
         }
 
+        bar.tick();
+
     }
+
+    if(warnings.length > 0){
+
+        logger.log("", { label });
+
+    }
+
+    warnings.forEach((warning) => {
+
+        logger.warn(warning, { label });
+
+    });
 
 };
 

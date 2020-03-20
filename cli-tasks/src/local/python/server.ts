@@ -8,17 +8,6 @@ import { kill } from "@newsteam/cli-utils";
 const label = "server";
 
 
-const awaitServerScript = function(script: string): Promise<string>{
-
-    return new Promise((resolve) => {
-
-        resolve(script);
-
-    });
-
-};
-
-
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const output = (color?: string): (data: any) => void => (data: any): void => {
 
@@ -89,9 +78,36 @@ const output = (color?: string): (data: any) => void => (data: any): void => {
 };
 
 
-const startNodemonServer = function(script: string, environment: LocalPythonServerEnvironment): Promise<void>{
+export interface LocalPythonServerEnvironment {
+    [key: string]: string | boolean | number;
+}
 
-    return new Promise((): void => {
+export interface LocalPythonVirtualenvTaskOptions{
+    script?: string;
+    environment?: LocalPythonServerEnvironment;
+    ignore?: string[];
+    watch?: string[];
+}
+
+
+export const localPythonServerTask = async function(
+    options: LocalPythonVirtualenvTaskOptions
+): Promise<void>{
+
+    const script = options?.script ?? "src/main.py";
+    const environment = options?.environment ?? {};
+    const ignore = options?.ignore ?? [
+        "node_modules/*",
+        "build/*"
+    ];
+    const watch = options?.watch ?? [
+        "src",
+        script
+    ];
+
+    await kill(script);
+
+    await new Promise((): void => {
 
         nodemon({
             env: environment,
@@ -99,12 +115,10 @@ const startNodemonServer = function(script: string, environment: LocalPythonServ
                 py: "source env/bin/activate; python3 -u"
             },
             ext: "py",
+            ignore,
             script,
             stdout: false,
-            watch: [
-                "src",
-                script
-            ]
+            watch
         })
         .on("readable", function readable(this: typeof nodemon): void{
 
@@ -118,28 +132,5 @@ const startNodemonServer = function(script: string, environment: LocalPythonServ
         });
 
     });
-
-};
-
-
-export interface LocalPythonServerEnvironment {
-    [key: string]: string | boolean | number;
-}
-
-export interface LocalPythonVirtualenvTaskConfig{
-    script?: string;
-    environment: LocalPythonServerEnvironment;
-}
-
-
-export const localPythonServerTask = async function(
-    config: LocalPythonVirtualenvTaskConfig
-): Promise<void>{
-
-    const script = await awaitServerScript(config?.script ?? "src/main.py");
-
-    await kill(script);
-
-    await startNodemonServer(script, config.environment);
 
 };

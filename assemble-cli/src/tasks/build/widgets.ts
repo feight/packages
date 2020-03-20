@@ -44,20 +44,6 @@ const getDirectories = (source: string): string[] => {
 
 };
 
-const writeFile = async function(filename: string, contents: string, label: string): Promise<void>{
-
-    const exists = fs.existsSync(filename);
-    const existing = exists ? (await fs.readFile(filename)).toString() : undefined;
-
-    if(existing !== contents){
-
-        await fs.writeFile(filename, contents, "utf8");
-
-        logger.log(`widgets ${ path.resolve(filename) }`, { label });
-
-    }
-
-};
 
 const getWidgetAssetPath = (
     id: string,
@@ -255,8 +241,6 @@ export const buildWidgetsTask = async function(options: BuildWidgetsTaskOptions)
         const editSCSS = createCSSBundle(editSCSSModules);
         const ampSCSS = createCSSBundle(ampSCSSModules);
 
-        await fs.ensureDir(destination);
-
         const dialogEntryFactoryLogic = roots.filter((root) => {
 
             let matched = false;
@@ -290,13 +274,43 @@ export const buildWidgetsTask = async function(options: BuildWidgetsTaskOptions)
             };
         `;
 
-        await writeFile(path.join(destination, "widgets.js"), baseJS, label);
-        await writeFile(path.join(destination, "widgets.dialog.entry.js"), dialogEntryFactory, label);
-        await writeFile(path.join(destination, "widgets.scss"), baseSCSS, label);
-        await writeFile(path.join(destination, "widgets.edit.js"), editJS, label);
-        await writeFile(path.join(destination, "widgets.edit.scss"), editSCSS, label);
-        await writeFile(path.join(destination, "widgets.modes.amp.scss"), ampSCSS, label);
-        await writeFile(path.join(destination, "widgets.json"), JSON.stringify(widgets, null, 2), label);
+        const writes: [string, string][] = [
+            [path.join(destination, "widgets.js"), baseJS],
+            [path.join(destination, "widgets.dialog.entry.js"), dialogEntryFactory],
+            [path.join(destination, "widgets.scss"), baseSCSS],
+            [path.join(destination, "widgets.edit.js"), editJS],
+            [path.join(destination, "widgets.edit.scss"), editSCSS],
+            [path.join(destination, "widgets.modes.amp.scss"), ampSCSS],
+            [path.join(destination, "widgets.json"), JSON.stringify(widgets, null, 2)]
+        ];
+
+        const bar = logger.progress({
+            label,
+            tag: "widget entries",
+            total: writes.length
+        });
+
+        await Promise.all(writes.map(async (write) => {
+
+            const [filename, contents] = write;
+
+            const exists = fs.existsSync(filename);
+            const existing = exists ? (await fs.readFile(filename)).toString() : undefined;
+
+            if(existing !== contents){
+
+                await fs.ensureDir(path.dirname(filename));
+                await fs.writeFile(filename, contents, "utf8");
+
+            }
+
+            if(options.watch){
+                logger.log(`built widget entry ${ path.resolve(filename) }`, { label });
+            }else{
+                bar.tick();
+            }
+
+        }));
 
     });
 

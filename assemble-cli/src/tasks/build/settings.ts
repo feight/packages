@@ -19,13 +19,26 @@ export interface BuildSettingsTaskOptions extends WatchOptions{
 
 export const buildSettingsTask = async function(options: BuildSettingsTaskOptions): Promise<void>{
 
+    const label = options.label ?? "build";
+
+    const bar = logger.progress({
+        label,
+        tag: "settings",
+        total: 3
+    });
+
     await watch(options, async (): Promise<void> => {
+
+        if(!options.watch){
+
+            bar.tick();
+
+        }
 
         const clientSettingsRequirePath = `./${ path.relative(__dirname, path.resolve(path.join(process.cwd(), "src/settings/client.js"))) }`;
         const destination = path.join(process.cwd(), options.destination);
         const settingsJSON = path.join(destination, "settings.json");
         const settingsJS = path.join(destination, "settings.js");
-        const label = options.label ?? "settings";
 
         /*
          *  Because this gets called on a watch, it's necessary to flush the
@@ -42,17 +55,42 @@ export const buildSettingsTask = async function(options: BuildSettingsTaskOption
         // eslint-disable-next-line @typescript-eslint/no-unsafe-call
         const settings = getClientSettings();
 
-        await fs.ensureDir(destination);
-        await fs.writeFile(settingsJSON, JSON.stringify(settings, null, 2), "utf8");
+        await Promise.all([
+            (async (): Promise<void> => {
 
-        logger.log(`generated ${ path.resolve(settingsJSON) }`, { label });
+                await fs.ensureDir(destination);
+                await fs.writeFile(settingsJSON, JSON.stringify(settings, null, 2), "utf8");
 
-        const exists = fs.existsSync(path.join(options.source, "publication/custom/settings/index.js"));
-        const js = exists ? "const settings = require(\"custom/settings\"); module.exports = settings" : "module.exports = {};";
+                if(options.watch){
 
-        await fs.writeFile(settingsJS, js, "utf8");
+                    logger.log(`built settings ${ path.resolve(settingsJSON) }`, { label });
 
-        logger.log(`generated ${ settingsJS }`, { label });
+                }else{
+
+                    bar.tick();
+
+                }
+
+            })(),
+            (async (): Promise<void> => {
+
+                const exists = fs.existsSync(path.join(options.source, "publication/custom/settings/index.js"));
+                const js = exists ? "const settings = require(\"custom/settings\"); module.exports = settings" : "module.exports = {};";
+
+                await fs.writeFile(settingsJS, js, "utf8");
+
+                if(options.watch){
+
+                    logger.log(`built settings ${ settingsJS }`, { label });
+
+                }else{
+
+                    bar.tick();
+
+                }
+
+            })()
+        ]);
 
     });
 

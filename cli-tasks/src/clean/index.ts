@@ -9,13 +9,18 @@ const label = "clean";
 
 export const cleanTask = async function(...paths: string[]): Promise<void>{
 
-    await del(paths);
-
-    paths.forEach((path) => {
-
-        logger.log(path, { label });
-
+    const progress = logger.progress({
+        label,
+        total: paths.length
     });
+
+    await Promise.all(paths.map(async (path) => {
+
+        await del(path);
+
+        progress.tick();
+
+    }));
 
 };
 

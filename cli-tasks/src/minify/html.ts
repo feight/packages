@@ -6,10 +6,10 @@ import replace from "gulp-replace";
 import { Options as HTMLMinifierOptions } from "html-minifier";
 import cache from "gulp-cache";
 import {
-    gulp as gulpUtils,
     watch,
     WatchOptions
 } from "@newsteam/cli-utils";
+import { logger } from "@newsteam/cli-logger";
 
 
 export interface MinifyHTMLTaskOptions extends WatchOptions{
@@ -22,15 +22,23 @@ export interface MinifyHTMLTaskOptions extends WatchOptions{
 
 export const minifyHTMLTask = async function(options: MinifyHTMLTaskOptions): Promise<void>{
 
+    const label = options.label ?? "build";
+
     await watch(options, async (files: string[]): Promise<void> => {
+
+        const bar = logger.progress({
+            label,
+            tag: "html",
+            total: files.length
+        });
 
         await new Promise((resolve) => {
 
             gulp.src(files, { base: options.source })
-            .pipe(gulpUtils.print({
-                label: options.label ?? "build",
-                tag: "minify"
-            }))
+            .pipe(options.watch ? logger.gulp({
+                label,
+                tag: "built html"
+            }) : bar.gulpTick(bar))
             .pipe(cache(
                 htmlmin(options.config),
                 {

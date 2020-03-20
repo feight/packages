@@ -20,44 +20,6 @@ export const fail = function(label: string, message: string): void{
 };
 
 
-export const print = function(options: {
-    color?: string;
-    label?: string;
-    tag?: string;
-} = {}): stream.Transform{
-
-    const {
-        color,
-        label = "gulp",
-        tag = ""
-    } = options;
-
-    return through({ objectMode: true }, function blank(
-        file: vinyl,
-        encoding: string,
-        done: through.TransformCallback
-    ): void{
-
-        if(file.isNull()){
-            return done();
-        }
-
-        logger.log(`${ tag ? `${ tag } ` : "" }${ file.path }`, {
-            color,
-            label
-        });
-
-        // Not invalid since that function is bound by the through library
-        // eslint-disable-next-line no-invalid-this
-        this.push(file);
-
-        return done();
-
-    });
-
-};
-
-
 export const skip = function(): stream.Transform{
 
     return through({ objectMode: true }, function blank(

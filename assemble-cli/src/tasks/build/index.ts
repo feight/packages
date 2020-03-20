@@ -46,28 +46,29 @@ export const buildTask = async function(config: NewsTeamConfig, options: BuildTa
 
     await buildEntriesTask(configs.buildEntriesTask);
 
-    await buildModernizrTask(configs.buildModernizrTask);
+    await buildWidgetsTask(configs.buildWidgetsTask);
 
-    await buildRSSTask(configs.buildRSSTask);
-
-    await buildSettingsTask(configs.buildSettingsTask);
+    await buildStaticAssetsTask(configs.buildStaticAssetsTask);
 
     await minifyHTMLTask(configs.minifyHTMLTask);
 
-    await buildStaticAssetsTask(configs.buildStaticAssetsTask);
+    await buildRSSTask(configs.buildRSSTask);
+
+    await buildModernizrTask(configs.buildModernizrTask);
+
+    await buildYamlTask(configs.buildYamlTask);
+
+    await buildSettingsTask(configs.buildSettingsTask);
 
     await buildReleaseTask(config);
 
     await npmInstallTask(...config.paths.npm.manifests);
 
-    await buildWidgetsTask(configs.buildWidgetsTask);
-
-    await buildYamlTask(configs.buildYamlTask);
-
     await buildWebpackTask({
         config: "./.webpack.config.ts",
         mode: options.mode,
-        platform: options.platform
+        platform: options.platform,
+        profile: false
     });
 
     if(
