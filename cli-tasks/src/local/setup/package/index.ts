@@ -6,12 +6,13 @@ import { localPackageSetupTaskMac } from "./mac";
 export const packages = [
     "graphicsmagick",
     "imagemagick",
+    "java",
     "memcached",
     "mysql",
     "mysql-client",
     "openssl",
     "pip",
-    "java"
+    "redis"
 ] as const;
 
 export type Package = typeof packages[number];

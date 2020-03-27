@@ -11,7 +11,7 @@ This package provides a logger for command line interfaces.
 ## Install
 
 ```
-$ npm install logger
+$ npm install @newsteam/cli-logger
 ```
 ## Simple usage
 

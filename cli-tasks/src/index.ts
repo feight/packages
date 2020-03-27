@@ -16,6 +16,7 @@ export { localPythonVirtualenvTask } from "./local/python/virtualenv";
 export { localGCloudSetupTask } from "./local/setup/gcloud";
 export { localPackageSetupTask } from "./local/setup/package";
 export { localPlatformSetupTask } from "./local/setup/platform";
+export { localRedisServerTask } from "./local/redis/server";
 export {
     minifyHTMLTask,
     MinifyHTMLTaskOptions

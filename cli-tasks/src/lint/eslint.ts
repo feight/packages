@@ -29,6 +29,7 @@ export class ESLintError extends LintError{
 
 }
 
+
 export interface ESLintFile extends vinyl{
     eslint: {
         fixed: boolean;
@@ -58,13 +59,19 @@ export const eslintLintTask = async function(options: EslintLintTaskOptions): Pr
 
     await watch(options, async (files: string[]): Promise<void> => {
 
+        const bar = logger.progress({
+            label,
+            tag: "javascript",
+            total: files.length
+        });
+
+        bar.tick();
+
         await new Promise((resolve) => {
 
             const errors: LintErrorData[] = [];
 
             for(const file of files){
-
-                logger.log(`lint ${ path.resolve(file) }`, { label });
 
                 const report = eslintCLI.executeOnFiles([file]);
 
@@ -85,6 +92,16 @@ export const eslintLintTask = async function(options: EslintLintTaskOptions): Pr
                         })),
                         file
                     });
+
+                }
+
+                if(options.watch){
+
+                    logger.log(`lint ${ path.resolve(file) }`, { label });
+
+                }else{
+
+                    bar.tick();
 
                 }
 

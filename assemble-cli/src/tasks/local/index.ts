@@ -2,9 +2,9 @@
 
 import {
     localFirestoreEmulatorTask,
-    localMemcachedEmulatorTask,
     localPythonVirtualenvTask,
     localPythonServerTask,
+    localRedisServerTask,
     openBrowserTask
 } from "@newsteam/cli-tasks";
 
@@ -35,7 +35,7 @@ export const localTask = async function(config: NewsTeamConfig, options: LocalTa
 
     await Promise.all([
         localWatchTask(config),
-        localMemcachedEmulatorTask(),
+        localRedisServerTask(config.local.redis.server),
         localFirestoreEmulatorTask(config.local.emulators.firestore),
         localPythonServerTask({
             environment: {

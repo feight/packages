@@ -47,7 +47,8 @@ export const brewFormulae = [
     "memcached",
     "mysql",
     "mysql-client",
-    "openssl"
+    "openssl",
+    "redis"
 ] as const;
 
 export type BrewFormula = typeof brewFormulae[number];
@@ -83,7 +84,7 @@ export const localBrewSetupTask = async function(): Promise<void>{
 
 
 export type BrewInfoJson = {
-    installed: {
+    installed?: {
         version: string;
     }[];
     // This is brew info --json format, we don't pick it
@@ -114,10 +115,10 @@ export const localBrewPackageSetupTask = async function(formula: BrewFormula): P
 
     const [latest] = JSON.parse(rawJSON) as BrewInfoJson;
     const latestStable = latest.versions.stable;
-    const [installed] = latest.installed;
+    const installed = latest.installed ? latest.installed[0] : undefined;
     const updated =
         latest.linked_keg === latestStable ||
-        installed.version === latestStable;
+        installed && installed.version === latestStable;
 
     if(exists && updated){
 

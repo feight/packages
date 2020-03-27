@@ -28,7 +28,8 @@ export const setupTask = async function(): Promise<void>{
         "imagemagick",
         "memcached",
         "mysql",
-        "mysql-client"
+        "mysql-client",
+        "redis"
     );
 
 };

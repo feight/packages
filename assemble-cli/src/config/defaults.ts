@@ -13,6 +13,11 @@ export const defaults = {
             server: {
                 port: 8080
             }
+        },
+        redis: {
+            server: {
+                port: 6379
+            }
         }
     },
     paths: {

@@ -35,7 +35,7 @@
     "newsteam",
     "@newsteam"
   ],
-  "homepage": "https://github.com/feight/packages/tree/master/packages/logger#readme",
+  "homepage": "https://github.com/feight/packages/tree/master/packages/cli-logger#readme",
   "files": [
     "lib"
   ],
