@@ -16,6 +16,7 @@ export const defaults = {
         },
         redis: {
             server: {
+                config: "redis.conf",
                 port: 6379
             }
         }

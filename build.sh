@@ -27,6 +27,7 @@ echo 'generated .js assets'
 if [ -d "./src/cli" ]; then
     export BUILD_SHEBANG=1
     babel src/cli --out-dir lib/cli --extensions '.js,.jsx,.ts,.tsx'
+    export BUILD_SHEBANG=0
     echo 'generated cli assets'
 fi
 

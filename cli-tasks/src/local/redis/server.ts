@@ -1,5 +1,9 @@
 
 
+import path from "path";
+
+import fs from "fs-extra";
+
 import {
     kill,
     spawn
@@ -8,20 +12,31 @@ import {
 
 interface LocalRedisServerTaskConfig{
     config?: string;
-    port: number;
+    port?: number;
 }
 
 
 export const localRedisServerTask = async function(config: LocalRedisServerTaskConfig): Promise<void>{
 
-    try{
+    if(config.port){
 
-        await kill(config.port);
+        try{
 
-    }catch(error){}
+            await kill(config.port);
+
+        }catch(error){}
+
+    }
+
+    const configPath = config.config ? path.join(process.cwd(), config.config) : undefined;
+    const configExists = configPath && fs.existsSync(configPath);
+    const options = [
+        configExists ? config.config : undefined,
+        config.port ? `--port ${ config.port }` : undefined
+    ].filter(Boolean);
 
     await spawn({
-        command: `redis-server ${ config.config ?? `--port ${ config.port }` }`,
+        command: `redis-server ${ options.join(" ") }`,
         label: "redis"
     });
 

@@ -65,7 +65,7 @@ export const buildTask = async function(config: NewsTeamConfig, options: BuildTa
     await npmInstallTask(...config.paths.npm.manifests);
 
     await buildWebpackTask({
-        config: "./.webpack.config.ts",
+        config: "./.webpack.ts",
         mode: options.mode,
         platform: options.platform,
         profile: false

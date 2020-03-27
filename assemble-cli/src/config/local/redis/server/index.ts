@@ -8,14 +8,15 @@ import { defaults } from "../../../defaults";
 export interface LocalRedisServerConfig{
 
     /**
-     * The path to the redis config file.
+     * The path to the redis config file (defaults to redis.conf).
      */
     config?: string;
 
     /**
      * The redis server port (defaults to 6379).
+     * If a config file exists it will source the port from the config.
      */
-    port: number;
+    port?: number;
 
 }
 
@@ -25,7 +26,7 @@ export class NewsTeamLocalRedisServerConfig{
         allow: undefined,
         type: "string"
     })
-    config?: string;
+    config: string;
 
     @validate({
         port: true,
@@ -35,7 +36,7 @@ export class NewsTeamLocalRedisServerConfig{
 
     constructor(config?: LocalRedisServerConfig){
 
-        this.config = config?.config;
+        this.config = config?.config ?? defaults.local.redis.server.config;
         this.port = config?.port ?? defaults.local.redis.server.port;
 
     }

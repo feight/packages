@@ -1,8 +1,23 @@
 
 
+/*
+
+    eslint
+
+    @typescript-eslint/no-require-imports: "off",
+    @typescript-eslint/no-var-requires: "off",
+    import/no-commonjs: "off",
+    import/no-dynamic-require: "off",
+    security/detect-non-literal-require: "off",
+
+*/
+
+
+import path from "path";
+
 import "reflect-metadata";
 
-import { rcFile } from "rc-config-loader";
+import fs from "fs-extra";
 import merge from "deepmerge";
 import { Validate } from "@newsteam/schema";
 
@@ -14,16 +29,31 @@ import * as modernizr from "./modernizr";
 
 const cwd = process.cwd();
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+require("ts-node").register({
+    project: path.join(cwd, "tsconfig.json")
+});
+
+const configPathBase = path.resolve(path.join(cwd, ".newsteam.ts"));
+const configPathLocal = path.resolve(path.join(cwd, ".newsteam.local.ts"));
+const configBase = fs.existsSync(configPathBase) ? require(path.relative(__dirname, configPathBase)) : { config: {} };
+const configLocal = fs.existsSync(configPathLocal) ? require(path.relative(__dirname, configPathLocal)) : { config: {} };
+
+// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+if(!configBase.config){
+    throw new Error(`${ configPathBase } has no exported member 'config'`);
+}
+
+// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+if(!configLocal.config){
+    throw new Error(`${ configPathLocal } has no exported member 'config'`);
+}
 
 const overrides: Config = merge.all([
-    rcFile("newsteam", {
-        configFileName: ".newsteam.js",
-        cwd
-    })?.config ?? {},
-    rcFile("newsteam.local", {
-        configFileName: ".newsteam.local.js",
-        cwd
-    })?.config ?? {}
+    /* eslint-disable global-require, @typescript-eslint/no-unsafe-member-access */
+    configBase.config,
+    configLocal.config
+    /* eslint-enable global-require, @typescript-eslint/no-unsafe-member-access */
 ]);
 
 

@@ -8,9 +8,12 @@
 
 */
 
+import path from "path";
+
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 
+import fs from "fs-extra";
 import program from "commander";
 import { logger } from "@newsteam/cli-logger";
 import { cleanCacheTask } from "@newsteam/cli-tasks";
@@ -19,7 +22,6 @@ import {
     config,
     Platform
 } from "../config";
-import packageJSON from "../../package.json";
 import { buildTask } from "../tasks/build";
 import { cleanTask } from "../tasks/clean";
 import { linkTask } from "../tasks/link";
@@ -42,6 +44,10 @@ type LocalOptions = BuildOptions;
 type TestOptions = LintOptions;
 
 
+const packageJsonRaw = fs.readFileSync(path.join(__dirname, "../../package.json"));
+const packageJson = JSON.parse(packageJsonRaw.toString());
+
+
 // This is dodgy, but the typing of this in globals.d.ts is kinda wierd
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 process.on("unhandledRejection", (error: any): void => logger.error(error));
@@ -49,7 +55,8 @@ process.on("unhandledRejection", (error: any): void => logger.error(error));
 process.on("uncaughtException", (error: Error): void => logger.error(error));
 
 
-program.version(packageJSON.version);
+// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+program.version(packageJson.version);
 
 
 program
