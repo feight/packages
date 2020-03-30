@@ -12,7 +12,7 @@ import merge from "webpack-merge";
 import * as configs from "./config";
 
 
-const generateOptions = function(webpackOptions: ConfigurationOptions, environment: Environment, args: Args): Options{
+const generateOptions = function(options: ConfigOptions, environment: Environment, args: Args): Options{
 
     if(environment.cwd === "x"){
         console.log([environment, args]);
@@ -35,7 +35,7 @@ const generateOptions = function(webpackOptions: ConfigurationOptions, environme
 
     return {
         ...optionsDefaults,
-        ...webpackOptions
+        ...options
     };
 
 };
@@ -45,17 +45,17 @@ export type Platform = "desktop" | "mobile" | "web";
 export type Target = "client" | "server";
 
 
-export interface PortConfigurationOptions{
+export interface PortConfigOptions{
     bundleAnalyzer: number;
     devServer: number;
 }
 
 
-export interface ConfigurationOptions{
+export interface ConfigOptions{
     bundleAnalyzer?: boolean;
-    multipleTargeting?: boolean;
+    config?: Configuration;
     outputPath?: string;
-    ports?: PortConfigurationOptions;
+    ports?: PortConfigOptions;
     staticFolder?: string;
 }
 
@@ -76,10 +76,11 @@ export interface Args{
 
 export interface Options{
     bundleAnalyzer: boolean;
+    config?: Configuration;
     cwd: string;
     mode: Mode;
     outputPath: string;
-    ports: PortConfigurationOptions;
+    ports: PortConfigOptions;
     staticFolder: string;
     target: Target;
     targetPath: string;
@@ -88,8 +89,7 @@ export interface Options{
 
 
 export const config = function(
-    webpackConfig: Configuration = {},
-    webpackOptions: ConfigurationOptions = {}
+    options: ConfigOptions = {}
 ){
 
     return (
@@ -97,31 +97,31 @@ export const config = function(
         args: Args = {}
     ): Configuration => {
 
-        const options = generateOptions(webpackOptions, environment, args);
-        const configuration = merge(webpackConfig, configs.output(options));
+        const opts = generateOptions(options, environment, args);
+        const config = merge(options.config ?? {}, configs.output(opts));
 
         // Deep merge all base configuration with custom configuration
         const merged = merge(
-            configs.devtool(options),
+            configs.devtool(opts),
             configs.entry(),
-            configs.module(options, configuration),
-            configs.mode(options),
+            configs.module(opts, config),
+            configs.mode(opts),
             configs.node(),
-            configs.optimization(options),
-            configs.performance(options),
-            configs.plugins(options),
-            configs.resolve(options),
+            configs.optimization(opts),
+            configs.performance(opts),
+            configs.plugins(opts),
+            configs.resolve(opts),
             configs.stats(),
             configs.watchOptions(),
-            configuration
+            config
         );
 
         /*
          * Override the entry branch of configuration if one was specified in the
          * custom configuration
          */
-        if(configuration.entry){
-            merged.entry = configuration.entry;
+        if(config.entry){
+            merged.entry = config.entry;
         }
 
         return merged;

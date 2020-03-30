@@ -18,6 +18,7 @@ export interface WidgetsPaths extends GlobMapping{
     roots: string[];
 }
 
+
 export class NewsTeamPathsConfig{
 
     build: string;
@@ -43,6 +44,10 @@ export class NewsTeamPathsConfig{
     static: GlobMapping;
 
     rss: GlobMapping;
+
+    webpack: {
+        config: string;
+    };
 
     widgets: WidgetsPaths;
 
@@ -71,6 +76,8 @@ export class NewsTeamPathsConfig{
         this.static = defaults.paths.static;
 
         this.rss = defaults.paths.rss;
+
+        this.webpack = defaults.paths.webpack;
 
         this.widgets = defaults.paths.widgets;
 

@@ -10,22 +10,14 @@ import {
 
 import { localWatchTask } from "./watch";
 
+import { NewsTeamConfig } from "../../config";
 import {
-    Mode,
-    Platform,
-    NewsTeamConfig
-} from "../../config";
-import { buildTask } from "../build";
+    buildTask,
+    BuildTaskOptions
+} from "../build";
 
 
-export interface LocalTaskOptions{
-    mode: Mode;
-    platform: Platform;
-    watch: boolean;
-}
-
-
-export const localTask = async function(config: NewsTeamConfig, options: LocalTaskOptions): Promise<void>{
+export const localTask = async function(config: NewsTeamConfig, options: BuildTaskOptions): Promise<void>{
 
     const openDelay = 2000;
 
@@ -34,7 +26,7 @@ export const localTask = async function(config: NewsTeamConfig, options: LocalTa
     await localPythonVirtualenvTask();
 
     await Promise.all([
-        localWatchTask(config),
+        localWatchTask(config, options),
         localRedisServerTask(config.local.redis.server),
         localFirestoreEmulatorTask(config.local.emulators.firestore),
         localPythonServerTask({

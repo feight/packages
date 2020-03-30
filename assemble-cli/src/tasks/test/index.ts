@@ -2,13 +2,17 @@
 
 import { TestError } from "@newsteam/cli-errors";
 import { logger } from "@newsteam/cli-logger";
-import { eslintLintTask } from "@newsteam/cli-tasks";
+import {
+    eslintLintTask, EslintLintTaskOptions
+} from "@newsteam/cli-tasks";
 
-import { testSettingsTask } from "./settings";
+import {
+    testSettingsTask,
+    TestSettingsTaskOptions
+} from "./settings";
 import { testSharedSettingsTask } from "./settings/shared";
 
 import { NewsTeamConfig } from "../../config";
-import { configurator } from "../configurator";
 
 
 export const label = "test";
@@ -21,9 +25,37 @@ export interface TestTaskOptions{
 }
 
 
+export interface TestTaskConfigurations{
+
+    eslintLintTask: EslintLintTaskOptions;
+
+    testSettingsTask: TestSettingsTaskOptions;
+
+}
+
+
+export const generateTestTaskConfigs = function(config: NewsTeamConfig): TestTaskConfigurations{
+
+    const destination = config.paths.build;
+    const source = config.paths.source;
+
+    return {
+        eslintLintTask: {
+            destination,
+            glob: config.paths.javascript.glob,
+            ignore: config.paths.javascript.ignore,
+            source
+        },
+        testSettingsTask: {
+            validations: config.paths.settings.validations
+        }
+    };
+
+};
+
 export const testTask = async function(config: NewsTeamConfig, options: TestTaskOptions): Promise<void>{
 
-    const configs = configurator(config);
+    const configs = generateTestTaskConfigs(config);
     const errors: TestError[] = [];
 
     const {

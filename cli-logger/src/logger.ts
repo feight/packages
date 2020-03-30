@@ -127,7 +127,7 @@ export class Logger{
             open: "🌍",
             optimize: "🌟",
             python: "🐍",
-            redis: "🀄",
+            redis: "🧧",
             server: "💻",
             settings: "🧬",
             setup: "💿",

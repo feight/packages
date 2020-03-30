@@ -25,6 +25,7 @@ import * as htmlmin from "./htmlmin";
 import * as local from "./local";
 import * as paths from "./paths";
 import * as modernizr from "./modernizr";
+import * as webpack from "./webpack";
 
 
 const cwd = process.cwd();
@@ -50,10 +51,10 @@ if(!configLocal.config){
 }
 
 const overrides: Config = merge.all([
-    /* eslint-disable global-require, @typescript-eslint/no-unsafe-member-access */
+    /* eslint-disable @typescript-eslint/no-unsafe-member-access */
     configBase.config,
     configLocal.config
-    /* eslint-enable global-require, @typescript-eslint/no-unsafe-member-access */
+    /* eslint-enable @typescript-eslint/no-unsafe-member-access */
 ]);
 
 
@@ -72,6 +73,8 @@ export interface Config{
 
     modernizr?: modernizr.NewsTeamModernizrConfig;
 
+    webpack?: webpack.WebpackConfig;
+
 }
 
 
@@ -87,6 +90,8 @@ export class NewsTeamConfig{
 
     paths: paths.NewsTeamPathsConfig;
 
+    webpack: webpack.NewsTeamWebpackConfig;
+
     constructor(config: Config){
 
         this.cwd = cwd;
@@ -98,6 +103,8 @@ export class NewsTeamConfig{
         this.modernizr = new modernizr.NewsTeamModernizrConfig();
 
         this.paths = new paths.NewsTeamPathsConfig();
+
+        this.webpack = new webpack.NewsTeamWebpackConfig(config?.webpack);
 
     }
 

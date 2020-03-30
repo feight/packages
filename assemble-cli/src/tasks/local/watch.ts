@@ -1,27 +1,28 @@
 
+
 import {
     buildModernizrTask,
     minifyHTMLTask
 } from "@newsteam/cli-tasks";
 
+import { NewsTeamConfig } from "../../config";
 import {
-    NewsTeamConfig
-} from "../../config";
+    BuildTaskOptions, generateBuildTaskConfigs
+} from "../build";
 import { buildEntriesTask } from "../build/entries";
 import { buildRSSTask } from "../build/rss";
 import { buildSettingsTask } from "../build/settings";
 import { buildStaticAssetsTask } from "../build/static";
 import { buildWidgetsTask } from "../build/widgets";
 import { buildYamlTask } from "../build/yaml";
-import { configurator } from "../configurator";
 
 
 export const label = "watch";
 
 
-export const localWatchTask = async function(config: NewsTeamConfig): Promise<void>{
+export const localWatchTask = async function(config: NewsTeamConfig, options: BuildTaskOptions): Promise<void>{
 
-    const configs = configurator(config);
+    const buildTaskConfigs = generateBuildTaskConfigs(config, options);
 
     const watchConfig = {
         ignoreInitial: true,
@@ -31,35 +32,35 @@ export const localWatchTask = async function(config: NewsTeamConfig): Promise<vo
 
     await Promise.all([
         buildEntriesTask({
-            ...configs.buildEntriesTask,
+            ...buildTaskConfigs.buildEntriesTask,
             ...watchConfig
         }),
         buildModernizrTask({
-            ...configs.buildModernizrTask,
+            ...buildTaskConfigs.buildModernizrTask,
             ...watchConfig
         }),
         buildRSSTask({
-            ...configs.buildRSSTask,
+            ...buildTaskConfigs.buildRSSTask,
             ...watchConfig
         }),
         buildSettingsTask({
-            ...configs.buildSettingsTask,
+            ...buildTaskConfigs.buildSettingsTask,
             ...watchConfig
         }),
         buildStaticAssetsTask({
-            ...configs.buildStaticAssetsTask,
+            ...buildTaskConfigs.buildStaticAssetsTask,
             ...watchConfig
         }),
         buildWidgetsTask({
-            ...configs.buildWidgetsTask,
+            ...buildTaskConfigs.buildWidgetsTask,
             ...watchConfig
         }),
         buildYamlTask({
-            ...configs.buildYamlTask,
+            ...buildTaskConfigs.buildYamlTask,
             ...watchConfig
         }),
         minifyHTMLTask({
-            ...configs.minifyHTMLTask,
+            ...buildTaskConfigs.minifyHTMLTask,
             ...watchConfig
         })
     ]);

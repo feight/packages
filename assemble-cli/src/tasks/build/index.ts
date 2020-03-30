@@ -1,20 +1,50 @@
 
+/*
+
+    eslint
+
+    more/no-duplicated-chains: "off"
+
+*/
 
 import {
     buildModernizrTask,
+    BuildModernizrTaskOptions,
     minifyHTMLTask,
+    MinifyHTMLTaskOptions,
     npmInstallTask
 } from "@newsteam/cli-tasks";
 
 import { buildConsoleTask } from "./console";
-import { buildEntriesTask } from "./entries";
+import {
+    buildEntriesTask,
+    BuildEntriesTaskOptions
+} from "./entries";
 import { buildReleaseTask } from "./release";
-import { buildSettingsTask } from "./settings";
-import { buildRSSTask } from "./rss";
-import { buildStaticAssetsTask } from "./static";
-import { buildYamlTask } from "./yaml";
-import { buildWebpackTask } from "./webpack";
-import { buildWidgetsTask } from "./widgets";
+import {
+    buildRSSTask,
+    BuildRSSTaskOptions
+} from "./rss";
+import {
+    buildSettingsTask,
+    BuildSettingsTaskOptions
+} from "./settings";
+import {
+    buildStaticAssetsTask,
+    BuildStaticAssetsTaskOptions
+} from "./static";
+import {
+    buildWebpackTask,
+    BuildWebpackTaskOptions
+} from "./webpack";
+import {
+    buildWidgetsTask,
+    BuildWidgetsTaskOptions
+} from "./widgets";
+import {
+    buildYamlTask,
+    BuildYamlTaskOptions
+} from "./yaml";
 
 import { linkTask } from "../link";
 import {
@@ -23,7 +53,6 @@ import {
     NewsTeamConfig
 } from "../../config";
 import { cleanTask } from "../clean";
-import { configurator } from "../configurator";
 
 
 export const label = "build";
@@ -36,40 +65,127 @@ export interface BuildTaskOptions{
 }
 
 
+export interface BuildTaskConfigurations{
+
+    buildEntriesTask: BuildEntriesTaskOptions;
+
+    buildModernizrTask: BuildModernizrTaskOptions;
+
+    buildRSSTask: BuildRSSTaskOptions;
+
+    buildSettingsTask: BuildSettingsTaskOptions;
+
+    buildStaticAssetsTask: BuildStaticAssetsTaskOptions;
+
+    buildWebpackTask: BuildWebpackTaskOptions;
+
+    buildWidgetsTask: BuildWidgetsTaskOptions;
+
+    buildYamlTask: BuildYamlTaskOptions;
+
+    minifyHTMLTask: MinifyHTMLTaskOptions;
+
+}
+
+
+export const generateBuildTaskConfigs = function(config: NewsTeamConfig, options: BuildTaskOptions): BuildTaskConfigurations{
+
+    const destination = config.paths.build;
+    const source = config.paths.source;
+
+    return {
+        buildEntriesTask: {
+            destination,
+            glob: config.paths.entries.glob,
+            source
+        },
+        buildModernizrTask: {
+            config: config.modernizr.config,
+            destination,
+            filename: config.paths.modernizr.filename,
+            glob: config.paths.modernizr.glob
+        },
+        buildRSSTask: {
+            destination,
+            glob: config.paths.rss.glob,
+            ignore: config.paths.rss.ignore,
+            source
+        },
+        buildSettingsTask: {
+            destination,
+            glob: config.paths.settings.glob,
+            source
+        },
+        buildStaticAssetsTask: {
+            destination,
+            glob: config.paths.static.glob
+        },
+        buildWebpackTask: {
+            config: config.paths.webpack.config,
+            mode: options.mode,
+            platform: options.platform,
+            profile: config.webpack.profile
+        },
+        buildWidgetsTask: {
+            destination,
+            glob: config.paths.widgets.glob,
+            roots: config.paths.widgets.roots,
+            source
+        },
+        buildYamlTask: {
+            destination,
+            glob: [
+                config.paths.settings.environments,
+                config.paths.settings.handlers,
+                config.paths.yaml
+            ],
+            paths: {
+                environments: config.paths.settings.environments,
+                handlers: config.paths.settings.handlers,
+                yaml: config.paths.yaml
+            }
+        },
+        minifyHTMLTask: {
+            config: config.htmlmin.options,
+            destination,
+            glob: config.paths.html.glob,
+            ignore: config.paths.html.ignore,
+            source
+        }
+    };
+
+};
+
+
 export const buildTask = async function(config: NewsTeamConfig, options: BuildTaskOptions): Promise<void>{
 
-    const configs = configurator(config);
+    const buildTaskConfigs = generateBuildTaskConfigs(config, options);
 
     await cleanTask(config);
 
     await linkTask();
 
-    await buildEntriesTask(configs.buildEntriesTask);
+    await buildEntriesTask(buildTaskConfigs.buildEntriesTask);
 
-    await buildWidgetsTask(configs.buildWidgetsTask);
+    await buildWidgetsTask(buildTaskConfigs.buildWidgetsTask);
 
-    await buildStaticAssetsTask(configs.buildStaticAssetsTask);
+    await buildStaticAssetsTask(buildTaskConfigs.buildStaticAssetsTask);
 
-    await minifyHTMLTask(configs.minifyHTMLTask);
+    await minifyHTMLTask(buildTaskConfigs.minifyHTMLTask);
 
-    await buildRSSTask(configs.buildRSSTask);
+    await buildRSSTask(buildTaskConfigs.buildRSSTask);
 
-    await buildModernizrTask(configs.buildModernizrTask);
+    await buildModernizrTask(buildTaskConfigs.buildModernizrTask);
 
-    await buildYamlTask(configs.buildYamlTask);
+    await buildYamlTask(buildTaskConfigs.buildYamlTask);
 
-    await buildSettingsTask(configs.buildSettingsTask);
+    await buildSettingsTask(buildTaskConfigs.buildSettingsTask);
 
     await buildReleaseTask(config);
 
     await npmInstallTask(...config.paths.npm.manifests);
 
-    await buildWebpackTask({
-        config: "./.webpack.ts",
-        mode: options.mode,
-        platform: options.platform,
-        profile: false
-    });
+    await buildWebpackTask(buildTaskConfigs.buildWebpackTask);
 
     if(
         options.mode === "production" ||

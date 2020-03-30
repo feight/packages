@@ -25,12 +25,12 @@ import webpack, { Configuration } from "webpack";
 import {
     Mode,
     Platform
-} from "../../config";
+} from "../../../config";
 
 
 const label = "webpack";
 
-const buildStatsFolder = path.join(process.cwd(), ".webpack/build-stats");
+const buildStatsFolder = path.join(process.cwd(), ".stats/webpack/build");
 
 const printBuildStatistics = function(): void{
 
@@ -49,7 +49,7 @@ const printBuildStatistics = function(): void{
 
     // This is converting compileTime in milliseconds to seconds
     // eslint-disable-next-line no-magic-numbers
-    const compileTimes = data.map((item) => item.misc.compileTime / 1000).slice(Math.max(data.length - max, 1));
+    const compileTimes = data.map((item) => item.misc.compileTime / 1000).slice(Math.max(data.length - max, 0));
 
     logger.log("", { label });
     logger.log(asciichart.plot(compileTimes), { label });
@@ -89,9 +89,19 @@ export const buildWebpackTask = async function(options: BuildWebpackTaskOptions)
             project: "./tsconfig.json"
         });
 
+        const webpackBasePath = "./config.js";
+        const webpackCustomPath = path.relative(__dirname, path.resolve(config));
+        const webpackCustomExists = fs.existsSync(path.resolve(config));
+        const webpackImport = webpackCustomExists ? require(webpackCustomPath) : require(webpackBasePath);
+
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+        if(!webpackImport.config){
+            throw new Error(`${ webpackCustomPath } has no exported member 'config'`);
+        }
+
         // This doesn't present any danger and is necessary in this case.
         // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-        const webpackConfig: Configuration = require(path.relative(__dirname, path.resolve(config))).default({
+        const webpackConfig: Configuration = webpackImport.config({
             platform
         }, {
             mode,

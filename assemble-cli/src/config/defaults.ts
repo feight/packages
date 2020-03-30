@@ -126,6 +126,9 @@ export const defaults = {
         static: {
             glob: "src/publication/{base,custom,shared}/static/**/*.*"
         },
+        webpack: {
+            config: ".webpack.ts"
+        },
         widgets: {
             glob: "src/publication/{base,custom,shared}/widgets/**/*.*",
             roots: [
@@ -135,6 +138,9 @@ export const defaults = {
             ]
         },
         yaml: "src/publication/base/app.yaml"
+    },
+    webpack: {
+        profile: false
     }
 
 };

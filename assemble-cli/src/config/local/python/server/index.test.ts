@@ -2,8 +2,8 @@
 
 import "jasmine";
 
-import { defaults } from "../../../defaults";
 import { config } from "../../..";
+import { defaults } from "../../../defaults";
 
 
 describe("{ config.local.python.server }", () => {
