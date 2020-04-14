@@ -30,7 +30,7 @@ import {
 
 const label = "webpack";
 
-const buildStatsFolder = path.join(process.cwd(), ".stats/webpack/build");
+const buildStatsFolder = path.join(process.cwd(), ".local/webpack/build/stats");
 
 const printBuildStatistics = function(): void{
 

@@ -18,7 +18,8 @@ import {
 } from "@newsteam/cli-utils";
 import {
     AssembleSettings,
-    AssembleWidgetSettings
+    AssembleWidgetSettings,
+    getPublicationSettings
 } from "@newsteam/assemble-settings";
 
 
@@ -82,16 +83,9 @@ export const buildWidgetsTask = async function(options: BuildWidgetsTaskOptions)
     // eslint-disable-next-line max-lines-per-function
     await watch(options, async (): Promise<void> => {
 
-        const rawSettings = await fs.readFile("src/publication/custom/settings/index.json", "utf8");
         const rawSharedSettings = await fs.readFile("src/publication/shared/settings/index.json", "utf8");
 
-        let settings: AssembleSettings;
-
-        try{
-            settings = JSON.parse(rawSettings);
-        }catch(error){
-            throw new Error("Settings file could not be parsed as valid json");
-        }
+        const settings = getPublicationSettings();
 
         let sharedSettings: AssembleSettings;
 

@@ -11,14 +11,14 @@ import { promptPublication } from "../utils/prompt-publication";
 const label = "symlink";
 
 
-export const linkTask = async function(force?: boolean): Promise<void>{
+export const linkTask = async function(publication?: boolean | string): Promise<void>{
 
     const cwd = process.cwd();
     const exists = fs.existsSync(path.join(cwd, "src/publication/custom"));
 
-    if(!exists || force){
+    if(!exists || publication){
 
-        const folder = await promptPublication();
+        const folder = await promptPublication(typeof publication === "string" ? publication : undefined);
 
         const customDestination = "src/publication/custom";
         const sharedDestination = "src/publication/shared";
@@ -30,7 +30,6 @@ export const linkTask = async function(force?: boolean): Promise<void>{
 
         await fs.ensureSymlink(customSource, customDestination);
         await fs.ensureSymlink(sharedSource, sharedDestination);
-
 
     }
 

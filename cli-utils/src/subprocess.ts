@@ -10,18 +10,25 @@ import { logger } from "@newsteam/cli-logger";
 const pty = require("node-pty");
 
 
-const execOptions = { maxBuffer: 512000 };
-
-
 // eslint-disable-next-line max-lines-per-function
 export const exec = function(options: {
     command: string;
     detatch?: boolean;
     filter?: string | RegExp | (string | RegExp)[];
     label?: string;
+    environment?: { [key: string]: string | undefined };
 }): Promise<string>{
 
+    // eslint-disable-next-line max-lines-per-function
     return new Promise((resolve: (string: string) => void, reject: (error: Error) => void): void => {
+
+        const execOptions = {
+            env: {
+                ...process.env,
+                ...options.environment ?? undefined
+            },
+            maxBuffer: 512000
+        };
 
         const {
             command = "",
@@ -35,7 +42,7 @@ export const exec = function(options: {
             let cmd = Array.isArray(command) ? command.join(" ") : command;
 
             cmd = cmd
-            .replace(/\r\n|\r|\n/gu, "")
+            .replace(/\r\n|\r|\n/gu, " ")
             .replace(/\s\s+/gu, " ")
             .replace(/^\s/gu, "");
 
@@ -126,7 +133,7 @@ export const exec = function(options: {
 export const spawn = function(options: {
     cwd?: string;
     command: string;
-    environment?: string;
+    environment?: { [key: string]: string | undefined };
     filter?: string | RegExp | (string | RegExp)[];
     detatch?: boolean;
     label?: string;
@@ -135,7 +142,7 @@ export const spawn = function(options: {
     const {
         cwd = process.cwd(),
         command = "",
-        environment = process.env,
+        environment,
         filter = [],
         detatch = false,
         label = "anonymous"
@@ -148,7 +155,7 @@ export const spawn = function(options: {
             let cmd = Array.isArray(command) ? command.join(" ") : command;
 
             cmd = cmd
-            .replace(/\r\n|\r|\n/gu, "")
+            .replace(/\r\n|\r|\n/gu, " ")
             .replace(/\s\s+/gu, " ")
             .replace(/^\s/gu, "");
 
@@ -164,7 +171,10 @@ export const spawn = function(options: {
             const term = pty.spawn(cm, args, {
                 cols: 500,
                 cwd,
-                env: environment
+                env: {
+                    ...process.env,
+                    ...environment ?? undefined
+                }
             });
 
             if(!detatch){

@@ -1,5 +1,10 @@
 
 
+import path from "path";
+
+import fs from "fs-extra";
+
+
 export interface AssembleAccountsSettings{
     facebook?: {
         user: string;
@@ -232,3 +237,16 @@ export interface AssembleSettings{
     widgets?: string[];
     whitelistAccess?: AssembleWhitelistAccessSettings;
 }
+
+
+export const getPublicationSettings = function(folder = "src/publication/custom"): AssembleSettings{
+
+    const settingsPath = path.join(folder, "settings/index.json");
+
+    if(!fs.existsSync(settingsPath)){
+        throw new Error(`Could not find settings path ${ settingsPath }`);
+    }
+
+    return JSON.parse(fs.readFileSync(settingsPath).toString()) as AssembleSettings;
+
+};

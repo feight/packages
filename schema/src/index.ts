@@ -3,6 +3,10 @@
 import Joi from "@hapi/joi";
 
 import {
+    AlternativesSchema,
+    alternativesSchemaToJoi
+} from "./alternatives";
+import {
     AnySchema,
     anySchemaToJoi
 } from "./any";
@@ -40,6 +44,7 @@ import {
 } from "./reference";
 
 export type Schema =
+    AlternativesSchema |
     AnySchema |
     ArraySchema |
     BinarySchema |
@@ -67,6 +72,10 @@ export const schemaToJoi = function(schema: Schema | SchemaMap): Joi.Schema{
     if(typeof schema === "string" || schema.type){
 
         switch(typeof schema === "string" ? schema : schema.type){
+
+            case "alternatives" :
+
+                return alternativesSchemaToJoi(schema as AlternativesSchema);
 
             case "any" :
 
@@ -131,6 +140,7 @@ export const schemaLikeToJoi = function(schemaLike: SchemaLike): Joi.SchemaLike{
 
         switch(typeof like === "string" ? like : like.type){
 
+            case "alternatives" :
             case "any" :
             case "array" :
             case "binary" :

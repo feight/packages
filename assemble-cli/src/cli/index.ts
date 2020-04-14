@@ -20,7 +20,10 @@ import { cleanCacheTask } from "@newsteam/cli-tasks";
 
 import {
     config,
-    Platform
+    Mode,
+    modes,
+    Platform,
+    platforms
 } from "../config";
 import { buildTask } from "../tasks/build";
 import { cleanTask } from "../tasks/clean";
@@ -31,8 +34,11 @@ import { testTask } from "../tasks/test";
 
 
 interface BuildOptions{
+    environment: string;
+    mode: Mode;
+    platform: Platform;
     production: boolean;
-    platform?: Platform;
+    publication: string;
 }
 
 interface LintOptions{
@@ -48,6 +54,51 @@ const packageJsonRaw = fs.readFileSync(path.join(__dirname, "../../package.json"
 const packageJson = JSON.parse(packageJsonRaw.toString());
 
 
+const option = {
+    environment: {
+        description: "target a publication environment by Assemble publication environment id",
+        flags: "--env --environment <environment>"
+    },
+    fix: {
+        default: false,
+        description: "attempt to fix lint issues automatically",
+        flags: "--fix"
+    },
+    mode: {
+        default: "development",
+        description: "run the build in 'development' or 'production' mode",
+        flags: "--mode <mode>",
+        fn: (value: string): Mode => {
+
+            if(modes.includes(value as Mode)){
+                return value as Mode;
+            }
+
+            return "development";
+
+        }
+    },
+    platform: {
+        default: "web",
+        description: "device platform",
+        flags: "--platform <platform>",
+        fn: (value: string): Platform => {
+
+            if(platforms.includes(value as Platform)){
+                return platforms.includes(value as Platform) ? value as Platform : "web";
+            }
+
+            return "web";
+
+        }
+    },
+    publication: {
+        description: "target a publication by Assemble publication id",
+        flags: "--pub --publication <publication>"
+    }
+};
+
+
 // This is dodgy, but the typing of this in globals.d.ts is kinda wierd
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 process.on("unhandledRejection", (error: any): void => logger.error(error));
@@ -61,11 +112,15 @@ program.version(packageJson.version);
 
 program
 .command("build")
-.option("-p, --platform [platform]", "device platform (defaults to 'web')")
-.option("--production", "run the build in production mode")
+.option(option.mode.flags, option.mode.description, option.mode.fn, option.mode.default)
+.option(option.platform.flags, option.platform.description, option.platform.fn, option.platform.default)
+.option(option.publication.flags, option.publication.description)
+.option(option.environment.flags, option.environment.description)
 .action(async (options: BuildOptions): Promise<void> => buildTask(config, {
-    mode: options.production ? "production" : "development",
-    platform: options.platform ?? "web"
+    environment: options.environment,
+    mode: options.mode,
+    platform: options.platform,
+    publication: options.publication
 }));
 
 program
@@ -82,7 +137,7 @@ program
 
 program
 .command("lint")
-.option("--fix", "attempt to fix lint issues automatically (defaults to false)")
+.option(option.fix.flags, option.fix.description, option.fix.default)
 .action(async (options: LintOptions): Promise<void> => testTask(config, {
     fix: options.fix,
     tests: false
@@ -90,12 +145,15 @@ program
 
 program
 .command("local")
-.option("-p, --platform [platform]", "device platform (defaults to 'web')")
-.option("--production", "run the local server as close to production as possible (defaults to false)")
+.option(option.mode.flags, option.mode.description, option.mode.fn, option.mode.default)
+.option(option.platform.flags, option.platform.description, option.platform.fn, option.platform.default)
+.option(option.publication.flags, option.publication.description)
+.option(option.environment.flags, option.environment.description)
 .action(async (options: LocalOptions): Promise<void> => localTask(config, {
-    mode: options.production ? "production" : "development",
-    platform: options.platform ?? "web",
-    watch: !options.production
+    environment: options.environment,
+    mode: options.mode,
+    platform: options.platform,
+    publication: options.publication
 }));
 
 program
@@ -104,7 +162,7 @@ program
 
 program
 .command("test")
-.option("--fix", "attempt to fix lint issues automatically (defaults to false)")
+.option(option.fix.flags, option.fix.description, option.fix.default)
 .action(async (options: TestOptions): Promise<void> => testTask(config, {
     fix: options.fix
 }));

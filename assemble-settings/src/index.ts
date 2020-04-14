@@ -5,5 +5,8 @@ export {
     AssembleEnvironment,
     AssembleEnvironments
 } from "./environments";
-export { AssembleSettings } from "./settings";
+export {
+    AssembleSettings,
+    getPublicationSettings
+} from "./settings";
 export { AssembleWidgetSettings } from "./widget";

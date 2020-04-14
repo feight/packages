@@ -1,5 +1,6 @@
 
 
+import * as docker from "./docker";
 import * as emulators from "./emulators";
 import * as python from "./python";
 import * as redis from "./redis";
@@ -10,6 +11,8 @@ import { defaults } from "../defaults";
 export interface LocalConfig{
 
     console?: boolean;
+
+    docker?: docker.LocalDockerConfig;
 
     emulators?: emulators.LocalEmulatorsConfig;
 
@@ -24,6 +27,8 @@ export class NewsTeamLocalConfig{
 
     console: boolean;
 
+    docker: docker.NewsTeamLocalDockerConfig;
+
     emulators: emulators.NewsTeamLocalEmulatorsConfig;
 
     python: python.NewsTeamLocalPythonConfig;
@@ -33,6 +38,8 @@ export class NewsTeamLocalConfig{
     constructor(config?: LocalConfig){
 
         this.console = config?.console ?? defaults.local.console;
+
+        this.docker = new docker.NewsTeamLocalDockerConfig(config?.docker);
 
         this.emulators = new emulators.NewsTeamLocalEmulatorsConfig(config?.emulators);
 

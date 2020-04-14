@@ -86,6 +86,7 @@ export interface AnySchemaDefinition{
      * The schema type
      */
     type:
+        "alternatives" |
         "any" |
         "array" |
         "binary" |

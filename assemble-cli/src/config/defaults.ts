@@ -1,9 +1,41 @@
 
 
+/*
+
+    eslint
+
+    no-magic-numbers: "off",
+    @typescript-eslint/naming-convention: "off"
+
+*/
+
+
 export const defaults = {
     local: {
         console: true,
+        docker: {
+            elasticsearch: {
+                environment: {
+                    "discovery.type": "single-node"
+                },
+                port: [9200, 9300],
+                recipe: "elasticsearch:7.6.2"
+            },
+            mysql: {
+                environment: {
+                    MYSQL_ROOT_PASSWORD: "cosmos"
+                },
+                name: "mysql",
+                port: 3306,
+                recipe: "mysql:5.7"
+            }
+        },
         emulators: {
+            datastore: {
+                host: "127.0.0.1",
+                persist: true,
+                port: 8082
+            },
             firestore: {
                 host: "127.0.0.1",
                 port: 8081
@@ -17,6 +49,7 @@ export const defaults = {
         redis: {
             server: {
                 config: "redis.conf",
+                host: "127.0.0.1",
                 port: 6379
             }
         }

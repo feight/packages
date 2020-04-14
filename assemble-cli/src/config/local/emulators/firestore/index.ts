@@ -8,12 +8,12 @@ import { defaults } from "../../../defaults";
 export interface LocalFirestoreEmulatorConfig{
 
     /**
-     * The firestore host (defaults to localhost).
+     * The firestore host (defaults to 127.0.0.1).
      */
     host: string;
 
     /**
-     * The firestore port (defaults to 8080).
+     * The firestore port (defaults to 8081).
      */
     port: number;
 

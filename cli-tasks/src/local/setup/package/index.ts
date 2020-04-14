@@ -4,6 +4,8 @@ import { localPackageSetupTaskMac } from "./mac";
 
 
 export const packages = [
+    "docker",
+    "docker-machine",
     "graphicsmagick",
     "imagemagick",
     "java",
@@ -12,7 +14,8 @@ export const packages = [
     "mysql-client",
     "openssl",
     "pip",
-    "redis"
+    "redis",
+    "virtualbox"
 ] as const;
 
 export type Package = typeof packages[number];

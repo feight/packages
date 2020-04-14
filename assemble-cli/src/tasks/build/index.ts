@@ -59,9 +59,10 @@ export const label = "build";
 
 
 export interface BuildTaskOptions{
+    environment?: string;
     mode: Mode;
     platform: Platform;
-    watch?: boolean;
+    publication: string;
 }
 
 
@@ -163,7 +164,7 @@ export const buildTask = async function(config: NewsTeamConfig, options: BuildTa
 
     await cleanTask(config);
 
-    await linkTask();
+    await linkTask(options.publication);
 
     await buildEntriesTask(buildTaskConfigs.buildEntriesTask);
 

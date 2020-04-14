@@ -23,8 +23,8 @@ export interface CacheMap{
 
 export const getCache = async function(dependencies: Dependency[]): Promise<CacheMap>{
 
-    const cacheDirectory = path.join(process.cwd(), "node_modules/.cache");
-    const cacheJsonPath = path.join(cacheDirectory, "npm-install-local.json");
+    const cacheDirectory = path.join(process.cwd(), ".local/cache/@newsteam/npm-install-local");
+    const cacheJsonPath = path.join(cacheDirectory, "cache.json");
     const packageJSONExists = fs.existsSync(cacheJsonPath);
 
     let json = {};

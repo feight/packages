@@ -9,6 +9,9 @@ export {
     eslintLintTask,
     EslintLintTaskOptions
 } from "./lint/eslint";
+export { localDatastoreEmulatorTask } from "./local/emulators/datastore";
+export { localDockerMachineTask } from "./local/docker/machine";
+export { localDockerRunTask } from "./local/docker/run";
 export { localFirestoreEmulatorTask } from "./local/emulators/firestore";
 export { localMemcachedEmulatorTask } from "./local/emulators/memcached";
 export { localPythonServerTask } from "./local/python/server";

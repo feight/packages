@@ -13,6 +13,11 @@ export interface LocalRedisServerConfig{
     config?: string;
 
     /**
+     * The firestore host (defaults to 127.0.0.1).
+     */
+    host: string;
+
+    /**
      * The redis server port (defaults to 6379).
      * If a config file exists it will source the port from the config.
      */
@@ -29,6 +34,13 @@ export class NewsTeamLocalRedisServerConfig{
     config: string;
 
     @validate({
+        hostname: true,
+        ip: true,
+        type: "string"
+    })
+    host: string;
+
+    @validate({
         port: true,
         type: "number"
     })
@@ -37,6 +49,7 @@ export class NewsTeamLocalRedisServerConfig{
     constructor(config?: LocalRedisServerConfig){
 
         this.config = config?.config ?? defaults.local.redis.server.config;
+        this.host = config?.host ?? defaults.local.emulators.firestore.host;
         this.port = config?.port ?? defaults.local.redis.server.port;
 
     }

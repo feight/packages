@@ -5,12 +5,9 @@ import {
     localBrewSetupTask,
     localBrewPackageSetupTask
 } from "./brew";
-import {
-    localJavaSetupTask
-} from "./java";
-import {
-    localPipSetupTask
-} from "./pip";
+import { localJavaSetupTask } from "./java";
+import { localPipSetupTask } from "./pip";
+import { localVirtualboxSetupTask } from "./virtualbox";
 
 import { Package } from "..";
 
@@ -30,6 +27,11 @@ export const localPackageSetupTaskMac = async function(packages: Package[]): Pro
 
             // eslint-disable-next-line no-await-in-loop
             await localBrewPackageSetupTask(pack as typeof brewFormulae[number]);
+
+        }else if(pack === "virtualbox"){
+
+            // eslint-disable-next-line no-await-in-loop
+            await localVirtualboxSetupTask();
 
         }else if(pack === "java"){
 

@@ -27,6 +27,8 @@ import * as paths from "./paths";
 import * as modernizr from "./modernizr";
 import * as webpack from "./webpack";
 
+type ElementType < T extends readonly unknown[] > = T extends readonly (infer ElementType)[] ? ElementType : never;
+
 
 const cwd = process.cwd();
 
@@ -58,9 +60,14 @@ const overrides: Config = merge.all([
 ]);
 
 
-export type Mode = "development" | "production";
-export type Platform = "desktop" | "mobile" | "web";
-export type Target = "client" | "server";
+export const platforms = ["desktop", "mobile", "web"] as const;
+export const modes = ["development", "production"] as const;
+export const targets = ["client", "server"] as const;
+
+
+export type Platform = ElementType<typeof platforms>;
+export type Mode = ElementType<typeof modes>;
+export type Target = ElementType<typeof targets>;
 
 
 export { ModernizrConfig } from "./modernizr/types";

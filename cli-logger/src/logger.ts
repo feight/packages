@@ -118,6 +118,7 @@ export class Logger{
             console: "🎮",
             datastore: "💾",
             deploy: "💩",
+            docker: "🐋",
             error: "💥",
             firestore: "🔥",
             kill: "💀",

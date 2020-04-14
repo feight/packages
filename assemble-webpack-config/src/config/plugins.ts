@@ -3,6 +3,7 @@
 import path from "path";
 
 import AssetsPlugin from "assets-webpack-plugin";
+import FileListPlugin from "webpack-file-list-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import webpack from "webpack";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
@@ -26,6 +27,10 @@ export const plugins = function(
     });
 
     const webpackPlugins = [
+        new FileListPlugin({
+            filename: "chunks.json",
+            path: path.resolve(options.cwd, "src/build")
+        }),
         new webpack.optimize.ModuleConcatenationPlugin(),
         new AssetsPlugin({
             filename: "webpack-assets.json",

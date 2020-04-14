@@ -42,6 +42,8 @@ const localRubySetupTask = async function(): Promise<void>{
 
 
 export const brewFormulae = [
+    "docker",
+    "docker-machine",
     "graphicsmagick",
     "imagemagick",
     "memcached",

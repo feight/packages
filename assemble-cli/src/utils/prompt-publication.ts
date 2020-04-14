@@ -2,14 +2,13 @@
 
 import path from "path";
 
-import fs from "fs-extra";
 import globby from "globby";
 import { argv as args } from "yargs";
 import {
     prompt,
     PromptChoice
 } from "@newsteam/cli-utils";
-import { AssembleSettings } from "@newsteam/assemble-settings";
+import { getPublicationSettings } from "@newsteam/assemble-settings";
 
 
 interface Publication{
@@ -23,22 +22,21 @@ interface Publication{
 
 const getPublications = async function(): Promise<Publication[]>{
 
-    const configsPaths = await globby([
+    const publicationFolders = (await globby([
         "publications/*/settings/index.json",
         "publications/*/*/settings/index.json"
-    ]);
+    ])).map((folder) => path.normalize(path.join(folder, "../..")));
 
-    const publications = configsPaths.map((pth) => {
+    const publications = publicationFolders.map((publicationFolder) => {
 
-        const config: AssembleSettings = JSON.parse(fs.readFileSync(pth).toString());
-        const publicationFolder = path.join(path.dirname(path.resolve(pth)), "..");
+        const settings = getPublicationSettings(publicationFolder);
         const publicationFolderName = path.basename(publicationFolder);
         const publicationParentFolderName = path.basename(path.join(publicationFolder, ".."));
 
         return {
             folder: publicationFolderName,
-            id: config.pubId,
-            name: config.name,
+            id: settings.pubId,
+            name: settings.name,
             parent: publicationParentFolderName === "publications" ? "" : publicationParentFolderName,
             path: publicationFolder
         };
@@ -119,9 +117,24 @@ const getChoices = function(publicationRoots: Publication[]): PromptChoice[]{
 export type PublicationFolder = string;
 
 
-export const promptPublication = async function(): Promise<PublicationFolder>{
+export const promptPublication = async function(publication?: string): Promise<PublicationFolder>{
 
     const publications = await getPublications();
+
+    if(publication){
+
+        const pubs = publications.filter((pub) => pub.id === publication);
+
+        if(pubs.length === 1){
+
+            return pubs[0].path;
+
+        }
+
+        throw new Error(`No publication with id '${ publication }'`);
+
+    }
+
     const choices = getChoices(publications);
 
     return publications.length === 1 ? publications[0].path : prompt("publication", choices);

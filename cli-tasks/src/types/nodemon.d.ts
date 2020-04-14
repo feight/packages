@@ -5,6 +5,7 @@ declare module "nodemon" {
     const nodemon:{
         (
             options: {
+                cwd?: string;
                 env: {
                     [id: string]: string | boolean | number;
                 },

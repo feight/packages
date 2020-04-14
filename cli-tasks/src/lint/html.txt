@@ -62,7 +62,7 @@ export const eslintLintTask = async function(options: EslintLintTaskOptions): Pr
 
     const eslintCLI = new CLIEngine({
         cache: config.cache,
-        cacheLocation: "node_modules/.cache/@newsteam/cli-tasks/.eslintcache",
+        cacheLocation: ".local/cache/@newsteam/cli-tasks/.eslintcache",
         fix: config.fix,
         useEslintrc: true
     });

@@ -14,7 +14,7 @@ export const cleanCacheTask = async function(): Promise<void>{
 
     await new Promise((resolve) => {
 
-        const cachePath = path.join(process.cwd(), "node_modules/.cache");
+        const cachePath = path.join(process.cwd(), ".local/cache");
 
         if(fs.existsSync(cachePath)){
 

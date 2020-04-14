@@ -47,7 +47,7 @@ export const buildSettingsTask = async function(options: BuildSettingsTaskOption
         // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
         delete require.cache[require.resolve(clientSettingsRequirePath)];
 
-        // Need a dynamic require since where this package is installed might change
+        // Need a dynamic require because where this package is installed might change
         // eslint-disable-next-line max-len
         // eslint-disable-next-line global-require, security/detect-non-literal-require, import/no-dynamic-require, @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
         const getClientSettings = require(clientSettingsRequirePath);
