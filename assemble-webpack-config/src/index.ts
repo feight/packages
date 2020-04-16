@@ -27,6 +27,7 @@ const generateOptions = function(options: ConfigOptions, environment: Environmen
             bundleAnalyzer: 3001,
             devServer: 3002
         },
+        progress: true,
         staticFolder: "static",
         target: "client",
         targetPath: "",
@@ -56,6 +57,7 @@ export interface ConfigOptions{
     config?: Configuration;
     outputPath?: string;
     ports?: PortConfigOptions;
+    progress?: boolean;
     staticFolder?: string;
 }
 
@@ -81,6 +83,7 @@ export interface Options{
     mode: Mode;
     outputPath: string;
     ports: PortConfigOptions;
+    progress: boolean;
     staticFolder: string;
     target: Target;
     targetPath: string;
@@ -97,31 +100,31 @@ export const config = function(
         args: Args = {}
     ): Configuration => {
 
-        const opts = generateOptions(options, environment, args);
-        const config = merge(options.config ?? {}, configs.output(opts));
+        const genOptions = generateOptions(options, environment, args);
+        const configuration = merge(options.config ?? {}, configs.output(genOptions));
 
         // Deep merge all base configuration with custom configuration
         const merged = merge(
-            configs.devtool(opts),
+            configs.devtool(genOptions),
             configs.entry(),
-            configs.module(opts, config),
-            configs.mode(opts),
+            configs.module(genOptions, configuration),
+            configs.mode(genOptions),
             configs.node(),
-            configs.optimization(opts),
-            configs.performance(opts),
-            configs.plugins(opts),
-            configs.resolve(opts),
+            configs.optimization(genOptions),
+            configs.performance(genOptions),
+            configs.plugins(genOptions),
+            configs.resolve(genOptions),
             configs.stats(),
             configs.watchOptions(),
-            config
+            configuration
         );
 
         /*
          * Override the entry branch of configuration if one was specified in the
          * custom configuration
          */
-        if(config.entry){
-            merged.entry = config.entry;
+        if(configuration.entry){
+            merged.entry = configuration.entry;
         }
 
         return merged;

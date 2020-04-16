@@ -82,7 +82,7 @@ export const buildWebpackTask = async function(options: BuildWebpackTaskOptions)
     } = options;
 
     // eslint-disable-next-line max-lines-per-function
-    await new Promise((resolve): void => {
+    await new Promise((resolve, reject): void => {
 
         // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
         require("ts-node").register({
@@ -151,6 +151,8 @@ export const buildWebpackTask = async function(options: BuildWebpackTaskOptions)
 
                     const statsString = stats.toString(webpackConfig.stats);
 
+                    console.log(Boolean(statsString));
+
                     if(statsString){
 
                         logger.log("", { label });
@@ -186,7 +188,7 @@ export const buildWebpackTask = async function(options: BuildWebpackTaskOptions)
 
         }else{
 
-            compiler.run((): void => {
+            compiler.run((error, stats): void => {
 
                 if(profile){
 
@@ -194,7 +196,19 @@ export const buildWebpackTask = async function(options: BuildWebpackTaskOptions)
 
                 }
 
-                resolve("");
+                // The types are lying here
+                // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+                if(error){
+
+                    output(`Build ${ path.resolve(config) }`)(error, stats);
+
+                    reject(error);
+
+                }else{
+
+                    resolve("");
+
+                }
 
             });
 

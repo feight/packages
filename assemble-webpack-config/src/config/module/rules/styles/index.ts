@@ -9,7 +9,6 @@ import {
 import postcssConfig from "@tamland/postcss-config";
 
 import { cacheLoader } from "../../../../shared/loaders/cache";
-import { Options } from "../../../..";
 
 
 /*
@@ -19,16 +18,10 @@ import { Options } from "../../../..";
  *
  * https://github.com/webpack-contrib/mini-css-extract-plugin
  */
-const miniCssExtractPlugin = (
-    config: Configuration,
-    options: Options
-): RuleSetUseItem => ({
+const miniCssExtractPlugin = (): RuleSetUseItem => ({
     loader: MiniCssExtractPlugin.loader,
     options: {
-        hmr:
-                options.mode === "development" &&
-                options.watch,
-        publicPath: config.output ? config.output.publicPath : `/${ options.staticFolder }/`
+        esModule: true
     }
 });
 
@@ -100,8 +93,7 @@ const sassLoader = (): RuleSetUseItem => ({
 
 
 export const styles = function(
-    config: Configuration,
-    options: Options
+    config: Configuration
 ): Configuration{
 
     return merge(config, {
@@ -111,7 +103,7 @@ export const styles = function(
                     test: /\.min\.css$/u,
                     use: [
                         cacheLoader(),
-                        miniCssExtractPlugin(config, options),
+                        miniCssExtractPlugin(),
                         cssLoader()
                     ]
                 },
@@ -119,7 +111,7 @@ export const styles = function(
                     test: /^(.{0,3}|.*(?!\.min).{4})\.(css|scss)$/u,
                     use: [
                         cacheLoader(),
-                        miniCssExtractPlugin(config, options),
+                        miniCssExtractPlugin(),
                         cssLoader(),
                         cleanCssLoader(),
                         postCssLoader(),

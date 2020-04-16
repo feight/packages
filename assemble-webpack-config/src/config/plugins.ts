@@ -27,15 +27,18 @@ export const plugins = function(
     });
 
     const webpackPlugins = [
+        new webpack.optimize.ModuleConcatenationPlugin(),
         new FileListPlugin({
             filename: "chunks.json",
             path: path.resolve(options.cwd, "src/build")
         }),
-        new webpack.optimize.ModuleConcatenationPlugin(),
-        new AssetsPlugin({
-            filename: "webpack-assets.json",
-            path: path.resolve(options.cwd, "src/build")
-        }),
+
+        /*
+         *New AssetsPlugin({
+         *  filename: "webpack-assets.json",
+         *  path: path.resolve(options.cwd, "src/build")
+         *}),
+         */
         new webpack.DefinePlugin({
             "process.env.CLIENT": JSON.stringify("browser"),
             // This is alright since it's an override of a process env variable
@@ -43,12 +46,13 @@ export const plugins = function(
             "process.env.NODE_ENV": JSON.stringify("production")
         }),
         new MiniCssExtractPlugin({
-            chunkFilename: `build/chunks/${ hash ? "[chunkhash].js" : "[id].css" }`,
-            filename: `build/chunks/${ hash ? "[chunkhash].js" : "[name].css" }`
+            chunkFilename: `build/chunks/${ hash ? "[chunkhash].css" : "[id].css" }`,
+            filename: `build/chunks/${ hash ? "[chunkhash].css" : "[name].css" }`
         })
     ].concat(options.watch ? [
         new webpack.NoEmitOnErrorsPlugin()
-    ] : [
+    ] : [])
+    .concat(!options.watch && options.progress ? [
         // Don't show progress during the watch, it messes up the other output
         new webpack.ProgressPlugin({
             activeModules: false,
@@ -67,7 +71,7 @@ export const plugins = function(
          */
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } as any)
-    ]);
+    ] : []);
 
     if(options.watch){
 

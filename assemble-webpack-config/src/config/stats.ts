@@ -14,10 +14,11 @@ export const stats = function(): Configuration{
 
     return {
         stats: {
-            assets: false,
+            assets: true,
             builtAt: false,
+            chunks: false,
             colors: true,
-            entrypoints: false,
+            entrypoints: true,
             hash: false,
             modules: false,
             timings: false,
