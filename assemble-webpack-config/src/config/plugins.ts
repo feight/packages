@@ -26,8 +26,6 @@ export const plugins = function(
         total: 100
     });
 
-    console.log(["plugins options", options]);
-
     const webpackPlugins = [
         new webpack.optimize.ModuleConcatenationPlugin(),
         new FileListPlugin({

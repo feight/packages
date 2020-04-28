@@ -152,8 +152,6 @@ export const buildWebpackTask = async function(options: BuildWebpackTaskOptions)
 
                     const statsString = stats.toString(webpackConfig.stats);
 
-                    console.log(Boolean(statsString));
-
                     if(statsString){
 
                         logger.log("", { label });
