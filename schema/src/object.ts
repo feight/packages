@@ -56,13 +56,17 @@ const extendedJoi = Joi.extend(
 
                 try{
 
-                    return { value: JSON.parse(value) };
+                    // It's expected that this is of type any
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    return { value: JSON.parse(value) as { [id: string]: any } };
 
                 }catch(error){
 
                     try{
 
-                        return { value: JSON5.parse(value) };
+                        // It's expected that this is of type any
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                        return { value: JSON5.parse(value) as { [id: string]: any } };
 
                     }catch(error2){
 
@@ -76,7 +80,7 @@ const extendedJoi = Joi.extend(
         },
         type: "object"
     }
-);
+) as Joi.Root;
 
 const bindOperator = function(
     schema: Joi.ObjectSchema,
@@ -267,10 +271,12 @@ const convert = {
     },
     regex(schema: Joi.ObjectSchema, value?: ObjectSchemaDefinition["regex"]): Joi.ObjectSchema{
         // This is chilled because @types/hapi__joi is out of date
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        /* eslint-disable @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call */
+        /* eslint-disable @typescript-eslint/ban-ts-comment, @typescript-eslint/prefer-ts-expect-error */
         // @ts-ignore
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call
         return typeof value === "undefined" ? schema : schema.regex(true);
+        /* eslint-enable @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call */
+        /* eslint-enable @typescript-eslint/ban-ts-comment, @typescript-eslint/prefer-ts-expect-error */
     },
     rename(schema: Joi.ObjectSchema, value?: ObjectSchemaDefinition["rename"]): Joi.ObjectSchema{
 
@@ -448,7 +454,6 @@ export interface ObjectSchemaDefinition extends AnySchemaDefinition{
 
 export const objectSchemaToJoi = function(type: ObjectSchema): Joi.AnySchema{
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
     let schema = extendedJoi.object();
 
     if(type !== "object"){

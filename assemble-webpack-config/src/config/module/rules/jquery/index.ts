@@ -16,7 +16,7 @@ export const jquery = function(
                 {
                     test: require.resolve("jquery"),
                     use: [
-                        cacheLoader(),
+                        // CacheLoader(),
                         {
                             loader: "expose-loader",
                             options: "jQuery"

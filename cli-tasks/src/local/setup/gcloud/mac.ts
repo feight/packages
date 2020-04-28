@@ -79,7 +79,7 @@ const installGCloudComponentMac = async function(component: GCloudComponent): Pr
 
         // This works ok - leaving it alone for now
         // eslint-disable-next-line require-atomic-updates
-        versions = JSON.parse(rawVersions);
+        versions = JSON.parse(rawVersions) as Version[];
 
     }
 

@@ -16,8 +16,11 @@ export const files = function(
     return merge(config, {
         module: {
             rules: [
-                cacheLoader(),
-                // .txt and .json file extensions
+
+                /*
+                 * CacheLoader(),
+                 * .txt and .json file extensions
+                 */
                 {
                     exclude: /node_modules/u,
                     test: /\.(?:txt)$/u,

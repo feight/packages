@@ -30,7 +30,7 @@ export const scripts = function(
                      */
                     type: "javascript/auto",
                     use: [
-                        cacheLoader(),
+                        // CacheLoader(),
                         babelLoader()
                     ]
                 },
@@ -39,7 +39,7 @@ export const scripts = function(
                     exclude: /node_modules/u,
                     test: /\.jsx?$/u,
                     use: [
-                        cacheLoader(),
+                        // CacheLoader(),
                         babelLoader()
                     ]
                 },
@@ -48,7 +48,7 @@ export const scripts = function(
                     exclude: /node_modules/u,
                     test: /\.tsx?$/u,
                     use: [
-                        cacheLoader(),
+                        // CacheLoader(),
                         babelLoader()
                     ]
                 }

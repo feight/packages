@@ -32,7 +32,7 @@ const getCache = async function(): Promise<Cache>{
 
         try{
 
-            cache = JSON.parse(raw);
+            cache = JSON.parse(raw) as Cache;
 
         }catch(error){}
 

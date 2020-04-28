@@ -3,7 +3,6 @@
 import "jasmine";
 
 import { defaults } from "../defaults";
-
 import { config } from "..";
 
 

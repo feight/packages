@@ -12,7 +12,7 @@ const output = (color?: string): (data: any) => void => (data: any): void => {
 
     // This is actually quite safe since all objects have a toString method
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-    const string = data.toString();
+    const string = data.toString() as string;
 
     try{
 

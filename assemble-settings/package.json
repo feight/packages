@@ -39,9 +39,9 @@
     "lib"
   ],
   "devDependencies": {
-    "@tamland/babel": "^0.0.35",
-    "@tamland/eslint": "^0.0.74",
-    "@tamland/jasmine": "0.0.3",
+    "@tamland/babel": "^0.0.36",
+    "@tamland/eslint": "^0.0.76",
+    "@tamland/jasmine": "0.0.4",
     "@types/fs-extra": "^8.1.0"
   },
   "dependencies": {

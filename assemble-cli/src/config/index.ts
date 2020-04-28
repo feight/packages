@@ -4,6 +4,7 @@
 
     eslint
 
+    global-require: "off",
     @typescript-eslint/no-require-imports: "off",
     @typescript-eslint/no-var-requires: "off",
     import/no-commonjs: "off",
@@ -39,24 +40,20 @@ require("ts-node").register({
 
 const configPathBase = path.resolve(path.join(cwd, ".newsteam.ts"));
 const configPathLocal = path.resolve(path.join(cwd, ".newsteam.local.ts"));
-const configBase = fs.existsSync(configPathBase) ? require(path.relative(__dirname, configPathBase)) : { config: {} };
-const configLocal = fs.existsSync(configPathLocal) ? require(path.relative(__dirname, configPathLocal)) : { config: {} };
+const configBase = (fs.existsSync(configPathBase) ? require(path.relative(__dirname, configPathBase)) : { config: {} }) as { config?: Config };
+const configLocal = (fs.existsSync(configPathLocal) ? require(path.relative(__dirname, configPathLocal)) : { config: {} }) as { config?: Config };
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 if(!configBase.config){
     throw new Error(`${ configPathBase } has no exported member 'config'`);
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 if(!configLocal.config){
     throw new Error(`${ configPathLocal } has no exported member 'config'`);
 }
 
 const overrides: Config = merge.all([
-    /* eslint-disable @typescript-eslint/no-unsafe-member-access */
     configBase.config,
     configLocal.config
-    /* eslint-enable @typescript-eslint/no-unsafe-member-access */
 ]);
 
 

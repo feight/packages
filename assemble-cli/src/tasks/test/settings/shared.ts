@@ -59,7 +59,7 @@ const getDescendantProperty = function(object: any, desc: string): any{
     const array = desc.split(".");
 
     // I'll be honest, I got this from stack overflow, lets just roll with it
-    // eslint-disable-next-line no-param-reassign, no-empty, @typescript-eslint/no-unsafe-member-access
+    // eslint-disable-next-line no-param-reassign, no-empty, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment
     while(array.length && (object = object[array.shift() || -1])){}
 
     // Can be any object
@@ -167,6 +167,7 @@ export const testSharedSettingsTask = async function(): Promise<void>{
     let sharedData = null;
 
     try{
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         sharedData = JSON.parse(sharedRaw);
     }catch(error){
         throw new Error("Settings file could not be parsed as valid json");
@@ -180,6 +181,7 @@ export const testSharedSettingsTask = async function(): Promise<void>{
         let json = null;
 
         try{
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             json = JSON.parse(raw);
         }catch(error){
             throw new Error("Settings file could not be parsed as valid json");
@@ -187,6 +189,7 @@ export const testSharedSettingsTask = async function(): Promise<void>{
 
         return {
             file,
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             json
         };
 

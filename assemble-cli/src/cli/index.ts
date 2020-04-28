@@ -51,7 +51,7 @@ type TestOptions = LintOptions;
 
 
 const packageJsonRaw = fs.readFileSync(path.join(__dirname, "../../package.json"));
-const packageJson = JSON.parse(packageJsonRaw.toString());
+const packageJson = JSON.parse(packageJsonRaw.toString()) as { version: string };
 
 
 const option = {
@@ -106,7 +106,6 @@ process.on("unhandledRejection", (error: any): void => logger.error(error));
 process.on("uncaughtException", (error: Error): void => logger.error(error));
 
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 program.version(packageJson.version);
 
 

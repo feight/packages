@@ -15,7 +15,7 @@ export const html = function(config: Configuration): Configuration{
                 {
                     test: /\.html$/u,
                     use: [
-                        cacheLoader(),
+                        // CacheLoader(),
                         {
                             loader: "html-loader",
                             options: {

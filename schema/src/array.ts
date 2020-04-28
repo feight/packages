@@ -30,13 +30,17 @@ const extendedJoi = Joi.extend(
 
                 try{
 
-                    return { value: JSON.parse(value) };
+                    // It's expected that this is of type any
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    return { value: JSON.parse(value) as any[] };
 
                 }catch(error){
 
                     try{
 
-                        return { value: JSON5.parse(value) };
+                        // It's expected that this is of type any
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                        return { value: JSON5.parse(value) as any[] };
 
                     }catch(error2){
 
@@ -50,7 +54,7 @@ const extendedJoi = Joi.extend(
         },
         type: "array"
     }
-);
+) as Joi.Root;
 
 const convert = {
     has(schema: Joi.ArraySchema, value?: ArraySchemaDefinition["has"]): Joi.ArraySchema{
@@ -216,7 +220,6 @@ export interface ArraySchemaDefinition extends AnySchemaDefinition{
 
 export const arraySchemaToJoi = function(type: ArraySchema): Joi.AnySchema{
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     let schema = extendedJoi.array();
 
     if(type !== "array"){

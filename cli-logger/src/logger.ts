@@ -341,7 +341,13 @@ export class Logger{
 
             const cursor = getCursorPosition.sync();
 
-            console.log(cursor.col > 1 ? `\n${ blank }` : blank);
+            // Sometimes when you ctrl+c a process this cursor is undefined
+            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+            if(cursor){
+
+                console.log(cursor.col > 1 ? `\n${ blank }` : blank);
+
+            }
 
         }
 
@@ -352,7 +358,13 @@ export class Logger{
             const cursor = getCursorPosition.sync();
             const output = color ? line : this.inLineFormat(line);
 
-            console.log(cursor.col > 1 ? `\n${ output }` : output);
+            // Sometimes when you ctrl+c a process this cursor is undefined
+            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+            if(cursor){
+
+                console.log(cursor.col > 1 ? `\n${ output }` : output);
+
+            }
 
         });
 

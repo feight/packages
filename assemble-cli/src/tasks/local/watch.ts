@@ -13,6 +13,7 @@ import { buildEntriesTask } from "../build/entries";
 import { buildRSSTask } from "../build/rss";
 import { buildSettingsTask } from "../build/settings";
 import { buildStaticAssetsTask } from "../build/static";
+import { buildWebpackTask } from "../build/webpack";
 import { buildWidgetsTask } from "../build/widgets";
 import { buildYamlTask } from "../build/yaml";
 
@@ -61,6 +62,10 @@ export const localWatchTask = async function(config: NewsTeamConfig, options: Bu
         }),
         minifyHTMLTask({
             ...buildTaskConfigs.minifyHTMLTask,
+            ...watchConfig
+        }),
+        buildWebpackTask({
+            ...buildTaskConfigs.buildWebpackTask,
             ...watchConfig
         })
     ]);

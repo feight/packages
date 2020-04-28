@@ -65,7 +65,7 @@ export const exec = function(options: {
 
                 if(proc !== null){
 
-                    proc.pipe(through.obj((string, encoding, done): void => {
+                    proc.pipe(through.obj((string: string, encoding, done): void => {
 
                         let formattedString = string;
 

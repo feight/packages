@@ -191,7 +191,7 @@ export const validateSchema = function<TValue>(value: TValue, schema: Validation
 // eslint-disable-next-line @typescript-eslint/no-extraneous-class
 export class Validate{
 
-    static map: Map<object, SchemaMap> = new Map();
+    static map: Map<object, SchemaMap> = new Map<object, SchemaMap>();
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     static compile(target: { [key: string]: any }): SchemaMap{

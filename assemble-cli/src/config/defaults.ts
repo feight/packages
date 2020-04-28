@@ -4,7 +4,7 @@
 
     eslint
 
-    no-magic-numbers: "off",
+    @typescript-eslint/no-magic-numbers: "off",
     @typescript-eslint/naming-convention: "off"
 
 */

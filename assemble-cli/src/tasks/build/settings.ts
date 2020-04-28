@@ -49,10 +49,10 @@ export const buildSettingsTask = async function(options: BuildSettingsTaskOption
 
         // Need a dynamic require because where this package is installed might change
         // eslint-disable-next-line max-len
-        // eslint-disable-next-line global-require, security/detect-non-literal-require, import/no-dynamic-require, @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
+        // eslint-disable-next-line global-require, security/detect-non-literal-require, import/no-dynamic-require, @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports, @typescript-eslint/no-unsafe-assignment
         const getClientSettings = require(clientSettingsRequirePath);
         // We're assuming the client settings consists of a default export function
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment
         const settings = getClientSettings();
 
         await Promise.all([

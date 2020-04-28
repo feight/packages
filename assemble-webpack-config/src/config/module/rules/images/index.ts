@@ -16,8 +16,11 @@ export const images = function(
     return merge(config, {
         module: {
             rules: [
-                cacheLoader(),
-                // .png .jpg .jpeg .gif .webp and .ico image extensions
+
+                /*
+                 * CacheLoader(),
+                 * .png .jpg .jpeg .gif .webp and .ico image extensions
+                 */
                 {
                     test: /\.(?:png|jpg|jpeg|gif|webp)$/u,
 

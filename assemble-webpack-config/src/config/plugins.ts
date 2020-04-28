@@ -26,32 +26,36 @@ export const plugins = function(
         total: 100
     });
 
+    console.log(["plugins options", options]);
+
     const webpackPlugins = [
         new webpack.optimize.ModuleConcatenationPlugin(),
         new FileListPlugin({
             filename: "chunks.json",
             path: path.resolve(options.cwd, "src/build")
         }),
-
-        /*
-         *New AssetsPlugin({
-         *  filename: "webpack-assets.json",
-         *  path: path.resolve(options.cwd, "src/build")
-         *}),
-         */
         new webpack.DefinePlugin({
             "process.env.CLIENT": JSON.stringify("browser"),
             // This is alright since it's an override of a process env variable
             // eslint-disable-next-line @typescript-eslint/naming-convention
             "process.env.NODE_ENV": JSON.stringify("production")
         }),
+        new webpack.ProvidePlugin({
+            // This is alright because we need to provide $
+            // eslint-disable-next-line id-length
+            $: "jquery",
+            jQuery: "jquery",
+            "window.jQuery": "jquery"
+        }),
+        new AssetsPlugin({
+            filename: "webpack-assets.json",
+            path: path.resolve(options.cwd, "src/build")
+        }),
         new MiniCssExtractPlugin({
             chunkFilename: `build/chunks/${ hash ? "[chunkhash].css" : "[id].css" }`,
             filename: `build/chunks/${ hash ? "[chunkhash].css" : "[name].css" }`
         })
-    ].concat(options.watch ? [
-        new webpack.NoEmitOnErrorsPlugin()
-    ] : [])
+    ]
     .concat(!options.watch && options.progress ? [
         // Don't show progress during the watch, it messes up the other output
         new webpack.ProgressPlugin({

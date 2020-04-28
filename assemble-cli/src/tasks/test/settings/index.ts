@@ -2,7 +2,10 @@
 
 import path from "path";
 
-import { Validator } from "jsonschema";
+import {
+    Validator,
+    Schema
+} from "jsonschema";
 import glob from "globby";
 import fs from "fs-extra";
 import { logger } from "@newsteam/cli-logger";
@@ -12,7 +15,6 @@ import {
 } from "@newsteam/cli-errors";
 
 import { SettingsSchemaTests } from "../../../config";
-
 import { label } from "..";
 
 
@@ -48,8 +50,10 @@ export const testSettingsTask = async function(options: TestSettingsTaskOptions)
 
             logger.log(`schema ${ path.resolve(file) }`, { label });
 
+            // This is safe since the validator accepts any
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             const data = JSON.parse(fs.readFileSync(file).toString());
-            const schema = JSON.parse(fs.readFileSync(validation.schema).toString());
+            const schema = JSON.parse(fs.readFileSync(validation.schema).toString()) as Schema;
             const validator = new Validator();
             const result = validator.validate(data, schema);
 

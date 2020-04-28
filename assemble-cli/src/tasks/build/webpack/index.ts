@@ -48,7 +48,7 @@ const printBuildStatistics = function(): void{
     });
 
     // This is converting compileTime in milliseconds to seconds
-    // eslint-disable-next-line no-magic-numbers
+    // eslint-disable-next-line @typescript-eslint/no-magic-numbers
     const compileTimes = data.map((item) => item.misc.compileTime / 1000).slice(Math.max(data.length - max, 0));
 
     logger.log("", { label });
@@ -92,6 +92,7 @@ export const buildWebpackTask = async function(options: BuildWebpackTaskOptions)
         const webpackBasePath = "./config.js";
         const webpackCustomPath = path.relative(__dirname, path.resolve(config));
         const webpackCustomExists = fs.existsSync(path.resolve(config));
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         const webpackImport = webpackCustomExists ? require(webpackCustomPath) : require(webpackBasePath);
 
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
@@ -100,7 +101,7 @@ export const buildWebpackTask = async function(options: BuildWebpackTaskOptions)
         }
 
         // This doesn't present any danger and is necessary in this case.
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment
         const webpackConfig: Configuration = webpackImport.config({
             platform
         }, {

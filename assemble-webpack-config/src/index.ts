@@ -14,15 +14,10 @@ import * as configs from "./config";
 
 const generateOptions = function(options: ConfigOptions, environment: Environment, args: Args): Options{
 
-    if(environment.cwd === "x"){
-        console.log([environment, args]);
-    }
-
     const optionsDefaults: Options = {
         bundleAnalyzer: true,
         cwd: process.cwd(),
-        mode: "development",
-        outputPath: "dist",
+        mode: args.mode ?? "development",
         ports: {
             bundleAnalyzer: 3001,
             devServer: 3002
@@ -31,7 +26,7 @@ const generateOptions = function(options: ConfigOptions, environment: Environmen
         staticFolder: "static",
         target: "client",
         targetPath: "",
-        watch: false
+        watch: args.watch ?? false
     };
 
     return {
@@ -55,7 +50,6 @@ export interface PortConfigOptions{
 export interface ConfigOptions{
     bundleAnalyzer?: boolean;
     config?: Configuration;
-    outputPath?: string;
     ports?: PortConfigOptions;
     progress?: boolean;
     staticFolder?: string;
@@ -81,7 +75,6 @@ export interface Options{
     config?: Configuration;
     cwd: string;
     mode: Mode;
-    outputPath: string;
     ports: PortConfigOptions;
     progress: boolean;
     staticFolder: string;

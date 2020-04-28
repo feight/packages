@@ -1,6 +1,7 @@
 
 // Doesn't work without require and it's safe to do it here since it's just a test
-// eslint-disable-next-line import/no-commonjs, @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires
+// eslint-disable-next-line max-len
+// eslint-disable-next-line import/no-commonjs, @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires, @typescript-eslint/no-unsafe-assignment
 const pty = require("node-pty");
 
 
@@ -39,7 +40,7 @@ export const spawn = function(options: {
 
             const [cm, ...args] = bashCmd.split(" ");
 
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment
             const term = pty.spawn(cm, args, {
                 cols: 500,
                 cwd,

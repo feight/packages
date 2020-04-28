@@ -102,16 +102,16 @@ export const styles = function(
                 {
                     test: /\.min\.css$/u,
                     use: [
-                        cacheLoader(),
                         miniCssExtractPlugin(),
+                        cacheLoader(),
                         cssLoader()
                     ]
                 },
                 {
                     test: /^(.{0,3}|.*(?!\.min).{4})\.(css|scss)$/u,
                     use: [
-                        cacheLoader(),
                         miniCssExtractPlugin(),
+                        cacheLoader(),
                         cssLoader(),
                         cleanCssLoader(),
                         postCssLoader(),
