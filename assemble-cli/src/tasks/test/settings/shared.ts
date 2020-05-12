@@ -164,7 +164,7 @@ export const testSharedSettingsTask = async function(): Promise<void>{
 
     logger.log(`shared ${ path.resolve(sharedSettingsFilePath) }`, { label });
 
-    let sharedData = null;
+    let sharedData = undefined;
 
     try{
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
@@ -178,7 +178,7 @@ export const testSharedSettingsTask = async function(): Promise<void>{
 
         const raw = await fs.readFile(file, "utf8");
 
-        let json = null;
+        let json = undefined;
 
         try{
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment

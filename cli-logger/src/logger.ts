@@ -20,8 +20,8 @@ const nonBreakingCharacterCode = 160;
 const nonBreakingCharacter = String.fromCharCode(nonBreakingCharacterCode);
 const cwd = process.cwd();
 
-let lastFormattedLabel: string | null = null;
-let lastLabel: string | null = null;
+let lastFormattedLabel: string | undefined = undefined;
+let lastLabel: string | undefined = undefined;
 let started = false;
 
 
@@ -293,7 +293,7 @@ export class Logger{
             });
 
             // Not invalid since that function is bound by the through library
-            // eslint-disable-next-line no-invalid-this
+            // eslint-disable-next-line @typescript-eslint/no-invalid-this
             this.push(file);
 
             return done();
@@ -302,7 +302,7 @@ export class Logger{
 
     }
 
-    getLastLabel(): string | null{
+    getLastLabel(): string | undefined{
 
         return lastLabel;
 

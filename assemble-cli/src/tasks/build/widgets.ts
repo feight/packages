@@ -275,7 +275,7 @@ export const buildWidgetsTask = async function(options: BuildWidgetsTaskOptions)
             [path.join(destination, "widgets.edit.js"), editJS],
             [path.join(destination, "widgets.edit.scss"), editSCSS],
             [path.join(destination, "widgets.modes.amp.scss"), ampSCSS],
-            [path.join(destination, "widgets.json"), JSON.stringify(widgets, null, 2)]
+            [path.join(destination, "widgets.json"), JSON.stringify(widgets, undefined, 2)]
         ];
 
         const bar = logger.progress({

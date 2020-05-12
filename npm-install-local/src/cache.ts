@@ -77,6 +77,6 @@ export const setCache = async function(dependencies: Dependency[]): Promise<void
     }
 
     await fs.ensureDir(cacheDirectory);
-    await fs.writeFile(cacheJsonPath, JSON.stringify(cache, null, 2), "utf-8");
+    await fs.writeFile(cacheJsonPath, JSON.stringify(cache, undefined, 2), "utf-8");
 
 };

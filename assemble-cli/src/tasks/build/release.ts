@@ -77,9 +77,9 @@ export const buildReleaseTask = async function(config: NewsTeamConfig): Promise<
 
         }
 
-        return null;
+        return undefined;
 
-    }).filter((item) => item !== null);
+    }).filter((item) => item !== undefined);
 
     const indent = 4;
     const file = path.resolve(path.join(config.paths.build, "releases.json"));
@@ -90,7 +90,7 @@ export const buildReleaseTask = async function(config: NewsTeamConfig): Promise<
             {
                 releases: commits
             },
-            null,
+            undefined,
             indent
         ),
         "utf8"

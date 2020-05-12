@@ -68,7 +68,7 @@ const extendedJoi = Joi.extend(
                         // eslint-disable-next-line @typescript-eslint/no-explicit-any
                         return { value: JSON5.parse(value) as { [id: string]: any } };
 
-                    }catch(error2){
+                    }catch(error_){
 
                         return { value };
 
@@ -270,13 +270,7 @@ const convert = {
 
     },
     regex(schema: Joi.ObjectSchema, value?: ObjectSchemaDefinition["regex"]): Joi.ObjectSchema{
-        // This is chilled because @types/hapi__joi is out of date
-        /* eslint-disable @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call */
-        /* eslint-disable @typescript-eslint/ban-ts-comment, @typescript-eslint/prefer-ts-expect-error */
-        // @ts-ignore
-        return typeof value === "undefined" ? schema : schema.regex(true);
-        /* eslint-enable @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call */
-        /* eslint-enable @typescript-eslint/ban-ts-comment, @typescript-eslint/prefer-ts-expect-error */
+        return typeof value === "undefined" ? schema : schema.regex();
     },
     rename(schema: Joi.ObjectSchema, value?: ObjectSchemaDefinition["rename"]): Joi.ObjectSchema{
 

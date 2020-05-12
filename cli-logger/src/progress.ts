@@ -66,7 +66,7 @@ export class Progress extends ProgressBar{
             tick(tokens);
 
             // Not invalid since that function is bound by the through library
-            // eslint-disable-next-line no-invalid-this
+            // eslint-disable-next-line @typescript-eslint/no-invalid-this
             this.push(file);
 
             return done();

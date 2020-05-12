@@ -4,7 +4,7 @@
 
     eslint
 
-    global-require: "off",
+    node/global-require: "off",
     @typescript-eslint/no-require-imports: "off",
     @typescript-eslint/no-var-requires: "off",
     import/no-commonjs: "off",

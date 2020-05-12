@@ -113,8 +113,10 @@ export const exec = function(options: {
                 subprocess.stdout.on("end", (): void => {
 
                     if(!detatch){
+
                         process.stdin.unref();
                         process.stdin.end();
+
                     }
 
                 });

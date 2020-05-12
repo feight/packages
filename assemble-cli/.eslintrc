@@ -6,6 +6,8 @@
     "security/detect-non-literal-fs-filename": "off",
     "no-await-in-loop": "off",
     "no-process-exit": "off",
-    "no-sync": "off"
+    "node/no-sync": "off",
+    "node/no-extraneous-import": "off",
+    "node/no-process-exit": "off"
   }
 }            // eslint-disable-next-line no-await-in-loop

@@ -8,6 +8,7 @@ import {
     exec,
     spawn
 } from "@newsteam/cli-utils";
+import { logger } from "@newsteam/cli-logger";
 
 
 const label = "python";
@@ -60,6 +61,12 @@ interface LocalPythonVirtualenvTaskConfig{
 
 export const localPythonVirtualenvTask = async function(config: LocalPythonVirtualenvTaskConfig = {}): Promise<void>{
 
+    const bar = logger.progress({
+        label,
+        tag: "virtualenv",
+        total: 3
+    });
+
     const environmentFolderExists = fs.existsSync(path.join(process.cwd(), "env"));
     const file = config.file ?? "src/requirements.txt";
 
@@ -71,6 +78,8 @@ export const localPythonVirtualenvTask = async function(config: LocalPythonVirtu
         });
 
     }
+
+    bar.tick();
 
     const cache = await getCache();
 
@@ -86,6 +95,8 @@ export const localPythonVirtualenvTask = async function(config: LocalPythonVirtu
             label
         });
 
+        bar.tick();
+
         if(requirementsFileHash){
 
             await setCache({
@@ -93,6 +104,13 @@ export const localPythonVirtualenvTask = async function(config: LocalPythonVirtu
             });
 
         }
+
+        bar.tick();
+
+    }else{
+
+        bar.tick();
+        bar.tick();
 
     }
 

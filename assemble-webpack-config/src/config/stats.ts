@@ -13,17 +13,7 @@ import { Configuration } from "webpack";
 export const stats = function(): Configuration{
 
     return {
-        stats: {
-            assets: true,
-            builtAt: false,
-            chunks: false,
-            colors: true,
-            entrypoints: true,
-            hash: false,
-            modules: false,
-            timings: false,
-            version: false
-        }
+        stats: "minimal"
     };
 
 };

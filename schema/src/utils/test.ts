@@ -23,7 +23,7 @@ export class EqualityTest<TType, TMethod extends Function>{
 
             this.tests.forEach(([joi, json]) => {
 
-                it(`${ this.name }(${ JSON.stringify(json, null, 2) }) returns ${ JSON.stringify(joi.describe(), null, 2) }`, () => {
+                it(`${ this.name }(${ JSON.stringify(json, undefined, 2) }) returns ${ JSON.stringify(joi.describe(), undefined, 2) }`, () => {
 
                     // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
                     expect(this.method(json).describe()).toEqual(joi.describe());

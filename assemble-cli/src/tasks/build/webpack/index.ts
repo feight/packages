@@ -4,7 +4,7 @@
 
     eslint
 
-    global-require: "off",
+    node/global-require: "off",
     @typescript-eslint/no-require-imports: "off",
     @typescript-eslint/no-var-requires: "off",
     import/no-dynamic-require: "off",
@@ -127,7 +127,7 @@ export const buildWebpackTask = async function(options: BuildWebpackTaskOptions)
 
                 fs.writeFileSync(
                     path.join(buildStatsFolder, `${ year }-${ month }-${ day }-${ hours }:${ minutes }:${ seconds }.json`),
-                    JSON.stringify(blob, null, 2)
+                    JSON.stringify(blob, undefined, 2)
                 );
 
             }

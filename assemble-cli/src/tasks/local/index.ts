@@ -66,7 +66,11 @@ export const localTask = async function(config: NewsTeamConfig, options: BuildTa
 
     const settings = getPublicationSettings();
 
-    await localPythonVirtualenvTask();
+    if(!config.local.python.server.useDevAppServer){
+
+        await localPythonVirtualenvTask();
+
+    }
 
     await Promise.all([
         localWatchTask(config, options),
@@ -90,7 +94,9 @@ export const localTask = async function(config: NewsTeamConfig, options: BuildTa
                 mode: options.mode,
                 PORT: config.local.python.server.port
                 /* eslint-enable @typescript-eslint/naming-convention */
-            }
+            },
+            port: config.local.python.server.port,
+            useDevAppServer: config.local.python.server.useDevAppServer
         }),
         openBrowserTask(`http://localhost:${ config.local.python.server.port }`, openDelay)
     ]);

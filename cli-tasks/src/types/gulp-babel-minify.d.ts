@@ -7,7 +7,7 @@ declare module "gulp-babel-minify" {
     const minify:{
 
         (
-            confing: {},
+            config: {},
             overrides: {
                 comments: boolean
             },

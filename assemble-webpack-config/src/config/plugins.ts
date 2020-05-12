@@ -87,7 +87,7 @@ export const plugins = function(
             openAnalyzer: false,
             reportFilename: "report.html",
             statsFilename: "stats.json",
-            statsOptions: null
+            statsOptions: undefined
         }));
 
     }

@@ -1,7 +1,11 @@
 
-import nodemon from "nodemon";
+
+import {
+    exec,
+    kill
+} from "@newsteam/cli-utils";
 import { logger } from "@newsteam/cli-logger";
-import { kill } from "@newsteam/cli-utils";
+import nodemon from "nodemon";
 
 
 const label = "server";
@@ -81,10 +85,14 @@ export interface LocalPythonServerEnvironment {
     [key: string]: string | boolean | number;
 }
 
+
 export interface LocalPythonVirtualenvTaskOptions{
     script?: string;
     environment?: LocalPythonServerEnvironment;
     ignore?: string[];
+    monitor?: boolean;
+    port?: number;
+    useDevAppServer?: boolean;
     watch?: string[];
 }
 
@@ -93,51 +101,74 @@ export const localPythonServerTask = async function(
     options: LocalPythonVirtualenvTaskOptions
 ): Promise<void>{
 
-    const script = options?.script ?? "main.py";
-    const environment = options?.environment ?? {};
-    const ignore = options?.ignore ?? [
-        "node_modules/*",
-        "build/*"
-    ];
-    const watch = options?.watch ?? [
-        "src",
-        script
-    ];
+    const monitor = options.monitor === undefined ? true : options.monitor;
 
-    await kill(script);
+    const environment: { [id: string ]: string } = {
+        ...options?.environment ?? {},
+        /* eslint-disable @typescript-eslint/naming-convention */
+        APPLICATION_ID: "dev~None",
+        CURRENT_VERSION_ID: "None.1",
+        GAE_APPLICATION: "dev~None",
+        GAE_VERSION: "None.1"
+        /* eslint-enable @typescript-eslint/naming-convention */
+    };
 
-    await new Promise((): void => {
+    if(monitor){
 
-        nodemon({
-            env: {
-                ...environment,
-                /* eslint-disable @typescript-eslint/naming-convention */
-                APPLICATION_ID: "dev~None",
-                CURRENT_VERSION_ID: "None.1",
-                GAE_APPLICATION: "dev~None",
-                GAE_VERSION: "None.1"
-                /* eslint-enable @typescript-eslint/naming-convention */
-            },
-            execMap: {
-                py: "cd src; source ../env/bin/activate; python3 -u"
-            },
-            ext: "py",
-            ignore,
-            script,
-            stdout: false,
-            watch
-        })
-        .on("readable", function readable(this: typeof nodemon): void{
+        const script = options?.script ?? "main.py";
+        const ignore = options?.ignore ?? [
+            "node_modules/*",
+            "build/*"
+        ];
+        const watch = options?.watch ?? [
+            "src",
+            script
+        ];
 
-            /* eslint-disable no-invalid-this */
+        await kill(script);
 
-            this.stdout.on("data", output());
-            this.stderr.on("data", output());
+        await new Promise((): void => {
 
-            /* eslint-enable no-invalid-this */
+            nodemon({
+                env: environment,
+                execMap: {
+                    py: "cd src; source ../env/bin/activate; python3 -u"
+                },
+                ext: "py",
+                ignore,
+                script,
+                stdout: false,
+                watch
+            })
+            .on("readable", function readable(this: typeof nodemon): void{
+
+                /* eslint-disable no-invalid-this */
+
+                this.stdout.on("data", output());
+                this.stderr.on("data", output());
+
+                /* eslint-enable no-invalid-this */
+
+            });
 
         });
 
-    });
+    }else{
+
+        const script = options?.script ?? "src/local.py";
+
+        await kill(script);
+
+        await exec({
+            command: `
+                source env/bin/activate;
+                cd src;
+                ${ Object.keys(environment).map((key) => `export ${ key }=${ environment[key] }`).join("; ") };
+                python3 main.py;
+            `,
+            label
+        });
+
+    }
 
 };

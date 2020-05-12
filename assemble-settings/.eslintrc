@@ -1,7 +1,7 @@
 {
   "extends": "@tamland",
   "rules": {
-    "no-sync": "off",
+    "node/no-sync": "off",
     "security/detect-non-literal-fs-filename": "off",
     "security/detect-unsafe-regex": "off"
   }

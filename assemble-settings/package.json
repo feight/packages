@@ -40,7 +40,7 @@
   ],
   "devDependencies": {
     "@tamland/babel": "^0.0.36",
-    "@tamland/eslint": "^0.0.76",
+    "@tamland/eslint": "^0.0.77",
     "@tamland/jasmine": "0.0.4",
     "@types/fs-extra": "^8.1.0"
   },

@@ -8,6 +8,6 @@
     "security/detect-non-literal-fs-filename": "off",
     "no-await-in-loop": "off",
     "no-process-exit": "off",
-    "no-sync": "off"
+    "node/no-sync": "off"
   }
 }
