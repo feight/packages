@@ -73,6 +73,32 @@ const htmlEntrypoints = function(): Entry{
 
 };
 
+
+const serviceWorkerEntryPoints = function(): Entry{
+
+    // The default service worker if the client doesn't specifcy one
+    return {
+        "service-worker": ((): string => {
+
+            // The custom publication service worker
+            if(fs.existsSync("src/publication/custom/.service-worker.ts")){
+                return "./src/publication/custom/.service-worker.ts";
+            }
+
+            // The client service worker
+            if(fs.existsSync(".service-worker.ts")){
+                return "./.service-worker.ts";
+            }
+
+            // The fallback service worker
+            return "@newsteam/assemble-service-worker/lib/entry";
+
+        })()
+    };
+
+};
+
+
 /*
  * The entrypoint for the application.
  *
@@ -80,22 +106,24 @@ const htmlEntrypoints = function(): Entry{
  */
 export const entry = function(): Configuration{
 
+    // Const serviceWorker = path.join(process.cwd(), "node_modules/.cache");
+
     return {
         entry: {
-            push: "./src/build/entries/push/index.js",
             ...htmlEntrypoints(),
             ...jsEntrypoints(
                 "src/publication/custom/devices/*/pages/**/index.js",
-                /src\/publication\/custom\/devices\/(.*?)\/index.js$/gu
+                /src\/publication\/custom\/(devices\/.*?)\/index.js$/gu
+            ),
+            ...jsEntrypoints(
+                "src/publication/base/pages/**/index.js",
+                /src\/publication\/base\/(.*?)\/index.js$/gu
             ),
             ...jsEntrypoints(
                 "src/publication/custom/pages/**/index.js",
                 /src\/publication\/custom\/(.*?)\/index.js$/gu
             ),
-            ...jsEntrypoints(
-                "src/publication/base/pages/**/index.js",
-                /src\/publication\/base\/(.*?)\/index.js$/gu
-            )
+            ...serviceWorkerEntryPoints()
         }
     };
 

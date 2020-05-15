@@ -84,6 +84,7 @@
   },
   "localDependencies": {
     "@newsteam/assemble-webpack-config": "../assemble-webpack-config",
+    "@newsteam/assemble-service-worker": "../assemble-service-worker",
     "@newsteam/assemble-settings": "../assemble-settings",
     "@newsteam/cli-errors": "../cli-errors",
     "@newsteam/cli-logger": "../cli-logger",
