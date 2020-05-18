@@ -87,11 +87,11 @@ export const buildWidgetsTask = async function(options: BuildWidgetsTaskOptions)
 
         const settings = getPublicationSettings();
 
-        let sharedSettings: AssembleSettings | undefined = undefined;
+        let sharedSettings: AssembleSettings | undefined;
 
         try{
             sharedSettings = JSON.parse(rawSharedSettings) as AssembleSettings;
-        }catch(error){
+        }catch{
             throw new Error("Shared settings file could not be parsed as valid json");
         }
 

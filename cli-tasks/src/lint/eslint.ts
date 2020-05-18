@@ -61,7 +61,7 @@ export const eslintLintTask = async function(options: EslintLintTaskOptions): Pr
 
         const bar = logger.progress({
             label,
-            tag: "javascript",
+            tag: `javascript ${ options.fix ? "(fix)" : "" }`,
             total: files.length
         });
 

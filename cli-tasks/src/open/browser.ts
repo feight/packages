@@ -63,6 +63,6 @@ export const openBrowserTask = async function(path: string, initialDelay = 0): P
 
         });
 
-    }catch(error){}
+    }catch{}
 
 };

@@ -164,12 +164,12 @@ export const testSharedSettingsTask = async function(): Promise<void>{
 
     logger.log(`shared ${ path.resolve(sharedSettingsFilePath) }`, { label });
 
-    let sharedData = undefined;
+    let sharedData;
 
     try{
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         sharedData = JSON.parse(sharedRaw);
-    }catch(error){
+    }catch{
         throw new Error("Settings file could not be parsed as valid json");
     }
 
@@ -178,12 +178,12 @@ export const testSharedSettingsTask = async function(): Promise<void>{
 
         const raw = await fs.readFile(file, "utf8");
 
-        let json = undefined;
+        let json;
 
         try{
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             json = JSON.parse(raw);
-        }catch(error){
+        }catch{
             throw new Error("Settings file could not be parsed as valid json");
         }
 

@@ -21,7 +21,7 @@ export const prompt = async function(id: string, choices: PromptChoice[]): Promi
     const previousPath = path.join(process.cwd(), `.local/cache/@newsteam/cli-utils/prompts/${ key }.json`);
     const previousExists = await fs.pathExists(previousPath);
 
-    let previous: PromptChoice | undefined = undefined;
+    let previous: PromptChoice | undefined;
 
     if(previousExists){
 

@@ -23,7 +23,7 @@ export const localRedisServerTask = async function(config: LocalRedisServerTaskC
 
             await kill(config.port);
 
-        }catch(error){}
+        }catch{}
 
     }
 

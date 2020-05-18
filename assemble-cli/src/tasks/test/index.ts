@@ -3,7 +3,8 @@
 import { TestError } from "@newsteam/cli-errors";
 import { logger } from "@newsteam/cli-logger";
 import {
-    eslintLintTask, EslintLintTaskOptions
+    eslintLintTask,
+    EslintLintTaskOptions
 } from "@newsteam/cli-tasks";
 
 import {

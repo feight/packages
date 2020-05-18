@@ -77,8 +77,6 @@ export const buildReleaseTask = async function(config: NewsTeamConfig): Promise<
 
         }
 
-        return undefined;
-
     }).filter((item) => item !== undefined);
 
     const indent = 4;

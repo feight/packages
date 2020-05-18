@@ -20,8 +20,8 @@ const nonBreakingCharacterCode = 160;
 const nonBreakingCharacter = String.fromCharCode(nonBreakingCharacterCode);
 const cwd = process.cwd();
 
-let lastFormattedLabel: string | undefined = undefined;
-let lastLabel: string | undefined = undefined;
+let lastFormattedLabel: string | undefined;
+let lastLabel: string | undefined;
 let started = false;
 
 
@@ -330,7 +330,7 @@ export class Logger{
 
         const {
             label = message ? this.defaultLabel : "",
-            color = undefined,
+            color,
             error = false
         } = options;
 

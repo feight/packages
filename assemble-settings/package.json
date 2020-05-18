@@ -6,6 +6,7 @@
   "types": "lib",
   "scripts": {
     "build": "bash ../build.sh",
+    "npm-install-local": "npm link @newsteam/npm-install-local && npm-install-local",
     "prepublishOnly": "bash ../publish.sh",
     "test": "bash ../test.sh"
   },
@@ -40,9 +41,9 @@
   ],
   "devDependencies": {
     "@tamland/babel": "^0.0.36",
-    "@tamland/eslint": "^0.0.77",
+    "@tamland/eslint": "^0.0.78",
     "@tamland/jasmine": "0.0.4",
-    "@types/fs-extra": "^8.1.0"
+    "@types/fs-extra": "^9.0.0"
   },
   "dependencies": {
     "fs-extra": "^9.0.0"

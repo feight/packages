@@ -17,6 +17,6 @@ export const localMemcachedEmulatorTask = async function(): Promise<void>{
             label: "memcached"
         });
 
-    }catch(error){}
+    }catch{}
 
 };

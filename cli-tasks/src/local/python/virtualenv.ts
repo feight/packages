@@ -35,7 +35,7 @@ const getCache = async function(): Promise<Cache>{
 
             cache = JSON.parse(raw) as Cache;
 
-        }catch(error){}
+        }catch{}
 
     }
 

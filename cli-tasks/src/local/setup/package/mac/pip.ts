@@ -26,7 +26,7 @@ export const upgradePip = async function(executable: "pip" | "pip3" = "pip"): Pr
 
         version = versions.info.version;
 
-    }catch(error){
+    }catch{
 
         logger.error(`Could not determine the latest version of ${ executable }`, { label });
 

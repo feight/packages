@@ -71,7 +71,7 @@ export const localDockerRunTask = async function(config: LocalDockerRunTaskConfi
                 detatch: true
             });
 
-        }catch(error){}
+        }catch{}
 
         await exec({
             command: `docker container rm ${ config.name }`,

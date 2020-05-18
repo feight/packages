@@ -25,7 +25,7 @@ export const localDatastoreEmulatorTask = async function(config: LocalDatastoreE
 
         await kill(config.port);
 
-    }catch(error){}
+    }catch{}
 
     if(directory){
 

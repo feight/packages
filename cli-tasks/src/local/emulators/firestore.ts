@@ -18,7 +18,7 @@ export const localFirestoreEmulatorTask = async function(config: LocalFirestoreE
 
         await kill(config.port);
 
-    }catch(error){}
+    }catch{}
 
     await spawn({
         command: `gcloud beta emulators firestore start --host-port=${ config.host }:${ config.port } --quiet`,

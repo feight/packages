@@ -34,7 +34,7 @@ const extendedJoi = Joi.extend(
                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     return { value: JSON.parse(value) as any[] };
 
-                }catch(error){
+                }catch{
 
                     try{
 
@@ -42,7 +42,7 @@ const extendedJoi = Joi.extend(
                         // eslint-disable-next-line @typescript-eslint/no-explicit-any
                         return { value: JSON5.parse(value) as any[] };
 
-                    }catch(error_){
+                    }catch{
 
                         return { value };
 

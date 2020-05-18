@@ -24,7 +24,7 @@ const localRubySetupTask = async function(): Promise<void>{
             label
         });
 
-    }catch(error){
+    }catch{
 
         logger.error([
             "",
@@ -73,7 +73,7 @@ export const localBrewSetupTask = async function(): Promise<void>{
             label
         });
 
-    }catch(error){
+    }catch{
 
         await spawn({
             command: "/usr/bin/ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\"",

@@ -24,7 +24,7 @@ export const localXcodeSelectSetupTask = async function(): Promise<void>{
             label
         });
 
-    }catch(error){}
+    }catch{}
 
     if(!installed){
 

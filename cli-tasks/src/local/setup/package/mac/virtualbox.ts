@@ -22,7 +22,7 @@ export const localVirtualboxSetupTask = async function(): Promise<void>{
             label
         });
 
-    }catch(error){
+    }catch{
 
         await spawn({
             command: "brew cask install virtualbox",

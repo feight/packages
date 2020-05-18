@@ -48,7 +48,7 @@ const output = (color?: string): (data: any) => void => (data: any): void => {
 
         }
 
-    }catch(error){
+    }catch{
 
         if(string){
 

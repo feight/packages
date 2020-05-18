@@ -25,7 +25,7 @@ export const localJavaSetupTask = async function(): Promise<void>{
             label
         });
 
-    }catch(error){
+    }catch{
 
         await spawn({
             command: "brew cask install java",
@@ -50,7 +50,7 @@ export const localJavaSetupTask = async function(): Promise<void>{
                 detatch: true
             });
 
-        }catch(error){}
+        }catch{}
 
     }
 
