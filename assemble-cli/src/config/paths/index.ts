@@ -29,19 +29,21 @@ export class NewsTeamPathsConfig{
 
     html: GlobMapping;
 
-    javascript: GlobMapping;
-
     modernizr: ModernizrPaths;
 
     npm: {
         manifests: string[];
     };
 
+    scripts: GlobMapping;
+
     settings: settings.NewsTeamSettingsPathsConfig;
 
     source: string;
 
     static: GlobMapping;
+
+    styles: GlobMapping;
 
     rss: GlobMapping;
 
@@ -63,8 +65,6 @@ export class NewsTeamPathsConfig{
 
         this.html = defaults.paths.html;
 
-        this.javascript = defaults.paths.javascript;
-
         this.modernizr = defaults.paths.modernizr;
 
         this.npm = defaults.paths.npm;
@@ -73,7 +73,11 @@ export class NewsTeamPathsConfig{
 
         this.source = defaults.paths.source;
 
+        this.scripts = defaults.paths.scripts;
+
         this.static = defaults.paths.static;
+
+        this.styles = defaults.paths.styles;
 
         this.rss = defaults.paths.rss;
 

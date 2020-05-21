@@ -9,6 +9,14 @@ export {
     eslintLintTask,
     EslintLintTaskOptions
 } from "./lint/eslint";
+export {
+    htmllintLintTask,
+    HtmllintLintTaskOptions
+} from "./lint/htmllint";
+export {
+    stylelintLintTask,
+    StylelintLintTaskOptions
+} from "./lint/stylelint";
 export { localDatastoreEmulatorTask } from "./local/emulators/datastore";
 export { localDockerMachineTask } from "./local/docker/machine";
 export { localDockerRunTask } from "./local/docker/run";

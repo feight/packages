@@ -22,6 +22,7 @@ import fs from "fs-extra";
 import merge from "deepmerge";
 import { Validate } from "@newsteam/schema";
 
+import * as htmllint from "./htmllint";
 import * as htmlmin from "./htmlmin";
 import * as local from "./local";
 import * as paths from "./paths";
@@ -86,6 +87,8 @@ export class NewsTeamConfig{
 
     cwd: string;
 
+    htmllint: htmllint.NewsTeamHTMLLintConfig;
+
     htmlmin: htmlmin.NewsTeamHTMLMinConfig;
 
     local: local.NewsTeamLocalConfig;
@@ -99,6 +102,8 @@ export class NewsTeamConfig{
     constructor(config: Config){
 
         this.cwd = cwd;
+
+        this.htmllint = new htmllint.NewsTeamHTMLLintConfig();
 
         this.htmlmin = new htmlmin.NewsTeamHTMLMinConfig();
 

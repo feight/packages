@@ -6,6 +6,8 @@ import { defaults } from "../defaults";
 import { config } from "..";
 
 
+// This is ok because it's just a list of tests
+// eslint-disable-next-line max-lines-per-function
 describe("{ config.paths }", () => {
 
     it("config.paths is defined", () => {
@@ -44,14 +46,6 @@ describe("{ config.paths }", () => {
         expect(config.paths.html).toEqual(defaults.paths.html);
     });
 
-    it("config.paths.javascript is defined", () => {
-        expect(config.paths.javascript).toBeDefined();
-    });
-
-    it("config.paths.javascript defaults correctly", () => {
-        expect(config.paths.javascript).toEqual(defaults.paths.javascript);
-    });
-
     it("config.paths.modernizr is defined", () => {
         expect(config.paths.modernizr).toBeDefined();
     });
@@ -88,6 +82,14 @@ describe("{ config.paths }", () => {
         expect(config.paths.rss.ignore).toEqual(defaults.paths.rss.ignore);
     });
 
+    it("config.paths.scripts is defined", () => {
+        expect(config.paths.scripts).toBeDefined();
+    });
+
+    it("config.paths.scripts defaults correctly", () => {
+        expect(config.paths.scripts).toEqual(defaults.paths.scripts);
+    });
+
     it("config.paths.source is defined", () => {
         expect(config.paths.source).toBeDefined();
     });
@@ -102,6 +104,14 @@ describe("{ config.paths }", () => {
 
     it("config.paths.static defaults correctly", () => {
         expect(config.paths.static).toEqual(defaults.paths.static);
+    });
+
+    it("config.paths.styles is defined", () => {
+        expect(config.paths.styles).toBeDefined();
+    });
+
+    it("config.paths.styles defaults correctly", () => {
+        expect(config.paths.styles).toEqual(defaults.paths.styles);
     });
 
 });

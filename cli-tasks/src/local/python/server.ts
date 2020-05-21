@@ -142,12 +142,8 @@ export const localPythonServerTask = async function(
             })
             .on("readable", function readable(this: typeof nodemon): void{
 
-                /* eslint-disable no-invalid-this */
-
                 this.stdout.on("data", output());
                 this.stderr.on("data", output());
-
-                /* eslint-enable no-invalid-this */
 
             });
 

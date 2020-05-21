@@ -1,0 +1,70 @@
+
+
+module.exports = {
+    rules: {
+        "attr-bans": [
+            "background",
+            "bgcolor",
+            "longdesc",
+            "marginwidth",
+            "marginheight"
+        ],
+        "attr-name-ignore-regex": false,
+        "attr-name-style": false,
+        "attr-new-line": 5,
+        "attr-no-dup": true,
+        "attr-no-unsafe-char": true,
+        "attr-order": [
+            "id",
+            "class",
+            "name",
+            "type"
+        ],
+        "attr-quote-style": "double",
+        "attr-req-value": false,
+        "attr-validate": false,
+        "class-no-dup": true,
+        "class-style": false,
+        "doctype-first": false,
+        "doctype-html5": false,
+        "fig-req-figcaption": true,
+        "focusable-tabindex-style": false,
+        "head-req-title": false,
+        "head-valid-content-model": true,
+        "href-style": false,
+        "html-req-lang": false,
+        "id-class-ignore-regex": false,
+        "id-class-no-ad": false,
+        "id-class-style": false,
+        "id-no-dup": true,
+        "img-req-alt": false,
+        "img-req-src": false,
+        "indent-delta": false,
+        "indent-style": "spaces",
+        "indent-width": false,
+        "indent-width-cont": false,
+        "input-radio-req-name": false,
+        "input-req-label": false,
+        "label-req-for": false,
+        "lang-style": "case",
+        "line-end-style": "lf",
+        "line-max-len": false,
+        "line-max-len-ignore-regex": false,
+        "line-no-trailing-whitespace": false,
+        maxerr: false,
+        "raw-ignore-regex": /({%.*?%}|{{.*?}}|{#.*?#}|<!-- htmllint ignore -->[^]*?<!-- htmllint unignore -->)/g,
+        "spec-char-escape": false,
+        "table-req-caption": false,
+        "table-req-header": false,
+        "tag-bans": [
+            "b"
+        ],
+        "tag-close": false,
+        "tag-name-lowercase": true,
+        "tag-name-match": true,
+        "tag-self-close": "never",
+        "text-ignore-regex": false,
+        "title-max-len": false,
+        "title-no-dup": true
+    }
+};

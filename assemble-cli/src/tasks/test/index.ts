@@ -4,7 +4,11 @@ import { TestError } from "@newsteam/cli-errors";
 import { logger } from "@newsteam/cli-logger";
 import {
     eslintLintTask,
-    EslintLintTaskOptions
+    EslintLintTaskOptions,
+    htmllintLintTask,
+    HtmllintLintTaskOptions,
+    stylelintLintTask,
+    StylelintLintTaskOptions
 } from "@newsteam/cli-tasks";
 
 import {
@@ -30,6 +34,10 @@ export interface TestTaskConfigurations{
 
     eslintLintTask: EslintLintTaskOptions;
 
+    htmllintLintTask: HtmllintLintTaskOptions;
+
+    stylelintLintTask: StylelintLintTaskOptions;
+
     testSettingsTask: TestSettingsTaskOptions;
 
 }
@@ -43,8 +51,21 @@ export const generateTestTaskConfigs = function(config: NewsTeamConfig): TestTas
     return {
         eslintLintTask: {
             destination,
-            glob: config.paths.javascript.glob,
-            ignore: config.paths.javascript.ignore,
+            glob: config.paths.scripts.glob,
+            ignore: config.paths.scripts.ignore,
+            source
+        },
+        htmllintLintTask: {
+            destination,
+            glob: config.paths.html.glob,
+            ignore: config.paths.html.ignore,
+            options: config.htmllint.options,
+            source
+        },
+        stylelintLintTask: {
+            destination,
+            glob: config.paths.styles.glob,
+            ignore: config.paths.styles.ignore,
             source
         },
         testSettingsTask: {
@@ -83,9 +104,20 @@ export const testTask = async function(config: NewsTeamConfig, options: TestTask
 
     if(lints){
 
+        /*
+         *Try{
+         *  await eslintLintTask({
+         *      ...configs.eslintLintTask,
+         *      fix
+         *  });
+         *}catch(error){
+         *  errors.push(error);
+         *}
+         */
+
         try{
-            await eslintLintTask({
-                ...configs.eslintLintTask,
+            await htmllintLintTask({
+                ...configs.htmllintLintTask,
                 fix
             });
         }catch(error){

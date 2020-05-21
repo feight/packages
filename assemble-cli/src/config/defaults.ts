@@ -75,19 +75,6 @@ export const defaults = {
                 "**/static/**/*.html"
             ]
         },
-        javascript: {
-            glob: [
-                "src/publication/{base,custom,shared}/**/*.{js,jsx,ts,tsx}",
-                "src/settings/**/*.{js,jsx,ts,tsx}"
-            ],
-            ignore: [
-                "*.json",
-                "*.min.js",
-                "*.d.ts",
-                "**/node_modules/**/*.{js,jsx,ts,tsx}",
-                "**/static/**/*.{js,jsx,ts,tsx}"
-            ]
-        },
         modernizr: {
             filename: "modernizr.js",
             glob: ".modernizr.{js,json}"
@@ -104,6 +91,19 @@ export const defaults = {
             ignore: [
                 "**/node_modules/**/*.rss",
                 "**/static/**/*.rss"
+            ]
+        },
+        scripts: {
+            glob: [
+                "src/publication/{base,custom,shared}/**/*.{js,jsx,ts,tsx}",
+                "src/settings/**/*.{js,jsx,ts,tsx}"
+            ],
+            ignore: [
+                "*.json",
+                "*.min.js",
+                "*.d.ts",
+                "**/node_modules/**/*.{js,jsx,ts,tsx}",
+                "**/static/**/*.{js,jsx,ts,tsx}"
             ]
         },
         settings: {
@@ -159,6 +159,16 @@ export const defaults = {
         source: "src",
         static: {
             glob: "src/publication/{base,custom,shared}/static/**/*.*"
+        },
+        styles: {
+            glob: [
+                "src/publication/{base,custom,shared}/**/*.{css,scss}"
+            ],
+            ignore: [
+                "*.min.css",
+                "**/node_modules/**/*.{css,scss}",
+                "**/static/**/*.{css,scss}"
+            ]
         },
         webpack: {
             config: ".webpack.ts"

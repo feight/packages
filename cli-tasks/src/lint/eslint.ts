@@ -61,7 +61,7 @@ export const eslintLintTask = async function(options: EslintLintTaskOptions): Pr
 
         const bar = logger.progress({
             label,
-            tag: `javascript ${ options.fix ? "(fix)" : "" }`,
+            tag: `eslint ${ files.length } files ${ options.fix ? "(fix)" : "" }`,
             total: files.length
         });
 
@@ -109,13 +109,17 @@ export const eslintLintTask = async function(options: EslintLintTaskOptions): Pr
 
             const error = new ESLintError(errors);
 
-            if(options.watch){
+            if(errors.length > 0){
 
-                logger.error(error);
+                if(options.watch){
 
-            }else if(errors.length > 0){
+                    logger.error(error);
 
-                throw error;
+                }else{
+
+                    throw error;
+
+                }
 
             }
 
