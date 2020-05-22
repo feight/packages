@@ -87,6 +87,7 @@
     "@newsteam/assemble-settings": "../assemble-settings",
     "@newsteam/cli-errors": "../cli-errors",
     "@newsteam/cli-logger": "../cli-logger",
+    "@newsteam/cli-notify": "../cli-notify",
     "@newsteam/cli-tasks": "../cli-tasks",
     "@newsteam/cli-utils": "../cli-utils",
     "@newsteam/schema": "../schema"

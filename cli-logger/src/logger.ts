@@ -142,6 +142,12 @@ export class Logger{
 
     }
 
+    colorizeText(text: string, hexColor: string): string{
+
+        return chalk.hex(hexColor)(text);
+
+    }
+
     command(label = "", command = ""): void{
 
         this.log(command.split(" && ").join("\n"), {

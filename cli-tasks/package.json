@@ -41,7 +41,7 @@
   ],
   "dependencies": {
     "@tamland/eslint": "0.0.78",
-    "@tamland/stylelint": "0.0.33",
+    "@tamland/stylelint": "0.0.34",
     "del": "^5.1.0",
     "fs-extra": "^9.0.0",
     "gulp": "^4.0.2",
@@ -70,7 +70,7 @@
     "@types/gulp-install": "^0.6.31",
     "@types/gulp-replace": "0.0.31",
     "@types/modernizr": "^3.5.3",
-    "@types/node": "^14.0.4",
+    "@types/node": "^14.0.5",
     "@types/node-fetch": "^2.5.7",
     "@types/request": "^2.48.5",
     "@types/stylelint": "^9.10.1",

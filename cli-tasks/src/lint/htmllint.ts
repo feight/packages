@@ -74,8 +74,8 @@ export const htmllintLintTask = async function(options: HtmllintLintTaskOptions)
 
         const bar = logger.progress({
             label,
-            tag: `htmllint ${ files.length } files ${ options.fix ? "(fix)" : "" }`,
-            total: files.length
+            tag: `htmllint ${ logger.colorizeText(`${ files.length }`, "#444") } ${ options.fix ? logger.colorizeText("(fix)", "#0f0") : "" }`,
+            total: files.length + 1
         });
 
         bar.tick();

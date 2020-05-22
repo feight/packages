@@ -1,0 +1,51 @@
+{
+  "name": "@newsteam/cli-notify",
+  "version": "0.0.0",
+  "description": "This package provides a notification function used to signal completion of cli tasks.",
+  "main": "lib",
+  "types": "lib",
+  "scripts": {
+    "build": "bash ../build.sh",
+    "npm-install-local": "npm link @newsteam/npm-install-local && npm-install-local",
+    "prepublishOnly": "bash ../publish.sh",
+    "test": "bash ../test.sh"
+  },
+  "engines": {
+    "node": ">= 12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/feight/packages"
+  },
+  "author": "News Team (https://www.newsteam.io)",
+  "contributors": [
+    {
+      "name": "Peter Bodechtel",
+      "url": "https://www.sweetlikepete.com"
+    }
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/feight/packages/issues"
+  },
+  "keywords": [
+    "newsteam",
+    "@newsteam"
+  ],
+  "homepage": "https://github.com/feight/packages/tree/master/packages/cli-notify#readme",
+  "files": [
+    "lib"
+  ],
+  "devDependencies": {
+    "@tamland/babel": "^0.0.36",
+    "@tamland/eslint": "^0.0.78",
+    "@tamland/jasmine": "0.0.4"
+  },
+  "dependencies": {
+    "@types/node-notifier": "^6.0.1",
+    "node-notifier": "^7.0.0"
+  }
+}

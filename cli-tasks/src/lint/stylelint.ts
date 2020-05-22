@@ -54,8 +54,8 @@ export const stylelintLintTask = async function(options: StylelintLintTaskOption
 
         const bar = logger.progress({
             label,
-            tag: `stylelint ${ files.length } files ${ options.fix ? "(fix)" : "" }`,
-            total: files.length
+            tag: `stylelint ${ logger.colorizeText(`${ files.length }`, "#444") } ${ options.fix ? logger.colorizeText("(fix)", "#0f0") : "" }`,
+            total: files.length + 1
         });
 
         bar.tick();

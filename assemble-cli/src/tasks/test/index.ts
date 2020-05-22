@@ -2,6 +2,7 @@
 
 import { TestError } from "@newsteam/cli-errors";
 import { logger } from "@newsteam/cli-logger";
+import { notify } from "@newsteam/cli-notify";
 import {
     eslintLintTask,
     EslintLintTaskOptions,
@@ -104,20 +105,27 @@ export const testTask = async function(config: NewsTeamConfig, options: TestTask
 
     if(lints){
 
-        /*
-         *Try{
-         *  await eslintLintTask({
-         *      ...configs.eslintLintTask,
-         *      fix
-         *  });
-         *}catch(error){
-         *  errors.push(error);
-         *}
-         */
+        try{
+            await eslintLintTask({
+                ...configs.eslintLintTask,
+                fix
+            });
+        }catch(error){
+            errors.push(error);
+        }
 
         try{
             await htmllintLintTask({
                 ...configs.htmllintLintTask,
+                fix
+            });
+        }catch(error){
+            errors.push(error);
+        }
+
+        try{
+            await stylelintLintTask({
+                ...configs.stylelintLintTask,
                 fix
             });
         }catch(error){
@@ -130,6 +138,11 @@ export const testTask = async function(config: NewsTeamConfig, options: TestTask
 
         logger.error(error);
 
+    });
+
+    await notify({
+        message: `${ errors.length } error${ errors.length === 1 ? "" : "s" } found`,
+        title: `${ lints && !tests ? "Linting" : "Testing" } Complete`
     });
 
     if(errors.length > 0){
