@@ -6,6 +6,8 @@ import { notify } from "@newsteam/cli-notify";
 import {
     eslintLintTask,
     EslintLintTaskOptions,
+    flake8LintTask,
+    Flake8LintTaskOptions,
     htmllintLintTask,
     HtmllintLintTaskOptions,
     stylelintLintTask,
@@ -21,11 +23,95 @@ import { testSharedSettingsTask } from "./settings/shared";
 import { NewsTeamConfig } from "../../config";
 
 
+const lintErrors = async function(configs: TestTaskConfigurations, fix: boolean, type?: TestTaskLintType): Promise<TestError[]>{
+
+    const errors: TestError[] = [];
+
+    if(!type || type === "eslint"){
+
+        try{
+            await eslintLintTask({
+                ...configs.eslintLintTask,
+                fix
+            });
+        }catch(error){
+            errors.push(error);
+        }
+
+    }
+
+    if(!type || type === "htmllint"){
+
+        try{
+            await htmllintLintTask({
+                ...configs.htmllintLintTask,
+                fix
+            });
+        }catch(error){
+            errors.push(error);
+        }
+
+    }
+
+    if(!type || type === "stylelint"){
+
+        try{
+            await stylelintLintTask({
+                ...configs.stylelintLintTask,
+                fix
+            });
+        }catch(error){
+            errors.push(error);
+        }
+
+    }
+
+    if(!type || type === "flake8"){
+
+        try{
+            await flake8LintTask({
+                ...configs.flake8LintTask,
+                fix
+            });
+        }catch(error){
+            errors.push(error);
+        }
+
+    }
+
+    return errors;
+
+};
+
+const testErrors = async function(configs: TestTaskConfigurations): Promise<TestError[]>{
+
+    const errors: TestError[] = [];
+
+    try{
+        await testSettingsTask({ ...configs.testSettingsTask });
+    }catch(error){
+        errors.push(error);
+    }
+
+    try{
+        await testSharedSettingsTask();
+    }catch(error){
+        errors.push(error);
+    }
+
+    return errors;
+
+};
+
+
 export const label = "test";
 
 
+export type TestTaskLintType = "eslint" | "stylelint" | "htmllint" | "flake8";
+
+
 export interface TestTaskOptions{
-    lints?: boolean;
+    lintType?: TestTaskLintType;
     tests?: boolean;
     fix?: boolean;
 }
@@ -34,6 +120,8 @@ export interface TestTaskOptions{
 export interface TestTaskConfigurations{
 
     eslintLintTask: EslintLintTaskOptions;
+
+    flake8LintTask: Flake8LintTaskOptions;
 
     htmllintLintTask: HtmllintLintTaskOptions;
 
@@ -56,6 +144,12 @@ export const generateTestTaskConfigs = function(config: NewsTeamConfig): TestTas
             ignore: config.paths.scripts.ignore,
             source
         },
+        flake8LintTask: {
+            destination,
+            glob: config.paths.python.glob,
+            ignore: config.paths.python.ignore,
+            source
+        },
         htmllintLintTask: {
             destination,
             glob: config.paths.html.glob,
@@ -76,63 +170,20 @@ export const generateTestTaskConfigs = function(config: NewsTeamConfig): TestTas
 
 };
 
+
 export const testTask = async function(config: NewsTeamConfig, options: TestTaskOptions): Promise<void>{
 
     const configs = generateTestTaskConfigs(config);
-    const errors: TestError[] = [];
-
     const {
-        lints = true,
+        lintType,
         tests = true,
         fix = false
     } = options;
 
-    if(tests){
+    let errors: TestError[] = [];
 
-        try{
-            await testSettingsTask({ ...configs.testSettingsTask });
-        }catch(error){
-            errors.push(error);
-        }
-
-        try{
-            await testSharedSettingsTask();
-        }catch(error){
-            errors.push(error);
-        }
-
-    }
-
-    if(lints){
-
-        try{
-            await eslintLintTask({
-                ...configs.eslintLintTask,
-                fix
-            });
-        }catch(error){
-            errors.push(error);
-        }
-
-        try{
-            await htmllintLintTask({
-                ...configs.htmllintLintTask,
-                fix
-            });
-        }catch(error){
-            errors.push(error);
-        }
-
-        try{
-            await stylelintLintTask({
-                ...configs.stylelintLintTask,
-                fix
-            });
-        }catch(error){
-            errors.push(error);
-        }
-
-    }
+    errors = errors.concat(tests ? await testErrors(configs) : []);
+    errors = errors.concat(await lintErrors(configs, fix, lintType));
 
     errors.forEach((error) => {
 
@@ -140,9 +191,21 @@ export const testTask = async function(config: NewsTeamConfig, options: TestTask
 
     });
 
+    let totalErrors = 0;
+
+    errors.forEach((file) => {
+
+        file.data.forEach((error) => {
+
+            totalErrors += error.errors.length;
+
+        });
+
+    });
+
     await notify({
-        message: `${ errors.length } error${ errors.length === 1 ? "" : "s" } found`,
-        title: `${ lints && !tests ? "Linting" : "Testing" } Complete`
+        message: `${ totalErrors } error${ totalErrors === 1 ? "" : "s" } found`,
+        title: `${ tests ? "Testing" : "Linting" } Complete`
     });
 
     if(errors.length > 0){

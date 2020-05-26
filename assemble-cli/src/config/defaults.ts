@@ -86,6 +86,13 @@ export const defaults = {
                 "src/publication/custom/package.json"
             ]
         },
+        python: {
+            glob: "src/publication/{base,custom,shared}/**/*.py",
+            ignore: [
+                "**/node_modules/**/*.py",
+                "**/static/**/*.py"
+            ]
+        },
         rss: {
             glob: "src/publication/{base,custom,shared}/**/*.rss",
             ignore: [

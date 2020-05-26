@@ -30,7 +30,10 @@ import { cleanTask } from "../tasks/clean";
 import { linkTask } from "../tasks/link";
 import { localTask } from "../tasks/local";
 import { setupTask } from "../tasks/setup";
-import { testTask } from "../tasks/test";
+import {
+    testTask,
+    TestTaskLintType
+} from "../tasks/test";
 
 
 interface BuildOptions{
@@ -42,6 +45,7 @@ interface BuildOptions{
 }
 
 interface LintOptions{
+    lintType: TestTaskLintType;
     fix: boolean;
 }
 
@@ -63,6 +67,11 @@ const option = {
         default: false,
         description: "attempt to fix lint issues automatically",
         flags: "--fix"
+    },
+    lintType: {
+        default: undefined,
+        description: "specify which lints to run (eslint, stylelint, htmllint or flake8)",
+        flags: "--lint-type [lintType]"
     },
     mode: {
         default: "development",
@@ -136,9 +145,11 @@ program
 
 program
 .command("lint")
+.option(option.lintType.flags, option.lintType.description, option.lintType.default)
 .option(option.fix.flags, option.fix.description, option.fix.default)
 .action(async (options: LintOptions): Promise<void> => testTask(config, {
     fix: options.fix,
+    lintType: options.lintType,
     tests: false
 }));
 

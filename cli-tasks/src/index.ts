@@ -10,6 +10,10 @@ export {
     EslintLintTaskOptions
 } from "./lint/eslint";
 export {
+    flake8LintTask,
+    Flake8LintTaskOptions
+} from "./lint/flake8";
+export {
     htmllintLintTask,
     HtmllintLintTaskOptions
 } from "./lint/htmllint";

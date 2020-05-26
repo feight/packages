@@ -42,6 +42,7 @@
   "dependencies": {
     "@tamland/eslint": "0.0.78",
     "@tamland/stylelint": "0.0.34",
+    "@thollingshead/gulp-flake8": "^1.3.0",
     "del": "^5.1.0",
     "fs-extra": "^9.0.0",
     "gulp": "^4.0.2",

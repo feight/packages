@@ -35,6 +35,8 @@ export class NewsTeamPathsConfig{
         manifests: string[];
     };
 
+    python: GlobMapping;
+
     scripts: GlobMapping;
 
     settings: settings.NewsTeamSettingsPathsConfig;
@@ -68,6 +70,8 @@ export class NewsTeamPathsConfig{
         this.modernizr = defaults.paths.modernizr;
 
         this.npm = defaults.paths.npm;
+
+        this.python = defaults.paths.python;
 
         this.settings = new settings.NewsTeamSettingsPathsConfig();
 
