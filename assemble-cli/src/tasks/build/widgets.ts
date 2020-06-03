@@ -5,6 +5,10 @@
 
     security/detect-non-literal-regexp: "off",
 
+    --
+
+    Keeping these rules off to keep this simple
+
 */
 
 
@@ -70,7 +74,7 @@ export interface BuildWidgetsTaskOptions extends WatchOptions{
 }
 
 
-// eslint-disable-next-line max-lines-per-function
+// eslint-disable-next-line max-lines-per-function -- Simpler to leave this as one function
 export const buildWidgetsTask = async function(options: BuildWidgetsTaskOptions): Promise<void>{
 
     const {
@@ -80,14 +84,14 @@ export const buildWidgetsTask = async function(options: BuildWidgetsTaskOptions)
         source
     } = options;
 
-    // eslint-disable-next-line max-lines-per-function
+    // eslint-disable-next-line max-lines-per-function -- Simpler to leave this as one function
     await watch(options, async (): Promise<void> => {
 
         const rawSharedSettings = await fs.readFile("src/publication/shared/settings/index.json", "utf8");
 
         const settings = getPublicationSettings();
 
-        let sharedSettings: AssembleSettings | undefined;
+        let sharedSettings: AssembleSettings | undefined = undefined;
 
         try{
             sharedSettings = JSON.parse(rawSharedSettings) as AssembleSettings;
@@ -95,11 +99,11 @@ export const buildWidgetsTask = async function(options: BuildWidgetsTaskOptions)
             throw new Error("Shared settings file could not be parsed as valid json");
         }
 
-        const settingsWidgets = settings?.widgets ?? sharedSettings?.widgets ?? [];
+        const settingsWidgets = settings.widgets ?? sharedSettings.widgets ?? [];
 
         settingsWidgets.push("error");
 
-        const widgets: Record<string, AssembleWidgetSettings> = {};
+        const widgets: Record<string, AssembleWidgetSettings | undefined> = {};
 
         roots.forEach((root) => {
 
@@ -116,13 +120,6 @@ export const buildWidgetsTask = async function(options: BuildWidgetsTaskOptions)
 
                     if(
 
-                        /*
-                         * If the widget itself hasn't been flagged as disabled
-                         *
-                         * This is a necessary conditional - the lint rule has a
-                         * bug in it
-                         */
-                        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                         meta.disabled !== true &&
 
                         /*
@@ -160,23 +157,27 @@ export const buildWidgetsTask = async function(options: BuildWidgetsTaskOptions)
 
             const meta = widgets[key];
 
-            meta.paths = Object.assign(meta.paths, {
-                scripts: {
-                    default: getWidgetAssetPath(key, "index.py", roots, source)
-                },
-                templates: {
-                    amp: getWidgetAssetPath(key, "modes/amp/index.html", roots, source),
-                    default: getWidgetAssetPath(key, "index.html", roots, source),
-                    mobile: getWidgetAssetPath(key, "modes/mobile/index.html", roots, source)
+            if(meta){
+
+                meta.paths = Object.assign(meta.paths, {
+                    scripts: {
+                        default: getWidgetAssetPath(key, "index.py", roots, source)
+                    },
+                    templates: {
+                        amp: getWidgetAssetPath(key, "modes/amp/index.html", roots, source),
+                        default: getWidgetAssetPath(key, "index.html", roots, source),
+                        mobile: getWidgetAssetPath(key, "modes/mobile/index.html", roots, source)
+                    }
+                });
+
+                // Add icon urls to the widget
+                meta.icon.url = `/${ String(meta.paths.origin) }/widgets/${ key }/icons/128x128.png`;
+
+                // Add easter egg icon urls to the widget
+                if(meta.eggs && meta.eggs.icon){
+                    meta.eggs.icon.url = `/${ String(meta.paths.origin) }/widgets/${ key }/icons/${ String(meta.eggs.icon.path) }`;
                 }
-            });
 
-            // Add icon urls to the widget
-            meta.icon.url = `/${ String(meta.paths.origin) }/widgets/${ key }/icons/128x128.png`;
-
-            // Add easter egg icon urls to the widget
-            if(meta.eggs && meta.eggs.icon){
-                meta.eggs.icon.url = `/${ String(meta.paths.origin) }/widgets/${ key }/icons/${ String(meta.eggs.icon.path) }`;
             }
 
             widgets[key] = meta;
@@ -235,13 +236,16 @@ export const buildWidgetsTask = async function(options: BuildWidgetsTaskOptions)
         const editSCSS = createCSSBundle(editSCSSModules);
         const ampSCSS = createCSSBundle(ampSCSSModules);
 
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- The lint is a lie
         const dialogEntryFactoryLogic = roots.filter((root) => {
 
             let matched = false;
 
             Object.keys(widgets).forEach((key) => {
 
-                if(widgets[key].paths.origin === path.relative(source, root)){
+                const widget = widgets[key];
+
+                if(widget && widget.paths.origin === path.relative(source, root)){
                     matched = true;
                 }
 

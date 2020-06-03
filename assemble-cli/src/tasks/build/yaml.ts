@@ -32,8 +32,7 @@ const readYaml = function(file: string): AppYaml{
 };
 
 
-// This function can write any yaml
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- This function can write any yaml
 const writeYaml = function(file: string, data: any): void{
 
     fs.ensureDirSync(path.dirname(file));
@@ -44,23 +43,20 @@ const writeYaml = function(file: string, data: any): void{
 };
 
 
-// This function can snakeify any object
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- This function can snakeify any object
 const snakeify = (object: { [id: string]: any }): { [id: string]: any } => {
 
     const copy = { ...object };
 
     // Snake case all properties in automatic scaling
     Object.keys(copy).forEach((key: string) => {
-        // This is safe in this context
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- This is safe in this context
         copy[snake(key)] = copy[key];
     });
 
     Object.keys(copy).forEach((key: string) => {
         if(key.toLowerCase() !== key){
-            // This is necessary to snakeify an object
-            // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+            // eslint-disable-next-line @typescript-eslint/no-dynamic-delete -- This is necessary to snakeify an object
             delete copy[key];
         }
     });
@@ -104,11 +100,11 @@ export const buildYamlTask = async function(options: BuildYamlTaskOptions): Prom
         const environmentsRaw = await fs.readFile(options.paths.environments, "utf8");
         const handlersExist = fs.existsSync(options.paths.handlers);
         const handlersRaw = handlersExist ? fs.readFileSync(options.paths.handlers).toString() : "[]";
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- It's safe enough
         const environments: AssembleEnvironments = JSON.parse(environmentsRaw);
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- It's safe enough
         const handlers: AppYaml["handlers"] = JSON.parse(handlersRaw);
-        const environment: AssembleEnvironment = environments[options?.environment ?? "default"];
+        const environment: AssembleEnvironment = environments[options.environment ?? "default"];
         const appYaml = readYaml(appYamlPath);
         const environmentInstance = environment.instance;
         const instanceClass = environmentInstance?.class ? environmentInstance.class : appYaml.instance_class;

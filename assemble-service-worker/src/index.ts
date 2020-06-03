@@ -57,8 +57,7 @@ export class ServiceWorker{
                 cacheName: "images",
                 plugins: [
                     new workbox.expiration.Plugin({
-                        // 30 Days
-                        // eslint-disable-next-line @typescript-eslint/no-magic-numbers
+                        // eslint-disable-next-line @typescript-eslint/no-magic-numbers -- 30 Days
                         maxAgeSeconds: 30 * 24 * 60 * 60,
                         maxEntries: 60
                     })

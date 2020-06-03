@@ -16,8 +16,7 @@ import { label } from "..";
 
 interface PublicationData{
     file: string;
-    // Can be any json
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Can be any json
     json: any;
 }
 
@@ -27,8 +26,7 @@ interface Commonality{
 }
 
 
-// Can be any object
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- Can be any object
 const getKeys = function(object: any, current?: string): string[]{
 
     let keys: string[] = [];
@@ -37,10 +35,10 @@ const getKeys = function(object: any, current?: string): string[]{
 
         keys.push(current ? `${ current }.${ key }` : key);
 
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- This is safe
         if(typeof object[key] === "object" && !Array.isArray(object[key])){
 
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- This is safe
             keys = keys.concat(getKeys(object[key], current ? `${ current }.${ key }` : key));
 
         }
@@ -52,24 +50,20 @@ const getKeys = function(object: any, current?: string): string[]{
 };
 
 
-// Can be any object
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- Can be any object
 const getDescendantProperty = function(object: any, desc: string): any{
 
     const array = desc.split(".");
 
-    // I'll be honest, I got this from stack overflow, lets just roll with it
-    // eslint-disable-next-line no-param-reassign, no-empty, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment
+    // eslint-disable-next-line no-param-reassign, no-empty, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment -- I'll be honest, I got this from stack overflow, lets just roll with it
     while(array.length && (object = object[array.shift() || -1])){}
 
-    // Can be any object
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- Can be any object
     return object;
 
 };
 
-// Shared can be any object
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- Shared can be any object
 const commonality = function(shared: { [id: string]: any }, publicationData: PublicationData[]): Commonality{
 
     const response: Commonality = {
@@ -164,10 +158,10 @@ export const testSharedSettingsTask = async function(): Promise<void>{
 
     logger.log(`shared ${ path.resolve(sharedSettingsFilePath) }`, { label });
 
-    let sharedData;
+    let sharedData = undefined;
 
     try{
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- Lets just pretend this is safe
         sharedData = JSON.parse(sharedRaw);
     }catch{
         throw new Error("Settings file could not be parsed as valid json");
@@ -178,10 +172,10 @@ export const testSharedSettingsTask = async function(): Promise<void>{
 
         const raw = await fs.readFile(file, "utf8");
 
-        let json;
+        let json = undefined;
 
         try{
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- Lets just pretend this is safe
             json = JSON.parse(raw);
         }catch{
             throw new Error("Settings file could not be parsed as valid json");
@@ -189,7 +183,7 @@ export const testSharedSettingsTask = async function(): Promise<void>{
 
         return {
             file,
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- Lets just pretend this is safe
             json
         };
 

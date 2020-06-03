@@ -24,8 +24,7 @@ import {
 } from "../dependency";
 
 
-// This is dodgy, but the typing of this in globals.d.ts is kinda wierd
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- This is dodgy, but the typing of this in globals.d.ts is kinda wierd
 process.on("unhandledRejection", (error: any): void => console.error(error));
 
 process.on("uncaughtException", (error: Error): void => console.error(error));
@@ -44,7 +43,7 @@ interface Pipeline{
 program.parse(process.argv);
 
 
-// eslint-disable-next-line @typescript-eslint/no-floating-promises
+// eslint-disable-next-line @typescript-eslint/no-floating-promises -- Need a floating promise here so we run async code from the root of the code
 (async (): Promise<void> => {
 
     const root = process.cwd();
@@ -67,7 +66,7 @@ program.parse(process.argv);
     } of dependencies){
 
         const codeHash = await getSourceCodeHash(directory);
-        const codeCache = (cache?.sourceCode ?? {})[packageName];
+        const codeCache = (cache.sourceCode ?? {})[packageName];
 
         if(
             depsCache === depsHash &&

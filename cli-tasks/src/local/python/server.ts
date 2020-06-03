@@ -11,11 +11,10 @@ import nodemon from "nodemon";
 const label = "server";
 
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- Data gets converted to string later, so it supports any value
 const output = (color?: string): (data: any) => void => (data: any): void => {
 
-    // This is actually quite safe since all objects have a toString method
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call -- This is actually quite safe since all objects have a toString method
     const string = data.toString() as string;
 
     try{
@@ -104,8 +103,8 @@ export const localPythonServerTask = async function(
     const monitor = options.monitor === undefined ? true : options.monitor;
 
     const environment: { [id: string ]: string } = {
-        ...options?.environment ?? {},
-        /* eslint-disable @typescript-eslint/naming-convention */
+        ...options.environment ?? {},
+        /* eslint-disable @typescript-eslint/naming-convention -- These are GCloud environment variables, we don't pick the names */
         APPLICATION_ID: "dev~None",
         CURRENT_VERSION_ID: "None.1",
         GAE_APPLICATION: "dev~None",
@@ -115,12 +114,12 @@ export const localPythonServerTask = async function(
 
     if(monitor){
 
-        const script = options?.script ?? "main.py";
-        const ignore = options?.ignore ?? [
+        const script = options.script ?? "main.py";
+        const ignore = options.ignore ?? [
             "node_modules/*",
             "build/*"
         ];
-        const watch = options?.watch ?? [
+        const watch = options.watch ?? [
             "src",
             script
         ];
@@ -151,7 +150,7 @@ export const localPythonServerTask = async function(
 
     }else{
 
-        const script = options?.script ?? "src/local.py";
+        const script = options.script ?? "src/local.py";
 
         await kill(script);
 

@@ -56,16 +56,14 @@ const extendedJoi = Joi.extend(
 
                 try{
 
-                    // It's expected that this is of type any
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- It's expected that this is of type any
                     return { value: JSON.parse(value) as { [id: string]: any } };
 
                 }catch{
 
                     try{
 
-                        // It's expected that this is of type any
-                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any -- It's expected that this is of type any
                         return { value: JSON5.parse(value) as { [id: string]: any } };
 
                     }catch{
@@ -178,8 +176,7 @@ const getRenames = function(type: ObjectSchemaDefinition): Rename[]{
 const typeMapToJoi = function(map: SchemaMap): Joi.SchemaMap{
 
     return Object.keys(map).reduce((result: Joi.SchemaMap, key): Joi.SchemaMap => {
-        // Reassignment makes sense in this case
-        // eslint-disable-next-line no-param-reassign
+        // eslint-disable-next-line no-param-reassign -- Reassignment makes sense in this case
         result[key] = schemaLikeToJoi(map[key]);
         return result;
     }, {});
@@ -315,8 +312,7 @@ export interface ObjectSchemaDefinition extends AnySchemaDefinition{
 
     type: "object";
 
-    // This type supports any value
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- This type supports any value
     default?: Record<string, any>;
 
     /**
@@ -345,11 +341,13 @@ export interface ObjectSchemaDefinition extends AnySchemaDefinition{
     /**
      * Requires the object to be an instance of a given constructor.
      */
+    // eslint-disable-next-line @typescript-eslint/ban-types -- We don't know the function shape ahead of time
     instance?: Function | {
 
         /**
          * The constructor function that the object must be an instance of.
          */
+        // eslint-disable-next-line @typescript-eslint/ban-types -- We don't know the function shape ahead of time
         constructor: Function;
 
         /**

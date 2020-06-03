@@ -34,6 +34,7 @@ const localRubySetupTask = async function(): Promise<void>{
             ""
         ].join("\n"), { label });
 
+        // eslint-disable-next-line node/no-process-exit -- This is only used for setup automation, it's chilled
         process.exit();
 
     }
@@ -89,8 +90,7 @@ export type BrewInfoJson = {
     installed?: {
         version: string;
     }[];
-    // This is brew info --json format, we don't pick it
-    // eslint-disable-next-line @typescript-eslint/naming-convention
+    // eslint-disable-next-line @typescript-eslint/naming-convention -- This is brew info --json format, we don't pick it
     linked_keg: string;
     versions: {
         stable: string;

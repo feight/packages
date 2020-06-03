@@ -45,7 +45,7 @@ export const buildDependency = async function(options: {
             cwd: directory
         });
 
-        // eslint-disable-next-line require-atomic-updates
+        // eslint-disable-next-line require-atomic-updates -- This is safe since it's just a cache
         caches.buildDependency[directory] = true;
 
     }
@@ -72,7 +72,7 @@ export const copyDependency = async function(options: {
         const packageJson = await getPackageJson(packagePath);
 
         const globs: string[] = [...new Set([
-            ...packageJson?.files ?? [],
+            ...packageJson.files ?? [],
             packageJson.main ?? ""
         ])].filter((item) => item);
 

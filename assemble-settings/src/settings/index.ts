@@ -209,8 +209,7 @@ export interface AssembleSettings{
     console?: AssembleConsoleSettings;
     consoleVersion?: number;
     copyright: string;
-    // We want this to be any because it supports anything the client puts in
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- We want this to be any because it supports anything the client puts in
     custom?: any;
     customContentId?: string;
     defaults?: AssembleDefaultsSettings;
@@ -221,14 +220,12 @@ export interface AssembleSettings{
     mail?: string;
     meta?: AssembleMetaSettings;
     name: string;
-    // This is deprecated, we're going to ditch it in the future
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- This is deprecated, we're going to ditch it in the future
     newsletters?: any;
     novaImportPub?: string;
     pubId: string;
     sendgridApiKey?: string;
-    // This is deprecated, we're going to ditch it in the future
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- This is deprecated, we're going to ditch it in the future
     teasers?: any;
     timezone?: string;
     title: string;

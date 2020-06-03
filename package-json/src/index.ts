@@ -5,6 +5,11 @@
 
     security/detect-non-literal-fs-filename: "off"
 
+    --
+
+    This package can only read json and doesn't pose a risk through non-literal
+    file names.
+
 */
 
 
@@ -91,8 +96,7 @@ export interface Bugs {
 
 export interface Config {
     name?: string;
-    // This is chilled, we're not going to use this anyway
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- This is chilled, we're not going to use this anyway
     config?: Record<string, any>;
 }
 

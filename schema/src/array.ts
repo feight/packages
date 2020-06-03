@@ -30,16 +30,14 @@ const extendedJoi = Joi.extend(
 
                 try{
 
-                    // It's expected that this is of type any
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- It's expected that this is of type any
                     return { value: JSON.parse(value) as any[] };
 
                 }catch{
 
                     try{
 
-                        // It's expected that this is of type any
-                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any -- It's expected that this is of type any
                         return { value: JSON5.parse(value) as any[] };
 
                     }catch{

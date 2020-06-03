@@ -70,7 +70,7 @@ const getChoices = function(publicationRoots: Publication[]): PromptChoice[]{
 
     const choices: PromptChoice[] = [];
 
-    let lastParent: string | undefined;
+    let lastParent: string | undefined = undefined;
 
     publicationRoots.forEach((pub) => {
 

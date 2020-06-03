@@ -3,6 +3,7 @@
 import Joi from "@hapi/joi";
 
 
+// eslint-disable-next-line @typescript-eslint/ban-types -- This is fine, it's just for testing
 export class EqualityTest<TType, TMethod extends Function>{
 
     method: TMethod;
@@ -25,7 +26,7 @@ export class EqualityTest<TType, TMethod extends Function>{
 
                 it(`${ this.name }(${ JSON.stringify(json, undefined, 2) }) returns ${ JSON.stringify(joi.describe(), undefined, 2) }`, () => {
 
-                    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+                    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access -- This is just for testing
                     expect(this.method(json).describe()).toEqual(joi.describe());
 
                 });

@@ -6,6 +6,10 @@
     require-await: "off",
     @typescript-eslint/no-misused-promises: "off",
 
+    --
+
+    We need to break these rules to make this simple
+
 */
 
 import path from "path";
@@ -21,9 +25,7 @@ import { cleanCacheTask } from "@newsteam/cli-tasks";
 import {
     config,
     Mode,
-    modes,
-    Platform,
-    platforms
+    modes
 } from "../config";
 import { buildTask } from "../tasks/build";
 import { cleanTask } from "../tasks/clean";
@@ -39,14 +41,14 @@ import {
 interface BuildOptions{
     environment: string;
     mode: Mode;
-    platform: Platform;
     production: boolean;
     publication: string;
 }
 
 interface LintOptions{
-    lintType: TestTaskLintType;
+    all: boolean;
     fix: boolean;
+    type: TestTaskLintType;
 }
 
 type LocalOptions = BuildOptions;
@@ -63,15 +65,20 @@ const option = {
         description: "target a publication environment by Assemble publication environment id",
         flags: "--env --environment <environment>"
     },
-    fix: {
-        default: false,
+    lintAll: {
+        default: config.lint.all,
+        description: "lint all files, not just publication specific file",
+        flags: "--all"
+    },
+    lintFix: {
+        default: config.lint.fix,
         description: "attempt to fix lint issues automatically",
         flags: "--fix"
     },
     lintType: {
         default: undefined,
-        description: "specify which lints to run (eslint, stylelint, htmllint or flake8)",
-        flags: "--lint-type [lintType]"
+        description: "specify which lint type to run (eslint, stylelint, htmllint or flake8)",
+        flags: "--type [type]"
     },
     mode: {
         default: "development",
@@ -87,20 +94,6 @@ const option = {
 
         }
     },
-    platform: {
-        default: "web",
-        description: "device platform",
-        flags: "--platform <platform>",
-        fn: (value: string): Platform => {
-
-            if(platforms.includes(value as Platform)){
-                return platforms.includes(value as Platform) ? value as Platform : "web";
-            }
-
-            return "web";
-
-        }
-    },
     publication: {
         description: "target a publication by Assemble publication id",
         flags: "--pub --publication <publication>"
@@ -108,8 +101,7 @@ const option = {
 };
 
 
-// This is dodgy, but the typing of this in globals.d.ts is kinda wierd
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- This is dodgy, but the typing of this in globals.d.ts is kinda wierd
 process.on("unhandledRejection", (error: any): void => logger.error(error));
 
 process.on("uncaughtException", (error: Error): void => logger.error(error));
@@ -121,13 +113,11 @@ program.version(packageJson.version);
 program
 .command("build")
 .option(option.mode.flags, option.mode.description, option.mode.fn, option.mode.default)
-.option(option.platform.flags, option.platform.description, option.platform.fn, option.platform.default)
 .option(option.publication.flags, option.publication.description)
 .option(option.environment.flags, option.environment.description)
 .action(async (options: BuildOptions): Promise<void> => buildTask(config, {
     environment: options.environment,
     mode: options.mode,
-    platform: options.platform,
     publication: options.publication
 }));
 
@@ -146,23 +136,23 @@ program
 program
 .command("lint")
 .option(option.lintType.flags, option.lintType.description, option.lintType.default)
-.option(option.fix.flags, option.fix.description, option.fix.default)
+.option(option.lintAll.flags, option.lintAll.description, option.lintAll.default)
+.option(option.lintFix.flags, option.lintFix.description, option.lintFix.default)
 .action(async (options: LintOptions): Promise<void> => testTask(config, {
+    all: options.all,
     fix: options.fix,
-    lintType: options.lintType,
-    tests: false
+    tests: false,
+    type: options.type
 }));
 
 program
 .command("local")
 .option(option.mode.flags, option.mode.description, option.mode.fn, option.mode.default)
-.option(option.platform.flags, option.platform.description, option.platform.fn, option.platform.default)
 .option(option.publication.flags, option.publication.description)
 .option(option.environment.flags, option.environment.description)
 .action(async (options: LocalOptions): Promise<void> => localTask(config, {
     environment: options.environment,
     mode: options.mode,
-    platform: options.platform,
     publication: options.publication
 }));
 
@@ -172,9 +162,13 @@ program
 
 program
 .command("test")
-.option(option.fix.flags, option.fix.description, option.fix.default)
+.option(option.lintType.flags, option.lintType.description, option.lintType.default)
+.option(option.lintAll.flags, option.lintAll.description, option.lintAll.default)
+.option(option.lintFix.flags, option.lintFix.description, option.lintFix.default)
 .action(async (options: TestOptions): Promise<void> => testTask(config, {
-    fix: options.fix
+    all: options.all,
+    fix: options.fix,
+    type: options.type
 }));
 
 

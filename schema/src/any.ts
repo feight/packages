@@ -22,7 +22,7 @@ const convert = {
         return value ? schema.custom(value.method, value.description) : schema;
     },
     default(schema: Joi.Schema, value: AnySchemaDefinition["default"]): Joi.Schema{
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- This needs to be type any
         return value ? schema.default(value.type === "reference" ? referenceToJoi(value) : value) : schema;
     },
     description(schema: Joi.Schema, value: AnySchemaDefinition["description"]): Joi.Schema{
@@ -99,8 +99,7 @@ export interface AnySchemaDefinition{
     /**
      * Whitelists a value
      */
-    // This any type supports default values of any type
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- This any type supports default values of any type
     allow?: any;
 
     /**
@@ -128,8 +127,7 @@ export interface AnySchemaDefinition{
      * When specifying a method you must either have a description property on your method or the
      *  second parameter is required.
      */
-    // This any type supports default values of any type
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- This any type supports default values of any type
     default?: any | Reference;
 
     /**
@@ -193,7 +191,7 @@ export interface AnySchemaDefinition{
     /**
      * Attaches metadata to the key.
      */
-    meta?: object;
+    meta?: Record<string, unknown>;
 
     /**
      * Annotates the key

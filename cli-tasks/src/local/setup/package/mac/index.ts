@@ -21,26 +21,31 @@ export const localPackageSetupTaskMac = async function(packages: Package[]): Pro
 
     }
 
+    /*
+
+        eslint-disable no-await-in-loop
+
+        --
+
+        We want to execute these promises sequentially, so this is ok
+
+    */
     for(const pack of packages){
 
         if(brewFormulae.includes(pack as typeof brewFormulae[number])){
 
-            // eslint-disable-next-line no-await-in-loop
             await localBrewPackageSetupTask(pack as typeof brewFormulae[number]);
 
         }else if(pack === "virtualbox"){
 
-            // eslint-disable-next-line no-await-in-loop
             await localVirtualboxSetupTask();
 
         }else if(pack === "java"){
 
-            // eslint-disable-next-line no-await-in-loop
             await localJavaSetupTask();
 
         }else if(pack === "pip"){
 
-            // eslint-disable-next-line no-await-in-loop
             await localPipSetupTask();
 
         }else{
@@ -50,5 +55,6 @@ export const localPackageSetupTaskMac = async function(packages: Package[]): Pro
         }
 
     }
+    /* eslint-enable no-await-in-loop */
 
 };

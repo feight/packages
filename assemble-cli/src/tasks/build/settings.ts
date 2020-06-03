@@ -40,19 +40,12 @@ export const buildSettingsTask = async function(options: BuildSettingsTaskOption
         const settingsJSON = path.join(destination, "settings.json");
         const settingsJS = path.join(destination, "settings.js");
 
-        /*
-         *  Because this gets called on a watch, it's necessary to flush the
-         *  require cache on the client settings module.
-         */
-        // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+        // eslint-disable-next-line @typescript-eslint/no-dynamic-delete -- Because this gets called on a watch, it's necessary to flush the require cache on the client settings module.
         delete require.cache[require.resolve(clientSettingsRequirePath)];
 
-        // Need a dynamic require because where this package is installed might change
-        // eslint-disable-next-line max-len
-        // eslint-disable-next-line node/global-require, security/detect-non-literal-require, import/no-dynamic-require, @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports, @typescript-eslint/no-unsafe-assignment
+        // eslint-disable-next-line node/global-require, security/detect-non-literal-require, import/no-dynamic-require, @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports, @typescript-eslint/no-unsafe-assignment -- Need a dynamic require because where this package is installed might change
         const getClientSettings = require(clientSettingsRequirePath);
-        // We're assuming the client settings consists of a default export function
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment -- We're assuming the client settings consists of a default export function
         const settings = getClientSettings();
 
         await Promise.all([

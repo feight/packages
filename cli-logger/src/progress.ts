@@ -48,7 +48,7 @@ export class Progress extends ProgressBar{
 
     }
 
-    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any -- This is passed to the super of this class which has an any type for this value
     gulpTick(tokens?: any): stream.Transform{
 
         const tick = this.tick.bind(this);
@@ -65,8 +65,7 @@ export class Progress extends ProgressBar{
 
             tick(tokens);
 
-            // Not invalid since that function is bound by the through library
-            // eslint-disable-next-line @typescript-eslint/no-invalid-this
+            // eslint-disable-next-line @typescript-eslint/no-invalid-this -- Not invalid since that function is bound by the through library
             this.push(file);
 
             return done();
@@ -75,19 +74,19 @@ export class Progress extends ProgressBar{
 
     }
 
-    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any -- This is passed to the super of this class which has an any type for this value
     tick(tokens?: any): void{
 
         if(typeof tokens === "object"){
 
             super.tick(Object.keys(tokens).reduce((accumulator, current) => {
 
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- It's not unsafe to check for truthyness
                 if(tokens[current]){
 
                     return {
                         ...accumulator,
-                        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- This is safe enough
                         [current]: this.logger.inLineFormat(String(tokens[current]))
                     };
 

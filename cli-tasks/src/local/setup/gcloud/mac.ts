@@ -10,8 +10,7 @@ import { GCloudComponent } from ".";
 
 
 interface Version{
-    // This is the gcloud component version format - we don't chose it
-    /* eslint-disable @typescript-eslint/naming-convention */
+    /* eslint-disable @typescript-eslint/naming-convention -- This is the gcloud component version format - we don't chose it */
     "current_version_string": string;
     "id": string;
     "is_configuration": boolean;
@@ -77,8 +76,7 @@ const installGCloudComponentMac = async function(component: GCloudComponent): Pr
             detatch: true
         });
 
-        // This works ok - leaving it alone for now
-        // eslint-disable-next-line require-atomic-updates
+        // eslint-disable-next-line require-atomic-updates -- This works ok - leaving it alone for now
         versions = JSON.parse(rawVersions) as Version[];
 
     }
@@ -121,7 +119,7 @@ export const localGCloudSetupTaskMac = async function(components: GCloudComponen
 
     for(const element of components){
 
-        // eslint-disable-next-line no-await-in-loop
+        // eslint-disable-next-line no-await-in-loop -- This is fine for automation tasks
         await installGCloudComponentMac(element);
 
     }

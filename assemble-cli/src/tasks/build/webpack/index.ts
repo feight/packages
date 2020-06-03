@@ -9,6 +9,14 @@
     @typescript-eslint/no-var-requires: "off",
     import/no-dynamic-require: "off",
     security/detect-non-literal-require: "off",
+    max-lines-per-function: "off",
+    @typescript-eslint/no-unsafe-call: "off",
+    @typescript-eslint/no-unsafe-member-access: "off",
+    @typescript-eslint/no-unsafe-assignment: "off",
+
+    --
+
+    We're going to skip these rules to keep this simple
 
 */
 
@@ -23,8 +31,7 @@ import SpeedMeasurePlugin, { SpeedMeasureWebpackPluginData } from "speed-measure
 import webpack, { Configuration } from "webpack";
 
 import {
-    Mode,
-    Platform
+    Mode
 } from "../../../config";
 
 
@@ -47,8 +54,7 @@ const printBuildStatistics = function(): void{
 
     });
 
-    // This is converting compileTime in milliseconds to seconds
-    // eslint-disable-next-line @typescript-eslint/no-magic-numbers
+    // eslint-disable-next-line @typescript-eslint/no-magic-numbers -- This is converting compileTime in milliseconds to seconds
     const compileTimes = data.map((item) => item.misc.compileTime / 1000).slice(Math.max(data.length - max, 0));
 
     logger.log("", { label });
@@ -64,27 +70,22 @@ const zeroPad = (number: number, places: number): string => String(number).padSt
 export interface BuildWebpackTaskOptions{
     config: string;
     mode?: Mode;
-    platform?: Platform;
     profile?: boolean;
     watch?: boolean;
 }
 
 
-// eslint-disable-next-line max-lines-per-function
 export const buildWebpackTask = async function(options: BuildWebpackTaskOptions): Promise<void>{
 
     const {
         config,
         mode = "production",
-        platform = "web",
         profile = false,
         watch = false
     } = options;
 
-    // eslint-disable-next-line max-lines-per-function
     await new Promise((resolve, reject): void => {
 
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
         require("ts-node").register({
             project: "./tsconfig.json"
         });
@@ -92,18 +93,14 @@ export const buildWebpackTask = async function(options: BuildWebpackTaskOptions)
         const webpackBasePath = "./config.js";
         const webpackCustomPath = path.relative(__dirname, path.resolve(config));
         const webpackCustomExists = fs.existsSync(path.resolve(config));
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         const webpackImport = webpackCustomExists ? require(webpackCustomPath) : require(webpackBasePath);
 
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         if(!webpackImport.config){
             throw new Error(`${ webpackCustomPath } has no exported member 'config'`);
         }
 
-        // This doesn't present any danger and is necessary in this case.
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment
         const webpackConfig: Configuration = webpackImport.config({
-            platform
+            platform: "web"
         }, {
             mode,
             watch
@@ -195,8 +192,7 @@ export const buildWebpackTask = async function(options: BuildWebpackTaskOptions)
 
                 }
 
-                // The types are lying here
-                // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+                // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- The types are lying here
                 if(error){
 
                     output(`Build ${ path.resolve(config) }`)(error, stats);

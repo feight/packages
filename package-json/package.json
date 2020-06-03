@@ -36,10 +36,10 @@
   },
   "devDependencies": {
     "@tamland/babel": "0.0.36",
-    "@tamland/eslint": "0.0.78",
+    "@tamland/eslint": "0.0.82",
     "@tamland/jasmine": "0.0.4",
-    "@types/fs-extra": "^9.0.0",
-    "@types/node": "^14.0.1",
-    "typescript": "^3.9.2"
+    "@types/fs-extra": "^9.0.1",
+    "@types/node": "^14.0.9",
+    "typescript": "^3.9.3"
   }
 }

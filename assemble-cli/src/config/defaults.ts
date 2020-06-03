@@ -7,10 +7,19 @@
     @typescript-eslint/no-magic-numbers: "off",
     @typescript-eslint/naming-convention: "off"
 
+    --
+
+    Some of these keys integrate with third parties so we have to break the naming
+    convention rules. Since everything here is configuration the numbers aren't magic.
+
 */
 
 
 export const defaults = {
+    lint: {
+        all: false,
+        fix: false
+    },
     local: {
         console: true,
         docker: {

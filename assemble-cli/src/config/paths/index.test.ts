@@ -6,8 +6,7 @@ import { defaults } from "../defaults";
 import { config } from "..";
 
 
-// This is ok because it's just a list of tests
-// eslint-disable-next-line max-lines-per-function
+// eslint-disable-next-line max-lines-per-function -- This is ok because it's just a list of tests
 describe("{ config.paths }", () => {
 
     it("config.paths is defined", () => {

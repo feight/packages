@@ -11,6 +11,11 @@
     import/no-dynamic-require: "off",
     security/detect-non-literal-require: "off",
 
+    --
+
+    Since this is all configuration it makes sense to disable these rules to
+    make things easier.
+
 */
 
 
@@ -24,6 +29,7 @@ import { Validate } from "@newsteam/schema";
 
 import * as htmllint from "./htmllint";
 import * as htmlmin from "./htmlmin";
+import * as lint from "./lint";
 import * as local from "./local";
 import * as paths from "./paths";
 import * as modernizr from "./modernizr";
@@ -34,7 +40,7 @@ type ElementType < T extends readonly unknown[] > = T extends readonly (infer El
 
 const cwd = process.cwd();
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+// eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access -- This is required for runtime ts execution
 require("ts-node").register({
     project: path.join(cwd, "tsconfig.json")
 });
@@ -58,12 +64,10 @@ const overrides: Config = merge.all([
 ]);
 
 
-export const platforms = ["desktop", "mobile", "web"] as const;
 export const modes = ["development", "production"] as const;
 export const targets = ["client", "server"] as const;
 
 
-export type Platform = ElementType<typeof platforms>;
 export type Mode = ElementType<typeof modes>;
 export type Target = ElementType<typeof targets>;
 
@@ -73,6 +77,8 @@ export { SettingsSchemaTests } from "./paths/settings";
 
 
 export interface Config{
+
+    lint?: lint.LintConfig;
 
     local?: local.LocalConfig;
 
@@ -91,6 +97,8 @@ export class NewsTeamConfig{
 
     htmlmin: htmlmin.NewsTeamHTMLMinConfig;
 
+    lint: lint.NewsTeamLintConfig;
+
     local: local.NewsTeamLocalConfig;
 
     modernizr: modernizr.NewsTeamModernizrConfig;
@@ -107,13 +115,15 @@ export class NewsTeamConfig{
 
         this.htmlmin = new htmlmin.NewsTeamHTMLMinConfig();
 
+        this.lint = new lint.NewsTeamLintConfig(config.lint);
+
         this.local = new local.NewsTeamLocalConfig(config.local);
 
         this.modernizr = new modernizr.NewsTeamModernizrConfig();
 
         this.paths = new paths.NewsTeamPathsConfig();
 
-        this.webpack = new webpack.NewsTeamWebpackConfig(config?.webpack);
+        this.webpack = new webpack.NewsTeamWebpackConfig(config.webpack);
 
     }
 

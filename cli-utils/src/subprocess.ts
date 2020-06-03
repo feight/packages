@@ -1,17 +1,34 @@
 
 
+/*
+
+    eslint
+
+    import/no-commonjs: "off",
+    @typescript-eslint/no-require-imports: "off",
+    @typescript-eslint/no-var-requires: "off",
+    @typescript-eslint/no-unsafe-assignment: "off",
+    @typescript-eslint/no-unsafe-call: "off",
+    @typescript-eslint/no-unsafe-member-access: "off",
+    @typescript-eslint/no-unsafe-assignment: "off"
+
+    --
+
+    There's quite a lot of hacky stuff going on here. For example, if we don't
+    include node-pty through a require, it doesn't work. This means we have no
+    idea about the typings.
+
+*/
+
 import childProcess from "child_process";
 
 import through from "through2";
 import { logger } from "@newsteam/cli-logger";
 
-// Doesn't work without require and it's safe to do it here since it's just a test
-// eslint-disable-next-line max-len
-// eslint-disable-next-line import/no-commonjs, @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires, @typescript-eslint/no-unsafe-assignment
 const pty = require("node-pty");
 
 
-// eslint-disable-next-line max-lines-per-function
+// eslint-disable-next-line max-lines-per-function -- Breaking this apart won't make it simpler
 export const exec = function(options: {
     command: string;
     detatch?: boolean;
@@ -20,7 +37,7 @@ export const exec = function(options: {
     environment?: { [key: string]: string | undefined };
 }): Promise<string>{
 
-    // eslint-disable-next-line max-lines-per-function
+    // eslint-disable-next-line max-lines-per-function -- Breaking this apart won't make it simpler
     return new Promise((resolve: (string: string) => void, reject: (error: Error) => void): void => {
 
         const execOptions = {
@@ -170,7 +187,6 @@ export const spawn = function(options: {
 
             const [cm, ...args] = bashCmd.split(" ");
 
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment
             const term = pty.spawn(cm, args, {
                 cols: 500,
                 cwd,
@@ -186,7 +202,6 @@ export const spawn = function(options: {
 
             const response: string[] = [];
 
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
             term.on("data", (data: string): void => {
 
                 response.push(data);
@@ -203,10 +218,8 @@ export const spawn = function(options: {
 
             });
 
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
             term.on("exit", (code: number): void => {
 
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
                 term.destroy();
 
                 if(!detatch){

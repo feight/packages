@@ -63,7 +63,7 @@ export interface ValidationResult<TValue>{
     value: TValue;
 }
 
-export type SchemaLike = string | number | boolean | object | null | Schema | Reference;
+export type SchemaLike = string | number | boolean | Record<string, unknown> | null | Schema | Reference;
 
 export type ValidationSchema = Schema | SchemaMap | Joi.Schema;
 
@@ -188,12 +188,12 @@ export const validateSchema = function<TValue>(value: TValue, schema: Validation
 };
 
 
-// eslint-disable-next-line @typescript-eslint/no-extraneous-class
+// eslint-disable-next-line @typescript-eslint/no-extraneous-class -- This class isn't extraneous, it gets exported
 export class Validate{
 
-    static map: Map<object, SchemaMap> = new Map<object, SchemaMap>();
+    static map: Map<Record<string, unknown>, SchemaMap> = new Map<Record<string, unknown>, SchemaMap>();
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Any is expected
     static compile(target: { [key: string]: any }): SchemaMap{
 
         const compiled = this.map.get(typeof target === "object" ? Object.getPrototypeOf(target) : target) ?? {};
@@ -261,7 +261,7 @@ export class Validate{
 
     }
 
-    static register(target: object, property: string, propertySchema: Schema): void {
+    static register(target: Record<string, unknown>, property: string, propertySchema: Schema): void {
 
         const schemaMap: SchemaMap = this.map.get(target) ?? {};
 
@@ -298,8 +298,7 @@ export class Validate{
 
 export const validate = function(propertySchema: Schema){
 
-    // Since target could be of any type, this is unavoidable
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types -- Since target could be of any type, this is unavoidable
     return function value(target: any, propertyKey: string): void{
 
         Validate.register(target, propertyKey, propertySchema);

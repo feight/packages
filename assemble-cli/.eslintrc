@@ -10,4 +10,4 @@
     "node/no-extraneous-import": "off",
     "node/no-process-exit": "off"
   }
-}            // eslint-disable-next-line no-await-in-loop
+}

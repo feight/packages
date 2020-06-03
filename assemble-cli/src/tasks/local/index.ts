@@ -81,8 +81,7 @@ export const localTask = async function(config: NewsTeamConfig, options: BuildTa
         }),
         localPythonServerTask({
             environment: {
-                // Nodemon configurtion - we don't chose these property names
-                /* eslint-disable @typescript-eslint/naming-convention */
+                /* eslint-disable @typescript-eslint/naming-convention -- Nodemon configurtion - we don't chose these property names */
                 DATASTORE_DATASET: `assemble-${ settings.pubId }`,
                 DATASTORE_EMULATOR_HOST: `${ config.local.emulators.datastore.host }:${ config.local.emulators.datastore.port }`,
                 DATASTORE_EMULATOR_HOST_PATH: `${ config.local.emulators.datastore.host }:${ config.local.emulators.datastore.port }/datastore`,

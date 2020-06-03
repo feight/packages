@@ -5,6 +5,12 @@
 
     @typescript-eslint/naming-convention: "off",
 
+    --
+
+    This is necessary because the naming convention of these properties maps
+    to Google App Engine instance configuration. For more information checkout out
+    https://cloud.google.com/appengine/docs/standard/python/config/appref
+
 */
 
 

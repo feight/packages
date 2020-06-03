@@ -111,7 +111,8 @@ export type TestTaskLintType = "eslint" | "stylelint" | "htmllint" | "flake8";
 
 
 export interface TestTaskOptions{
-    lintType?: TestTaskLintType;
+    all?: boolean;
+    type?: TestTaskLintType;
     tests?: boolean;
     fix?: boolean;
 }
@@ -132,36 +133,31 @@ export interface TestTaskConfigurations{
 }
 
 
-export const generateTestTaskConfigs = function(config: NewsTeamConfig): TestTaskConfigurations{
+export const generateTestTaskConfigs = function(config: NewsTeamConfig, options: TestTaskOptions): TestTaskConfigurations{
 
-    const destination = config.paths.build;
-    const source = config.paths.source;
+    const base = {
+        destination: config.paths.build,
+        label,
+        source: config.paths.source
+    };
 
     return {
         eslintLintTask: {
-            destination,
-            glob: config.paths.scripts.glob,
-            ignore: config.paths.scripts.ignore,
-            source
+            ...base,
+            ...config.lint.glob(["js", "jsx", "ts", "tsx"], options.all)
         },
         flake8LintTask: {
-            destination,
-            glob: config.paths.python.glob,
-            ignore: config.paths.python.ignore,
-            source
+            ...base,
+            ...config.lint.glob("py", options.all)
         },
         htmllintLintTask: {
-            destination,
-            glob: config.paths.html.glob,
-            ignore: config.paths.html.ignore,
-            options: config.htmllint.options,
-            source
+            ...base,
+            ...config.lint.glob("html", options.all),
+            options: config.htmllint.options
         },
         stylelintLintTask: {
-            destination,
-            glob: config.paths.styles.glob,
-            ignore: config.paths.styles.ignore,
-            source
+            ...base,
+            ...config.lint.glob(["css", "scss"], options.all)
         },
         testSettingsTask: {
             validations: config.paths.settings.validations
@@ -173,9 +169,9 @@ export const generateTestTaskConfigs = function(config: NewsTeamConfig): TestTas
 
 export const testTask = async function(config: NewsTeamConfig, options: TestTaskOptions): Promise<void>{
 
-    const configs = generateTestTaskConfigs(config);
+    const configs = generateTestTaskConfigs(config, options);
     const {
-        lintType,
+        type,
         tests = true,
         fix = false
     } = options;
@@ -183,7 +179,7 @@ export const testTask = async function(config: NewsTeamConfig, options: TestTask
     let errors: TestError[] = [];
 
     errors = errors.concat(tests ? await testErrors(configs) : []);
-    errors = errors.concat(await lintErrors(configs, fix, lintType));
+    errors = errors.concat(await lintErrors(configs, fix, type));
 
     errors.forEach((error) => {
 
@@ -203,10 +199,18 @@ export const testTask = async function(config: NewsTeamConfig, options: TestTask
 
     });
 
+    const message = `${ totalErrors } error${ totalErrors === 1 ? "" : "s" } found`;
+    const title = `${ tests ? "Testing" : "Linting" } Complete`;
+
     await notify({
-        message: `${ totalErrors } error${ totalErrors === 1 ? "" : "s" } found`,
-        title: `${ tests ? "Testing" : "Linting" } Complete`
+        message,
+        title
     });
+
+    logger.log("");
+    logger.log(title, { label });
+    logger.log(message, { label });
+    logger.log("");
 
     if(errors.length > 0){
 

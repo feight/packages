@@ -5,6 +5,10 @@
 
     more/no-duplicated-chains: "off"
 
+    --
+
+    Keeping this rule off to keep things simple
+
 */
 
 import {
@@ -49,7 +53,6 @@ import {
 import { linkTask } from "../link";
 import {
     Mode,
-    Platform,
     NewsTeamConfig
 } from "../../config";
 import { cleanTask } from "../clean";
@@ -61,7 +64,6 @@ export const label = "build";
 export interface BuildTaskOptions{
     environment?: string;
     mode: Mode;
-    platform: Platform;
     publication: string;
 }
 
@@ -124,7 +126,6 @@ export const generateBuildTaskConfigs = function(config: NewsTeamConfig, options
         buildWebpackTask: {
             config: config.paths.webpack.config,
             mode: options.mode,
-            platform: options.platform,
             profile: config.webpack.profile
         },
         buildWidgetsTask: {

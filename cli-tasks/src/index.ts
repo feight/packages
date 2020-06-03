@@ -14,6 +14,7 @@ export {
     Flake8LintTaskOptions
 } from "./lint/flake8";
 export {
+    HTMLLintOptions,
     htmllintLintTask,
     HtmllintLintTaskOptions
 } from "./lint/htmllint";

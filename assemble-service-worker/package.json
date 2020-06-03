@@ -41,9 +41,9 @@
   ],
   "devDependencies": {
     "@tamland/babel": "^0.0.36",
-    "@tamland/eslint": "^0.0.78",
+    "@tamland/eslint": "^0.0.82",
     "@tamland/jasmine": "0.0.4",
-    "@types/node": "^14.0.1",
+    "@types/node": "^14.0.9",
     "@types/workbox-sw": "^4.3.1"
   },
   "dependencies": {

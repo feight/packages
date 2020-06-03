@@ -29,7 +29,7 @@ export const npmInstallTask = async function(...manifests: string[]): Promise<vo
 
         if(exists){
 
-            // eslint-disable-next-line no-await-in-loop
+            // eslint-disable-next-line no-await-in-loop -- This is the only way to execute a series of promises sequentially
             const packageJson = await getPackageJson(manifest);
 
             if(packageJson.localDependencies){
@@ -38,7 +38,7 @@ export const npmInstallTask = async function(...manifests: string[]): Promise<vo
 
             }else{
 
-                // eslint-disable-next-line no-await-in-loop
+                // eslint-disable-next-line no-await-in-loop -- This is the only way to execute a series of promises sequentially
                 await new Promise((resolve) => {
 
                     gulp.src([`./${ manifest }`])

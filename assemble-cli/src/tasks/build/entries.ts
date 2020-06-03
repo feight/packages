@@ -17,8 +17,7 @@ const getFolders = (directory: string, filelist: string[] = []): string[] => {
 
         if(fs.statSync(`${ directory }/${ file }`).isDirectory()){
             filelist.push(`${ directory }/${ file }`);
-            // Given the recursive naturn of this function, we'll allow it
-            // eslint-disable-next-line no-param-reassign
+            // eslint-disable-next-line no-param-reassign -- Given the recursive naturn of this function, we'll allow it
             filelist = getFolders(`${ directory }/${ file }`, filelist);
         }
 

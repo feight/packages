@@ -50,8 +50,7 @@ export const testSettingsTask = async function(options: TestSettingsTaskOptions)
 
             logger.log(`schema ${ path.resolve(file) }`, { label });
 
-            // This is safe since the validator accepts any
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- This is safe since the validator accepts any
             const data = JSON.parse(fs.readFileSync(file).toString());
             const schema = JSON.parse(fs.readFileSync(validation.schema).toString()) as Schema;
             const validator = new Validator();

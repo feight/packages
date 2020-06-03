@@ -34,13 +34,11 @@ export const plugins = function(
         }),
         new webpack.DefinePlugin({
             "process.env.CLIENT": JSON.stringify("browser"),
-            // This is alright since it's an override of a process env variable
-            // eslint-disable-next-line @typescript-eslint/naming-convention
+            // eslint-disable-next-line @typescript-eslint/naming-convention -- This is alright since it's an override of a process env variable
             "process.env.NODE_ENV": JSON.stringify("production")
         }),
         new webpack.ProvidePlugin({
-            // This is alright because we need to provide $
-            // eslint-disable-next-line id-length
+            // eslint-disable-next-line id-length -- This is alright because we need to provide $
             $: "jquery",
             jQuery: "jquery",
             "window.jQuery": "jquery"
@@ -67,11 +65,7 @@ export const plugins = function(
             modules: true,
             modulesCount: 10000
 
-        /*
-         * Needed because the type definitions for this plugin don't match
-         * the documentation
-         */
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Needed because the type definitions for this plugin don't match the documentation
         } as any)
     ] : []);
 

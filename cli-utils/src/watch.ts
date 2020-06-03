@@ -23,18 +23,17 @@ export const watch = async function(
 
         const callback = (path: string): void => {
 
-            // eslint-disable-next-line @typescript-eslint/no-floating-promises
+            // eslint-disable-next-line @typescript-eslint/no-floating-promises -- Not sure why this triggers lint
             task([path]);
 
         };
 
         await new Promise(() => {
 
-            // This has to be dynamic and should be security by whoever uses it
-            // eslint-disable-next-line security/detect-non-literal-fs-filename
+            // eslint-disable-next-line security/detect-non-literal-fs-filename -- This has to be dynamic and should be security by whoever uses it
             const watcher = chokidar.watch(globs, {
                 ignored: options.ignore,
-                ignoreInitial: options?.ignoreInitial ?? false,
+                ignoreInitial: options.ignoreInitial ?? false,
                 persistent: true,
                 useFsEvents: false
             });

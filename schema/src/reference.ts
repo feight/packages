@@ -21,12 +21,26 @@ export const referenceToJoi = function(type: Reference): Joi.Reference{
     };
 
     Object.keys(options).forEach((key) => {
-        // We're aware of the risks here, but this is the cleanest way to do it.
-        /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-dynamic-delete */
+        /*
+            eslint-disable
+
+            @typescript-eslint/no-explicit-any,
+            @typescript-eslint/no-dynamic-delete
+
+            --
+
+            We're aware of the risks here, but this is the cleanest way to do it.
+
+        */
         if(typeof (options as Record<string, any>)[key] === "undefined"){
             delete (options as Record<string, any>)[key];
         }
-        /* eslint-enable @typescript-eslint/no-explicit-any, @typescript-eslint/no-dynamic-delete */
+        /*
+            eslint-enable
+
+            @typescript-eslint/no-explicit-any,
+            @typescript-eslint/no-dynamic-delete
+        */
     });
 
     return Joi.ref(type.key, options);

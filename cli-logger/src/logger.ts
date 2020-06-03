@@ -20,8 +20,8 @@ const nonBreakingCharacterCode = 160;
 const nonBreakingCharacter = String.fromCharCode(nonBreakingCharacterCode);
 const cwd = process.cwd();
 
-let lastFormattedLabel: string | undefined;
-let lastLabel: string | undefined;
+let lastFormattedLabel: string | undefined = undefined;
+let lastLabel: string | undefined = undefined;
 let started = false;
 
 
@@ -190,7 +190,7 @@ export class Logger{
                             line && column ? `:${ line }:${ column }` : ""
                         ].join("");
 
-                        if(column && line){
+                        if(column !== undefined && line !== undefined){
 
                             const errorFrame = codeframe.get({
                                 column,
@@ -298,8 +298,7 @@ export class Logger{
                 label
             });
 
-            // Not invalid since that function is bound by the through library
-            // eslint-disable-next-line @typescript-eslint/no-invalid-this
+            // eslint-disable-next-line @typescript-eslint/no-invalid-this -- Not invalid since that function is bound by the through library
             this.push(file);
 
             return done();
@@ -317,8 +316,7 @@ export class Logger{
     inLineFormat(line: string): string{
 
         return line
-        // Not really a security concern here
-        // eslint-disable-next-line security/detect-non-literal-regexp
+        // eslint-disable-next-line security/detect-non-literal-regexp -- Not really a security concern here
         .replace(new RegExp(`${ String(cwd.replace(/\//gu, "\\/")) }\\/(.*?)(\\]|. |$|\\s)`, "gu"), `${ chalk.hex(this.colors.file)("$1") }$2`)
         .replace(/(https?:\/\/[^(\]|\s|")]*)/gu, chalk.hex(this.colors.url)("$1"))
         .replace(/info:\s(POST|GET|PUT|PATCH|DELETE)\s(2\d\d)\s/gu, `info: $1 ${ chalk.hex(this.colors.status200)("$2") } `)
@@ -347,8 +345,7 @@ export class Logger{
 
             const cursor = getCursorPosition.sync();
 
-            // Sometimes when you ctrl+c a process this cursor is undefined
-            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- Sometimes when you ctrl+c a process this cursor is undefined
             if(cursor){
 
                 console.log(cursor.col > 1 ? `\n${ blank }` : blank);
@@ -364,8 +361,7 @@ export class Logger{
             const cursor = getCursorPosition.sync();
             const output = color ? line : this.inLineFormat(line);
 
-            // Sometimes when you ctrl+c a process this cursor is undefined
-            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- Sometimes when you ctrl+c a process this cursor is undefined
             if(cursor){
 
                 console.log(cursor.col > 1 ? `\n${ output }` : output);
@@ -438,7 +434,7 @@ export class Logger{
          * If you find one at the end of the message, store it so it can be
          * prepended to the next written message.
          */
-        // eslint-disable-next-line require-unicode-regexp
+        // eslint-disable-next-line require-unicode-regexp -- Forgot why this was important
         const match = output.match(/\033(?!\[\d*m).*$/gm);
 
         output = `${ this.carryAnsi }${ output }`;
@@ -462,14 +458,12 @@ export class Logger{
             this.setLastLabel(label);
 
             return this.inLineFormat(line)
-            // Replace all clear lines with positional line writes
-            // eslint-disable-next-line no-control-regex
+            // eslint-disable-next-line no-control-regex -- Replace all clear lines with positional line writes
             .replace(/[\u001B]\[K/gu, `\u001B[K\u001B[${ stripAnsi(lbl).length + 2 }G`)
             // Replace all new lines with new lines and labels
             .replace(/\r/gu, `\r${ lbl } `)
             .replace(/\n/gu, `\n${ lbl } `)
-            // Replace all clear lines with positional line writes
-            // eslint-disable-next-line no-control-regex
+            // eslint-disable-next-line no-control-regex -- Replace all clear lines with positional line writes
             .replace(/[\u001B]\[1G/gu, `\u001B[0K${ lbl } \u001B[${ stripAnsi(lbl).length + 2 }G`);
 
         });

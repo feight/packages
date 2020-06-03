@@ -32,8 +32,7 @@ export const skip = function(): stream.Transform{
             return done();
         }
 
-        // Not invalid since that function is bound by the through library
-        // eslint-disable-next-line @typescript-eslint/no-invalid-this
+        // eslint-disable-next-line @typescript-eslint/no-invalid-this -- Not invalid since that function is bound by the through library
         this.push(file);
 
         return done();
@@ -66,8 +65,7 @@ export const task = function(
                     "addDir",
                     "unlinkDir"
                 ]
-            // Not sure wtf is wrong with this - but whatever
-            // eslint-disable-next-line @typescript-eslint/no-misused-promises
+            // eslint-disable-next-line @typescript-eslint/no-misused-promises -- Not sure wtf is wrong with this - but whatever
             }).on("change", async (file): Promise<void> => {
 
                 await func(file, true);
