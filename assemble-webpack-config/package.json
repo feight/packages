@@ -6,7 +6,7 @@
   "types": "lib",
   "scripts": {
     "build": "bash ../build.sh",
-    "npm-install-local": "npm link @newsteam/npm-install-local && npm-install-local",
+    "npm-install-local": "npm-install-local",
     "prepublishOnly": "bash ../publish.sh",
     "test": "bash ../test.sh"
   },
@@ -40,6 +40,7 @@
     "lib"
   ],
   "devDependencies": {
+    "@newsteam/npm-install-local": "0.0.1",
     "@tamland/babel": "^0.0.36",
     "@tamland/eslint": "^0.0.82",
     "@tamland/jasmine": "0.0.4",
@@ -47,12 +48,15 @@
     "@types/duplicate-package-checker-webpack-plugin": "^2.1.0",
     "@types/fs-extra": "^9.0.1",
     "@types/mini-css-extract-plugin": "^0.9.1",
+    "@types/sass": "^1.16.0",
     "@types/terser-webpack-plugin": "^3.0.0",
     "@types/webpack": "^4.41.17",
     "@types/webpack-bundle-analyzer": "^3.8.0",
     "@types/webpack-merge": "^4.1.5"
   },
   "dependencies": {
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/plugin-transform-react-jsx": "^7.10.1",
     "@babel/preset-env": "^7.10.2",
     "@tamland/babel-preset": "0.0.33",
     "@tamland/postcss-config": "0.0.26",
@@ -65,8 +69,9 @@
     "debug-webpack-plugin": "^0.1.0",
     "duplicate-package-checker-webpack-plugin": "^3.0.0",
     "expose-loader": "^0.7.5",
+    "fibers": "^5.0.0",
     "file-loader": "^6.0.0",
-    "fs-extra": "^9.0.0",
+    "fs-extra": "^9.0.1",
     "glob-promise": "^3.4.0",
     "globby": "^11.0.1",
     "html-loader": "^1.1.0",
@@ -74,9 +79,9 @@
     "jquery": "^3.5.1",
     "json-loader": "^0.5.7",
     "mini-css-extract-plugin": "^0.9.0",
-    "node-sass": "^4.14.1",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-loader": "^3.0.0",
+    "sass": "^1.26.8",
     "sass-loader": "^8.0.2",
     "script-loader": "^0.7.2",
     "terser-webpack-plugin": "^3.0.3",

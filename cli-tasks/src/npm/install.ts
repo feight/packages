@@ -1,4 +1,15 @@
 
+/*
+
+    eslint
+
+    no-await-in-loop: "off",
+
+    --
+
+    This is the only way to execute a series of promises sequentially
+
+*/
 
 import path from "path";
 
@@ -8,7 +19,7 @@ import install from "gulp-install";
 import cache from "gulp-cache";
 import { logger } from "@newsteam/cli-logger";
 import { getPackageJson } from "@newsteam/package-json";
-
+import { getInstallMap } from "@newsteam/npm-install-local";
 
 const label = "npm";
 
@@ -17,10 +28,10 @@ export const npmInstallTask = async function(...manifests: string[]): Promise<vo
 
     const bar = logger.progress({
         label,
-        tag: "install",
         total: manifests.length
     });
 
+    const errors: string[] = [];
     const warnings: string[] = [];
 
     for(const manifest of manifests){
@@ -29,16 +40,32 @@ export const npmInstallTask = async function(...manifests: string[]): Promise<vo
 
         if(exists){
 
-            // eslint-disable-next-line no-await-in-loop -- This is the only way to execute a series of promises sequentially
             const packageJson = await getPackageJson(manifest);
 
             if(packageJson.localDependencies){
 
-                warnings.push(`Local dependencies found in ${ path.resolve(manifest) }. Please install dependencies manually`);
+                const localInstallMap = await getInstallMap();
+
+                const dependencies = localInstallMap.pipeline.install.concat(localInstallMap.pipeline.update);
+
+                if(dependencies.length > 0){
+
+                    warnings.push(`local dependencies out of date in ${ path.resolve(manifest) } `);
+                    warnings.push("");
+
+                    dependencies.forEach((dependency) => {
+
+                        warnings.push(logger.colorizeText(`  ${ dependency.packageName }`, "#ffa500"));
+
+                    });
+
+                    warnings.push("");
+                    warnings.push(`to update run ${ logger.colorizeText("npm run npm-install-local", "#0f0") }`);
+
+                }
 
             }else{
 
-                // eslint-disable-next-line no-await-in-loop -- This is the only way to execute a series of promises sequentially
                 await new Promise((resolve) => {
 
                     gulp.src([`./${ manifest }`])
@@ -61,7 +88,7 @@ export const npmInstallTask = async function(...manifests: string[]): Promise<vo
 
         }else{
 
-            warnings.push(`Could not find npm manifest ${ manifest }`);
+            errors.push(`Could not find npm manifest ${ manifest }`);
 
         }
 
@@ -75,9 +102,15 @@ export const npmInstallTask = async function(...manifests: string[]): Promise<vo
 
     }
 
+    errors.forEach((error) => {
+
+        logger.error(error, { label });
+
+    });
+
     warnings.forEach((warning) => {
 
-        logger.warn(warning, { label });
+        logger.log(warning, { label });
 
     });
 

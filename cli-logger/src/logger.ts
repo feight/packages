@@ -339,20 +339,6 @@ export class Logger{
         } = options;
 
         const formattedMessage = this.format(label, String(message), color, error);
-        const blank = started ? this.formatLabel(`${ nonBreakingCharacter }`) : "";
-
-        if(lastLabel !== label && label && started){
-
-            const cursor = getCursorPosition.sync();
-
-            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- Sometimes when you ctrl+c a process this cursor is undefined
-            if(cursor){
-
-                console.log(cursor.col > 1 ? `\n${ blank }` : blank);
-
-            }
-
-        }
 
         this.setLastLabel(label);
 

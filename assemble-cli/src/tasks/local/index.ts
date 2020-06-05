@@ -54,7 +54,10 @@ const getCredentials = function(): string{
 };
 
 
-export const localTask = async function(config: NewsTeamConfig, options: BuildTaskOptions): Promise<void>{
+export type LocalTaskOptions = BuildTaskOptions;
+
+
+export const localTask = async function(config: NewsTeamConfig, options: LocalTaskOptions): Promise<void>{
 
     const openDelay = 2000;
     const credentials = getCredentials();

@@ -15,11 +15,13 @@ export const babelLoader = function(): NewLoader{
         options: {
             babelrc: false,
             plugins: [
-                "syntax-dynamic-import",
+                "@babel/plugin-syntax-dynamic-import",
                 // Required for preact
                 [
-                    "transform-react-jsx",
-                    { pragma: "h" }
+                    "@babel/plugin-transform-react-jsx",
+                    {
+                        pragma: "h"
+                    }
                 ]
             ],
             presets: [

@@ -6,7 +6,7 @@
   "types": "lib",
   "scripts": {
     "build": "bash ../build.sh",
-    "npm-install-local": "npm link @newsteam/npm-install-local && npm-install-local",
+    "npm-install-local": "npm-install-local",
     "prepublishOnly": "bash ../publish.sh",
     "test": "bash ../test.sh"
   },

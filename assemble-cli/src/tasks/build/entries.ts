@@ -93,7 +93,6 @@ export const buildEntriesTask = async function(options: BuildEntriesTaskOptions)
         const mobileScssContent = mobileScssExists ? "@import \"custom/app/entry/mobile/index.scss\";" : "";
         const mobileOutputFolder = path.join(destination, "entries/mobile");
 
-
         writes.push([path.join(mobileOutputFolder, "index.scss"), mobileScssContent]);
 
         const bar = logger.progress({

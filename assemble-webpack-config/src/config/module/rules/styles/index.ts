@@ -7,9 +7,9 @@ import {
     RuleSetUseItem
 } from "webpack";
 import postcssConfig from "@tamland/postcss-config";
+import sass from "sass";
 
 import { cacheLoader } from "../../../../shared/loaders/cache";
-
 
 /*
  * This plugin extracts CSS into separate files. It creates a CSS
@@ -79,6 +79,7 @@ const postCssLoader = (): RuleSetUseItem => ({
 const sassLoader = (): RuleSetUseItem => ({
     loader: "sass-loader",
     options: {
+        implementation: sass,
         sassOptions: {
             includePaths: [
                 "src/publication",

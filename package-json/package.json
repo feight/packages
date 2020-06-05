@@ -8,7 +8,7 @@
   "scripts": {
     "build": "bash ../build.sh",
     "clean": "rm -rf lib",
-    "npm-install-local": "npm link @newsteam/npm-install-local && npm-install-local",
+    "npm-install-local": "npm-install-local",
     "test": "bash ../test.sh"
   },
   "browserslist": "node 12",
@@ -32,14 +32,15 @@
     "lib"
   ],
   "dependencies": {
-    "fs-extra": "^9.0.0"
+    "fs-extra": "^9.0.1"
   },
   "devDependencies": {
+    "@newsteam/npm-install-local": "0.0.1",
     "@tamland/babel": "0.0.36",
     "@tamland/eslint": "0.0.82",
     "@tamland/jasmine": "0.0.4",
     "@types/fs-extra": "^9.0.1",
-    "@types/node": "^14.0.9",
+    "@types/node": "^14.0.10",
     "typescript": "^3.9.3"
   }
 }

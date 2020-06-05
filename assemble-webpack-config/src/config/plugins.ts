@@ -3,7 +3,6 @@
 import path from "path";
 
 import AssetsPlugin from "assets-webpack-plugin";
-import FileListPlugin from "webpack-file-list-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import webpack from "webpack";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
@@ -28,10 +27,6 @@ export const plugins = function(
 
     const webpackPlugins = [
         new webpack.optimize.ModuleConcatenationPlugin(),
-        new FileListPlugin({
-            filename: "chunks.json",
-            path: path.resolve(options.cwd, "src/build")
-        }),
         new webpack.DefinePlugin({
             "process.env.CLIENT": JSON.stringify("browser"),
             // eslint-disable-next-line @typescript-eslint/naming-convention -- This is alright since it's an override of a process env variable
@@ -44,7 +39,7 @@ export const plugins = function(
             "window.jQuery": "jquery"
         }),
         new AssetsPlugin({
-            filename: "webpack-assets.json",
+            filename: "chunks.json",
             path: path.resolve(options.cwd, "src/build")
         }),
         new MiniCssExtractPlugin({

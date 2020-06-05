@@ -5,11 +5,14 @@
  * maybe use https://webpack.js.org/loaders/thread-loader/
  */
 
-
 import { Configuration } from "webpack";
 import merge from "webpack-merge";
 
 import * as configs from "./config";
+
+
+// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any -- This provides a stack trace for deprecation warnings
+(process as any).traceDeprecation = true;
 
 
 const generateOptions = function(options: ConfigOptions, environment: Environment, args: Args): Options{

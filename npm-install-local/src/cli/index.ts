@@ -3,42 +3,30 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 
-import program from "commander";
+import path from "path";
+
 import chalk from "chalk";
+import fs from "fs-extra";
+import program from "commander";
 import table from "text-table";
 
+import { setCache } from "../cache";
 import {
-    getCache,
-    setCache
-} from "../cache";
-import cliPackageJson from "../../package.json";
-import {
-    getDependenciesHash,
-    getSourceCodeHash
-} from "../hash";
-import {
-    Dependency,
-    getDependencyMap,
     installDependencies,
     updateDependencies
 } from "../dependency";
+import { getInstallMap } from "../install-map";
 
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any -- This is dodgy, but the typing of this in globals.d.ts is kinda wierd
-process.on("unhandledRejection", (error: any): void => console.error(error));
-
+process.on("unhandledRejection", (error: Error): void => console.error(error));
 process.on("uncaughtException", (error: Error): void => console.error(error));
 
 
-program.version(cliPackageJson.version);
+const packageJsonRaw = fs.readFileSync(path.join(__dirname, "../../package.json"));
+const packageJson = JSON.parse(packageJsonRaw.toString()) as { version: string };
 
 
-interface Pipeline{
-    install: Dependency[];
-    update: Dependency[];
-    updated: Dependency[];
-}
-
+program.version(packageJson.version);
 
 program.parse(process.argv);
 
@@ -46,55 +34,10 @@ program.parse(process.argv);
 // eslint-disable-next-line @typescript-eslint/no-floating-promises -- Need a floating promise here so we run async code from the root of the code
 (async (): Promise<void> => {
 
-    const root = process.cwd();
-    const dependencies = await getDependencyMap(root);
-
-    const pipeline: Pipeline = {
-        install: [],
-        update: [],
-        updated: []
-    };
-
-    const cache = await getCache(dependencies);
-
-    const depsHash = await getDependenciesHash(dependencies);
-    const depsCache = cache.dependencies;
-
-    for(const {
-        directory,
-        packageName
-    } of dependencies){
-
-        const codeHash = await getSourceCodeHash(directory);
-        const codeCache = (cache.sourceCode ?? {})[packageName];
-
-        if(
-            depsCache === depsHash &&
-            codeCache === codeHash
-        ){
-
-            pipeline.updated.push({
-                directory,
-                packageName
-            });
-
-        }else if(depsCache !== depsHash){
-
-            pipeline.install.push({
-                directory,
-                packageName
-            });
-
-        }else if(codeCache !== codeHash){
-
-            pipeline.update.push({
-                directory,
-                packageName
-            });
-
-        }
-
-    }
+    const {
+        dependencies,
+        pipeline
+    } = await getInstallMap();
 
     console.log("");
     console.log(table([
