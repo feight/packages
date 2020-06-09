@@ -18,13 +18,15 @@ export const files = function(
             rules: [
 
                 /*
-                 * CacheLoader(),
                  * .txt and .json file extensions
                  */
                 {
                     exclude: /node_modules/u,
                     test: /\.(?:txt)$/u,
-                    use: [fileLoader(config, options)]
+                    use: [
+                        cacheLoader(),
+                        fileLoader(config, options)
+                    ]
                 }
             ]
         }

@@ -32,6 +32,10 @@ import {
     BuildTaskOptions
 } from "../tasks/build";
 import { cleanTask } from "../tasks/clean";
+import {
+    deployTask,
+    DeployTaskOptions
+} from "../tasks/deploy";
 import { linkTask } from "../tasks/link";
 import {
     localTask,
@@ -100,6 +104,11 @@ const option = {
     publication: {
         description: "target a publication by Assemble publication id",
         flags: "--pub --publication <publication>"
+    },
+    versionId: {
+        default: undefined,
+        description: "target a deployment version",
+        flags: "--version <versionId>"
     }
 };
 
@@ -127,6 +136,17 @@ program
 program
 .command("clean")
 .action(async (): Promise<void> => action(cleanTask(config, { cache: true })));
+
+program
+.command("deploy")
+.option(option.publication.flags, option.publication.description)
+.option(option.environment.flags, option.environment.description)
+.option(option.versionId.flags, option.versionId.description, option.versionId.default)
+.action(async (options: DeployTaskOptions): Promise<void> => action(deployTask(config, {
+    environment: options.environment,
+    publication: options.publication,
+    versionId: options.versionId
+})));
 
 program
 .command("clean-cache")

@@ -18,7 +18,6 @@ export const images = function(
             rules: [
 
                 /*
-                 * CacheLoader(),
                  * .png .jpg .jpeg .gif .webp and .ico image extensions
                  */
                 {
@@ -29,6 +28,7 @@ export const images = function(
                      * we optimize images manually using tamland optimize
                      */
                     use: [
+                        cacheLoader(),
                         fileLoader(config, options),
                         {
                             loader: "image-process-loader"
@@ -39,6 +39,7 @@ export const images = function(
                 {
                     test: /\.ico$/u,
                     use: [
+                        cacheLoader(),
                         fileLoader(config, options)
                     ]
                 },
@@ -46,6 +47,7 @@ export const images = function(
                 {
                     test: /\.string\.svg$/u,
                     use: [
+                        cacheLoader(),
                         "svg-inline-loader"
                     ]
                 },
@@ -53,6 +55,7 @@ export const images = function(
                 {
                     test: /^((?!(\.string)).)*.svg$/u,
                     use: [
+                        cacheLoader(),
                         fileLoader(config, options)
                     ]
                 }

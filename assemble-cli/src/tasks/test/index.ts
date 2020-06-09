@@ -210,7 +210,6 @@ export const testTask = async function(config: NewsTeamConfig, options: TestTask
     logger.log("");
     logger.log(title, { label });
     logger.log(message, { label });
-    logger.log("");
 
     if(errors.length > 0){
 

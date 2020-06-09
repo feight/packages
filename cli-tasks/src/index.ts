@@ -5,6 +5,7 @@ export {
 } from "./build/modernizr";
 export { cleanCacheTask } from "./cache/clean";
 export { cleanTask } from "./clean";
+export { deployTask } from "./deploy";
 export {
     eslintLintTask,
     EslintLintTaskOptions

@@ -4,6 +4,7 @@ import path from "path";
 
 import fs from "fs-extra";
 import inquirer from "inquirer";
+import equal from "deep-equal";
 
 
 export interface PromptChoice{
@@ -21,7 +22,7 @@ export const prompt = async function(id: string, choices: PromptChoice[]): Promi
     const previousPath = path.join(process.cwd(), `.local/cache/@newsteam/cli-utils/prompts/${ key }.json`);
     const previousExists = await fs.pathExists(previousPath);
 
-    let previous: PromptChoice | undefined = undefined;
+    let previousIndex = 0;
 
     if(previousExists){
 
@@ -29,7 +30,15 @@ export const prompt = async function(id: string, choices: PromptChoice[]): Promi
         const raw = await fs.readFile(previousPath);
 
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- No real choice here, we're read JSON
-        previous = JSON.parse(raw.toString())[key] as PromptChoice;
+        const previous = JSON.parse(raw.toString())[key] as PromptChoice;
+
+        choices.forEach((choice, index) => {
+
+            if(equal(choice.value, previous)){
+                previousIndex = index;
+            }
+
+        });
 
     }
 
@@ -42,7 +51,7 @@ export const prompt = async function(id: string, choices: PromptChoice[]): Promi
 
     const choice: { [id: string]: string} = await inquirer.prompt([{
         choices: choices.map((item) => item.separator ? new inquirer.Separator(item.separator) : item),
-        default: previous,
+        default: previousIndex,
         message: `Select ${ id }:`,
         name: key,
         type: "list"

@@ -16,7 +16,7 @@ export const json = function(config: Configuration): Configuration{
                     test: /\.json$/u,
                     type: "javascript/auto",
                     use: [
-                        // CacheLoader(),
+                        cacheLoader(),
                         "json-loader"
                     ]
                 }

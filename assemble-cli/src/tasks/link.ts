@@ -6,23 +6,27 @@ import fs from "fs-extra";
 import { logger } from "@newsteam/cli-logger";
 
 import { promptPublication } from "../utils/prompt-publication";
+import {
+    getPublication,
+    Publication
+} from "../utils/publication";
 
 
 const label = "symlink";
 
 
-export const linkTask = async function(publication?: boolean | string): Promise<void>{
+export const linkTask = async function(publicationFolder?: boolean | string): Promise<Publication>{
 
     const cwd = process.cwd();
     const exists = fs.existsSync(path.join(cwd, "src/publication/custom"));
 
-    if(!exists || publication){
+    if(!exists || publicationFolder){
 
-        const folder = await promptPublication(typeof publication === "string" ? publication : undefined);
+        const publication = await promptPublication(typeof publicationFolder === "string" ? publicationFolder : undefined);
 
         const customDestination = "src/publication/custom";
         const sharedDestination = "src/publication/shared";
-        const customSource = folder;
+        const customSource = publication.path;
         const sharedSource = "shared";
 
         await fs.remove(customDestination);
@@ -30,6 +34,8 @@ export const linkTask = async function(publication?: boolean | string): Promise<
 
         await fs.ensureSymlink(customSource, customDestination);
         await fs.ensureSymlink(sharedSource, sharedDestination);
+
+        return publication;
 
     }
 
@@ -39,5 +45,7 @@ export const linkTask = async function(publication?: boolean | string): Promise<
         color: "#00ff00",
         label
     });
+
+    return getPublication(linkPath);
 
 };

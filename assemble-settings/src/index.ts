@@ -6,7 +6,10 @@ export {
     AssembleEnvironments
 } from "./environments";
 export {
-    AssembleSettings,
+    AssemblePublicationSettings,
     getPublicationSettings
-} from "./settings";
+} from "./settings/publication";
+export {
+    AssemblePublicationEnvironmentSettings
+} from "./settings/publication/environment";
 export { AssembleWidgetSettings } from "./widget";

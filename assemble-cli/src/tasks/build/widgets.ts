@@ -21,7 +21,7 @@ import {
     WatchOptions
 } from "@newsteam/cli-utils";
 import {
-    AssembleSettings,
+    AssemblePublicationSettings,
     AssembleWidgetSettings,
     getPublicationSettings
 } from "@newsteam/assemble-settings";
@@ -91,10 +91,10 @@ export const buildWidgetsTask = async function(options: BuildWidgetsTaskOptions)
 
         const settings = getPublicationSettings();
 
-        let sharedSettings: AssembleSettings | undefined = undefined;
+        let sharedSettings: AssemblePublicationSettings | undefined = undefined;
 
         try{
-            sharedSettings = JSON.parse(rawSharedSettings) as AssembleSettings;
+            sharedSettings = JSON.parse(rawSharedSettings) as AssemblePublicationSettings;
         }catch{
             throw new Error("Shared settings file could not be parsed as valid json");
         }

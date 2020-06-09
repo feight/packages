@@ -4,10 +4,6 @@ import path from "path";
 
 import fs from "fs-extra";
 import cache from "gulp-cache";
-import { logger } from "@newsteam/cli-logger";
-
-
-const label = "clean";
 
 
 export const cleanCacheTask = async function(): Promise<void>{
@@ -20,13 +16,9 @@ export const cleanCacheTask = async function(): Promise<void>{
 
             fs.removeSync(cachePath);
 
-            logger.log(cachePath, { label });
-
         }
 
         cache.clearAll();
-
-        logger.log("gulp-cache", { label });
 
         resolve();
 

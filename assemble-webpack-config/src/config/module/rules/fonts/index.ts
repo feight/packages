@@ -18,12 +18,14 @@ export const fonts = function(
             rules: [
 
                 /*
-                 * CacheLoader(),
                  * .ttf .otf .eot .woff and .woff2 font extensions
                  */
                 {
                     test: /.(ttf|ttx|otf|eot|woff(2)?)(\?[a-z0-9]=.*)?$/u,
-                    use: [fileLoader(config, options)]
+                    use: [
+                        cacheLoader(),
+                        fileLoader(config, options)
+                    ]
                 }
             ]
         }

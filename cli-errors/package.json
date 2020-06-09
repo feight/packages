@@ -40,9 +40,9 @@
     "lib"
   ],
   "devDependencies": {
-    "@newsteam/npm-install-local": "0.0.1",
+    "@newsteam/npm-install-local": "0.0.3",
     "@tamland/babel": "^0.0.36",
-    "@tamland/eslint": "^0.0.82",
+    "@tamland/eslint": "^0.0.83",
     "@tamland/jasmine": "0.0.4"
   },
   "dependencies": {}

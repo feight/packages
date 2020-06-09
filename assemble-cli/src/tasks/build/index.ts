@@ -62,6 +62,7 @@ export const label = "build";
 
 
 export interface BuildTaskOptions{
+    clean?: boolean;
     environment?: string;
     link: boolean;
     mode: Mode;
@@ -162,11 +163,17 @@ export const generateBuildTaskConfigs = function(config: NewsTeamConfig, options
 
 export const buildTask = async function(config: NewsTeamConfig, options: BuildTaskOptions): Promise<void>{
 
+    const clean = typeof options.clean === "undefined" ? true : options.clean;
+
     const buildTaskConfigs = generateBuildTaskConfigs(config, options);
 
     await linkTask(options.link ? true : options.publication);
 
-    await cleanTask(config);
+    if(clean){
+
+        await cleanTask(config);
+
+    }
 
     await buildEntriesTask(buildTaskConfigs.buildEntriesTask);
 

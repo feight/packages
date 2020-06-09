@@ -42,7 +42,7 @@
   "dependencies": {
     "@types/progress": "^2.0.3",
     "@types/text-table": "^0.2.1",
-    "chalk": "^4.0.0",
+    "chalk": "^4.1.0",
     "codeframe": "^0.0.1",
     "justify-text": "^1.1.0",
     "magicdawn-get-cursor-position": "^1.0.5",
@@ -55,11 +55,11 @@
     "vinyl": "^2.2.0"
   },
   "devDependencies": {
-    "@newsteam/npm-install-local": "0.0.1",
+    "@newsteam/npm-install-local": "0.0.3",
     "@tamland/babel": "^0.0.36",
-    "@tamland/eslint": "^0.0.82",
+    "@tamland/eslint": "^0.0.83",
     "@tamland/jasmine": "0.0.4",
-    "@types/node": "^14.0.10",
+    "@types/node": "^14.0.12",
     "@types/strip-color": "^0.1.0",
     "@types/through2": "^2.0.36",
     "@types/vinyl": "^2.0.4"
