@@ -6,16 +6,16 @@ import { logger } from "@newsteam/cli-logger";
 import { exec } from "@newsteam/cli-utils";
 
 import {
-    deleteVersion,
-    getVersions
-} from "../gcloud";
+    getVersions,
+    googleCloudDeleteVersionsTask
+} from "../version";
 
 
 const label = "deploy";
 const persistOldVersions = 5;
 
 
-export interface LocalDeployTaskOptions{
+export interface GoogleCloudDeployTaskOptions{
     yaml: string;
     version?: string;
     project: string;
@@ -24,8 +24,8 @@ export interface LocalDeployTaskOptions{
 }
 
 
-export const deployTask = async function(
-    options: LocalDeployTaskOptions
+export const googleCloudDeployTask = async function(
+    options: GoogleCloudDeployTaskOptions
 ): Promise<void>{
 
     // eslint-disable-next-line @typescript-eslint/no-magic-numbers -- This magic number converts to seconds
@@ -38,7 +38,7 @@ export const deployTask = async function(
 
     if(!options.version){
 
-        logger.log(logger.colorizeText("Automatically deleting old versions...", "#0f0"), { label });
+        logger.log("Automatically deleting old versions...", { label });
 
         let gcpVersions = await getVersions({
             label,
@@ -54,38 +54,28 @@ export const deployTask = async function(
         // Of those, select all but the most recent so we always have fallbacks
         gcpVersions = gcpVersions.filter((gcpVersion, index) => index < gcpVersions.length - persistOldVersions);
 
-        if(options.yaml === "thisisnevertrue"){
-
-            // DELETE THOSE SUCKAS
-            await Promise.all(gcpVersions.map((gcpVersion) => deleteVersion({
-                project: options.project,
-                version: gcpVersion.id
-            })));
-
-        }
-
-    }
-
-    const command = `
-        gcloud app deploy
-        ${ path.resolve(options.yaml) },
-        --version=${ version },
-        --project=${ options.project },
-        --verbosity=${ options.verbosity ?? "error" },
-        ${ promote ? "" : "--no-promote" }
-        --quiet
-    `;
-
-    console.log(command);
-
-    if(options.yaml === "thisisnevertrue"){
-
-        await exec({
-            command,
-            label: "deploy"
+        // DELETE THOSE SUCKAS
+        await googleCloudDeleteVersionsTask({
+            label,
+            project: options.project,
+            version: gcpVersions.map((gcpVersion) => gcpVersion.id)
         });
 
     }
+
+    await exec({
+        command: `
+            gcloud app deploy
+            ${ path.resolve(options.yaml) }
+            --version=${ version }
+            --project=${ options.project }
+            --verbosity=${ options.verbosity ?? "error" }
+            ${ promote ? "" : "--no-promote" }
+            --quiet
+        `,
+        dry: true,
+        label: "deploy"
+    });
 
 };
 

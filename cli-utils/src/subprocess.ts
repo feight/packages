@@ -27,11 +27,15 @@ import { logger } from "@newsteam/cli-logger";
 
 const pty = require("node-pty");
 
+const commandColor = "#ff5400";
+const dryLabel = `${ logger.chalk.bgHex(commandColor).hex("#000").bold(" DRY RUN ") } `;
+
 
 // eslint-disable-next-line max-lines-per-function -- Breaking this apart won't make it simpler
 export const exec = function(options: {
     command: string;
     detatch?: boolean;
+    dry?: boolean;
     filter?: string | RegExp | (string | RegExp)[];
     label?: string;
     environment?: { [key: string]: string | undefined };
@@ -67,7 +71,16 @@ export const exec = function(options: {
             const bashCmd = cmd;
 
             if(!detatch){
-                logger.command(label, bashCmd);
+
+                logger.log(`${ options.dry ? dryLabel : "" }${ logger.chalk.hex(commandColor)(bashCmd) }`, { label });
+
+            }
+
+            // Bail out if this is a dry run
+            if(options.dry){
+
+                return resolve("");
+
             }
 
             const subprocess = childProcess.exec(cmd, execOptions, (error, stdout): void => {
@@ -150,12 +163,15 @@ export const exec = function(options: {
 
 };
 
+
+// eslint-disable-next-line max-lines-per-function -- Not quite too complicated imo
 export const spawn = function(options: {
     cwd?: string;
     command: string;
     environment?: { [key: string]: string | undefined };
     filter?: string | RegExp | (string | RegExp)[];
     detatch?: boolean;
+    dry?: boolean;
     label?: string;
 }): Promise<string>{
 
@@ -165,6 +181,7 @@ export const spawn = function(options: {
         environment,
         filter = [],
         detatch = false,
+        dry = false,
         label = "anonymous"
     } = options;
 
@@ -182,7 +199,16 @@ export const spawn = function(options: {
             const bashCmd = cmd;
 
             if(!detatch){
-                logger.command(label, bashCmd);
+
+                logger.log(`${ dry ? dryLabel : "" }${ logger.chalk.hex(commandColor)(bashCmd) }`, { label });
+
+            }
+
+            // Bail out if this is a dry run
+            if(dry){
+
+                return resolve("");
+
             }
 
             const [cm, ...args] = bashCmd.split(" ");

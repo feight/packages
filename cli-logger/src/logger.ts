@@ -22,7 +22,7 @@ const cwd = process.cwd();
 
 let lastFormattedLabel: string | undefined = undefined;
 let lastLabel: string | undefined = undefined;
-let started = false;
+const columnWidth = 12;
 
 
 export interface LintError{
@@ -78,6 +78,8 @@ export class Logger{
 
     carryAnsi: string;
 
+    chalk: typeof chalk;
+
     colors: LoggerColors;
 
     defaultLabel: string;
@@ -87,6 +89,8 @@ export class Logger{
     constructor(options: LoggerOptions = {}){
 
         this.carryAnsi = "";
+
+        this.chalk = chalk;
 
         this.defaultLabel = options.defaultLabel ?? "anonymous";
 
@@ -129,6 +133,7 @@ export class Logger{
             optimize: "🌟",
             python: "🐍",
             redis: "🧧",
+            select: "🔘",
             server: "💻",
             settings: "🧬",
             setup: "💿",
@@ -145,15 +150,6 @@ export class Logger{
     colorizeText(text: string, hexColor: string): string{
 
         return chalk.hex(hexColor)(text);
-
-    }
-
-    command(label = "", command = ""): void{
-
-        this.log(command.split(" && ").join("\n"), {
-            color: "#ff5400",
-            label
-        });
 
     }
 
@@ -247,11 +243,10 @@ export class Logger{
 
     }
 
-    formatLabel(string: string, error = false, first = false): string{
+    formatLabel(string: string, error = false, first = false, justify = columnWidth): string{
 
         const label = stripAnsi(string);
         const clearedLabel = label;
-        const justify = 12;
         const emoji = this.emojis[label.toLowerCase()] ? ` ${ this.emojis[label.toLowerCase()] }` : "";
         const formattedLabel = rjust(`${ clearedLabel }${ emoji }`, justify);
         const bgColor = this.colors.labelBackground;
@@ -316,8 +311,6 @@ export class Logger{
     inLineFormat(line: string): string{
 
         return line
-        // eslint-disable-next-line security/detect-non-literal-regexp -- Not really a security concern here
-        .replace(new RegExp(`${ String(cwd.replace(/\//gu, "\\/")) }\\/(.*?)(\\]|. |$|\\s)`, "gu"), `${ chalk.hex(this.colors.file)("$1") }$2`)
         .replace(/(https?:\/\/[^(\]|\s|")]*)/gu, chalk.hex(this.colors.url)("$1"))
         .replace(/info:\s(POST|GET|PUT|PATCH|DELETE)\s(2\d\d)\s/gu, `info: $1 ${ chalk.hex(this.colors.status200)("$2") } `)
         .replace(/info:\s(POST|GET|PUT|PATCH|DELETE)\s(3\d\d)\s/gu, `info: $1 ${ chalk.hex(this.colors.status300)("$2") } `)
@@ -355,8 +348,6 @@ export class Logger{
             }
 
         });
-
-        started = true;
 
     }
 

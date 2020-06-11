@@ -5,7 +5,10 @@ export {
 } from "./build/modernizr";
 export { cleanCacheTask } from "./cache/clean";
 export { cleanTask } from "./clean";
-export { deployTask } from "./deploy";
+export {
+    googleCloudDeployTask,
+    GoogleCloudDeployTaskOptions
+} from "./gcloud/deploy";
 export {
     eslintLintTask,
     EslintLintTaskOptions
@@ -38,6 +41,10 @@ export {
     minifyHTMLTask,
     MinifyHTMLTaskOptions
 } from "./minify/html";
+export {
+    optimizeTask,
+    OptimizeTaskOptions
+} from "./optimize";
 export { ModernizrConfig } from "./build/modernizr/types";
 export { npmInstallTask } from "./npm/install";
 export { openBrowserTask } from "./open/browser";

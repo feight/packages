@@ -7,7 +7,8 @@ import {
 
 import { NewsTeamConfig } from "../../config";
 import {
-    BuildTaskOptions, generateBuildTaskConfigs
+    BuildTaskOptions,
+    generateBuildTaskConfigs
 } from "../build";
 import { buildEntriesTask } from "../build/entries";
 import { buildRSSTask } from "../build/rss";

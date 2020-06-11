@@ -2,27 +2,22 @@
 
 import path from "path";
 
-import fs from "fs-extra";
+import del from "del";
 import cache from "gulp-cache";
 
 
 export const cleanCacheTask = async function(): Promise<void>{
 
-    await new Promise((resolve) => {
+    await Promise.all([
+        ".local/cache/@newsteam/cli-tasks/virtualenv.json",
+        ".local/cache/@newsteam/webpack"
+    ].map(async (cachePath) => {
 
-        const cachePath = path.join(process.cwd(), ".local/cache");
+        await del(path.join(process.cwd(), cachePath));
 
-        if(fs.existsSync(cachePath)){
+    }));
 
-            fs.removeSync(cachePath);
-
-        }
-
-        cache.clearAll();
-
-        resolve();
-
-    });
+    cache.clearAll();
 
 };
 

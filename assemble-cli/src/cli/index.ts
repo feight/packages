@@ -20,7 +20,10 @@ import "regenerator-runtime/runtime";
 import fs from "fs-extra";
 import program from "commander";
 import { logger } from "@newsteam/cli-logger";
-import { cleanCacheTask } from "@newsteam/cli-tasks";
+import {
+    cleanCacheTask,
+    optimizeTask
+} from "@newsteam/cli-tasks";
 
 import {
     config,
@@ -179,6 +182,12 @@ program
     link: options.link,
     mode: options.mode,
     publication: options.publication
+})));
+
+program
+.command("optimize")
+.action(async (): Promise<void> => action(optimizeTask({
+    glob: config.paths.entries.glob
 })));
 
 program

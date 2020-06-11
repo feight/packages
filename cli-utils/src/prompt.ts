@@ -5,6 +5,7 @@ import path from "path";
 import fs from "fs-extra";
 import inquirer from "inquirer";
 import equal from "deep-equal";
+import { logger } from "@newsteam/cli-logger";
 
 
 export interface PromptChoice{
@@ -52,8 +53,10 @@ export const prompt = async function(id: string, choices: PromptChoice[]): Promi
     const choice: { [id: string]: string} = await inquirer.prompt([{
         choices: choices.map((item) => item.separator ? new inquirer.Separator(item.separator) : item),
         default: previousIndex,
-        message: `Select ${ id }:`,
+        message: `${ id }:`,
         name: key,
+        pageSize: 25,
+        prefix: logger.formatLabel("select"),
         type: "list"
     }]);
 

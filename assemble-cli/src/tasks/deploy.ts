@@ -1,6 +1,6 @@
 
 
-import { deployTask as deployApplicationTask } from "@newsteam/cli-tasks";
+import { googleCloudDeployTask } from "@newsteam/cli-tasks";
 
 import { buildTask } from "./build";
 import { cleanTask } from "./clean";
@@ -32,7 +32,7 @@ export const deployTask = async function(config: NewsTeamConfig, options: Deploy
         publication: publication.id
     });
 
-    await deployApplicationTask({
+    await googleCloudDeployTask({
         project: environment.id,
         version: options.versionId,
         yaml: "src/app.yaml"

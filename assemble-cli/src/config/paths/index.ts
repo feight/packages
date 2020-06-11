@@ -29,6 +29,8 @@ export class NewsTeamPathsConfig{
 
     html: GlobMapping;
 
+    images: GlobMapping;
+
     modernizr: ModernizrPaths;
 
     npm: {
@@ -66,6 +68,8 @@ export class NewsTeamPathsConfig{
         this.entries = defaults.paths.entries;
 
         this.html = defaults.paths.html;
+
+        this.images = defaults.paths.images;
 
         this.modernizr = defaults.paths.modernizr;
 

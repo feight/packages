@@ -37,7 +37,7 @@ import {
 
 const label = "webpack";
 
-const buildStatsFolder = path.join(process.cwd(), ".local/webpack/build/stats");
+const buildStatsFolder = path.join(process.cwd(), ".local/@newsteam/webpack/build/stats");
 
 const printBuildStatistics = function(): void{
 
@@ -57,9 +57,13 @@ const printBuildStatistics = function(): void{
     // eslint-disable-next-line @typescript-eslint/no-magic-numbers -- This is converting compileTime in milliseconds to seconds
     const compileTimes = data.map((item) => item.misc.compileTime / 1000).slice(Math.max(data.length - max, 0));
 
-    logger.log("", { label });
-    logger.log(asciichart.plot(compileTimes), { label });
-    logger.log("", { label });
+    if(compileTimes.length > 0){
+
+        logger.log("", { label });
+        logger.log(asciichart.plot(compileTimes), { label });
+        logger.log("", { label });
+
+    }
 
 };
 

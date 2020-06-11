@@ -84,6 +84,13 @@ export const defaults = {
                 "**/static/**/*.html"
             ]
         },
+        images: {
+            glob: "src/publication/{base,custom,shared}/**/*.{png,gif,jpg,jpeg}",
+            ignore: [
+                "**/node_modules/**/*.{png,gif,jpg,jpeg}",
+                "**/static/**/*.{png,gif,jpg,jpeg}"
+            ]
+        },
         modernizr: {
             filename: "modernizr.js",
             glob: ".modernizr.{js,json}"
