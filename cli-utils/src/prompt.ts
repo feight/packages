@@ -8,20 +8,21 @@ import equal from "deep-equal";
 import { logger } from "@newsteam/cli-logger";
 
 
-export interface PromptChoice{
+export interface PromptChoice<PromptValue>{
     name?: string;
     separator?: string;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- This value could be any
-    value?: any;
+    value?: PromptValue;
 }
 
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any -- This promise could return any
-export const prompt = async function(id: string, choices: PromptChoice[]): Promise<any>{
+export const prompt = async function<PromptValue>(id: string, choices: PromptChoice<PromptValue>[], value?: PromptValue): Promise<PromptValue>{
 
     const key = id.replace(/[\W_\s]+/gu, "-").toLowerCase();
     const previousPath = path.join(process.cwd(), `.local/cache/@newsteam/cli-utils/prompts/${ key }.json`);
     const previousExists = await fs.pathExists(previousPath);
+
+    let choice: { [id: string]: PromptValue } = {};
+    let choiceName = "";
 
     let previousIndex = 0;
 
@@ -31,11 +32,11 @@ export const prompt = async function(id: string, choices: PromptChoice[]): Promi
         const raw = await fs.readFile(previousPath);
 
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- No real choice here, we're read JSON
-        const previous = JSON.parse(raw.toString())[key] as PromptChoice;
+        const previous = JSON.parse(raw.toString())[key] as PromptChoice<PromptValue>;
 
-        choices.forEach((choice, index) => {
+        choices.forEach((item, index) => {
 
-            if(equal(choice.value, previous)){
+            if(equal(item.value, previous)){
                 previousIndex = index;
             }
 
@@ -43,22 +44,46 @@ export const prompt = async function(id: string, choices: PromptChoice[]): Promi
 
     }
 
-    if(choices.length === 1){
+    if(choices.length === 1 && typeof choices[0].value !== "undefined"){
 
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- No real choice here, we're read JSON
-        return choices[0].value;
+        choiceName = choices[0].name ?? "";
+        choice = { [key]: choices[0].value };
+
+    }else if(value){
+
+        choices.forEach((item) => {
+
+            if(equal(item.value, value)){
+
+                choiceName = item.name ?? "";
+                choice = { [key]: item.value as PromptValue };
+
+            }
+
+        });
 
     }
 
-    const choice: { [id: string]: string} = await inquirer.prompt([{
-        choices: choices.map((item) => item.separator ? new inquirer.Separator(item.separator) : item),
-        default: previousIndex,
-        message: `${ id }:`,
-        name: key,
-        pageSize: 25,
-        prefix: logger.formatLabel("select"),
-        type: "list"
-    }]);
+    if(choice[key]){
+
+        logger.log(`${ logger.chalk.bold(id) }: ${ logger.chalk.cyan(choiceName) }`, { label: "select" });
+
+    }else{
+
+        logger.setLastLabel("select");
+
+        // eslint-disable-next-line require-atomic-updates -- afaik this isn't a problem here
+        choice = await inquirer.prompt([{
+            choices: choices.map((item) => item.separator ? new inquirer.Separator(item.separator) : item),
+            default: previousIndex,
+            message: `${ id }:`,
+            name: key,
+            pageSize: 25,
+            prefix: logger.formatLabel("select"),
+            type: "list"
+        }]);
+
+    }
 
     await fs.ensureDir(path.dirname(previousPath));
 

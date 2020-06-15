@@ -174,7 +174,7 @@ export const buildWidgetsTask = async function(options: BuildWidgetsTaskOptions)
                 meta.icon.url = `/${ String(meta.paths.origin) }/widgets/${ key }/icons/128x128.png`;
 
                 // Add easter egg icon urls to the widget
-                if(meta.eggs && meta.eggs.icon){
+                if(meta.eggs?.icon){
                     meta.eggs.icon.url = `/${ String(meta.paths.origin) }/widgets/${ key }/icons/${ String(meta.eggs.icon.path) }`;
                 }
 

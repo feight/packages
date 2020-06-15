@@ -10,6 +10,10 @@ export {
     GoogleCloudDeployTaskOptions
 } from "./gcloud/deploy";
 export {
+    googleCloudPromoteTask,
+    GoogleCloudPromoteTaskOptions
+} from "./gcloud/promote";
+export {
     eslintLintTask,
     EslintLintTaskOptions
 } from "./lint/eslint";
@@ -22,10 +26,6 @@ export {
     htmllintLintTask,
     HtmllintLintTaskOptions
 } from "./lint/htmllint";
-export {
-    stylelintLintTask,
-    StylelintLintTaskOptions
-} from "./lint/stylelint";
 export { localDatastoreEmulatorTask } from "./local/emulators/datastore";
 export { localDockerMachineTask } from "./local/docker/machine";
 export { localDockerRunTask } from "./local/docker/run";
@@ -41,10 +41,14 @@ export {
     minifyHTMLTask,
     MinifyHTMLTaskOptions
 } from "./minify/html";
+export { ModernizrConfig } from "./build/modernizr/types";
+export { npmInstallTask } from "./npm/install";
+export { openBrowserTask } from "./open/browser";
 export {
     optimizeTask,
     OptimizeTaskOptions
 } from "./optimize";
-export { ModernizrConfig } from "./build/modernizr/types";
-export { npmInstallTask } from "./npm/install";
-export { openBrowserTask } from "./open/browser";
+export {
+    stylelintLintTask,
+    StylelintLintTaskOptions
+} from "./lint/stylelint";

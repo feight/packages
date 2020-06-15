@@ -39,6 +39,7 @@ export const googleCloudDeployTask = async function(
     if(!options.version){
 
         logger.log("Automatically deleting old versions...", { label });
+        logger.log("", { label });
 
         let gcpVersions = await getVersions({
             label,
@@ -67,9 +68,9 @@ export const googleCloudDeployTask = async function(
         command: `
             gcloud app deploy
             ${ path.resolve(options.yaml) }
-            --version=${ version }
-            --project=${ options.project }
-            --verbosity=${ options.verbosity ?? "error" }
+            --version ${ version }
+            --project ${ options.project }
+            --verbosity ${ options.verbosity ?? "error" }
             ${ promote ? "" : "--no-promote" }
             --quiet
         `,

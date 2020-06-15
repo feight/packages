@@ -7,7 +7,7 @@ import {
 } from "@newsteam/cli-tasks";
 
 
-export const setupTask = async function(): Promise<void>{
+export const setupLocalTask = async function(): Promise<void>{
 
     await localPlatformSetupTask();
 

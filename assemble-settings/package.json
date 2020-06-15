@@ -42,7 +42,7 @@
   "devDependencies": {
     "@newsteam/npm-install-local": "0.0.3",
     "@tamland/babel": "^0.0.36",
-    "@tamland/eslint": "^0.0.83",
+    "@tamland/eslint": "^0.0.84",
     "@tamland/jasmine": "0.0.4",
     "@types/fs-extra": "^9.0.1"
   },

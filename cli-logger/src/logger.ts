@@ -19,10 +19,11 @@ import { Progress } from "./progress";
 const nonBreakingCharacterCode = 160;
 const nonBreakingCharacter = String.fromCharCode(nonBreakingCharacterCode);
 const cwd = process.cwd();
+const columnWidth = 12;
 
 let lastFormattedLabel: string | undefined = undefined;
 let lastLabel: string | undefined = undefined;
-const columnWidth = 12;
+let started = false;
 
 
 export interface LintError{
@@ -131,6 +132,7 @@ export class Logger{
             npm: "🍅",
             open: "🌍",
             optimize: "🌟",
+            promote: "👍",
             python: "🐍",
             redis: "🧧",
             select: "🔘",
@@ -311,6 +313,7 @@ export class Logger{
     inLineFormat(line: string): string{
 
         return line
+        .replace(new RegExp(`${ String(cwd.replace(/\//gu, "\\/")) }\\/([a-zA-Z0-9-_.\/]*)(\\]| |$|\\s)`, "gu"), `${ chalk.hex(this.colors.file)("$1") }$2`)
         .replace(/(https?:\/\/[^(\]|\s|")]*)/gu, chalk.hex(this.colors.url)("$1"))
         .replace(/info:\s(POST|GET|PUT|PATCH|DELETE)\s(2\d\d)\s/gu, `info: $1 ${ chalk.hex(this.colors.status200)("$2") } `)
         .replace(/info:\s(POST|GET|PUT|PATCH|DELETE)\s(3\d\d)\s/gu, `info: $1 ${ chalk.hex(this.colors.status300)("$2") } `)
@@ -332,6 +335,20 @@ export class Logger{
         } = options;
 
         const formattedMessage = this.format(label, String(message), color, error);
+        const blank = started ? this.formatLabel(`${ nonBreakingCharacter }`) : "";
+
+        if(lastLabel !== label && label && lastLabel !== "" && started){
+
+            const cursor = getCursorPosition.sync();
+
+            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- Sometimes when you ctrl+c a process this cursor is undefined
+            if(cursor){
+
+                console.log(cursor.col > 1 ? `\n${ blank }` : blank);
+
+            }
+
+        }
 
         this.setLastLabel(label);
 
@@ -348,6 +365,8 @@ export class Logger{
             }
 
         });
+
+        started = true;
 
     }
 
@@ -472,6 +491,8 @@ export class Logger{
             process.stdout.write(`${ labelledOutput }`);
 
         }
+
+        started = true;
 
     }
 

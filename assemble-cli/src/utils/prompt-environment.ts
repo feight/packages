@@ -9,9 +9,9 @@ import { AssemblePublicationEnvironmentSettings } from "@newsteam/assemble-setti
 import { Publication } from "./publication";
 
 
-const getChoices = function(environments: AssemblePublicationEnvironmentSettings[]): PromptChoice[]{
+const getChoices = function(environments: AssemblePublicationEnvironmentSettings[]): PromptChoice<AssemblePublicationEnvironmentSettings>[]{
 
-    const choices: PromptChoice[] = [];
+    const choices: PromptChoice<AssemblePublicationEnvironmentSettings>[] = [];
 
     environments.forEach((environment) => {
 
@@ -29,22 +29,14 @@ const getChoices = function(environments: AssemblePublicationEnvironmentSettings
 export const promptEnvironment = async function(publication: Publication, environmentId?: string): Promise<AssemblePublicationEnvironmentSettings>{
 
     const environments = publication.settings.environments;
-    const choices = getChoices(environments);
+    const environmentsFilter = environments.filter((environment) => environment.id === environmentId);
 
-    if(environmentId){
-
-        const environmentsFilter = environments.filter((environment) => environment.id === environmentId);
-
-        if(environmentsFilter.length === 1){
-
-            return environmentsFilter[0];
-
-        }
+    if(environmentId && environmentsFilter.length === 0){
 
         throw new Error(`No environment with id '${ environmentId }'`);
 
     }
 
-    return environments.length === 1 ? environments[0] : prompt("environment", choices);
+    return prompt("environment", getChoices(environments), environmentsFilter.length === 1 ? environmentsFilter[0] : undefined);
 
 };

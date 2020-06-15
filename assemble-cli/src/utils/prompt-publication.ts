@@ -11,9 +11,9 @@ import {
 } from "./publication";
 
 
-const getChoices = function(publicationRoots: Publication[]): PromptChoice[]{
+const getChoices = function(publicationRoots: Publication[]): PromptChoice<Publication>[]{
 
-    const choices: PromptChoice[] = [];
+    const choices: PromptChoice<Publication>[] = [];
 
     let lastParent: string | undefined = undefined;
 
@@ -62,23 +62,14 @@ const getChoices = function(publicationRoots: Publication[]): PromptChoice[]{
 export const promptPublication = async function(publication?: string): Promise<Publication>{
 
     const publications = await getPublications(publication);
+    const publicationsFilter = publications.filter((pub) => pub.id === publication);
 
-    if(publication){
-
-        const pubs = publications.filter((pub) => pub.id === publication);
-
-        if(pubs.length === 1){
-
-            return pubs[0];
-
-        }
+    if(publication && publicationsFilter.length === 0){
 
         throw new Error(`No publication with id '${ publication }'`);
 
     }
 
-    const choices = getChoices(publications);
-
-    return publications.length === 1 ? publications[0] : prompt("publication", choices);
+    return prompt("publication", getChoices(publications), publicationsFilter.length === 1 ? publicationsFilter[0] : undefined);
 
 };

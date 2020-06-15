@@ -14,7 +14,7 @@ export const googleCloudDeleteVersionsTask = async function(options: {
     await Promise.all(versions.map((version) => exec({
         command: `
             gcloud app versions delete ${ version }
-            --project=${ options.project }
+            --project ${ options.project }
             --quiet
         `,
         dry: true,
