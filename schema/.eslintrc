@@ -1,5 +1,5 @@
 {
-  "extends": "@tamland",
+  "extends": "@newsteam",
   "rules": {
     "compat/compat": "off",
     "import/named": "off",

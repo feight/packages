@@ -1,0 +1,56 @@
+{
+  "name": "@newsteam/imagemin",
+  "version": "0.0.1",
+  "description": "Preconfigured imagemin function",
+  "main": "lib",
+  "scripts": {
+    "build": "bash ../build.sh",
+    "prepublishOnly": "bash ../publish.sh",
+    "test": "bash ../test.sh"
+  },
+  "browserslist": "node 12",
+  "engines": {
+    "node": ">= 12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/feight/packages"
+  },
+  "author": "News Team (https://www.newsteam.io)",
+  "contributors": [
+    {
+      "name": "Peter Bodechtel",
+      "url": "https://www.sweetlikepete.com"
+    }
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/feight/packages/issues"
+  },
+  "keywords": [
+    "imagemin",
+    "newsteam",
+    "@newsteam"
+  ],
+  "homepage": "https://github.com/feight/packages/tree/master/imagemin#readme",
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "@newsteam/jasmine": "0.0.1",
+    "imagemin": "7.0.1",
+    "imagemin-gifsicle": "7.0.0",
+    "imagemin-jpegtran": "6.0.0",
+    "imagemin-optipng": "7.1.0",
+    "imagemin-pngquant": "8.0.0",
+    "imagemin-svgo": "7.1.0"
+  },
+  "devDependencies": {
+    "@newsteam/babel": "0.0.1",
+    "@newsteam/eslint": "0.0.1",
+    "@types/node": "13.13.2"
+  }
+}

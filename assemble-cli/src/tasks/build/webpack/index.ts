@@ -29,10 +29,10 @@ import glob from "globby";
 import { logger } from "@newsteam/cli-logger";
 import SpeedMeasurePlugin, { SpeedMeasureWebpackPluginData } from "speed-measure-webpack-plugin";
 import webpack, { Configuration } from "webpack";
-
 import {
-    Mode
-} from "../../../config";
+    config as assembleCliConfig, Mode
+} from "@newsteam/assemble-cli-config";
+import { kill } from "@newsteam/cli-utils";
 
 
 const label = "webpack";
@@ -87,6 +87,9 @@ export const buildWebpackTask = async function(options: BuildWebpackTaskOptions)
         profile = false,
         watch = false
     } = options;
+
+    await kill(assembleCliConfig.webpack.bundleAnalyzerPort);
+    await kill(assembleCliConfig.webpack.devServerPort);
 
     await new Promise((resolve, reject): void => {
 

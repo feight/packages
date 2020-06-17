@@ -1,0 +1,72 @@
+{
+  "name": "@newsteam/babel-preset",
+  "version": "0.0.1",
+  "description": "Shared preset for babel",
+  "main": "lib",
+  "types": "lib",
+  "scripts": {
+    "build": "bash ../build.sh",
+    "prepublishOnly": "bash ../publish.sh",
+    "test": "bash ../test.sh"
+  },
+  "browserslist": "node 12",
+  "engines": {
+    "node": ">= 12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/feight/packages"
+  },
+  "author": "News Team (https://www.newsteam.io)",
+  "contributors": [
+    {
+      "name": "Peter Bodechtel",
+      "url": "https://www.sweetlikepete.com"
+    }
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/feight/packages/issues"
+  },
+  "keywords": [
+    "newsteam",
+    "@newsteam"
+  ],
+  "homepage": "https://github.com/feight/packages/tree/master/babel-preset#readme",
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "@babel/helper-plugin-utils": "7.8.3",
+    "@babel/plugin-proposal-class-properties": "7.8.3",
+    "@babel/plugin-proposal-decorators": "7.8.3",
+    "@babel/plugin-proposal-object-rest-spread": "7.9.5",
+    "@babel/plugin-transform-named-capturing-groups-regex": "7.8.3",
+    "@babel/plugin-transform-typescript": "7.9.4",
+    "@babel/preset-env": "7.9.5",
+    "@babel/preset-react": "7.9.4",
+    "@babel/preset-typescript": "7.9.0",
+    "@loadable/babel-plugin": "5.12.0",
+    "babel-plugin-add-module-exports": "1.0.2",
+    "babel-plugin-jsx-control-statements": "4.1.0",
+    "babel-plugin-shebang": "1.0.0",
+    "babel-plugin-transform-typescript-metadata": "0.3.0",
+    "react-hot-loader": "4.12.20",
+    "typescript": "3.8.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.8.4",
+    "@babel/core": "7.9.0",
+    "@newsteam/jasmine": "0.0.1",
+    "@types/babel__core": "7.1.7",
+    "@types/node": "13.13.2",
+    "jasmine": "3.5.0",
+    "renamer": "2.0.0"
+  },
+  "peerDependencies": {
+    "@babel/core": "7.9.0"
+  }
+}

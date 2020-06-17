@@ -24,12 +24,12 @@ import {
     cleanCacheTask,
     optimizeTask
 } from "@newsteam/cli-tasks";
-
 import {
     config,
     Mode,
     modes
-} from "../config";
+} from "@newsteam/assemble-cli-config";
+
 import {
     buildTask,
     BuildTaskOptions

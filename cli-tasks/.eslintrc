@@ -1,5 +1,5 @@
 {
-  "extends": "@tamland",
+  "extends": "@newsteam",
   "rules": {
     "security/detect-non-literal-fs-filename": "off",
     "no-process-exit": "off",

@@ -13,10 +13,10 @@ import {
 } from "@newsteam/cli-tasks";
 import { logger } from "@newsteam/cli-logger";
 import { getPublicationSettings } from "@newsteam/assemble-settings";
+import { NewsTeamConfig } from "@newsteam/assemble-cli-config";
 
 import { localWatchTask } from "./watch";
 
-import { NewsTeamConfig } from "../../config";
 import {
     buildTask,
     BuildTaskOptions

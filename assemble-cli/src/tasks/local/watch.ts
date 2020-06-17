@@ -4,8 +4,8 @@ import {
     buildModernizrTask,
     minifyHTMLTask
 } from "@newsteam/cli-tasks";
+import { NewsTeamConfig } from "@newsteam/assemble-cli-config";
 
-import { NewsTeamConfig } from "../../config";
 import {
     BuildTaskOptions,
     generateBuildTaskConfigs

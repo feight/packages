@@ -29,14 +29,20 @@ export const resolve = function(
              * extension in the path
              */
             extensions: [
-                ".mjs",
                 ".ts",
                 ".tsx",
+                ".mjs",
                 ".js",
                 ".jsx",
                 ".scss",
                 ".css",
-                ".html"
+                ".html",
+                ".woff",
+                ".woff2",
+                ".ttf",
+                ".ttx",
+                ".otf",
+                ".eot"
             ],
             mainFields: [
                 "browser",

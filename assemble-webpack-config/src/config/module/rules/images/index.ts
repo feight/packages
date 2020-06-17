@@ -25,7 +25,7 @@ export const images = function(
 
                     /*
                      * We don't use an optimizer like image-webpack-loader because
-                     * we optimize images manually using tamland optimize
+                     * we optimize images manually using assemble optimize
                      */
                     use: [
                         cacheLoader(),

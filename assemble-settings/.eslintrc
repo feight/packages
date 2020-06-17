@@ -1,5 +1,5 @@
 {
-  "extends": "@tamland",
+  "extends": "@newsteam",
   "rules": {
     "node/no-sync": "off",
     "security/detect-non-literal-fs-filename": "off",

@@ -1,3 +1,3 @@
 
 
-export { Config } from "./config";
+export { Config } from "@newsteam/assemble-cli-config";

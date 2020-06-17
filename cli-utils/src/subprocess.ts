@@ -79,77 +79,79 @@ export const exec = function(options: {
             // Bail out if this is a dry run
             if(options.dry){
 
-                return resolve("");
+                resolve("");
 
-            }
+            }else{
 
-            const subprocess = childProcess.exec(cmd, execOptions, (error, stdout): void => {
+                const subprocess = childProcess.exec(cmd, execOptions, (error, stdout): void => {
 
-                if(error){
-
-                    if(!detatch){
-
-                        console.log("");
-
-                        logger.error(error.stack, { label });
-
-                    }
-
-                    reject(error);
-
-                }else{
-
-                    resolve(stdout);
-
-                }
-
-            });
-
-            if(!detatch && subprocess.stdin){
-                process.stdin.pipe(subprocess.stdin);
-            }
-
-            const piper = (std: "stdout" | "stderr"): void => {
-
-                const proc = std === "stdout" ? subprocess.stdout : subprocess.stderr;
-
-                if(proc !== null){
-
-                    proc.pipe(through.obj((string: string, encoding, done): void => {
-
-                        let formattedString = string;
-
-                        (Array.isArray(filter) ? filter : [filter]).forEach((filt): void => {
-                            formattedString = formattedString.replace(filt, "");
-                        });
+                    if(error){
 
                         if(!detatch){
-                            logger.write(formattedString, { label });
+
+                            console.log("");
+
+                            logger.error(error.stack, { label });
+
                         }
 
-                        done();
+                        reject(error);
 
-                    }));
+                    }else{
 
-                }
-
-            };
-
-            piper("stdout");
-            piper("stderr");
-
-            if(subprocess.stdout !== null){
-
-                subprocess.stdout.on("end", (): void => {
-
-                    if(!detatch){
-
-                        process.stdin.unref();
-                        process.stdin.end();
+                        resolve(stdout);
 
                     }
 
                 });
+
+                if(!detatch && subprocess.stdin){
+                    process.stdin.pipe(subprocess.stdin);
+                }
+
+                const piper = (std: "stdout" | "stderr"): void => {
+
+                    const proc = std === "stdout" ? subprocess.stdout : subprocess.stderr;
+
+                    if(proc !== null){
+
+                        proc.pipe(through.obj((string: string, encoding, done): void => {
+
+                            let formattedString = string;
+
+                            (Array.isArray(filter) ? filter : [filter]).forEach((filt): void => {
+                                formattedString = formattedString.replace(filt, "");
+                            });
+
+                            if(!detatch){
+                                logger.write(formattedString, { label });
+                            }
+
+                            done();
+
+                        }));
+
+                    }
+
+                };
+
+                piper("stdout");
+                piper("stderr");
+
+                if(subprocess.stdout !== null){
+
+                    subprocess.stdout.on("end", (): void => {
+
+                        if(!detatch){
+
+                            process.stdin.unref();
+                            process.stdin.end();
+
+                        }
+
+                    });
+
+                }
 
             }
 
@@ -207,59 +209,61 @@ export const spawn = function(options: {
             // Bail out if this is a dry run
             if(dry){
 
-                return resolve("");
+                resolve("");
 
-            }
+            }else{
 
-            const [cm, ...args] = bashCmd.split(" ");
+                const [cm, ...args] = bashCmd.split(" ");
 
-            const term = pty.spawn(cm, args, {
-                cols: 500,
-                cwd,
-                env: {
-                    ...process.env,
-                    ...environment ?? undefined
-                }
-            });
-
-            if(!detatch){
-                process.stdin.pipe(term);
-            }
-
-            const response: string[] = [];
-
-            term.on("data", (data: string): void => {
-
-                response.push(data);
-
-                let formatted = data;
-
-                (Array.isArray(filter) ? filter : [filter]).forEach((filt): void => {
-                    formatted = formatted.replace(filt, "");
+                const term = pty.spawn(cm, args, {
+                    cols: 500,
+                    cwd,
+                    env: {
+                        ...process.env,
+                        ...environment ?? undefined
+                    }
                 });
 
                 if(!detatch){
-                    logger.write(formatted, { label });
+                    process.stdin.pipe(term);
                 }
 
-            });
+                const response: string[] = [];
 
-            term.on("exit", (code: number): void => {
+                term.on("data", (data: string): void => {
 
-                term.destroy();
+                    response.push(data);
 
-                if(!detatch){
-                    process.stdin.unref();
-                    process.stdin.end();
-                }
+                    let formatted = data;
 
-                if(code === 1){
-                    reject(code);
-                }else{
-                    resolve(response.join(""));
-                }
+                    (Array.isArray(filter) ? filter : [filter]).forEach((filt): void => {
+                        formatted = formatted.replace(filt, "");
+                    });
 
-            });
+                    if(!detatch){
+                        logger.write(formatted, { label });
+                    }
+
+                });
+
+                term.on("exit", (code: number): void => {
+
+                    term.destroy();
+
+                    if(!detatch){
+                        process.stdin.unref();
+                        process.stdin.end();
+                    }
+
+                    if(code === 1){
+                        reject(code);
+                    }else{
+                        resolve(response.join(""));
+                    }
+
+                });
+
+            }
 
         }else{
 

@@ -5,8 +5,7 @@ import path from "path";
 import fs from "fs-extra";
 import { exec } from "@newsteam/cli-utils";
 import { logger } from "@newsteam/cli-logger";
-
-import { NewsTeamConfig } from "../../config";
+import { NewsTeamConfig } from "@newsteam/assemble-cli-config";
 
 
 import { label } from ".";

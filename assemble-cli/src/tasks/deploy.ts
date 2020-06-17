@@ -1,12 +1,12 @@
 
 
 import { googleCloudDeployTask } from "@newsteam/cli-tasks";
+import { NewsTeamConfig } from "@newsteam/assemble-cli-config";
 
 import { buildTask } from "./build";
 import { cleanTask } from "./clean";
 import { linkTask } from "./link";
 
-import { NewsTeamConfig } from "../config";
 import { promptEnvironment } from "../utils/prompt-environment";
 
 

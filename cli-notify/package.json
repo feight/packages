@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/cli-notify",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "This package provides a notification function used to signal completion of cli tasks.",
   "main": "lib",
   "types": "lib",
@@ -35,17 +35,18 @@
     "newsteam",
     "@newsteam"
   ],
-  "homepage": "https://github.com/feight/packages/tree/master/packages/cli-notify#readme",
+  "homepage": "https://github.com/feight/packages/tree/master/cli-notify#readme",
   "files": [
     "lib"
   ],
   "devDependencies": {
-    "@tamland/babel": "^0.0.36",
-    "@tamland/eslint": "^0.0.78",
-    "@tamland/jasmine": "0.0.4"
+    "@newsteam/babel": "0.0.1",
+    "@newsteam/eslint": "0.0.1",
+    "@newsteam/jasmine": "0.0.1",
+    "@newsteam/npm-install-local": "0.0.3"
   },
   "dependencies": {
-    "@types/node-notifier": "^6.0.1",
-    "node-notifier": "^7.0.0"
+    "@types/node-notifier": "6.0.1",
+    "node-notifier": "7.0.1"
   }
 }

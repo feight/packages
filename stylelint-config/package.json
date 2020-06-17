@@ -1,0 +1,76 @@
+{
+  "name": "@newsteam/stylelint-config",
+  "version": "0.0.1",
+  "description": "Shared config for stylelint",
+  "main": "lib",
+  "types": "lib",
+  "scripts": {
+    "build": "bash ../build.sh",
+    "prepublishOnly": "bash ../publish.sh && stylelint **/*.scss && stylelint-find-new-rules",
+    "test": "bash ../test.sh && stylelint **/*.scss && stylelint-find-new-rules"
+  },
+  "browserslist": "node 12",
+  "engines": {
+    "node": ">= 12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/feight/packages"
+  },
+  "author": "News Team (https://www.newsteam.io)",
+  "contributors": [
+    {
+      "name": "Peter Bodechtel",
+      "url": "https://www.sweetlikepete.com"
+    }
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/feight/packages/issues"
+  },
+  "keywords": [
+    "stylelint",
+    "stylelintconfig",
+    "stylelint-config",
+    "newsteam",
+    "@newsteam"
+  ],
+  "homepage": "https://github.com/feight/packages/tree/master/stylelint-config#readme",
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "@newsteam/jasmine": "0.0.1"
+  },
+  "devDependencies": {
+    "@newsteam/babel": "0.0.1",
+    "@newsteam/eslint": "0.0.1",
+    "@types/node": "14.0.13",
+    "stylelint": "13.6.0",
+    "stylelint-a11y": "1.2.3",
+    "stylelint-declaration-block-no-ignored-properties": "2.3.0",
+    "stylelint-declaration-strict-value": "1.5.0",
+    "stylelint-find-new-rules": "2.0.0",
+    "stylelint-high-performance-animation": "1.5.1",
+    "stylelint-no-unsupported-browser-features": "4.0.0",
+    "stylelint-order": "4.1.0",
+    "stylelint-scss": "3.17.2",
+    "stylelint-selector-tag-no-without-class": "2.0.3",
+    "stylelint-use-nesting": "3.0.0"
+  },
+  "peerDependencies": {
+    "stylelint": "13.6.0",
+    "stylelint-a11y": "1.2.3",
+    "stylelint-declaration-block-no-ignored-properties": "2.3.0",
+    "stylelint-declaration-strict-value": "1.5.0",
+    "stylelint-high-performance-animation": "1.5.1",
+    "stylelint-no-unsupported-browser-features": "4.0.0",
+    "stylelint-order": "4.1.0",
+    "stylelint-scss": "3.17.2",
+    "stylelint-selector-tag-no-without-class": "2.0.3",
+    "stylelint-use-nesting": "3.0.0"
+  }
+}

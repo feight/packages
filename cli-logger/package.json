@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/cli-logger",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "This package provides a logger for command line interfaces",
   "main": "lib",
   "types": "lib",
@@ -35,34 +35,34 @@
     "newsteam",
     "@newsteam"
   ],
-  "homepage": "https://github.com/feight/packages/tree/master/packages/cli-logger#readme",
+  "homepage": "https://github.com/feight/packages/tree/master/cli-logger#readme",
   "files": [
     "lib"
   ],
   "dependencies": {
-    "@types/progress": "^2.0.3",
-    "@types/text-table": "^0.2.1",
-    "chalk": "^4.1.0",
-    "codeframe": "^0.0.1",
-    "justify-text": "^1.1.0",
-    "magicdawn-get-cursor-position": "^1.0.5",
-    "node-pty": "^0.9.0",
-    "progress": "^2.0.3",
-    "strip-ansi": "^6.0.0",
-    "strip-color": "^0.1.0",
-    "text-table": "^0.2.0",
-    "through2": "^3.0.1",
-    "vinyl": "^2.2.0"
+    "@types/progress": "2.0.3",
+    "@types/text-table": "0.2.1",
+    "chalk": "4.1.0",
+    "codeframe": "0.0.1",
+    "justify-text": "1.1.0",
+    "magicdawn-get-cursor-position": "1.0.5",
+    "node-pty": "0.9.0",
+    "progress": "2.0.3",
+    "strip-ansi": "6.0.0",
+    "strip-color": "0.1.0",
+    "text-table": "0.2.0",
+    "through2": "3.0.1",
+    "vinyl": "2.2.0"
   },
   "devDependencies": {
     "@newsteam/npm-install-local": "0.0.3",
-    "@tamland/babel": "^0.0.36",
-    "@tamland/eslint": "^0.0.84",
-    "@tamland/jasmine": "0.0.4",
-    "@types/node": "^14.0.13",
-    "@types/strip-color": "^0.1.0",
-    "@types/through2": "^2.0.36",
-    "@types/vinyl": "^2.0.4"
+    "@newsteam/babel": "0.0.1",
+    "@newsteam/eslint": "0.0.1",
+    "@newsteam/jasmine": "0.0.1",
+    "@types/node": "14.0.13",
+    "@types/strip-color": "0.1.0",
+    "@types/through2": "2.0.36",
+    "@types/vinyl": "2.0.4"
   },
   "localDependencies": {
     "@newsteam/cli-errors": "../cli-errors"

@@ -18,7 +18,7 @@ module.exports = function babelConfiguration(api){
     return {
         presets: [
             [
-                "@tamland/babel-preset",
+                "@newsteam/babel-preset",
                 {
                     addModuleExports: !mjs,
                     modules: !mjs,

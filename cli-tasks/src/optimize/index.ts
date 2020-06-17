@@ -2,7 +2,7 @@
 
 import path from "path";
 
-import { imagemin } from "@tamland/imagemin";
+import { imagemin } from "@newsteam/imagemin";
 import { logger } from "@newsteam/cli-logger";
 import {
     watch,

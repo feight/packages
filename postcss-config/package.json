@@ -1,0 +1,78 @@
+{
+  "name": "@newsteam/postcss-config",
+  "version": "0.0.1",
+  "description": "Shared config for postcss",
+  "main": "lib",
+  "types": "lib",
+  "scripts": {
+    "build": "bash ../build.sh",
+    "prepublishOnly": "bash ../publish.sh",
+    "test": "bash ../test.sh"
+  },
+  "browserslist": "node 12",
+  "engines": {
+    "node": ">= 12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/feight/packages"
+  },
+  "author": "News Team (https://www.newsteam.io)",
+  "contributors": [
+    {
+      "name": "Peter Bodechtel",
+      "url": "https://www.sweetlikepete.com"
+    }
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/feight/packages/issues"
+  },
+  "keywords": [
+    "postcss",
+    "postcss-config",
+    "newsteam",
+    "@newsteam"
+  ],
+  "homepage": "https://github.com/feight/packages/tree/master/postcss-config#readme",
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "@newsteam/jasmine": "0.0.1",
+    "autoprefixer": "9.8.0",
+    "postcss": "7.0.32",
+    "postcss-calc": "7.0.2",
+    "postcss-clean": "1.1.0",
+    "postcss-colormin": "4.0.3",
+    "postcss-discard-comments": "4.0.2",
+    "postcss-discard-duplicates": "4.0.2",
+    "postcss-discard-empty": "4.0.1",
+    "postcss-font-smoothing": "0.1.0",
+    "postcss-font-variant": "4.0.0",
+    "postcss-image-set-polyfill": "1.0.0",
+    "postcss-merge-longhand": "4.0.11",
+    "postcss-merge-rules": "4.0.3",
+    "postcss-minify-font-values": "4.0.2",
+    "postcss-minify-gradients": "4.0.2",
+    "postcss-minify-params": "4.0.2",
+    "postcss-minify-selectors": "4.0.2",
+    "postcss-normalize-positions": "4.0.2",
+    "postcss-normalize-url": "4.0.1",
+    "postcss-normalize-whitespace": "4.0.2",
+    "postcss-ordered-values": "4.1.2",
+    "postcss-preset-env": "6.7.0",
+    "postcss-reduce-initial": "4.0.3",
+    "postcss-reduce-transforms": "4.0.2"
+  },
+  "devDependencies": {
+    "@newsteam/babel": "0.0.1",
+    "@newsteam/eslint": "0.0.1",
+    "@types/autoprefixer": "9.7.2",
+    "@types/node": "14.0.13",
+    "@types/postcss-calc": "7.0.0"
+  }
+}

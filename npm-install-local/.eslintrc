@@ -1,5 +1,5 @@
 {
-  "extends": "@tamland",
+  "extends": "@newsteam",
   "rules": {
     "require-await": "off",
     "@typescript-eslint/no-misused-promises": "off",

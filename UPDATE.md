@@ -1,11 +1,42 @@
-cd ~/code/newsteam/packages/assemble-service-worker && ncu -u && npm install && npm run npm-install-local && npm run test &&
-cd ~/code/newsteam/packages/assemble-settings && ncu -u && npm install && npm run npm-install-local && npm run test &&
-cd ~/code/newsteam/packages/cli-errors && ncu -u && npm install && npm run npm-install-local && npm run test &&
-cd ~/code/newsteam/packages/npm-install-local && ncu -u && npm install && npm run test &&
-cd ~/code/newsteam/packages/package-json && ncu -u && npm install && npm run npm-install-local && npm run test &&
-cd ~/code/newsteam/packages/schema && ncu -u && npm install && npm run npm-install-local && npm run test &&
-cd ~/code/newsteam/packages/cli-logger && ncu -u && npm install && npm run npm-install-local && npm run test &&
-cd ~/code/newsteam/packages/cli-utils && ncu -u && npm install && npm run npm-install-local && npm run test &&
-cd ~/code/newsteam/packages/cli-tasks && ncu -u && npm install && npm run npm-install-local && npm run test &&
-cd ~/code/newsteam/packages/assemble-webpack-config && ncu -u && npm install && npm run npm-install-local && npm run test &&
-cd ~/code/newsteam/packages/assemble-cli && ncu -u && npm install && npm run npm-install-local && npm run test
+
+npm deprecate @tamland/jasmine@"< 0.2.3" "This module has been renamed to @newsteam/jasmine"
+npm deprecate @tamland/babel-preset@"< 0.2.3" "This module has been renamed to @newsteam/babel-preset"
+npm deprecate @tamland/babel@"< 0.2.3" "This module has been renamed to @newsteam/babel"
+npm deprecate @sweetlikepete/babel-preset@"< 0.2.3" "This module has been renamed to @newsteam/babel-preset"
+npm deprecate @sweetlikepete/babel@"< 0.2.3" "This module has been renamed to @newsteam/babel"
+npm deprecate @tamland/eslint-config@"< 0.2.3" "This module has been renamed to @newsteam/eslint-config"
+npm deprecate @tamland/eslint@"< 0.2.3" "This module has been renamed to @newsteam/eslint"
+npm deprecate @sweetlikepete/eslint-config@"< 0.2.3" "This module has been renamed to @newsteam/eslint-config"
+npm deprecate @sweetlikepete/eslint@"< 0.2.3" "This module has been renamed to @newsteam/eslint"
+npm deprecate @tamland/postcss-config@"< 0.2.3" "This module has been renamed to @newsteam/postcss-config"
+npm deprecate @tamland/stylelint-config@"< 0.2.3" "This module has been renamed to @newsteam/stylelint-config"
+npm deprecate @tamland/stylelint@"< 0.2.3" "This module has been renamed to @newsteam/stylelint"
+npm deprecate @sweetlikepete/stylelint-config@"< 0.2.3" "This module has been renamed to @newsteam/stylelint-config"
+npm deprecate @sweetlikepete/stylelint@"< 0.2.3" "This module has been renamed to @newsteam/stylelint"
+npm deprecate @tamland/imagemin@"< 0.2.3" "This module has been renamed to @newsteam/imagemin"
+npm deprecate @tamland/logger@"< 0.2.3" "This module has been renamed to @newsteam/cli-logger"
+npm deprecate @sweetlikepete/logger@"< 0.2.3" "This module has been renamed to @newsteam/cli-logger"
+
+cd ~/code/newsteam/packages/jasmine                 && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run test &&
+cd ~/code/newsteam/packages/babel-preset            && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run test &&
+cd ~/code/newsteam/packages/babel                   && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run test &&
+cd ~/code/newsteam/packages/eslint-config           && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run test &&
+cd ~/code/newsteam/packages/eslint                  && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run test &&
+cd ~/code/newsteam/packages/postcss-config          && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run test &&
+cd ~/code/newsteam/packages/stylelint-config        && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run test &&
+cd ~/code/newsteam/packages/stylelint               && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run test &&
+cd ~/code/newsteam/packages/imagemin                && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run test &&
+
+cd ~/code/newsteam/packages/assemble-service-worker && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
+cd ~/code/newsteam/packages/assemble-settings       && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
+cd ~/code/newsteam/packages/assemble-cli-config     && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
+cd ~/code/newsteam/packages/cli-errors              && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
+cd ~/code/newsteam/packages/cli-notify              && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
+cd ~/code/newsteam/packages/npm-install-local       && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run test &&
+cd ~/code/newsteam/packages/package-json            && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
+cd ~/code/newsteam/packages/schema                  && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
+cd ~/code/newsteam/packages/cli-logger              && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
+cd ~/code/newsteam/packages/cli-utils               && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
+cd ~/code/newsteam/packages/cli-tasks               && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
+cd ~/code/newsteam/packages/assemble-webpack-config && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
+cd ~/code/newsteam/packages/assemble-cli            && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test

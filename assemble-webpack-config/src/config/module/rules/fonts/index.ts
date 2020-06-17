@@ -3,7 +3,6 @@
 import merge from "webpack-merge";
 import { Configuration } from "webpack";
 
-import { cacheLoader } from "../../../../shared/loaders/cache";
 import { fileLoader } from "../../../../shared/loaders/file";
 import { Options } from "../../../..";
 
@@ -23,7 +22,6 @@ export const fonts = function(
                 {
                     test: /.(ttf|ttx|otf|eot|woff(2)?)(\?[a-z0-9]=.*)?$/u,
                     use: [
-                        cacheLoader(),
                         fileLoader(config, options)
                     ]
                 }

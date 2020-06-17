@@ -13,14 +13,13 @@ import {
     stylelintLintTask,
     StylelintLintTaskOptions
 } from "@newsteam/cli-tasks";
+import { NewsTeamConfig } from "@newsteam/assemble-cli-config";
 
 import {
     testSettingsTask,
     TestSettingsTaskOptions
 } from "./settings";
 import { testSharedSettingsTask } from "./settings/shared";
-
-import { NewsTeamConfig } from "../../config";
 
 
 const lintErrors = async function(configs: TestTaskConfigurations, fix: boolean, type?: TestTaskLintType): Promise<TestError[]>{

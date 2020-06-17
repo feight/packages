@@ -18,6 +18,10 @@ import {
     MinifyHTMLTaskOptions,
     npmInstallTask
 } from "@newsteam/cli-tasks";
+import {
+    Mode,
+    NewsTeamConfig
+} from "@newsteam/assemble-cli-config";
 
 import { buildConsoleTask } from "./console";
 import {
@@ -51,10 +55,6 @@ import {
 } from "./yaml";
 
 import { linkTask } from "../link";
-import {
-    Mode,
-    NewsTeamConfig
-} from "../../config";
 import { cleanTask } from "../clean";
 
 

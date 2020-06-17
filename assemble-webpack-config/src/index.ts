@@ -7,6 +7,7 @@
 
 import { Configuration } from "webpack";
 import merge from "webpack-merge";
+import { config as assembleCliConfig } from "@newsteam/assemble-cli-config";
 
 import * as configs from "./config";
 
@@ -22,8 +23,8 @@ const generateOptions = function(options: ConfigOptions, environment: Environmen
         cwd: process.cwd(),
         mode: args.mode ?? "development",
         ports: {
-            bundleAnalyzer: 3001,
-            devServer: 3002
+            bundleAnalyzer: assembleCliConfig.webpack.bundleAnalyzerPort,
+            devServer: assembleCliConfig.webpack.devServerPort
         },
         progress: true,
         staticFolder: "static",
@@ -44,16 +45,9 @@ export type Platform = "desktop" | "mobile" | "web";
 export type Target = "client" | "server";
 
 
-export interface PortConfigOptions{
-    bundleAnalyzer: number;
-    devServer: number;
-}
-
-
 export interface ConfigOptions{
     bundleAnalyzer?: boolean;
     config?: Configuration;
-    ports?: PortConfigOptions;
     progress?: boolean;
     staticFolder?: string;
 }
@@ -78,7 +72,10 @@ export interface Options{
     config?: Configuration;
     cwd: string;
     mode: Mode;
-    ports: PortConfigOptions;
+    ports: {
+        bundleAnalyzer: number;
+        devServer: number;
+    };
     progress: boolean;
     staticFolder: string;
     target: Target;

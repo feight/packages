@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/cli-errors",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "This package provides a collection of cli error classes.",
   "main": "lib",
   "types": "lib",
@@ -35,15 +35,15 @@
     "newsteam",
     "@newsteam"
   ],
-  "homepage": "https://github.com/feight/packages/tree/master/packages/cli-errors#readme",
+  "homepage": "https://github.com/feight/packages/tree/master/cli-errors#readme",
   "files": [
     "lib"
   ],
   "devDependencies": {
     "@newsteam/npm-install-local": "0.0.3",
-    "@tamland/babel": "^0.0.36",
-    "@tamland/eslint": "^0.0.84",
-    "@tamland/jasmine": "0.0.4"
+    "@newsteam/babel": "0.0.1",
+    "@newsteam/eslint": "0.0.1",
+    "@newsteam/jasmine": "0.0.1"
   },
   "dependencies": {}
 }

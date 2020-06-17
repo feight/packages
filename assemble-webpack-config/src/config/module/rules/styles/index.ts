@@ -6,7 +6,7 @@ import {
     Configuration,
     RuleSetUseItem
 } from "webpack";
-import postcssConfig from "@tamland/postcss-config";
+import postcssConfig from "@newsteam/postcss-config";
 import sass from "sass";
 
 import { cacheLoader } from "../../../../shared/loaders/cache";

@@ -129,6 +129,7 @@ export class Logger{
             kill: "💀",
             lint: "🔎",
             memcached: "🧠",
+            newsteam: "🍆",
             npm: "🍅",
             open: "🌍",
             optimize: "🌟",
@@ -140,7 +141,6 @@ export class Logger{
             settings: "🧬",
             setup: "💿",
             symlink: "🔗",
-            tamland: "🍆",
             test: "🔬",
             watch: "😳",
             webpack: "📦",
@@ -313,7 +313,8 @@ export class Logger{
     inLineFormat(line: string): string{
 
         return line
-        .replace(new RegExp(`${ String(cwd.replace(/\//gu, "\\/")) }\\/([a-zA-Z0-9-_.\/]*)(\\]| |$|\\s)`, "gu"), `${ chalk.hex(this.colors.file)("$1") }$2`)
+        // eslint-disable-next-line security/detect-non-literal-regexp -- this is safe enough for a cli logger
+        .replace(new RegExp(`${ String(cwd.replace(/\//gu, "\\/")) }\\/([a-zA-Z0-9-_./]*)(\\]| |$|\\s)`, "gu"), `${ chalk.hex(this.colors.file)("$1") }$2`)
         .replace(/(https?:\/\/[^(\]|\s|")]*)/gu, chalk.hex(this.colors.url)("$1"))
         .replace(/info:\s(POST|GET|PUT|PATCH|DELETE)\s(2\d\d)\s/gu, `info: $1 ${ chalk.hex(this.colors.status200)("$2") } `)
         .replace(/info:\s(POST|GET|PUT|PATCH|DELETE)\s(3\d\d)\s/gu, `info: $1 ${ chalk.hex(this.colors.status300)("$2") } `)
