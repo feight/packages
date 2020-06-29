@@ -476,6 +476,13 @@ const rules = {
     "@typescript-eslint/no-invalid-void-type": "error",
 
     /*
+     * Disallow literal numbers that lose precision
+     *
+     * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-loss-of-precision.md
+     */
+    "@typescript-eslint/no-loss-of-precision": "error",
+
+    /*
      * Disallow Magic Numbers
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-magic-numbers.md

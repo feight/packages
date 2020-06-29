@@ -386,6 +386,12 @@ export class Logger{
 
     }
 
+    strip(string: string): string{
+
+        return stripAnsi(string);
+
+    }
+
     table(label: string, labels: string[], data: string[][], options: table.Options): void{
 
         this.log(table([labels.map((lbl: string): string => chalk.bold(lbl))].concat(data), {

@@ -111,7 +111,7 @@ export const buildYamlTask = async function(options: BuildYamlTaskOptions): Prom
         const automaticScaling = environmentInstance?.scaling ? environmentInstance.scaling : appYaml.automatic_scaling;
 
         // Prepend custom handlers
-        appYaml.handlers = handlers.concat(appYaml.handlers);
+        appYaml.handlers = (handlers ?? []).concat(appYaml.handlers ?? []);
 
         /*
          *  Enforce secure at a handler level across all routes and snakeify

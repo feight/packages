@@ -55,10 +55,30 @@ const output = (color?: string): (data: any) => void => (data: any): void => {
             .replace(/\n$/gu, "").split("\n")
             .forEach((line: string) => {
 
-                if((/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}.*?\s200\s-/gu).test(line)){
+                // eslint-disable-next-line security/detect-unsafe-regex, max-len -- not sure why this isn't safe, anyway it's just for local
+                const re = /(?<ip>\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}).*\[(?<date>.*?)\s(?<time>.*?)\]\s"(?<method>[A-Z]*?)\s(?<path>.*?)\sHTTP\/(?<http>.*?)"\s(?<code>\d{1,3}).*/gu;
+                const match = re.exec(logger.strip(line));
 
-                    logger.log(line, {
-                        color: "#222",
+                if(match?.groups){
+
+                    const code = Number(match.groups.code);
+
+                    logger.log(`${ match.groups.method } ${ code } ${ match.groups.path }`, {
+                        color: ((): string | undefined => {
+
+                            /* eslint-disable @typescript-eslint/no-magic-numbers -- these are potential http codes */
+                            if(code >= 200 && code < 300 || code === 304){
+                                return "#222";
+                            }else if(code >= 400 && code < 500){
+                                return "#ffa500";
+                            }else if(code >= 500 && code < 600){
+                                return "#f00";
+                            }
+                            /* eslint-enable @typescript-eslint/no-magic-numbers */
+
+                            return color;
+
+                        })(),
                         label
                     });
 

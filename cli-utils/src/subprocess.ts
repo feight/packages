@@ -123,7 +123,7 @@ export const exec = function(options: {
                                 formattedString = formattedString.replace(filt, "");
                             });
 
-                            if(!detatch){
+                            if(!detatch && formattedString.trim()){
                                 logger.write(formattedString, { label });
                             }
 
@@ -240,7 +240,7 @@ export const spawn = function(options: {
                         formatted = formatted.replace(filt, "");
                     });
 
-                    if(!detatch){
+                    if(!detatch && formatted.trim()){
                         logger.write(formatted, { label });
                     }
 

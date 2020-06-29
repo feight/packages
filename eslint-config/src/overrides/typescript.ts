@@ -14,6 +14,7 @@ export const typescriptOverrides = {
         "no-extra-parens": "off",
         "no-extra-semi": "off",
         "no-invalid-this": "off",
+        "no-loss-of-precision": "off",
         "no-magic-numbers": "off",
         "no-undef-init": "off",
         "no-undefined": "off",

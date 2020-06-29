@@ -55,7 +55,7 @@ export interface AppYaml {
             file: string;
         }[];
     };
-    handlers: Handler[];
+    handlers?: Handler[];
     inbound_services?: "warmup"[];
     instance_class: InstanceClass;
     runtime: Runtime;

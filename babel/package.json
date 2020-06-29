@@ -31,9 +31,9 @@
   "homepage": "https://github.com/feight/packages/tree/master/babel#readme",
   "files": [],
   "dependencies": {
-    "@babel/cli": "7.8.4",
-    "@babel/core": "7.9.0",
+    "@babel/cli": "7.10.3",
+    "@babel/core": "7.10.3",
     "@newsteam/babel-preset": "0.0.1",
-    "renamer": "2.0.0"
+    "renamer": "2.0.1"
   }
 }

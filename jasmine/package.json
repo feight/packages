@@ -31,7 +31,7 @@
   "homepage": "https://github.com/feight/packages/tree/master/jasmine#readme",
   "files": [],
   "dependencies": {
-    "@types/jasmine": "3.5.10",
+    "@types/jasmine": "3.5.11",
     "jasmine": "3.5.0",
     "jasmine-console-reporter": "3.1.0"
   }

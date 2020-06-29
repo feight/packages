@@ -221,6 +221,13 @@ export default {
         "no-obj-calls": "error",
 
         /*
+         * Disallow returning values from Promise executor functions
+         *
+         * https://eslint.org/docs/rules/no-promise-executor-return
+         */
+        "no-promise-executor-return": "error",
+
+        /*
          * Disallow calling some Object.prototype methods directly on objects
          *
          * https://eslint.org/docs/rules/no-prototype-builtins
@@ -268,6 +275,13 @@ export default {
          * https://eslint.org/docs/rules/no-unreachable
          */
         "no-unreachable": "error",
+
+        /*
+         * Disallow loops with a body that allows only one iteration
+         *
+         * https://eslint.org/docs/rules/no-unreachable-loop
+         */
+        "no-unreachable-loop": "error",
 
         /*
          * Disallow control flow statements in finally blocks
