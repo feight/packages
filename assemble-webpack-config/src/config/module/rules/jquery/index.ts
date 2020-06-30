@@ -19,11 +19,12 @@ export const jquery = function(
                         cacheLoader(),
                         {
                             loader: "expose-loader",
-                            options: "jQuery"
-                        },
-                        {
-                            loader: "expose-loader",
-                            options: "$"
+                            options: {
+                                exposes: [
+                                    "$",
+                                    "jQuery"
+                                ]
+                            }
                         }
                     ]
                 }
