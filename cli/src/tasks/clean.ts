@@ -4,7 +4,7 @@ import {
     cleanCacheTask,
     cleanTask as clean
 } from "@newsteam/cli-tasks";
-import { NewsTeamConfig } from "@newsteam/assemble-cli-config";
+import { NewsTeamConfig } from "@newsteam/cli-config";
 
 
 interface CleanTaskOptions{

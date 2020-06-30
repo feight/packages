@@ -29,7 +29,7 @@ cd ~/code/newsteam/packages/imagemin                && rm -rf node_modules && rm
 
 cd ~/code/newsteam/packages/assemble-service-worker && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
 cd ~/code/newsteam/packages/assemble-settings       && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
-cd ~/code/newsteam/packages/assemble-cli-config     && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
+cd ~/code/newsteam/packages/cli-config              && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
 cd ~/code/newsteam/packages/cli-errors              && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
 cd ~/code/newsteam/packages/cli-notify              && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
 cd ~/code/newsteam/packages/npm-install-local       && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run test &&
@@ -39,4 +39,4 @@ cd ~/code/newsteam/packages/cli-logger              && rm -rf node_modules && rm
 cd ~/code/newsteam/packages/cli-utils               && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
 cd ~/code/newsteam/packages/cli-tasks               && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
 cd ~/code/newsteam/packages/assemble-webpack-config && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
-cd ~/code/newsteam/packages/assemble-cli            && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test
+cd ~/code/newsteam/packages/cli                     && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test

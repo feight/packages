@@ -21,7 +21,7 @@ import {
 import {
     Mode,
     NewsTeamConfig
-} from "@newsteam/assemble-cli-config";
+} from "@newsteam/cli-config";
 
 import { buildConsoleTask } from "./console";
 import {

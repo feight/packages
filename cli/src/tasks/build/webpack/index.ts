@@ -31,7 +31,7 @@ import SpeedMeasurePlugin, { SpeedMeasureWebpackPluginData } from "speed-measure
 import webpack, { Configuration } from "webpack";
 import {
     config as assembleCliConfig, Mode
-} from "@newsteam/assemble-cli-config";
+} from "@newsteam/cli-config";
 import { kill } from "@newsteam/cli-utils";
 
 

@@ -18,4 +18,4 @@ expand postcss with new plugins
 read .postcss.config.js at run time like we do for modernizr.js and newsteam.js
 
 make the cli 'newsteam assemble' instead of assemble
-    break it into newsteam/cli and newsteam/assemble-cli and link the assemble cli into the cli
+    break it into newsteam/cli and newsteam/cli and link the assemble cli into the cli

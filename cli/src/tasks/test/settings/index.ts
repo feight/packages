@@ -13,7 +13,7 @@ import {
     TestError,
     TestErrorData
 } from "@newsteam/cli-errors";
-import { SettingsSchemaTests } from "@newsteam/assemble-cli-config";
+import { SettingsSchemaTests } from "@newsteam/cli-config";
 
 import { label } from "..";
 

@@ -1,5 +1,5 @@
 {
-  "name": "@newsteam/assemble-cli",
+  "name": "@newsteam/cli-config",
   "version": "0.0.1",
   "description": "Newsteam command line tools",
   "main": "lib",
@@ -11,9 +11,6 @@
     "prepublishOnly": "bash ../publish.sh",
     "test": "bash ../test.sh",
     "tsc": "tsc --emitDeclarationOnly"
-  },
-  "bin": {
-    "assemble": "./lib/cli/index.js"
   },
   "browserslist": "node 12",
   "engines": {
@@ -31,50 +28,37 @@
   "bugs": {
     "url": "https://github.com/feight/packages/issues"
   },
-  "homepage": "https://github.com/feight/packages/tree/master/assemble-cli#readme",
+  "homepage": "https://github.com/feight/packages/tree/master/cli-config#readme",
   "files": [
     "lib"
   ],
   "dependencies": {
-    "asciichart": "1.5.21",
-    "commander": "5.1.0",
-    "core-js": "3.6.5",
-    "fs-extra": "9.0.1",
-    "glob-promise": "3.4.0",
-    "globby": "11.0.1",
-    "gulp": "4.0.2",
-    "is-equal": "1.6.1",
-    "js-yaml": "3.14.0",
-    "jsonschema": "1.2.6",
-    "regenerator-runtime": "0.13.5",
-    "speed-measure-webpack-plugin": "1.3.3",
-    "to-snake-case": "1.0.0",
-    "ts-node": "8.10.2",
-    "webpack": "4.43.0"
+    "@types/html-minifier": "^4.0.0",
+    "deepmerge": "^4.2.2",
+    "fs-extra": "^9.0.1",
+    "reflect-metadata": "^0.1.13",
+    "ts-node": "^8.10.2"
   },
   "devDependencies": {
     "@newsteam/babel": "0.0.1",
     "@newsteam/jasmine": "0.0.1",
     "@newsteam/npm-install-local": "0.0.3",
     "@types/asciichart": "1.5.2",
+    "@types/chokidar": "2.1.3",
+    "@types/deep-equal": "1.0.1",
+    "@types/deepmerge": "2.2.0",
     "@types/fs-extra": "9.0.1",
     "@types/gulp": "4.0.6",
-    "@types/js-yaml": "3.12.4",
+    "@types/js-yaml": "3.12.5",
     "@types/jsonschema": "1.1.1",
-    "@types/node": "14.0.13",
+    "@types/node": "14.0.14",
     "@types/to-snake-case": "1.0.0",
-    "@types/webpack": "4.41.17"
+    "@types/webpack": "4.41.18",
+    "@types/yargs": "15.0.5",
+    "webpack": "^4.43.0"
   },
   "localDependencies": {
-    "@newsteam/assemble-cli-config": "../assemble-cli-config",
-    "@newsteam/assemble-webpack-config": "../assemble-webpack-config",
-    "@newsteam/assemble-service-worker": "../assemble-service-worker",
-    "@newsteam/assemble-settings": "../assemble-settings",
-    "@newsteam/cli-errors": "../cli-errors",
-    "@newsteam/cli-logger": "../cli-logger",
-    "@newsteam/cli-notify": "../cli-notify",
     "@newsteam/cli-tasks": "../cli-tasks",
-    "@newsteam/cli-utils": "../cli-utils",
     "@newsteam/schema": "../schema"
   }
 }

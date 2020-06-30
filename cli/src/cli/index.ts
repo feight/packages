@@ -28,7 +28,7 @@ import {
     config,
     Mode,
     modes
-} from "@newsteam/assemble-cli-config";
+} from "@newsteam/cli-config";
 
 import {
     buildTask,
@@ -134,7 +134,10 @@ process.on("uncaughtException", (error: Error): void => logger.error(error));
 program.version(packageJson.version);
 
 
-program
+const assemble = new program.Command("assemble");
+
+
+assemble
 .command("build")
 .option(option.mode.flags, option.mode.description, option.mode.fn, option.mode.default)
 .option(option.publication.flags, option.publication.description)
@@ -147,16 +150,16 @@ program
     publication: options.publication
 })));
 
-program
+assemble
 .command("clean")
 .action(async (): Promise<void> => action(() => cleanTask(config, { cache: true })));
 
 
-program
+assemble
 .command("clean-cache")
 .action(async (): Promise<void> => action(() => cleanCacheTask()));
 
-program
+assemble
 .command("deploy")
 .option(option.publication.flags, option.publication.description)
 .option(option.environment.flags, option.environment.description)
@@ -167,11 +170,11 @@ program
     versionId: options.versionId
 })));
 
-program
+assemble
 .command("link")
 .action(async (): Promise<void> => action(() => linkTask(true)));
 
-program
+assemble
 .command("lint")
 .option(option.lintType.flags, option.lintType.description, option.lintType.default)
 .option(option.lintAll.flags, option.lintAll.description, option.lintAll.default)
@@ -183,7 +186,7 @@ program
     type: options.type
 })));
 
-program
+assemble
 .command("local")
 .option(option.mode.flags, option.mode.description, option.mode.fn, option.mode.default)
 .option(option.publication.flags, option.publication.description)
@@ -196,13 +199,13 @@ program
     publication: options.publication
 })));
 
-program
+assemble
 .command("optimize")
 .action(async (): Promise<void> => action(() => optimizeTask({
     glob: config.paths.entries.glob
 })));
 
-program
+assemble
 .command("promote")
 .option(option.publication.flags, option.publication.description)
 .option(option.environment.flags, option.environment.description)
@@ -211,7 +214,7 @@ program
     publication: options.publication
 })));
 
-program
+assemble
 .command("setup")
 .option(option.publication.flags, option.publication.description)
 .option(option.environment.flags, option.environment.description)
@@ -222,7 +225,7 @@ program
     type: options.type
 })));
 
-program
+assemble
 .command("test")
 .option(option.lintType.flags, option.lintType.description, option.lintType.default)
 .option(option.lintAll.flags, option.lintAll.description, option.lintAll.default)
@@ -232,6 +235,9 @@ program
     fix: options.fix,
     type: options.type
 })));
+
+
+program.addCommand(assemble);
 
 
 program.parse(process.argv);
