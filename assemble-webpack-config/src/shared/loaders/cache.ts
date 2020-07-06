@@ -14,7 +14,7 @@ export const cacheLoader = function(): NewLoader{
     return {
         loader: "cache-loader",
         options: {
-            cacheDirectory: ".local/cache/webpack/cache-loader"
+            cacheDirectory: ".newsteam/cache/webpack/cache-loader"
         }
     };
 

@@ -111,7 +111,7 @@ export const localDockerRunTask = async function(config: LocalDockerRunTaskConfi
             --restart always
             --name ${ config.name }
             --net ${ network }
-            -v ${ path.join(process.cwd(), `.local/docker/${ config.name }/data`) }
+            -v ${ path.join(process.cwd(), `.newsteam/docker/${ config.name }/data`) }
             ${ ports.length > 0 ? ports.map((port) => `-p ${ port[0] }:${ port[1] }`).join(" ") : "" }
             -d
             ${ Object.keys(environment).map((key) => `-e ${ key }=${ environment[key] ?? "" }`).join(" ") }

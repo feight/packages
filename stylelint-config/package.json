@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/stylelint-config",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Shared config for stylelint",
   "main": "lib",
   "types": "lib",
@@ -43,11 +43,11 @@
     "lib"
   ],
   "dependencies": {
-    "@newsteam/jasmine": "0.0.1"
+    "@newsteam/jasmine": "0.0.2"
   },
   "devDependencies": {
-    "@newsteam/babel": "0.0.1",
-    "@newsteam/eslint": "0.0.1",
+    "@newsteam/babel": "0.0.2",
+    "@newsteam/eslint": "0.0.2",
     "@types/node": "14.0.14",
     "stylelint": "13.6.1",
     "stylelint-a11y": "1.2.3",

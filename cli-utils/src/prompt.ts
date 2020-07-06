@@ -18,7 +18,7 @@ export interface PromptChoice<PromptValue>{
 export const prompt = async function<PromptValue>(id: string, choices: PromptChoice<PromptValue>[], value?: PromptValue): Promise<PromptValue>{
 
     const key = id.replace(/[\W_\s]+/gu, "-").toLowerCase();
-    const previousPath = path.join(process.cwd(), `.local/cache/@newsteam/cli-utils/prompts/${ key }.json`);
+    const previousPath = path.join(process.cwd(), `.newsteam/cache/prompts/${ key }.json`);
     const previousExists = await fs.pathExists(previousPath);
 
     let choice: { [id: string]: PromptValue } = {};

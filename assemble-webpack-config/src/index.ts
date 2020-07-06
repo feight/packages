@@ -6,7 +6,7 @@
  */
 
 import { Configuration } from "webpack";
-import merge from "webpack-merge";
+import { merge } from "webpack-merge";
 import { config as assembleCliConfig } from "@newsteam/cli-config";
 
 import * as configs from "./config";

@@ -1,6 +1,6 @@
 
 
-import merge from "webpack-merge";
+import { merge } from "webpack-merge";
 import { Configuration } from "webpack";
 
 import { cacheLoader } from "../../../../shared/loaders/cache";

@@ -182,6 +182,18 @@ export default {
         ],
 
         /*
+         * Disallow specified identifiers
+         *
+         * https://eslint.org/docs/rules/id-denylist
+         */
+        "id-denylist": [
+            "error",
+            "e",
+            "i",
+            "j"
+        ],
+
+        /*
          * Enforce minimum and maximum identifier lengths
          *
          * https://eslint.org/docs/rules/id-length

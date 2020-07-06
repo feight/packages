@@ -1,6 +1,6 @@
 
 
-import merge from "webpack-merge";
+import { merge } from "webpack-merge";
 import { Configuration } from "webpack";
 
 import { babelLoader } from "../../../../shared/loaders/babel";

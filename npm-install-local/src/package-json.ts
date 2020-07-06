@@ -161,8 +161,8 @@ export const getPackageJson = async function(directory: string): Promise<Package
 
 export const getCacheJson = async function(directory: string): Promise<CacheMap>{
 
-    const cacheDirectory = path.join(directory, ".local/cache/@newsteam/npm-install-local");
-    const cacheJsonPath = path.join(cacheDirectory, "cache.json");
+    const cacheDirectory = path.join(directory, ".newsteam/cache");
+    const cacheJsonPath = path.join(cacheDirectory, "npm-install-local.json");
     const packageJSONExists = fs.existsSync(cacheJsonPath);
 
     let json = {};

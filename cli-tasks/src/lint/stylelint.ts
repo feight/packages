@@ -67,7 +67,7 @@ export const stylelintLintTask = async function(options: StylelintLintTaskOption
 
             const report = await stylelint.lint({
                 cache: options.cache ?? true,
-                cacheLocation: ".local/cache/@newsteam/cli-tasks/.stylelintcache",
+                cacheLocation: ".newsteam/cache/.stylelintcache",
                 files: [file],
                 fix: options.fix ?? false,
                 reportNeedlessDisables: true

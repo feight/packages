@@ -9,8 +9,8 @@ import cache from "gulp-cache";
 export const cleanCacheTask = async function(): Promise<void>{
 
     await Promise.all([
-        ".local/cache/@newsteam/cli-tasks/virtualenv.json",
-        ".local/cache/@newsteam/webpack"
+        ".newsteam/cache/virtualenv.json",
+        ".newsteam/cache/webpack"
     ].map(async (cachePath) => {
 
         await del(path.join(process.cwd(), cachePath));

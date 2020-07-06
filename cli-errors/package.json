@@ -41,9 +41,9 @@
   ],
   "devDependencies": {
     "@newsteam/npm-install-local": "0.0.3",
-    "@newsteam/babel": "0.0.1",
-    "@newsteam/eslint": "0.0.1",
-    "@newsteam/jasmine": "0.0.1"
+    "@newsteam/babel": "0.0.2",
+    "@newsteam/eslint": "0.0.2",
+    "@newsteam/jasmine": "0.0.2"
   },
   "dependencies": {}
 }

@@ -37,7 +37,7 @@ import { kill } from "@newsteam/cli-utils";
 
 const label = "webpack";
 
-const buildStatsFolder = path.join(process.cwd(), ".local/@newsteam/webpack/build/stats");
+const buildStatsFolder = path.join(process.cwd(), ".newsteam/webpack-build-stats");
 
 const printBuildStatistics = function(): void{
 

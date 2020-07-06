@@ -17,6 +17,8 @@ npm deprecate @tamland/imagemin@"< 0.2.3" "This module has been renamed to @news
 npm deprecate @tamland/logger@"< 0.2.3" "This module has been renamed to @newsteam/cli-logger"
 npm deprecate @sweetlikepete/logger@"< 0.2.3" "This module has been renamed to @newsteam/cli-logger"
 
+# update all published packages
+
 cd ~/code/newsteam/packages/jasmine                 && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run test &&
 cd ~/code/newsteam/packages/babel-preset            && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run test &&
 cd ~/code/newsteam/packages/babel                   && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run test &&
@@ -25,7 +27,21 @@ cd ~/code/newsteam/packages/eslint                  && rm -rf node_modules && rm
 cd ~/code/newsteam/packages/postcss-config          && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run test &&
 cd ~/code/newsteam/packages/stylelint-config        && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run test &&
 cd ~/code/newsteam/packages/stylelint               && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run test &&
-cd ~/code/newsteam/packages/imagemin                && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run test &&
+cd ~/code/newsteam/packages/imagemin                && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run test
+
+# publish all published packages
+
+cd ~/code/newsteam/packages/jasmine                 && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm version patch && npm publish &&
+cd ~/code/newsteam/packages/babel-preset            && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm version patch && npm publish &&
+cd ~/code/newsteam/packages/babel                   && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm version patch && npm publish &&
+cd ~/code/newsteam/packages/eslint-config           && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm version patch && npm publish &&
+cd ~/code/newsteam/packages/eslint                  && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm version patch && npm publish &&
+cd ~/code/newsteam/packages/postcss-config          && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm version patch && npm publish &&
+cd ~/code/newsteam/packages/stylelint-config        && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm version patch && npm publish &&
+cd ~/code/newsteam/packages/stylelint               && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm version patch && npm publish &&
+cd ~/code/newsteam/packages/imagemin                && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm version patch && npm publish
+
+# update all unpublished packages
 
 cd ~/code/newsteam/packages/assemble-service-worker && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
 cd ~/code/newsteam/packages/assemble-settings       && rm -rf node_modules && rm package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&

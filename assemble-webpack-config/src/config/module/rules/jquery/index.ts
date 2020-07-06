@@ -1,6 +1,6 @@
 
 
-import merge from "webpack-merge";
+import { merge } from "webpack-merge";
 import { Configuration } from "webpack";
 
 import { cacheLoader } from "../../../../shared/loaders/cache";
@@ -21,8 +21,14 @@ export const jquery = function(
                             loader: "expose-loader",
                             options: {
                                 exposes: [
-                                    "$",
-                                    "jQuery"
+                                    {
+                                        globalName: "$",
+                                        override: true
+                                    },
+                                    {
+                                        globalName: "jQuery",
+                                        override: true
+                                    }
                                 ]
                             }
                         }

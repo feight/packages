@@ -80,7 +80,7 @@ export const localTask = async function(config: NewsTeamConfig, options: LocalTa
         localRedisServerTask(config.local.redis.server),
         localDatastoreEmulatorTask({
             ...config.local.emulators.datastore,
-            directory: `.local/gcloud/emulators/datastore/${ settings.pubId }`
+            directory: `.newsteam/gcloud/emulators/datastore/${ settings.pubId }`
         }),
         localPythonServerTask({
             environment: {
