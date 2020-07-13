@@ -708,6 +708,13 @@ const rules = {
     "@typescript-eslint/prefer-includes": "error",
 
     /*
+     * Require that all enum members be literal values to prevent unintended enum member name shadow issues
+     *
+     * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/prefer-literal-enum-member.md
+     */
+    "@typescript-eslint/prefer-literal-enum-member": "error",
+
+    /*
      * Require the use of the namespace keyword instead of the module keyword to declare custom TypeScript modules. (no-internal-module from TSLint)
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/prefer-namespace-keyword.md

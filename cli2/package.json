@@ -1,0 +1,56 @@
+{
+  "name": "@newsteam/cli2",
+  "description": "Newsteam command line tools",
+  "version": "0.0.0",
+  "author": "Peter Bodechtel @sweetlikepete",
+  "bin": {
+    "newsteam2": "./bin/run"
+  },
+  "bugs": "https://github.com/feight/packages/issues",
+  "dependencies": {
+    "@oclif/command": "^1.7.0",
+    "@oclif/config": "^1.16.0",
+    "@oclif/plugin-help": "^3.1.0",
+    "tslib": "^2.0.0"
+  },
+  "devDependencies": {
+    "@newsteam/eslint": "0.0.3",
+    "@oclif/dev-cli": "^1.22.2",
+    "@types/node": "^14.0.22",
+    "globby": "^11.0.1",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.6"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/bin",
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "homepage": "https://github.com/feight/packages",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "newsteam2",
+    "plugins": [
+      "@oclif/plugin-help"
+    ]
+  },
+  "repository": "feight/packages",
+  "scripts": {
+    "build": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
+    "postpack": "rm -f oclif.manifest.json",
+    "posttest": "eslint . --ext .ts --config .eslintrc",
+    "prepack": "npm run build",
+    "test": "echo NO TESTS",
+    "version": "oclif-dev readme && git add README.md"
+  },
+  "types": "lib/index.d.ts"
+}
