@@ -40,7 +40,7 @@
     "lib"
   ],
   "dependencies": {
-    "@newsteam/eslint": "0.0.2",
+    "@newsteam/eslint": "0.0.3",
     "@newsteam/imagemin": "0.0.2",
     "@newsteam/npm-install-local": "0.0.3",
     "@newsteam/stylelint": "0.0.2",
@@ -76,7 +76,7 @@
     "@types/gulp-install": "0.6.31",
     "@types/gulp-replace": "0.0.31",
     "@types/modernizr": "3.5.3",
-    "@types/node": "14.0.14",
+    "@types/node": "14.0.23",
     "@types/node-fetch": "2.5.7",
     "@types/request": "2.48.5",
     "@types/stylelint": "9.10.1",

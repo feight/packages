@@ -37,10 +37,10 @@
   "devDependencies": {
     "@newsteam/npm-install-local": "0.0.3",
     "@newsteam/babel": "0.0.2",
-    "@newsteam/eslint": "0.0.2",
+    "@newsteam/eslint": "0.0.3",
     "@newsteam/jasmine": "0.0.2",
     "@types/fs-extra": "9.0.1",
-    "@types/node": "14.0.14",
+    "@types/node": "14.0.23",
     "typescript": "3.9.6"
   }
 }

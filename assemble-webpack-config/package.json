@@ -41,7 +41,7 @@
   ],
   "devDependencies": {
     "@newsteam/babel": "0.0.2",
-    "@newsteam/eslint": "0.0.2",
+    "@newsteam/eslint": "0.0.3",
     "@newsteam/jasmine": "0.0.2",
     "@newsteam/npm-install-local": "0.0.3",
     "@types/assets-webpack-plugin": "3.9.0",
@@ -50,7 +50,7 @@
     "@types/mini-css-extract-plugin": "0.9.1",
     "@types/sass": "1.16.0",
     "@types/terser-webpack-plugin": "3.0.0",
-    "@types/webpack": "4.41.19",
+    "@types/webpack": "4.41.21",
     "@types/webpack-bundle-analyzer": "3.8.0"
   },
   "dependencies": {
@@ -59,7 +59,7 @@
     "@babel/preset-env": "7.10.4",
     "@newsteam/babel-preset": "0.0.2",
     "@newsteam/postcss-config": "0.0.2",
-    "assets-webpack-plugin": "5.0.2",
+    "assets-webpack-plugin": "5.0.3",
     "babel-loader": "8.1.0",
     "babel-runtime": "6.26.0",
     "cache-loader": "4.1.0",
@@ -80,14 +80,14 @@
     "mini-css-extract-plugin": "0.9.0",
     "optimize-css-assets-webpack-plugin": "5.0.3",
     "postcss-loader": "3.0.0",
-    "sass": "1.26.9",
-    "sass-loader": "9.0.1",
+    "sass": "1.26.10",
+    "sass-loader": "9.0.2",
     "script-loader": "0.7.2",
     "sharp": "^0.25.4",
     "terser-webpack-plugin": "3.0.6",
     "webpack": "4.43.0",
     "webpack-bundle-analyzer": "3.8.0",
-    "webpack-merge": "5.0.3"
+    "webpack-merge": "5.0.9"
   },
   "localDependencies": {
     "@newsteam/cli-config": "../cli-config",

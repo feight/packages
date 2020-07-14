@@ -50,7 +50,7 @@
   },
   "devDependencies": {
     "@newsteam/babel": "0.0.2",
-    "@newsteam/eslint": "0.0.2",
-    "@types/node": "14.0.14"
+    "@newsteam/eslint": "0.0.3",
+    "@types/node": "14.0.23"
   }
 }

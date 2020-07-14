@@ -5,7 +5,6 @@ import childProcess from "child_process";
 import through from "through2";
 
 
-// eslint-disable-next-line max-lines-per-function -- Breaking this up would be more complicated
 export const exec = function(options: {
     cwd?: string;
     command: string;

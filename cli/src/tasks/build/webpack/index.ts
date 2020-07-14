@@ -23,7 +23,7 @@
 
 import path from "path";
 
-import asciichart from "asciichart";
+import { plot } from "asciichart";
 import fs from "fs-extra";
 import glob from "globby";
 import { logger } from "@newsteam/cli-logger";
@@ -60,7 +60,7 @@ const printBuildStatistics = function(): void{
     if(compileTimes.length > 0){
 
         logger.log("", { label });
-        logger.log(asciichart.plot(compileTimes), { label });
+        logger.log(plot(compileTimes), { label });
         logger.log("", { label });
 
     }

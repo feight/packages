@@ -56,14 +56,14 @@
     "@newsteam/babel": "0.0.2",
     "@newsteam/jasmine": "0.0.2",
     "@newsteam/npm-install-local": "0.0.3",
-    "@types/asciichart": "1.5.2",
+    "@types/asciichart": "1.5.3",
     "@types/fs-extra": "9.0.1",
     "@types/gulp": "4.0.6",
     "@types/js-yaml": "3.12.5",
     "@types/jsonschema": "1.1.1",
-    "@types/node": "14.0.14",
+    "@types/node": "14.0.23",
     "@types/to-snake-case": "1.0.0",
-    "@types/webpack": "4.41.19"
+    "@types/webpack": "4.41.21"
   },
   "localDependencies": {
     "@newsteam/cli-config": "../cli-config",

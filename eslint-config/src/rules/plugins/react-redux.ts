@@ -68,6 +68,13 @@ export default {
         "react-redux/mapStateToProps-prefer-parameters-names": "error",
 
         /*
+         * Enforces that all mapStateToProps properties use selector functions.
+         *
+         * https://github.com/DianaSuvorova/eslint-plugin-react-redux/blob/HEAD/docs/rules/mapStateToProps-prefer-selectors.md
+         */
+        "react-redux/mapStateToProps-prefer-selectors": "error",
+
+        /*
          * Extension of a react's no-unused-prop-types rule filtering out false positive used in redux context.
          *
          * https://github.com/DianaSuvorova/eslint-plugin-react-redux/blob/HEAD/docs/rules/no-unused-prop-types.md
