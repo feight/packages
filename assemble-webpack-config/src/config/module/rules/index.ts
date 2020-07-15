@@ -32,7 +32,7 @@ export const rules = function(
         fonts(config, options),
         images(config, options),
         scripts(config),
-        styles(config),
+        styles(config, options),
         html(config),
         json(config),
         files(config, options)

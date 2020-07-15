@@ -10,6 +10,7 @@ import postcssConfig from "@newsteam/postcss-config";
 import sass from "sass";
 
 import { cacheLoader } from "../../../../shared/loaders/cache";
+import { Options } from "../../../..";
 
 /*
  * This plugin extracts CSS into separate files. It creates a CSS
@@ -18,10 +19,14 @@ import { cacheLoader } from "../../../../shared/loaders/cache";
  *
  * https://github.com/webpack-contrib/mini-css-extract-plugin
  */
-const miniCssExtractPlugin = (): RuleSetUseItem => ({
+const miniCssExtractPlugin = (
+    config: Configuration,
+    options: Options
+): RuleSetUseItem => ({
     loader: MiniCssExtractPlugin.loader,
     options: {
-        esModule: true
+        esModule: true,
+        publicPath: config.output ? config.output.publicPath : `/${ options.staticFolder }/`
     }
 });
 
@@ -32,12 +37,35 @@ const miniCssExtractPlugin = (): RuleSetUseItem => ({
  *
  * https://github.com/webpack-contrib/css-loader
  */
-const cssLoader = (): RuleSetUseItem => ({
-    loader: "css-loader",
-    options: {
-        sourceMap: true
-    }
-});
+const cssLoader = (
+    options: Options,
+    modules = false,
+    sourceMap = true
+): RuleSetUseItem => {
+
+    const baseOptions = {
+        sourceMap
+    };
+
+    const developmentLocalIdentName = "/[path][name].[ext]::.[local]";
+    const productionLocalIdentName = "[hash:base64]";
+
+    return {
+        loader: "css-loader",
+        options: modules ? {
+            ...baseOptions,
+            importLoaders: 3,
+            localsConvention: "camelCaseOnly",
+            modules: {
+                localIdentName: options.mode === "development" ? developmentLocalIdentName : productionLocalIdentName
+            },
+            onlyLocals: options.target === "server"
+        } : {
+            ...baseOptions
+        }
+    };
+
+};
 
 
 /*
@@ -94,7 +122,8 @@ const sassLoader = (): RuleSetUseItem => ({
 
 
 export const styles = function(
-    config: Configuration
+    config: Configuration,
+    options: Options
 ): Configuration{
 
     return merge(config, {
@@ -103,20 +132,42 @@ export const styles = function(
                 {
                     test: /\.min\.css$/u,
                     use: [
-                        miniCssExtractPlugin(),
+                        miniCssExtractPlugin(config, options),
                         cacheLoader(),
-                        cssLoader()
+                        cssLoader(options)
                     ]
                 },
                 {
-                    test: /^(.{0,3}|.*(?!\.min).{4})\.(css|scss)$/u,
+                    include: /\.module\.scss$/u,
+                    test: /^(.{0,3}|.*(?!\.min).{4})\.scss$/u,
                     use: [
-                        miniCssExtractPlugin(),
+                        miniCssExtractPlugin(config, options),
                         cacheLoader(),
-                        cssLoader(),
+                        cssLoader(options, true),
                         cleanCssLoader(),
                         postCssLoader(),
                         sassLoader()
+                    ]
+                },
+                {
+                    exclude: /\.module\.scss$/u,
+                    test: /^(.{0,3}|.*(?!\.min).{4})\.scss$/u,
+                    use: [
+                        miniCssExtractPlugin(config, options),
+                        cacheLoader(),
+                        cssLoader(options),
+                        cleanCssLoader(),
+                        postCssLoader(),
+                        sassLoader()
+                    ]
+                },
+                {
+                    include: /node_modules/u,
+                    test: /^(.{0,3}|.*(?!\.min).{4})\.css$/u,
+                    use: [
+                        miniCssExtractPlugin(config, options),
+                        cacheLoader(),
+                        cssLoader(options)
                     ]
                 }
             ]

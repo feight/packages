@@ -51,6 +51,7 @@ export const resolve = function(
             ],
             modules: [
                 "node_modules",
+                "assemble/node_modules",
                 "src/publication/custom/node_modules",
                 "src"
             ],

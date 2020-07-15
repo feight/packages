@@ -31,7 +31,7 @@ export const scripts = function(
                     type: "javascript/auto",
                     use: [
                         cacheLoader(),
-                        babelLoader()
+                        babelLoader(config)
                     ]
                 },
                 // .js and .jsx script extensions
@@ -40,7 +40,7 @@ export const scripts = function(
                     test: /\.jsx?$/u,
                     use: [
                         cacheLoader(),
-                        babelLoader()
+                        babelLoader(config)
                     ]
                 },
                 // .ts and .tsx script extensions
@@ -49,7 +49,7 @@ export const scripts = function(
                     test: /\.tsx?$/u,
                     use: [
                         cacheLoader(),
-                        babelLoader()
+                        babelLoader(config, false)
                     ]
                 }
             ]

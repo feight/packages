@@ -99,6 +99,15 @@ const serviceWorkerEntryPoints = function(): Entry{
 };
 
 
+const assembleEntryPoints = function(): Entry{
+
+    // The default service worker if the client doesn't specifcy one
+    return {
+        assemble: "assemble/index.ts"
+    };
+
+};
+
 /*
  * The entrypoint for the application.
  *
@@ -123,7 +132,8 @@ export const entry = function(): Configuration{
                 "src/publication/custom/pages/**/index.js",
                 /src\/publication\/custom\/(.*?)\/index.js$/gu
             ),
-            ...serviceWorkerEntryPoints()
+            ...serviceWorkerEntryPoints(),
+            ...assembleEntryPoints()
         }
     };
 

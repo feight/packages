@@ -207,15 +207,11 @@ export const buildWebpackTask = async function(options: BuildWebpackTaskOptions)
 
                     output(`Build ${ path.resolve(config) }`)(error, stats);
 
+                    reject(error);
+
                 }else if(compilationErrors.length > 0){
 
-                    compilationErrors.forEach((compilationError) => {
-
-                        logger.log("", { label });
-                        logger.error(compilationError, { label });
-                        logger.log("", { label });
-
-                    });
+                    output(`Error ${ path.resolve(config) }`)(new Error(stats.toString(webpackConfig.stats)), stats);
 
                     reject(compilationErrors);
 
