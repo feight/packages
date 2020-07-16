@@ -83,8 +83,8 @@
     "html-minifier": "4.0.0"
   },
   "localDependencies": {
-    "@newsteam/cli-errors": "../cli-errors",
-    "@newsteam/cli-logger": "../cli-logger",
+    "@newsteam/legacy-cli-errors": "../legacy-cli-errors",
+    "@newsteam/legacy-cli-logger": "../legacy-cli-logger",
     "@newsteam/cli-utils": "../cli-utils",
     "@newsteam/package-json": "../package-json"
   }

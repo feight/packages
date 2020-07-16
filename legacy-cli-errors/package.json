@@ -1,0 +1,49 @@
+{
+  "name": "@newsteam/legacy-cli-errors",
+  "version": "0.0.1",
+  "description": "This package provides a collection of cli error classes.",
+  "main": "lib",
+  "types": "lib",
+  "scripts": {
+    "build": "bash ../build.sh",
+    "npm-install-local": "npm-install-local",
+    "prepublishOnly": "bash ../publish.sh",
+    "test": "bash ../test.sh"
+  },
+  "engines": {
+    "node": ">= 12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/feight/packages"
+  },
+  "author": "News Team (https://www.newsteam.io)",
+  "contributors": [
+    {
+      "name": "Peter Bodechtel",
+      "url": "https://www.sweetlikepete.com"
+    }
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/feight/packages/issues"
+  },
+  "keywords": [
+    "newsteam",
+    "@newsteam"
+  ],
+  "homepage": "https://github.com/feight/packages/tree/master/legacy-cli-errors#readme",
+  "files": [
+    "lib"
+  ],
+  "devDependencies": {
+    "@newsteam/npm-install-local": "0.0.3",
+    "@newsteam/babel": "0.0.2",
+    "@newsteam/eslint": "0.0.3",
+    "@newsteam/jasmine": "0.0.2"
+  },
+  "dependencies": {}
+}

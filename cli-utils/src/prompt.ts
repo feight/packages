@@ -5,7 +5,7 @@ import path from "path";
 import fs from "fs-extra";
 import inquirer from "inquirer";
 import equal from "deep-equal";
-import { logger } from "@newsteam/cli-logger";
+import { logger } from "@newsteam/legacy-cli-logger";
 
 
 export interface PromptChoice<PromptValue>{

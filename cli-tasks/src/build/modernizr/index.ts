@@ -4,7 +4,7 @@ import path from "path";
 
 import fs from "fs-extra";
 import modernizr from "modernizr";
-import { logger } from "@newsteam/cli-logger";
+import { logger } from "@newsteam/legacy-cli-logger";
 import {
     watch,
     WatchOptions

@@ -11,7 +11,7 @@ migrate from @TAMLAND/* to @newsteam/*
     stylelint-config
     ---- add deprecation message to readme.md and deprecate in npm
     ---- move over references in TAMLAND to @newsteam versions
-    ---- migrate @newsteam/logger to @TAMLAND/cli-logger
+    ---- migrate @newsteam/logger to @TAMLAND/legacy-cli-logger
 
 
 expand postcss with new plugins

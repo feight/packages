@@ -14,8 +14,8 @@ npm deprecate @tamland/stylelint@"< 0.2.3" "This module has been renamed to @new
 npm deprecate @sweetlikepete/stylelint-config@"< 0.2.3" "This module has been renamed to @newsteam/stylelint-config"
 npm deprecate @sweetlikepete/stylelint@"< 0.2.3" "This module has been renamed to @newsteam/stylelint"
 npm deprecate @tamland/imagemin@"< 0.2.3" "This module has been renamed to @newsteam/imagemin"
-npm deprecate @tamland/logger@"< 0.2.3" "This module has been renamed to @newsteam/cli-logger"
-npm deprecate @sweetlikepete/logger@"< 0.2.3" "This module has been renamed to @newsteam/cli-logger"
+npm deprecate @tamland/logger@"< 0.2.3" "This module has been renamed to @newsteam/legacy-cli-logger"
+npm deprecate @sweetlikepete/logger@"< 0.2.3" "This module has been renamed to @newsteam/legacy-cli-logger"
 
 # update all published packages
 
@@ -43,16 +43,16 @@ cd ~/code/newsteam/packages/imagemin                && rm -rf node_modules && rm
 
 # update all unpublished packages
 
-cd ~/code/newsteam/packages/assemble-service-worker && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
-cd ~/code/newsteam/packages/assemble-settings       && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
-cd ~/code/newsteam/packages/cli-config              && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
-cd ~/code/newsteam/packages/cli-errors              && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
+cd ~/code/newsteam/packages/legacy-service-worker   && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
+cd ~/code/newsteam/packages/legacy-settings         && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
+cd ~/code/newsteam/packages/legacy-cli-errors       && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
 cd ~/code/newsteam/packages/cli-notify              && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
 cd ~/code/newsteam/packages/npm-install-local       && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run test &&
 cd ~/code/newsteam/packages/package-json            && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
 cd ~/code/newsteam/packages/schema                  && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
-cd ~/code/newsteam/packages/cli-logger              && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
+cd ~/code/newsteam/packages/legacy-cli-logger       && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
 cd ~/code/newsteam/packages/cli-utils               && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
 cd ~/code/newsteam/packages/cli-tasks               && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
-cd ~/code/newsteam/packages/assemble-webpack-config && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
-cd ~/code/newsteam/packages/cli                     && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test
+cd ~/code/newsteam/packages/legacy-cli-config       && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
+cd ~/code/newsteam/packages/legacy-webpack-config   && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
+cd ~/code/newsteam/packages/legacy-cli              && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test

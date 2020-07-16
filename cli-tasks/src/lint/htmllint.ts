@@ -6,7 +6,7 @@ import fs from "fs";
 import htmllint, { HtmlLintIssue } from "htmllint";
 import vinyl from "vinyl";
 import { rcFile } from "rc-config-loader";
-import { logger } from "@newsteam/cli-logger";
+import { logger } from "@newsteam/legacy-cli-logger";
 import {
     watch,
     WatchOptions
@@ -14,7 +14,7 @@ import {
 import {
     LintError,
     LintErrorData
-} from "@newsteam/cli-errors";
+} from "@newsteam/legacy-cli-errors";
 
 
 export class HtmllintError extends LintError{

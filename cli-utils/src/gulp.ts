@@ -4,7 +4,7 @@ import stream from "stream";
 
 import gulpWatch from "gulp-watch";
 import through from "through2";
-import { logger } from "@newsteam/cli-logger";
+import { logger } from "@newsteam/legacy-cli-logger";
 import vinyl from "vinyl";
 
 

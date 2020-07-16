@@ -1,0 +1,80 @@
+{
+  "name": "@newsteam/legacy-cli",
+  "version": "0.0.1",
+  "description": "Newsteam command line tools",
+  "main": "lib",
+  "types": "lib",
+  "sideEffects": false,
+  "scripts": {
+    "build": "bash ../build.sh",
+    "npm-install-local": "npm-install-local",
+    "prepublishOnly": "bash ../publish.sh",
+    "test": "bash ../test.sh",
+    "tsc": "tsc --emitDeclarationOnly"
+  },
+  "bin": {
+    "newsteam": "./lib/cli/index.js"
+  },
+  "browserslist": "node 12",
+  "engines": {
+    "node": ">= 12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/feight/packages.git"
+  },
+  "author": "News Team (https://www.newsteam.io)",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/feight/packages/issues"
+  },
+  "homepage": "https://github.com/feight/packages/tree/master/legacy-cli#readme",
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "asciichart": "1.5.21",
+    "commander": "5.1.0",
+    "core-js": "3.6.5",
+    "fs-extra": "9.0.1",
+    "glob-promise": "3.4.0",
+    "globby": "11.0.1",
+    "gulp": "4.0.2",
+    "is-equal": "1.6.1",
+    "js-yaml": "3.14.0",
+    "jsonschema": "1.2.6",
+    "regenerator-runtime": "0.13.5",
+    "speed-measure-webpack-plugin": "1.3.3",
+    "to-snake-case": "1.0.0",
+    "ts-node": "8.10.2",
+    "webpack": "4.43.0"
+  },
+  "devDependencies": {
+    "@newsteam/babel": "0.0.2",
+    "@newsteam/jasmine": "0.0.2",
+    "@newsteam/npm-install-local": "0.0.3",
+    "@types/asciichart": "1.5.3",
+    "@types/fs-extra": "9.0.1",
+    "@types/gulp": "4.0.6",
+    "@types/js-yaml": "3.12.5",
+    "@types/jsonschema": "1.1.1",
+    "@types/node": "14.0.23",
+    "@types/to-snake-case": "1.0.0",
+    "@types/webpack": "4.41.21"
+  },
+  "localDependencies": {
+    "@newsteam/legacy-cli-config": "../legacy-cli-config",
+    "@newsteam/legacy-webpack-config": "../legacy-webpack-config",
+    "@newsteam/legacy-service-worker": "../legacy-service-worker",
+    "@newsteam/legacy-settings": "../legacy-settings",
+    "@newsteam/legacy-cli-errors": "../legacy-cli-errors",
+    "@newsteam/legacy-cli-logger": "../legacy-cli-logger",
+    "@newsteam/cli-notify": "../cli-notify",
+    "@newsteam/cli-tasks": "../cli-tasks",
+    "@newsteam/cli-utils": "../cli-utils",
+    "@newsteam/schema": "../schema"
+  }
+}

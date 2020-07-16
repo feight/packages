@@ -17,7 +17,7 @@ import fs from "fs-extra";
 import gulp from "gulp";
 import install from "gulp-install";
 import cache from "gulp-cache";
-import { logger } from "@newsteam/cli-logger";
+import { logger } from "@newsteam/legacy-cli-logger";
 import { getPackageJson } from "@newsteam/package-json";
 import { getInstallMap } from "@newsteam/npm-install-local";
 

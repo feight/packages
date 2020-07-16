@@ -1,0 +1,53 @@
+{
+  "name": "@newsteam/legacy-service-worker",
+  "version": "0.0.1",
+  "description": "Exports a ServiceWorker class that can be used to automatically configure a server worker for the Assemble framework.",
+  "main": "lib",
+  "types": "lib",
+  "scripts": {
+    "build": "bash ../build.sh",
+    "npm-install-local": "npm-install-local",
+    "prepublishOnly": "bash ../publish.sh",
+    "test": "bash ../test.sh"
+  },
+  "engines": {
+    "node": ">= 12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/feight/packages"
+  },
+  "author": "News Team (https://www.newsteam.io)",
+  "contributors": [
+    {
+      "name": "Peter Bodechtel",
+      "url": "https://www.sweetlikepete.com"
+    }
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/feight/packages/issues"
+  },
+  "keywords": [
+    "newsteam",
+    "@newsteam"
+  ],
+  "homepage": "https://github.com/feight/packages/tree/master/legacy-service-worker#readme",
+  "files": [
+    "lib"
+  ],
+  "devDependencies": {
+    "@newsteam/npm-install-local": "0.0.3",
+    "@newsteam/babel": "0.0.2",
+    "@newsteam/eslint": "0.0.3",
+    "@newsteam/jasmine": "0.0.2",
+    "@types/node": "14.0.23",
+    "@types/workbox-sw": "4.3.1"
+  },
+  "dependencies": {
+    "workbox-sw": "5.1.3"
+  }
+}

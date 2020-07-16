@@ -23,7 +23,7 @@
 import childProcess from "child_process";
 
 import through from "through2";
-import { logger } from "@newsteam/cli-logger";
+import { logger } from "@newsteam/legacy-cli-logger";
 
 const pty = require("node-pty");
 
@@ -31,7 +31,6 @@ const commandColor = "#ff5400";
 const dryLabel = `${ logger.chalk.bgHex(commandColor).hex("#000").bold(" DRY RUN ") } `;
 
 
-// eslint-disable-next-line max-lines-per-function -- Breaking this apart won't make it simpler
 export const exec = function(options: {
     command: string;
     detatch?: boolean;
@@ -41,7 +40,6 @@ export const exec = function(options: {
     environment?: { [key: string]: string | undefined };
 }): Promise<string>{
 
-    // eslint-disable-next-line max-lines-per-function -- Breaking this apart won't make it simpler
     return new Promise((resolve: (string: string) => void, reject: (error: Error) => void): void => {
 
         const execOptions = {
@@ -166,7 +164,6 @@ export const exec = function(options: {
 };
 
 
-// eslint-disable-next-line max-lines-per-function -- Not quite too complicated imo
 export const spawn = function(options: {
     cwd?: string;
     command: string;

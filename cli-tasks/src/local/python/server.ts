@@ -4,7 +4,7 @@ import {
     exec,
     kill
 } from "@newsteam/cli-utils";
-import { logger } from "@newsteam/cli-logger";
+import { logger } from "@newsteam/legacy-cli-logger";
 import nodemon from "nodemon";
 
 

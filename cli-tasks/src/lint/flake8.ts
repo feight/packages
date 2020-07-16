@@ -8,11 +8,11 @@ import {
     watch,
     WatchOptions
 } from "@newsteam/cli-utils";
-import { logger } from "@newsteam/cli-logger";
+import { logger } from "@newsteam/legacy-cli-logger";
 import {
     LintError,
     LintErrorData
-} from "@newsteam/cli-errors";
+} from "@newsteam/legacy-cli-errors";
 
 
 export class Flake8LintError extends LintError{

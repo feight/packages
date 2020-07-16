@@ -2,7 +2,7 @@
 
 import path from "path";
 
-import { logger } from "@newsteam/cli-logger";
+import { logger } from "@newsteam/legacy-cli-logger";
 import { exec } from "@newsteam/cli-utils";
 
 import {

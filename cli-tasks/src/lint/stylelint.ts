@@ -4,7 +4,7 @@ import path from "path";
 
 import stylelint from "stylelint";
 import vinyl from "vinyl";
-import { logger } from "@newsteam/cli-logger";
+import { logger } from "@newsteam/legacy-cli-logger";
 import {
     watch,
     WatchOptions
@@ -12,7 +12,7 @@ import {
 import {
     LintError,
     LintErrorData
-} from "@newsteam/cli-errors";
+} from "@newsteam/legacy-cli-errors";
 
 
 export class StylelintError extends LintError{

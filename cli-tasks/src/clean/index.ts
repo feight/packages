@@ -1,6 +1,6 @@
 
 
-import { logger } from "@newsteam/cli-logger";
+import { logger } from "@newsteam/legacy-cli-logger";
 import del from "del";
 
 
