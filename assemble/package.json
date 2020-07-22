@@ -1,0 +1,48 @@
+{
+  "name": "@newsteam/assemble",
+  "version": "0.0.1",
+  "description": "Newsteam assemble app exported as a react element",
+  "main": "lib",
+  "types": "lib",
+  "sideEffects": false,
+  "scripts": {
+    "build": "bash ../build.sh",
+    "local": "node local/index.js",
+    "npm-install-local": "npm-install-local",
+    "prepublishOnly": "bash ../publish.sh",
+    "test": "bash ../test.sh",
+    "tsc": "tsc --emitDeclarationOnly"
+  },
+  "browserslist": "node 12",
+  "engines": {
+    "node": ">= 12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/feight/packages.git"
+  },
+  "author": "News Team (https://www.newsteam.io)",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/feight/packages/issues"
+  },
+  "homepage": "https://github.com/feight/packages/tree/master/assemble#readme",
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "react": "0.0.0-experimental-7f28234f8",
+    "react-dom": "0.0.0-experimental-7f28234f8"
+  },
+  "devDependencies": {
+    "@newsteam/babel": "0.0.2",
+    "@newsteam/eslint": "0.0.3",
+    "@newsteam/jasmine": "0.0.2",
+    "@newsteam/npm-install-local": "0.0.3",
+    "express": "^4.17.1"
+  },
+  "localDependencies": {}
+}

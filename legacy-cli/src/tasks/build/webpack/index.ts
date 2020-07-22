@@ -148,7 +148,16 @@ export const buildWebpackTask = async function(options: BuildWebpackTaskOptions)
 
                 logger.error(error);
 
-                process.exit();
+                if(watch){
+
+                    // Make it beep beep, like a jeep jeep
+                    process.stdout.write("\u0007");
+
+                }else{
+
+                    process.exit();
+
+                }
 
             }else{
 
@@ -158,9 +167,22 @@ export const buildWebpackTask = async function(options: BuildWebpackTaskOptions)
 
                     if(statsString){
 
-                        logger.log("", { label });
-                        logger.log(statsString, { label });
-                        logger.log("", { label });
+                        if(stats.compilation.errors.length > 0){
+
+                            logger.log("", { label });
+                            logger.error(statsString, { label });
+                            logger.log("", { label });
+
+                            // Make it beep beep, like a jeep jeep
+                            process.stdout.write("\u0007");
+
+                        }else{
+
+                            logger.log("", { label });
+                            logger.log(statsString, { label });
+                            logger.log("", { label });
+
+                        }
 
                     }
 
@@ -179,11 +201,11 @@ export const buildWebpackTask = async function(options: BuildWebpackTaskOptions)
                 ignored: [
                     "node_modules"
                 ],
-                poll: false
+                poll: 1000
             },
             (error, stats): void => {
 
-                output(`Watching ${ path.resolve(config) }`)(error, stats);
+                output(`Built ${ path.resolve(config) }`)(error, stats);
 
                 logger.log("");
 

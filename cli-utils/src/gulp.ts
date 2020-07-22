@@ -14,7 +14,7 @@ export const fail = function(label: string, message: string): void{
         logger.log(message, { label });
     }
 
-    // Make it beep beep like a jeep jeep
+    // Make it beep beep, like a jeep jeep
     process.stdout.write("\u0007");
 
 };

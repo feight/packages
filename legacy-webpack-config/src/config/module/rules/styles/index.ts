@@ -9,7 +9,6 @@ import {
 import postcssConfig from "@newsteam/postcss-config";
 import sass from "sass";
 
-import { cacheLoader } from "../../../../shared/loaders/cache";
 import { Options } from "../../../..";
 
 /*
@@ -133,7 +132,6 @@ export const styles = function(
                     test: /\.min\.css$/u,
                     use: [
                         miniCssExtractPlugin(config, options),
-                        cacheLoader(),
                         cssLoader(options)
                     ]
                 },
@@ -142,7 +140,6 @@ export const styles = function(
                     test: /^(.{0,3}|.*(?!\.min).{4})\.scss$/u,
                     use: [
                         miniCssExtractPlugin(config, options),
-                        cacheLoader(),
                         cssLoader(options, true),
                         cleanCssLoader(),
                         postCssLoader(),
@@ -154,7 +151,6 @@ export const styles = function(
                     test: /^(.{0,3}|.*(?!\.min).{4})\.scss$/u,
                     use: [
                         miniCssExtractPlugin(config, options),
-                        cacheLoader(),
                         cssLoader(options),
                         cleanCssLoader(),
                         postCssLoader(),
@@ -166,7 +162,6 @@ export const styles = function(
                     test: /^(.{0,3}|.*(?!\.min).{4})\.css$/u,
                     use: [
                         miniCssExtractPlugin(config, options),
-                        cacheLoader(),
                         cssLoader(options)
                     ]
                 }

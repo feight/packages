@@ -32,7 +32,7 @@ export const watchOptions = function(): Configuration{
              *
              * https://webpack.js.org/configuration/watch/#watchoptionspoll
              */
-            poll: false
+            poll: 1000
         }
     };
 

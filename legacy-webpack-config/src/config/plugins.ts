@@ -30,7 +30,7 @@ export const plugins = function(
         new webpack.DefinePlugin({
             "process.env.CLIENT": JSON.stringify("browser"),
             // eslint-disable-next-line @typescript-eslint/naming-convention -- This is alright since it's an override of a process env variable
-            "process.env.NODE_ENV": JSON.stringify("production")
+            "process.env.NODE_ENV": JSON.stringify(options.mode)
         }),
         new webpack.ProvidePlugin({
             // eslint-disable-next-line id-length -- This is alright because we need to provide $
@@ -47,7 +47,7 @@ export const plugins = function(
             filename: `build/chunks/${ hash ? "[chunkhash].css" : "[name].css" }`
         })
     ]
-    .concat(!options.watch && options.progress ? [
+    .concat(options.progress ? [
         // Don't show progress during the watch, it messes up the other output
         new webpack.ProgressPlugin({
             activeModules: false,
