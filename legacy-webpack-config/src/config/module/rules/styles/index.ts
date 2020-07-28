@@ -54,11 +54,11 @@ const cssLoader = (
         options: modules ? {
             ...baseOptions,
             importLoaders: 3,
-            localsConvention: "camelCaseOnly",
             modules: {
+                exportLocalsConvention: "camelCaseOnly",
+                exportOnlyLocals: options.target === "server",
                 localIdentName: options.mode === "development" ? developmentLocalIdentName : productionLocalIdentName
-            },
-            onlyLocals: options.target === "server"
+            }
         } : {
             ...baseOptions
         }

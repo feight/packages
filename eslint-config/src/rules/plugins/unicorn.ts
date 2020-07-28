@@ -169,6 +169,13 @@ export default {
         "unicorn/no-null": "error",
 
         /*
+         * Disallow the use of objects as default parameters
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/unicorn/no-object-as-default-parameter.md
+         */
+        "unicorn/no-object-as-default-parameter": "error",
+
+        /*
          * Disallow process.exit().
          *
          * Handled by 'node/no-process-exit'
@@ -240,6 +247,13 @@ export default {
         "unicorn/prefer-add-event-listener": "error",
 
         /*
+         * Prefer .find(...) over the first element from .filter(...)
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-array-find.md
+         */
+        "unicorn/prefer-array-find": "error",
+
+        /*
          * Prefer using .dataset on DOM elements over .setAttribute(...). (fixable)
          *
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-dataset.md
@@ -254,7 +268,7 @@ export default {
         "unicorn/prefer-event-key": "error",
 
         /*
-         * Prefer .flatMap(…) over .map(…).flat()
+         * Prefer .flatMap(...) over .map(...).flat()
          *
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-flat-map.md
          */

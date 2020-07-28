@@ -172,18 +172,6 @@ export default {
         /*
          * Disallow specified identifiers
          *
-         * https://eslint.org/docs/rules/id-blacklist
-         */
-        "id-blacklist": [
-            "error",
-            "e",
-            "i",
-            "j"
-        ],
-
-        /*
-         * Disallow specified identifiers
-         *
          * https://eslint.org/docs/rules/id-denylist
          */
         "id-denylist": [

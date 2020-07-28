@@ -23,7 +23,7 @@ import imagemin from "@newsteam/imagemin";
   const files = await imagemin(['images/*.{jpg,png}'], 'build/images');
 
   console.log(files);
-  //=> [{data: <Buffer 89 50 4e …>, path: 'build/images/foo.jpg'}, …]
+  //=> [{data: <Buffer 89 50 4e ...>, path: 'build/images/foo.jpg'}, ...]
 
 })();
 ```

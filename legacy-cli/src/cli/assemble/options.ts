@@ -57,6 +57,6 @@ export const assembleCliOptions = {
     versionId: {
         default: undefined,
         description: "target a deployment version",
-        flags: "--version <versionId>"
+        flags: "--version-id <versionId>"
     }
 };
