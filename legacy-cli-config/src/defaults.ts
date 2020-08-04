@@ -207,8 +207,13 @@ export const defaults = {
         yaml: "src/publication/base/app.yaml"
     },
     webpack: {
-        bundleAnalyzerPort: 3001,
-        devServerPort: 3002,
+        bundleAnalyzer: {
+            enabled: false,
+            port: 3001
+        },
+        developmentServer: {
+            port: 3002
+        },
         profile: false
     }
 

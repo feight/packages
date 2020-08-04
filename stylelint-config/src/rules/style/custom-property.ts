@@ -15,7 +15,12 @@ export default {
          *
          * https://stylelint.io/user-guide/rules/custom-property-empty-line-before/
          */
-        "custom-property-empty-line-before": "never"
+        "custom-property-empty-line-before": [
+            "always",
+            {
+                except: ["after-custom-property"]
+            }
+        ]
 
     }
 };

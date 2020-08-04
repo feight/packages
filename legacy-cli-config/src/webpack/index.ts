@@ -1,13 +1,16 @@
 
 
+import * as bundleAnalyzer from "./bundle-analyzer";
+import * as developmentServer from "./development-server";
+
 import { defaults } from "../defaults";
 
 
 export interface WebpackConfig{
 
-    bundleAnalyzerPort?: number;
+    bundleAnalyzer?: bundleAnalyzer.WebpackBundleAnalyzerConfig;
 
-    devServerPort?: number;
+    developmentServer?: developmentServer.WebpackDevelopmentServerConfig;
 
     profile?: boolean;
 
@@ -16,17 +19,17 @@ export interface WebpackConfig{
 
 export class NewsTeamWebpackConfig{
 
-    bundleAnalyzerPort: number;
+    bundleAnalyzer: bundleAnalyzer.NewsTeamWebpackBundleAnalyzerConfig;
 
-    devServerPort: number;
+    developmentServer: developmentServer.NewsTeamWebpackDevelopmentServerConfig;
 
     profile: boolean;
 
     constructor(config?: WebpackConfig){
 
-        this.bundleAnalyzerPort = config?.bundleAnalyzerPort ?? defaults.webpack.bundleAnalyzerPort;
+        this.bundleAnalyzer = new bundleAnalyzer.NewsTeamWebpackBundleAnalyzerConfig(config?.bundleAnalyzer);
 
-        this.devServerPort = config?.devServerPort ?? defaults.webpack.devServerPort;
+        this.developmentServer = new developmentServer.NewsTeamWebpackDevelopmentServerConfig(config?.developmentServer);
 
         this.profile = config?.profile ?? defaults.webpack.profile;
 

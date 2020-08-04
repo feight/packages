@@ -88,8 +88,8 @@ export const buildWebpackTask = async function(options: BuildWebpackTaskOptions)
         watch = false
     } = options;
 
-    await kill(assembleCliConfig.webpack.bundleAnalyzerPort);
-    await kill(assembleCliConfig.webpack.devServerPort);
+    await kill(assembleCliConfig.webpack.bundleAnalyzer.port);
+    await kill(assembleCliConfig.webpack.developmentServer.port);
 
     await new Promise((resolve, reject): void => {
 

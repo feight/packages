@@ -687,6 +687,13 @@ const rules = {
     "@typescript-eslint/prefer-as-const": "error",
 
     /*
+     * Prefer initializing each enums member value
+     *
+     * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/prefer-enum-initializers.md
+     */
+    "@typescript-eslint/prefer-enum-initializers": "error",
+
+    /*
      * Use for-of loops instead of standard for loops over arrays
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/prefer-for-of.md

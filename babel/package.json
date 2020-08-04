@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/babel",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Collection of babel dependencies",
   "browserslist": "node 12",
   "engines": {
@@ -32,8 +32,8 @@
   "files": [],
   "dependencies": {
     "@babel/cli": "7.10.5",
-    "@babel/core": "7.10.5",
-    "@newsteam/babel-preset": "0.0.3",
+    "@babel/core": "7.11.0",
+    "@newsteam/babel-preset": "0.0.4",
     "renamer": "2.0.1"
   }
 }

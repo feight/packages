@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/babel-preset",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Shared preset for babel",
   "main": "lib",
   "types": "lib",
@@ -43,10 +43,10 @@
     "@babel/helper-plugin-utils": "7.10.4",
     "@babel/plugin-proposal-class-properties": "7.10.4",
     "@babel/plugin-proposal-decorators": "7.10.5",
-    "@babel/plugin-proposal-object-rest-spread": "7.10.4",
+    "@babel/plugin-proposal-object-rest-spread": "7.11.0",
     "@babel/plugin-transform-named-capturing-groups-regex": "7.10.4",
-    "@babel/plugin-transform-typescript": "7.10.5",
-    "@babel/preset-env": "7.10.4",
+    "@babel/plugin-transform-typescript": "7.11.0",
+    "@babel/preset-env": "7.11.0",
     "@babel/preset-react": "7.10.4",
     "@babel/preset-typescript": "7.10.4",
     "@loadable/babel-plugin": "5.13.0",
@@ -59,14 +59,14 @@
   },
   "devDependencies": {
     "@babel/cli": "7.10.5",
-    "@babel/core": "7.10.5",
-    "@newsteam/jasmine": "0.0.3",
+    "@babel/core": "7.11.0",
+    "@newsteam/jasmine": "0.0.4",
     "@types/babel__core": "7.1.9",
-    "@types/node": "14.0.26",
+    "@types/node": "14.0.27",
     "jasmine": "3.6.1",
     "renamer": "2.0.1"
   },
   "peerDependencies": {
-    "@babel/core": "7.10.5"
+    "@babel/core": "7.11.0"
   }
 }

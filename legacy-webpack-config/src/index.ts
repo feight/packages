@@ -19,13 +19,10 @@ import * as configs from "./config";
 const generateOptions = function(options: ConfigOptions, environment: Environment, args: Args): Options{
 
     const optionsDefaults: Options = {
-        bundleAnalyzer: true,
+        bundleAnalyzer: assembleCliConfig.webpack.bundleAnalyzer,
         cwd: process.cwd(),
+        developmentServer: assembleCliConfig.webpack.developmentServer,
         mode: args.mode ?? "development",
-        ports: {
-            bundleAnalyzer: assembleCliConfig.webpack.bundleAnalyzerPort,
-            devServer: assembleCliConfig.webpack.devServerPort
-        },
         progress: true,
         staticFolder: "static",
         target: "client",
@@ -46,7 +43,10 @@ export type Target = "client" | "server";
 
 
 export interface ConfigOptions{
-    bundleAnalyzer?: boolean;
+    bundleAnalyzer?: {
+        enabled: boolean;
+        port: number;
+    };
     config?: Configuration;
     progress?: boolean;
     staticFolder?: string;
@@ -68,14 +68,16 @@ export interface Args{
 
 
 export interface Options{
-    bundleAnalyzer: boolean;
+    bundleAnalyzer: {
+        enabled: boolean;
+        port: number;
+    };
     config?: Configuration;
     cwd: string;
-    mode: Mode;
-    ports: {
-        bundleAnalyzer: number;
-        devServer: number;
+    developmentServer: {
+        port: number;
     };
+    mode: Mode;
     progress: boolean;
     staticFolder: string;
     target: Target;

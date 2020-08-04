@@ -64,12 +64,12 @@ export const plugins = function(
         } as any)
     ] : []);
 
-    if(options.watch){
+    if(options.watch && options.bundleAnalyzer.enabled){
 
         webpackPlugins.push(new BundleAnalyzerPlugin({
             analyzerHost: "127.0.0.1",
             analyzerMode: "server",
-            analyzerPort: options.ports.bundleAnalyzer,
+            analyzerPort: options.bundleAnalyzer.port,
             defaultSizes: "parsed",
             generateStatsFile: false,
             logLevel: "info",
