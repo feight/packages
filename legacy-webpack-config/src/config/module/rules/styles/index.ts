@@ -94,7 +94,9 @@ const cleanCssLoader = (): RuleSetUseItem => ({
  */
 const postCssLoader = (): RuleSetUseItem => ({
     loader: "postcss-loader",
-    options: postcssConfig
+    options: {
+        postcssOptions: postcssConfig
+    }
 });
 
 
