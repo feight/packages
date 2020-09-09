@@ -98,6 +98,7 @@ export const defaults = {
         npm: {
             manifests: [
                 "package.json",
+                "src/assemble/package.json",
                 "src/cosmos/console3/package.json",
                 "src/publication/custom/package.json"
             ]
