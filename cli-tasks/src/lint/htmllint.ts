@@ -3,17 +3,22 @@
 import path from "path";
 import fs from "fs";
 
-import htmllint, { HtmlLintIssue } from "htmllint";
-import vinyl from "vinyl";
+import type { HtmlLintIssue } from "htmllint";
+import htmllint from "htmllint";
+import type vinyl from "vinyl";
 import { rcFile } from "rc-config-loader";
 import { logger } from "@newsteam/legacy-cli-logger";
-import {
-    watch,
+import type {
     WatchOptions
 } from "@newsteam/cli-utils";
 import {
-    LintError,
+    watch
+} from "@newsteam/cli-utils";
+import type {
     LintErrorData
+} from "@newsteam/legacy-cli-errors";
+import {
+    LintError
 } from "@newsteam/legacy-cli-errors";
 
 

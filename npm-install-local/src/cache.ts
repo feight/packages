@@ -5,7 +5,7 @@ import path from "path";
 import fs from "fs-extra";
 
 
-import { Dependency } from "./dependency";
+import type { Dependency } from "./dependency";
 import {
     getDependenciesHash,
     getSourceCodeHash

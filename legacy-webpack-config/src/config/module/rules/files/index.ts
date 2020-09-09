@@ -1,11 +1,11 @@
 
 
 import { merge } from "webpack-merge";
-import { Configuration } from "webpack";
+import type { Configuration } from "webpack";
 
 import { cacheLoader } from "../../../../shared/loaders/cache";
 import { fileLoader } from "../../../../shared/loaders/file";
-import { Options } from "../../../..";
+import type { Options } from "../../../..";
 
 
 export const files = function(

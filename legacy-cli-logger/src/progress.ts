@@ -1,13 +1,13 @@
 
 
-import stream from "stream";
+import type stream from "stream";
 
 import ProgressBar from "progress";
 import through from "through2";
-import vinyl from "vinyl";
+import type vinyl from "vinyl";
 import chalk from "chalk";
 
-import { Logger } from ".";
+import type { Logger } from ".";
 
 
 export interface ProgressOptions extends ProgressBar.ProgressBarOptions{

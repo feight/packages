@@ -1,13 +1,15 @@
 
 
-import commander from "commander";
+import type commander from "commander";
 import { config } from "@newsteam/legacy-cli-config";
 
 import { assembleCliOptions } from "../options";
 import { action } from "../../../utils/action";
-import {
-    buildTask,
+import type {
     BuildTaskOptions
+} from "../../../tasks/build";
+import {
+    buildTask
 } from "../../../tasks/build";
 
 

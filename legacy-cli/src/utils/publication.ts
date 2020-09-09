@@ -3,8 +3,8 @@
 import path from "path";
 
 import globby from "globby";
+import type { AssemblePublicationSettings } from "@newsteam/legacy-settings";
 import {
-    AssemblePublicationSettings,
     getPublicationSettings
 } from "@newsteam/legacy-settings";
 

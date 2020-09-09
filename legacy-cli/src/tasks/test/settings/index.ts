@@ -2,18 +2,22 @@
 
 import path from "path";
 
-import {
-    Validator,
+import type {
     Schema
+} from "jsonschema";
+import {
+    Validator
 } from "jsonschema";
 import glob from "globby";
 import fs from "fs-extra";
 import { logger } from "@newsteam/legacy-cli-logger";
-import {
-    TestError,
+import type {
     TestErrorData
 } from "@newsteam/legacy-cli-errors";
-import { SettingsSchemaTests } from "@newsteam/legacy-cli-config";
+import {
+    TestError
+} from "@newsteam/legacy-cli-errors";
+import type { SettingsSchemaTests } from "@newsteam/legacy-cli-config";
 
 import { label } from "..";
 

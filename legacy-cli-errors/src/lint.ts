@@ -1,8 +1,10 @@
 
 
-import {
-    CLIError,
+import type {
     CLIErrorData
+} from "./cli";
+import {
+    CLIError
 } from "./cli";
 
 

@@ -1,10 +1,10 @@
 
 
 import { merge } from "webpack-merge";
-import { Configuration } from "webpack";
+import type { Configuration } from "webpack";
 
 import { fileLoader } from "../../../../shared/loaders/file";
-import { Options } from "../../../..";
+import type { Options } from "../../../..";
 
 
 export const images = function(

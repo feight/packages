@@ -1,6 +1,6 @@
 
 
-import WorkboxNamespace from "workbox-sw";
+import type WorkboxNamespace from "workbox-sw";
 
 declare const workbox: typeof WorkboxNamespace;
 

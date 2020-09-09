@@ -9,7 +9,7 @@ import { localJavaSetupTask } from "./java";
 import { localPipSetupTask } from "./pip";
 import { localVirtualboxSetupTask } from "./virtualbox";
 
-import { Package } from "..";
+import type { Package } from "..";
 
 
 export const localPackageSetupTaskMac = async function(packages: Package[]): Promise<void>{

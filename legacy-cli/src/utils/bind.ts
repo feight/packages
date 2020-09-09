@@ -1,6 +1,6 @@
 
 
-import commander from "commander";
+import type commander from "commander";
 
 
 export const bind = function(

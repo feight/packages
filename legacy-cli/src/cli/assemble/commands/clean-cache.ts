@@ -1,6 +1,6 @@
 
 
-import commander from "commander";
+import type commander from "commander";
 import { cleanCacheTask } from "@newsteam/cli-tasks";
 
 import { action } from "../../../utils/action";

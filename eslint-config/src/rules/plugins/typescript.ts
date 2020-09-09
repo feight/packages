@@ -98,6 +98,13 @@ const rules = {
     ],
 
     /*
+     * Enforces consistent usage of type imports (consistent-type-imports)
+     *
+     * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/consistent-type-imports.md
+     */
+    "@typescript-eslint/consistent-type-imports": "error",
+
+    /*
      * Enforce default parameters to be last
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/default-param-last.md
@@ -445,6 +452,13 @@ const rules = {
     "@typescript-eslint/no-for-in-array": "error",
 
     /*
+     * Disallow usage of the implicit any type in catch clauses (no-implicit-any-catch)
+     *
+     * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-implicit-any-catch.md
+     */
+    "@typescript-eslint/no-implicit-any-catch": "error",
+
+    /*
      * Disallow the use of eval()-like methods
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-implied-eval.md
@@ -474,6 +488,13 @@ const rules = {
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-invalid-void-type.md
      */
     "@typescript-eslint/no-invalid-void-type": "error",
+
+    /*
+     * Disallow function declarations that contain unsafe references inside loop statements
+     *
+     * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-loop-func.md
+     */
+    "@typescript-eslint/no-loop-func": "error",
 
     /*
      * Disallow literal numbers that lose precision
@@ -535,11 +556,25 @@ const rules = {
     "@typescript-eslint/no-parameter-properties": "error",
 
     /*
+     * Disallow variable redeclaration (no-redeclare)
+     *
+     * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-redeclare.md
+     */
+    "@typescript-eslint/no-redeclare": "error",
+
+    /*
      * Prefer the newer ES6-style imports over require().
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-require-imports.md
      */
     "@typescript-eslint/no-require-imports": "error",
+
+    /*
+     * Disallow variable declarations from shadowing variables declared in the outer scope (no-shadow)
+     *
+     * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-shadow.md
+     */
+    "@typescript-eslint/no-shadow": "error",
 
     /*
      * Disallow aliasing this (no-this-assignment from TSLint)
@@ -645,18 +680,6 @@ const rules = {
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unused-vars.md
      */
     "@typescript-eslint/no-unused-vars": "error",
-
-    /*
-     * Disallow unused variables and arguments
-     *
-     * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unused-vars-experimental.md
-     */
-    "@typescript-eslint/no-unused-vars-experimental": [
-        "error",
-        {
-            ignoreArgsIfArgsAfterAreUsed: true
-        }
-    ],
 
     /*
      * Disallow the use of variables before they are defined

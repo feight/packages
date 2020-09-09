@@ -3,17 +3,21 @@
 import Joi from "@hapi/joi";
 import JSON5 from "json5";
 
-import {
-    extendAnySchema,
+import type {
     AnySchemaDefinition
 } from "./any";
 import {
-    referenceToJoi,
+    extendAnySchema
+} from "./any";
+import type {
     Reference
 } from "./reference";
-
 import {
-    Schema,
+    referenceToJoi
+} from "./reference";
+
+import type { Schema } from ".";
+import {
     schemaToJoi
 } from ".";
 

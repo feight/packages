@@ -14,11 +14,18 @@ export default {
     rules: {
 
         /*
-         * Specify a blacklist of disallowed at-rules.
+         * Specify a whitelist of allowed at-rules.
          *
-         * https://stylelint.io/user-guide/rules/at-rule-blacklist/
+         * https://stylelint.io/user-guide/rules/at-rule-allowed-list/
          */
-        "at-rule-blacklist": ["extend"],
+        "at-rule-allowed-list": atRules,
+
+        /*
+         * Specify a list of disallowed at-rules.
+         *
+         * https://stylelint.io/user-guide/rules/at-rule-disallowed-list/
+         */
+        "at-rule-disallowed-list": ["extend"],
 
         /*
          * Disallow vendor prefixes for at-rules.
@@ -30,22 +37,15 @@ export default {
         /*
          * Specify a requirelist of properties for an at-rule.
          *
-         * https://stylelint.io/user-guide/rules/at-rule-property-requirelist/
+         * https://stylelint.io/user-guide/rules/at-rule-property-required-list/
          */
-        "at-rule-property-requirelist": {
+        "at-rule-property-required-list": {
             "font-face": [
                 "font-display",
                 "font-family",
                 "font-style"
             ]
-        },
-
-        /*
-         * Specify a whitelist of allowed at-rules.
-         *
-         * https://stylelint.io/user-guide/rules/at-rule-whitelist/
-         */
-        "at-rule-whitelist": atRules
+        }
 
     }
 };

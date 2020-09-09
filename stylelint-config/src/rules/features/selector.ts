@@ -13,19 +13,21 @@ import { idPattern } from "../../config";
 export default {
     rules: {
 
-        /*
-         * Specify a blacklist of disallowed attribute operators.
-         *
-         * https://stylelint.io/user-guide/rules/selector-attribute-operator-blacklist/
-         */
-        "selector-attribute-operator-blacklist": null,
 
         /*
-         * Specify a whitelist of allowed attribute operators.
+         * Specify a allowed-list of allowed attribute operators.
          *
-         * https://stylelint.io/user-guide/rules/selector-attribute-operator-whitelist/
+         * https://stylelint.io/user-guide/rules/selector-attribute-operator-allowed-list/
          */
-        "selector-attribute-operator-whitelist": null,
+        "selector-attribute-operator-allowed-list": null,
+
+
+        /*
+         * Specify a list of disallowed attribute operators.
+         *
+         * https://stylelint.io/user-guide/rules/selector-attribute-operator-disallowed-list/
+         */
+        "selector-attribute-operator-disallowed-list": null,
 
         /*
          * Specify a pattern for class selectors.
@@ -34,19 +36,21 @@ export default {
          */
         "selector-class-pattern": idPattern,
 
-        /*
-         * Specify a blacklist of disallowed combinators.
-         *
-         * https://stylelint.io/user-guide/rules/selector-combinator-blacklist/
-         */
-        "selector-combinator-blacklist": null,
 
         /*
-         * Specify a whitelist of allowed combinators.
+         * Specify a allowed-list of allowed combinators.
          *
-         * https://stylelint.io/user-guide/rules/selector-combinator-whitelist/
+         * https://stylelint.io/user-guide/rules/selector-combinator-allowed-list/
          */
-        "selector-combinator-whitelist": null,
+        "selector-combinator-allowed-list": null,
+
+
+        /*
+         * Specify a list of disallowed combinators.
+         *
+         * https://stylelint.io/user-guide/rules/selector-combinator-disallowed-list/
+         */
+        "selector-combinator-disallowed-list": null,
 
         /*
          * Specify a pattern for ID selectors.
@@ -146,33 +150,37 @@ export default {
          */
         "selector-no-vendor-prefix": true,
 
-        /*
-         * Specify a blacklist of disallowed pseudo-class selectors.
-         *
-         * https://stylelint.io/user-guide/rules/selector-pseudo-class-blacklist/
-         */
-        "selector-pseudo-class-blacklist": null,
 
         /*
-         * Specify a whitelist of allowed pseudo-class selectors.
+         * Specify a allowed-list of allowed pseudo-class selectors.
          *
-         * https://stylelint.io/user-guide/rules/selector-pseudo-class-whitelist/
+         * https://stylelint.io/user-guide/rules/selector-pseudo-class-allowed-list/
          */
-        "selector-pseudo-class-whitelist": null,
+        "selector-pseudo-class-allowed-list": null,
+
 
         /*
-         * Specify a blacklist of disallowed pseudo-element selectors.
+         * Specify a list of disallowed pseudo-class selectors.
          *
-         * https://stylelint.io/user-guide/rules/selector-pseudo-element-blacklist/
+         * https://stylelint.io/user-guide/rules/selector-pseudo-class-disallowed-list/
          */
-        "selector-pseudo-element-blacklist": null,
+        "selector-pseudo-class-disallowed-list": null,
+
 
         /*
-         * Specify a whitelist of allowed pseudo-element selectors.
+         * Specify a allowed-list of allowed pseudo-element selectors.
          *
-         * https://stylelint.io/user-guide/rules/selector-pseudo-element-whitelist/
+         * https://stylelint.io/user-guide/rules/selector-pseudo-element-allowed-list/
          */
-        "selector-pseudo-element-whitelist": null
+        "selector-pseudo-element-allowed-list": null,
+
+
+        /*
+         * Specify a list of disallowed pseudo-element selectors.
+         *
+         * https://stylelint.io/user-guide/rules/selector-pseudo-element-disallowed-list/
+         */
+        "selector-pseudo-element-disallowed-list": null
 
     }
 };

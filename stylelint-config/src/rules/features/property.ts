@@ -10,26 +10,29 @@
 export default {
     rules: {
 
+
         /*
-         * Specify a blacklist of disallowed properties.
+         * Specify a allowed-list of allowed properties.
          *
-         * https://stylelint.io/user-guide/rules/property-blacklist/
+         * https://stylelint.io/user-guide/rules/property-allowed-list/
          */
-        "property-blacklist": null,
+        "property-allowed-list": null,
+
+
+        /*
+         * Specify a list of disallowed properties.
+         *
+         * https://stylelint.io/user-guide/rules/property-disallowed-list/
+         */
+        "property-disallowed-list": null,
+
 
         /*
          * Disallow vendor prefixes for properties.
          *
          * https://stylelint.io/user-guide/rules/property-no-vendor-prefix/
          */
-        "property-no-vendor-prefix": true,
-
-        /*
-         * Specify a whitelist of allowed properties.
-         *
-         * https://stylelint.io/user-guide/rules/property-whitelist/
-         */
-        "property-whitelist": null
+        "property-no-vendor-prefix": true
 
     }
 };

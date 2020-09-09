@@ -10,12 +10,22 @@
 export default {
     rules: {
 
+
         /*
-         * Specify a blacklist of disallowed media feature names.
+         * Specify a allowed-list of allowed media feature names.
          *
-         * https://stylelint.io/user-guide/rules/media-feature-name-blacklist/
+         * https://stylelint.io/user-guide/rules/media-feature-name-allowed-list/
          */
-        "media-feature-name-blacklist": null,
+        "media-feature-name-allowed-list": null,
+
+
+        /*
+         * Specify a list of disallowed media feature names.
+         *
+         * https://stylelint.io/user-guide/rules/media-feature-name-disallowed-list/
+         */
+        "media-feature-name-disallowed-list": null,
+
 
         /*
          * Disallow vendor prefixes for media feature names.
@@ -24,19 +34,13 @@ export default {
          */
         "media-feature-name-no-vendor-prefix": true,
 
-        /*
-         * Specify a whitelist of allowed media feature name and value pairs.
-         *
-         * https://stylelint.io/user-guide/rules/media-feature-name-value-whitelist/
-         */
-        "media-feature-name-value-whitelist": null,
 
         /*
-         * Specify a whitelist of allowed media feature names.
+         * Specify a allowed-list of allowed media feature name and value pairs.
          *
-         * https://stylelint.io/user-guide/rules/media-feature-name-whitelist/
+         * https://stylelint.io/user-guide/rules/media-feature-name-value-allowed-list/
          */
-        "media-feature-name-whitelist": null
+        "media-feature-name-value-allowed-list": null
 
     }
 };

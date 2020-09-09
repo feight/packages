@@ -6,7 +6,7 @@ import {
     spawn
 } from "@newsteam/cli-utils";
 
-import { GCloudComponent } from ".";
+import type { GCloudComponent } from ".";
 
 
 interface Version{

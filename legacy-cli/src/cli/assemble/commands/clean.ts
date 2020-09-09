@@ -1,6 +1,6 @@
 
 
-import commander from "commander";
+import type commander from "commander";
 import { config } from "@newsteam/legacy-cli-config";
 
 import { action } from "../../../utils/action";

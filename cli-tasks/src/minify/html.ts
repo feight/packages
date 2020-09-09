@@ -3,11 +3,13 @@
 import gulp from "gulp";
 import htmlmin from "gulp-htmlmin";
 import replace from "gulp-replace";
-import { Options as HTMLMinifierOptions } from "html-minifier";
+import type { Options as HTMLMinifierOptions } from "html-minifier";
 import cache from "gulp-cache";
-import {
-    watch,
+import type {
     WatchOptions
+} from "@newsteam/cli-utils";
+import {
+    watch
 } from "@newsteam/cli-utils";
 import { logger } from "@newsteam/legacy-cli-logger";
 

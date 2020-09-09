@@ -102,7 +102,10 @@ export default {
          *
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-fragments.md
          */
-        "react/jsx-fragments": "error",
+        "react/jsx-fragments": [
+            "error",
+            "element"
+        ],
 
         /*
          * Enforce event handler naming conventions in JSX

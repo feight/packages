@@ -1,12 +1,14 @@
 
 
-import commander from "commander";
+import type commander from "commander";
 
 import { assembleCliOptions } from "../options";
 import { action } from "../../../utils/action";
-import {
-    setupTask,
+import type {
     SetupTaskOptions
+} from "../../../tasks/setup";
+import {
+    setupTask
 } from "../../../tasks/setup";
 
 

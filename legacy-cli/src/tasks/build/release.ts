@@ -5,7 +5,7 @@ import path from "path";
 import fs from "fs-extra";
 import { exec } from "@newsteam/cli-utils";
 import { logger } from "@newsteam/legacy-cli-logger";
-import { NewsTeamConfig } from "@newsteam/legacy-cli-config";
+import type { NewsTeamConfig } from "@newsteam/legacy-cli-config";
 
 
 import { label } from ".";

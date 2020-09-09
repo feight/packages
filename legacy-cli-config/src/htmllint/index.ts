@@ -4,7 +4,7 @@ import path from "path";
 
 import { rcFile } from "rc-config-loader";
 import merge from "deepmerge";
-import { HTMLLintOptions } from "@newsteam/cli-tasks";
+import type { HTMLLintOptions } from "@newsteam/cli-tasks";
 
 
 const htmlLintOptions: HTMLLintOptions = merge.all([

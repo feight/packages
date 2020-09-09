@@ -2,7 +2,7 @@
 
 import path from "path";
 
-import { DependencyMap } from "./package-json";
+import type { DependencyMap } from "./package-json";
 
 
 const resolvePath = function(filepath: string): string{

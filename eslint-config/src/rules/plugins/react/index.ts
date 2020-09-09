@@ -20,7 +20,7 @@ export default {
     plugins: ["react"],
     settings: {
         react: {
-            version: "latest"
+            version: "detect"
         }
     }
 };

@@ -6,9 +6,11 @@ import fs from "fs-extra";
 import { logger } from "@newsteam/legacy-cli-logger";
 
 import { promptPublication } from "../utils/prompt-publication";
-import {
-    getPublication,
+import type {
     Publication
+} from "../utils/publication";
+import {
+    getPublication
 } from "../utils/publication";
 
 

@@ -1,6 +1,6 @@
 
 
-import Joi from "@hapi/joi";
+import type Joi from "@hapi/joi";
 
 
 // eslint-disable-next-line @typescript-eslint/ban-types -- This is fine, it's just for testing

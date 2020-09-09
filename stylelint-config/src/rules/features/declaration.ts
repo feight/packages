@@ -25,32 +25,32 @@ export default {
         "declaration-no-important": true,
 
         /*
-         * Specify a blacklist of disallowed property and unit pairs within declarations.
+         * Specify a allowed-list of allowed property and unit pairs within declarations.
          *
-         * https://stylelint.io/user-guide/rules/declaration-property-unit-blacklist/
+         * https://stylelint.io/user-guide/rules/declaration-property-unit-allowed-list/
          */
-        "declaration-property-unit-blacklist": null,
+        "declaration-property-unit-allowed-list": null,
 
         /*
-         * Specify a whitelist of allowed property and unit pairs within declarations.
+         * Specify a list of disallowed property and unit pairs within declarations.
          *
-         * https://stylelint.io/user-guide/rules/declaration-property-unit-whitelist/
+         * https://stylelint.io/user-guide/rules/declaration-property-unit-disallowed-list/
          */
-        "declaration-property-unit-whitelist": null,
+        "declaration-property-unit-disallowed-list": null,
 
         /*
-         * Specify a blacklist of disallowed property and value pairs within declarations.
+         * Specify a allowed-list of allowed property and value pairs within declarations.
          *
-         * https://stylelint.io/user-guide/rules/declaration-property-value-blacklist/
+         * https://stylelint.io/user-guide/rules/declaration-property-value-allowed-list/
          */
-        "declaration-property-value-blacklist": null,
+        "declaration-property-value-allowed-list": null,
 
         /*
-         * Specify a whitelist of allowed property and value pairs within declarations.
+         * Specify a list of disallowed property and value pairs within declarations.
          *
-         * https://stylelint.io/user-guide/rules/declaration-property-value-whitelist/
+         * https://stylelint.io/user-guide/rules/declaration-property-value-disallowed-list/
          */
-        "declaration-property-value-whitelist": null
+        "declaration-property-value-disallowed-list": null
 
     }
 };

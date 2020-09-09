@@ -5,7 +5,7 @@ import { exec } from "@newsteam/cli-utils";
 import { promptEnvironment } from "../../utils/prompt-environment";
 import { promptPublication } from "../../utils/prompt-publication";
 
-import { SetupTaskOptions } from ".";
+import type { SetupTaskOptions } from ".";
 
 
 const dry = true;

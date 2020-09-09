@@ -1,8 +1,8 @@
 
 
+import type { Mode } from "@newsteam/legacy-cli-config";
 import {
     config,
-    Mode,
     modes
 } from "@newsteam/legacy-cli-config";
 

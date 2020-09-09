@@ -2,9 +2,9 @@
 
 import path from "path";
 
-import { Configuration } from "webpack";
+import type { Configuration } from "webpack";
 
-import { Options } from "..";
+import type { Options } from "..";
 
 
 export const output = function(

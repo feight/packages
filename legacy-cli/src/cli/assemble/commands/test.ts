@@ -1,9 +1,9 @@
 
 
-import commander from "commander";
+import type commander from "commander";
 import { config } from "@newsteam/legacy-cli-config";
 
-import { AssembleLintCommandOptions } from "./lint";
+import type { AssembleLintCommandOptions } from "./lint";
 
 import { assembleCliOptions } from "../options";
 import { action } from "../../../utils/action";

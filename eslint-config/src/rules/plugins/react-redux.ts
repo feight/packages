@@ -86,7 +86,14 @@ export default {
          *
          * https://github.com/DianaSuvorova/eslint-plugin-react-redux/blob/HEAD/docs/rules/prefer-separate-component-file.md
          */
-        "react-redux/prefer-separate-component-file": "error"
+        "react-redux/prefer-separate-component-file": "error",
+
+        /*
+         * Enforces that all useSelector hooks use named selector functions. (react-redux/useSelector-prefer-selectors)
+         *
+         * https://github.com/DianaSuvorova/eslint-plugin-react-redux/blob/HEAD/docs/rules/useSelector-prefer-selectors.md
+         */
+        "react-redux/useSelector-prefer-selectors": "error"
 
     }
 };

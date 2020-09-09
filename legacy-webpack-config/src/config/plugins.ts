@@ -8,7 +8,7 @@ import webpack from "webpack";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import { logger } from "@newsteam/legacy-cli-logger";
 
-import { Options } from "..";
+import type { Options } from "..";
 
 
 const label = "webpack";

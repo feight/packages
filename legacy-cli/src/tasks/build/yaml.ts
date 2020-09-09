@@ -6,11 +6,13 @@ import yaml from "js-yaml";
 import fs from "fs-extra";
 import snake from "to-snake-case";
 import { logger } from "@newsteam/legacy-cli-logger";
-import {
-    watch,
+import type {
     WatchOptions
 } from "@newsteam/cli-utils";
 import {
+    watch
+} from "@newsteam/cli-utils";
+import type {
     AppYaml,
     AssembleEnvironment,
     AssembleEnvironments

@@ -10,19 +10,21 @@
 export default {
     rules: {
 
-        /*
-         * Specify a blacklist of disallowed units.
-         *
-         * https://stylelint.io/user-guide/rules/unit-blacklist/
-         */
-        "unit-blacklist": null,
 
         /*
-         * Specify a whitelist of allowed units.
+         * Specify a allowed-list of allowed units.
          *
-         * https://stylelint.io/user-guide/rules/unit-whitelist/
+         * https://stylelint.io/user-guide/rules/unit-allowed-list/
          */
-        "unit-whitelist": null
+        "unit-allowed-list": null,
+
+
+        /*
+         * Specify a list of disallowed units.
+         *
+         * https://stylelint.io/user-guide/rules/unit-disallowed-list/
+         */
+        "unit-disallowed-list": null
 
     }
 };

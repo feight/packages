@@ -1,6 +1,6 @@
 
 
-import stream from "stream";
+import type stream from "stream";
 
 import chalk from "chalk";
 import { CLIError } from "@newsteam/legacy-cli-errors";
@@ -11,7 +11,8 @@ import strip from "strip-color";
 import stripAnsi from "strip-ansi";
 import table from "text-table";
 import through from "through2";
-import vinyl from "vinyl";
+import type vinyl from "vinyl";
+import type ProgressBar from "progress";
 
 import { Progress } from "./progress";
 

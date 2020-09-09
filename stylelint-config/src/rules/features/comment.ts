@@ -11,15 +11,14 @@ export default {
     rules: {
 
         /*
-         * Specify a blacklist of disallowed words within comments.
+         * Specify a list of disallowed words within comments.
          *
-         * https://stylelint.io/user-guide/rules/comment-word-blacklist/
+         * https://stylelint.io/user-guide/rules/comment-word-disallowed-list/
          */
-        "comment-word-blacklist": [
+        "comment-word-disallowed-list": [
             "jesus",
             "retarded",
-            "MAGA",
-            "veganism"
+            "MAGA"
         ]
 
     }

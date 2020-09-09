@@ -3,11 +3,13 @@
 import { hashElement } from "folder-hash";
 import objectHash from "object-hash";
 
-import {
-    getPackageJson,
+import type {
     PackageJson
 } from "../package-json";
-import { Dependency } from "../dependency";
+import {
+    getPackageJson
+} from "../package-json";
+import type { Dependency } from "../dependency";
 
 
 export const getDependenciesHash = async function(dependencies: Dependency[]): Promise<string>{

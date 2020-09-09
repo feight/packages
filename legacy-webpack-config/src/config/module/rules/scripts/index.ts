@@ -1,7 +1,7 @@
 
 
 import { merge } from "webpack-merge";
-import { Configuration } from "webpack";
+import type { Configuration } from "webpack";
 
 import { babelLoader } from "../../../../shared/loaders/babel";
 import { cacheLoader } from "../../../../shared/loaders/cache";

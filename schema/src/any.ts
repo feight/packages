@@ -2,14 +2,18 @@
 
 import Joi from "@hapi/joi";
 
-import {
-    referenceToJoi,
+import type {
     Reference
 } from "./reference";
-
 import {
+    referenceToJoi
+} from "./reference";
+
+import type {
     Schema,
-    SchemaLike,
+    SchemaLike
+} from ".";
+import {
     schemaLikeToJoi
 } from ".";
 

@@ -1,6 +1,6 @@
 
 
-import { NewLoader } from "webpack";
+import type { NewLoader } from "webpack";
 
 
 export const cacheLoader = function(): NewLoader{

@@ -5,7 +5,7 @@ import path from "path";
 import fs from "fs-extra";
 
 import { defaults } from "../defaults";
-import { GlobMapping } from "../paths";
+import type { GlobMapping } from "../paths";
 
 
 export interface LintConfig{

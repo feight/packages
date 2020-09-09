@@ -1,11 +1,11 @@
 
 
-import stream from "stream";
+import type stream from "stream";
 
 import gulpWatch from "gulp-watch";
 import through from "through2";
 import { logger } from "@newsteam/legacy-cli-logger";
-import vinyl from "vinyl";
+import type vinyl from "vinyl";
 
 
 export const fail = function(label: string, message: string): void{

@@ -6,8 +6,8 @@ import {
 } from "@newsteam/cli-utils";
 
 
+import type { GcloudAppVersion } from "../version";
 import {
-    GcloudAppVersion,
     getVersions
 } from "../version";
 

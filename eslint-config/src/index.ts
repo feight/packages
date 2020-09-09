@@ -1,6 +1,6 @@
 
 
-import { Linter } from "eslint";
+import type { Linter } from "eslint";
 
 
 import { overrides } from "./overrides";

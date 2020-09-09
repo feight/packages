@@ -5,7 +5,7 @@
  * maybe use https://webpack.js.org/loaders/thread-loader/
  */
 
-import { Configuration } from "webpack";
+import type { Configuration } from "webpack";
 import { merge } from "webpack-merge";
 import { config as assembleCliConfig } from "@newsteam/legacy-cli-config";
 

@@ -2,14 +2,14 @@
 
 import { merge } from "webpack-merge";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import {
+import type {
     Configuration,
     RuleSetUseItem
 } from "webpack";
 import postcssConfig from "@newsteam/postcss-config";
 import sass from "sass";
 
-import { Options } from "../../../..";
+import type { Options } from "../../../..";
 
 /*
  * This plugin extracts CSS into separate files. It creates a CSS

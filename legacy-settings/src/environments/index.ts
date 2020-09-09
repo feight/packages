@@ -1,6 +1,6 @@
 
 
-import { InstanceClass } from "../app-yaml";
+import type { InstanceClass } from "../app-yaml";
 
 
 export interface AssembleEnvironmentInstance{

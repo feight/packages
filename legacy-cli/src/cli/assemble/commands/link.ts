@@ -1,6 +1,6 @@
 
 
-import commander from "commander";
+import type commander from "commander";
 
 import { action } from "../../../utils/action";
 import { linkTask } from "../../../tasks/link";

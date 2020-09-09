@@ -2,13 +2,17 @@
 
 import Joi from "@hapi/joi";
 
-import {
-    extendAnySchema,
+import type {
     AnySchemaDefinition
 } from "./any";
 import {
-    referenceToJoi,
+    extendAnySchema
+} from "./any";
+import type {
     Reference
+} from "./reference";
+import {
+    referenceToJoi
 } from "./reference";
 
 

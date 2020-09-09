@@ -1,23 +1,27 @@
 
 
-import { TestError } from "@newsteam/legacy-cli-errors";
+import type { TestError } from "@newsteam/legacy-cli-errors";
 import { logger } from "@newsteam/legacy-cli-logger";
 import { notify } from "@newsteam/cli-notify";
-import {
-    eslintLintTask,
+import type {
     EslintLintTaskOptions,
-    flake8LintTask,
     Flake8LintTaskOptions,
-    htmllintLintTask,
     HtmllintLintTaskOptions,
-    stylelintLintTask,
     StylelintLintTaskOptions
 } from "@newsteam/cli-tasks";
-import { NewsTeamConfig } from "@newsteam/legacy-cli-config";
-
 import {
-    testSettingsTask,
+    eslintLintTask,
+    flake8LintTask,
+    htmllintLintTask,
+    stylelintLintTask
+} from "@newsteam/cli-tasks";
+import type { NewsTeamConfig } from "@newsteam/legacy-cli-config";
+
+import type {
     TestSettingsTaskOptions
+} from "./settings";
+import {
+    testSettingsTask
 } from "./settings";
 import { testSharedSettingsTask } from "./settings/shared";
 

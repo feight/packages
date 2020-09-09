@@ -1,6 +1,6 @@
 
 
-import {
+import type {
     Configuration,
     NewLoader
 } from "webpack";

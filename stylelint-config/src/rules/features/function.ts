@@ -10,12 +10,22 @@
 export default {
     rules: {
 
+
         /*
-         * Specify a blacklist of disallowed functions.
+         * Specify a allowed-list of allowed functions.
          *
-         * https://stylelint.io/user-guide/rules/function-blacklist/
+         * https://stylelint.io/user-guide/rules/function-allowed-list/
          */
-        "function-blacklist": null,
+        "function-allowed-list": null,
+
+
+        /*
+         * Specify a list of disallowed functions.
+         *
+         * https://stylelint.io/user-guide/rules/function-disallowed-list/
+         */
+        "function-disallowed-list": null,
+
 
         /*
          * Disallow scheme-relative urls.
@@ -24,29 +34,24 @@ export default {
          */
         "function-url-no-scheme-relative": null,
 
-        /*
-         * Specify a blacklist of disallowed url schemes.
-         *
-         * https://stylelint.io/user-guide/rules/function-url-scheme-blacklist/
-         */
-        "function-url-scheme-blacklist": null,
 
         /*
-         * Specify a whitelist of allowed url schemes.
+         * Specify a allowed-list of allowed url schemes.
          *
-         * https://stylelint.io/user-guide/rules/function-url-scheme-whitelist/
+         * https://stylelint.io/user-guide/rules/function-url-scheme-allowed-list/
          */
-        "function-url-scheme-whitelist": [
+        "function-url-scheme-allowed-list": [
             "data",
             "/^http/"
         ],
 
+
         /*
-         * Specify a whitelist of allowed functions.
+         * Specify a list of disallowed url schemes.
          *
-         * https://stylelint.io/user-guide/rules/function-whitelist/
+         * https://stylelint.io/user-guide/rules/function-url-scheme-disallowed-list/
          */
-        "function-whitelist": null
+        "function-url-scheme-disallowed-list": null
 
     }
 };

@@ -4,14 +4,18 @@ import path from "path";
 
 import gulp from "gulp";
 import flake8 from "@thollingshead/gulp-flake8";
-import {
-    watch,
+import type {
     WatchOptions
 } from "@newsteam/cli-utils";
-import { logger } from "@newsteam/legacy-cli-logger";
 import {
-    LintError,
+    watch
+} from "@newsteam/cli-utils";
+import { logger } from "@newsteam/legacy-cli-logger";
+import type {
     LintErrorData
+} from "@newsteam/legacy-cli-errors";
+import {
+    LintError
 } from "@newsteam/legacy-cli-errors";
 
 

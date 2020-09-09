@@ -1,7 +1,7 @@
 
 
 import { googleCloudDeployTask } from "@newsteam/cli-tasks";
-import { NewsTeamConfig } from "@newsteam/legacy-cli-config";
+import type { NewsTeamConfig } from "@newsteam/legacy-cli-config";
 
 import { buildTask } from "./build";
 import { cleanTask } from "./clean";

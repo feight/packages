@@ -1,11 +1,11 @@
 
 
-import {
+import type {
     Configuration,
     NewLoader
 } from "webpack";
 
-import { Options } from "../..";
+import type { Options } from "../..";
 
 
 export const fileLoader = function(

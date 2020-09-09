@@ -1,12 +1,14 @@
 
 
-import {
-    prompt,
+import type {
     PromptChoice
 } from "@newsteam/cli-utils";
-
 import {
-    Publication,
+    prompt
+} from "@newsteam/cli-utils";
+
+import type { Publication } from "./publication";
+import {
     getPublications
 } from "./publication";
 

@@ -1,7 +1,7 @@
 
 
 import { merge } from "webpack-merge";
-import { Configuration } from "webpack";
+import type { Configuration } from "webpack";
 
 import { files } from "./files";
 import { fonts } from "./fonts";
@@ -12,7 +12,7 @@ import { json } from "./json";
 import { scripts } from "./scripts";
 import { styles } from "./styles";
 
-import { Options } from "../../..";
+import type { Options } from "../../..";
 
 
 /*

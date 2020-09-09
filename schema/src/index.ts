@@ -2,44 +2,44 @@
 
 import Joi from "@hapi/joi";
 
+import type { AlternativesSchema } from "./alternatives";
 import {
-    AlternativesSchema,
     alternativesSchemaToJoi
 } from "./alternatives";
+import type { AnySchema } from "./any";
 import {
-    AnySchema,
     anySchemaToJoi
 } from "./any";
+import type { ArraySchema } from "./array";
 import {
-    ArraySchema,
     arraySchemaToJoi
 } from "./array";
+import type { BinarySchema } from "./binary";
 import {
-    BinarySchema,
     binarySchemaToJoi
 } from "./binary";
+import type { BooleanSchema } from "./boolean";
 import {
-    BooleanSchema,
     booleanSchemaToJoi
 } from "./boolean";
+import type { DateSchema } from "./date";
 import {
-    DateSchema,
     dateSchemaToJoi
 } from "./date";
+import type { NumberSchema } from "./number";
 import {
-    NumberSchema,
     numberSchemaToJoi
 } from "./number";
+import type { ObjectSchema } from "./object";
 import {
-    ObjectSchema,
     objectSchemaToJoi
 } from "./object";
+import type { StringSchema } from "./string";
 import {
-    StringSchema,
     stringSchemaToJoi
 } from "./string";
+import type { Reference } from "./reference";
 import {
-    Reference,
     referenceToJoi
 } from "./reference";
 

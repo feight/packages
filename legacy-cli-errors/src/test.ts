@@ -1,9 +1,7 @@
 
 
-import {
-    CLIError,
-    CLIErrorData
-} from "./cli";
+import type { CLIErrorData } from "./cli";
+import { CLIError } from "./cli";
 
 
 export type TestErrorData = CLIErrorData;

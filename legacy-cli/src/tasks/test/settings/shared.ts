@@ -6,9 +6,11 @@ import { logger } from "@newsteam/legacy-cli-logger";
 import fs from "fs-extra";
 import glob from "glob-promise";
 import isEqual from "is-equal";
-import {
-    TestError,
+import type {
     TestErrorData
+} from "@newsteam/legacy-cli-errors";
+import {
+    TestError
 } from "@newsteam/legacy-cli-errors";
 
 import { label } from "..";

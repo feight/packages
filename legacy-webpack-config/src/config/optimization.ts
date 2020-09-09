@@ -2,9 +2,9 @@
 
 import OptimizeCSSAssetsPlugin from "optimize-css-assets-webpack-plugin";
 import TerserPlugin from "terser-webpack-plugin";
-import { Configuration } from "webpack";
+import type { Configuration } from "webpack";
 
-import { Options } from "..";
+import type { Options } from "..";
 
 
 export const optimization = function(

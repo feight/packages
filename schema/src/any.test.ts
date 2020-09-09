@@ -5,7 +5,7 @@ import "jasmine";
 import Joi from "@hapi/joi";
 
 import { EqualityTest } from "./utils/test";
-import * as number from "./number";
+import type * as number from "./number";
 import * as any from "./any";
 
 

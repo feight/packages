@@ -4,10 +4,10 @@ import {
     buildModernizrTask,
     minifyHTMLTask
 } from "@newsteam/cli-tasks";
-import { NewsTeamConfig } from "@newsteam/legacy-cli-config";
+import type { NewsTeamConfig } from "@newsteam/legacy-cli-config";
 
+import type { BuildTaskOptions } from "../build";
 import {
-    BuildTaskOptions,
     generateBuildTaskConfigs
 } from "../build";
 import { buildEntriesTask } from "../build/entries";

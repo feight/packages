@@ -4,7 +4,7 @@ import {
     cleanCacheTask,
     cleanTask as clean
 } from "@newsteam/cli-tasks";
-import { NewsTeamConfig } from "@newsteam/legacy-cli-config";
+import type { NewsTeamConfig } from "@newsteam/legacy-cli-config";
 
 
 interface CleanTaskOptions{

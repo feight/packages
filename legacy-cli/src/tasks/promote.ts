@@ -1,7 +1,7 @@
 
 
 import { googleCloudPromoteTask } from "@newsteam/cli-tasks";
-import { NewsTeamConfig } from "@newsteam/legacy-cli-config";
+import type { NewsTeamConfig } from "@newsteam/legacy-cli-config";
 
 import { linkTask } from "./link";
 

@@ -4,7 +4,7 @@ import fs from "fs";
 import path from "path";
 
 import glob from "globby";
-import {
+import type {
     Configuration,
     Entry
 } from "webpack";

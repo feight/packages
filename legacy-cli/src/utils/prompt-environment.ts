@@ -1,12 +1,14 @@
 
 
-import {
-    prompt,
+import type {
     PromptChoice
 } from "@newsteam/cli-utils";
-import { AssemblePublicationEnvironmentSettings } from "@newsteam/legacy-settings";
+import {
+    prompt
+} from "@newsteam/cli-utils";
+import type { AssemblePublicationEnvironmentSettings } from "@newsteam/legacy-settings";
 
-import { Publication } from "./publication";
+import type { Publication } from "./publication";
 
 
 const getChoices = function(environments: AssemblePublicationEnvironmentSettings[]): PromptChoice<AssemblePublicationEnvironmentSettings>[]{

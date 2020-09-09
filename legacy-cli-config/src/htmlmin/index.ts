@@ -1,6 +1,6 @@
 
 
-import { Options as HTMLMinifierOptions } from "html-minifier";
+import type { Options as HTMLMinifierOptions } from "html-minifier";
 import { rcFile } from "rc-config-loader";
 import merge from "deepmerge";
 

@@ -1,11 +1,11 @@
 
 
 import { merge } from "webpack-merge";
-import { Configuration } from "webpack";
+import type { Configuration } from "webpack";
 
 import { rules } from "./rules";
 
-import { Options } from "../..";
+import type { Options } from "../..";
 
 
 /*

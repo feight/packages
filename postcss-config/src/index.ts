@@ -23,7 +23,7 @@ import postcssOrderedValues from "postcss-ordered-values";
 import postcssPresetEnv from "postcss-preset-env";
 import postcssReduceInitial from "postcss-reduce-initial";
 import postcssReduceTransforms from "postcss-reduce-transforms";
-import { Transformer } from "postcss";
+import type { Transformer } from "postcss";
 
 const plugins: Transformer[] = [
     autoprefixer({

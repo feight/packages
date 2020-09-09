@@ -1,7 +1,7 @@
 
 
-import { AssemblePublicationEnvironmentInstanceSettings } from "./instance";
-import { AssemblePublicationEnvironmentSearchSettings } from "./search";
+import type { AssemblePublicationEnvironmentInstanceSettings } from "./instance";
+import type { AssemblePublicationEnvironmentSearchSettings } from "./search";
 
 
 export interface AssemblePublicationEnvironmentSettings{

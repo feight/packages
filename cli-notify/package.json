@@ -40,13 +40,13 @@
     "lib"
   ],
   "devDependencies": {
-    "@newsteam/babel": "0.0.4",
-    "@newsteam/eslint": "0.0.5",
-    "@newsteam/jasmine": "0.0.4",
+    "@newsteam/babel": "0.0.9",
+    "@newsteam/eslint": "0.0.10",
+    "@newsteam/jasmine": "0.0.9",
     "@newsteam/npm-install-local": "0.0.3"
   },
   "dependencies": {
     "@types/node-notifier": "6.0.1",
-    "node-notifier": "7.0.2"
+    "node-notifier": "8.0.0"
   }
 }

@@ -4,20 +4,20 @@ import path from "path";
 
 import fs from "fs-extra";
 
-import { AssemblePublicationAccountsSettings } from "./accounts";
-import { AssemblePublicationApiPlugin } from "./api-plugin";
-import { AssemblePublicationArticleContentType } from "./article-content-type";
-import { AssemblePublicationArticleStyle } from "./article-style";
-import { AssemblePublicationAuthorType } from "./author-type";
-import { AssemblePublicationClientsSettings } from "./client";
-import { AssemblePublicationConsoleSettings } from "./console";
-import { AssemblePublicationDefaultsSettings } from "./defaults";
-import { AssemblePublicationDmozSettings } from "./dmoz";
-import { AssemblePublicationEnvironmentSettings } from "./environment";
-import { AssemblePublicationFeaturesSettings } from "./features";
-import { AssemblePublicationIntegrationSettings } from "./integration";
-import { AssemblePublicationMetaSettings } from "./meta";
-import { AssemblePublicationWhitelistAccessSettings } from "./whitelist-access";
+import type { AssemblePublicationAccountsSettings } from "./accounts";
+import type { AssemblePublicationApiPlugin } from "./api-plugin";
+import type { AssemblePublicationArticleContentType } from "./article-content-type";
+import type { AssemblePublicationArticleStyle } from "./article-style";
+import type { AssemblePublicationAuthorType } from "./author-type";
+import type { AssemblePublicationClientsSettings } from "./client";
+import type { AssemblePublicationConsoleSettings } from "./console";
+import type { AssemblePublicationDefaultsSettings } from "./defaults";
+import type { AssemblePublicationDmozSettings } from "./dmoz";
+import type { AssemblePublicationEnvironmentSettings } from "./environment";
+import type { AssemblePublicationFeaturesSettings } from "./features";
+import type { AssemblePublicationIntegrationSettings } from "./integration";
+import type { AssemblePublicationMetaSettings } from "./meta";
+import type { AssemblePublicationWhitelistAccessSettings } from "./whitelist-access";
 
 
 export interface AssemblePublicationSettings{
