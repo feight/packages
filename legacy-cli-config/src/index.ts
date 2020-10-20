@@ -35,6 +35,7 @@ import * as paths from "./paths";
 import * as modernizr from "./modernizr";
 import * as webpack from "./webpack";
 
+// eslint-disable-next-line @typescript-eslint/no-shadow -- copy pasted from stack overflow
 type ElementType < T extends readonly unknown[] > = T extends readonly (infer ElementType)[] ? ElementType : never;
 
 

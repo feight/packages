@@ -50,7 +50,7 @@ cd ~/code/newsteam/packages/cli-notify              && rm -rf node_modules && rm
 cd ~/code/newsteam/packages/npm-install-local       && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run test &&
 cd ~/code/newsteam/packages/package-json            && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
 cd ~/code/newsteam/packages/schema                  && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
-cd ~/code/newsteam/packages/legacy-cli-logger       && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
+cd ~/code/newsteam/packages/legacy-cli-logger       && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm install justify-text@1.1.1 && npm run npm-install-local && npm run test &&
 cd ~/code/newsteam/packages/cli-utils               && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
 cd ~/code/newsteam/packages/cli-tasks               && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&
 cd ~/code/newsteam/packages/legacy-cli-config       && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run npm-install-local && npm run test &&

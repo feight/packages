@@ -1,27 +1,22 @@
 
 
-import { merge } from "webpack-merge";
-import type { Configuration } from "webpack";
+import type { RuleSetRule } from "webpack";
 
 import { cacheLoader } from "../../../../shared/loaders/cache";
 
 
-export const json = function(config: Configuration): Configuration{
+export const json = function(): RuleSetRule[]{
 
-    return merge(config, {
-        module: {
-            rules: [
-                // .json file extensions
-                {
-                    test: /\.json$/u,
-                    type: "javascript/auto",
-                    use: [
-                        cacheLoader(),
-                        "json-loader"
-                    ]
-                }
+    return [
+        // .json file extensions
+        {
+            test: /\.json$/u,
+            type: "javascript/auto",
+            use: [
+                cacheLoader(),
+                "json-loader"
             ]
         }
-    });
+    ];
 
 };

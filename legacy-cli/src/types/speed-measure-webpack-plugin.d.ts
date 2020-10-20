@@ -2,7 +2,7 @@
 
 declare module "speed-measure-webpack-plugin" {
 
-    import { Configuration, Plugin } from 'webpack';
+    import { Configuration, DefinePlugin } from 'webpack';
 
     interface SpeedMeasureWebpackPluginData{
         misc: {
@@ -16,11 +16,11 @@ declare module "speed-measure-webpack-plugin" {
         outputFormat?: "json" | "human" | "humanVerbose"| ((blob: SpeedMeasureWebpackPluginData) => void | Promise<void>);
         outputTarget?: string | Function;
         pluginNames?: {
-            [pluginName: string] : Plugin
+            [pluginName: string] : DefinePlugin
         };
     }
 
-    export default class SpeedMeasureWebpackPlugin extends Plugin{
+    export default class SpeedMeasureWebpackPlugin extends DefinePlugin{
 
         constructor(options: SpeedMeasureWebpackPluginOptions);
 

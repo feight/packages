@@ -2,7 +2,7 @@
 
 import type {
     Configuration,
-    NewLoader
+    RuleSetUseItem
 } from "webpack";
 
 import type { Options } from "../..";
@@ -11,7 +11,7 @@ import type { Options } from "../..";
 export const fileLoader = function(
     config: Configuration,
     options: Options
-): NewLoader{
+): RuleSetUseItem{
 
     /*
      * The file-loader resolves import/require() on a file into a url

@@ -1,34 +1,29 @@
 
 
-import { merge } from "webpack-merge";
-import type { Configuration } from "webpack";
+import type { RuleSetRule } from "webpack";
 
 import { cacheLoader } from "../../../../shared/loaders/cache";
 
 
-export const html = function(config: Configuration): Configuration{
+export const html = function(): RuleSetRule[]{
 
-    return merge(config, {
-        module: {
-            rules: [
-                // .html file extensions
+    return [
+        // .html file extensions
+        {
+            test: /\.html$/u,
+            use: [
+                cacheLoader(),
                 {
-                    test: /\.html$/u,
-                    use: [
-                        cacheLoader(),
-                        {
-                            loader: "html-loader",
-                            options: {
-                                minimize: {
-                                    collapseWhitespace: true,
-                                    removeComments: true
-                                }
-                            }
+                    loader: "html-loader",
+                    options: {
+                        minimize: {
+                            collapseWhitespace: true,
+                            removeComments: true
                         }
-                    ]
+                    }
                 }
             ]
         }
-    });
+    ];
 
 };

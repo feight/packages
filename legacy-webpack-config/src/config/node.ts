@@ -11,9 +11,7 @@ import type { Configuration } from "webpack";
 export const node = function(): Configuration{
 
     return {
-        node: {
-            fs: "empty"
-        }
+        node: {}
     };
 
 };

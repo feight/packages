@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/jasmine",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Collection of jasmine dependencies",
   "browserslist": "node 12",
   "engines": {
@@ -32,7 +32,7 @@
   "files": [],
   "dependencies": {
     "@types/jasmine": "3.5.14",
-    "jasmine": "3.6.1",
+    "jasmine": "3.6.2",
     "jasmine-console-reporter": "3.1.0"
   }
 }

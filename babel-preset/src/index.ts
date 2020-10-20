@@ -14,6 +14,7 @@ export interface TamlandBabelPresetOptions{
     debug: boolean;
     development: boolean | undefined;
     modules: boolean | "auto" | undefined;
+    plugins?: PluginItem[];
     shebang: boolean;
     reactHotLoader: boolean;
     targets: string | string[] | { [string: string]: string };
@@ -33,6 +34,7 @@ export default declare((
         addModuleExports = false,
         comments = false,
         modules,
+        plugins = [],
         shebang = false,
         reactHotLoader = false,
         targets,
@@ -49,25 +51,27 @@ export default declare((
 
     const debug = typeof options.debug === "boolean" ? options.debug : false;
     const development = typeof options.development === "boolean" ? options.development : api.cache.using(() => process.env.NODE_ENV === "development");
-    const plugins: PluginItem[] = [
-        "babel-plugin-transform-typescript-metadata",
-        [
-            "@babel/plugin-proposal-decorators",
-            {
-                legacy: true
-            }
-        ],
-        [
-            "@babel/plugin-proposal-class-properties",
-            {
-                loose: true
-            }
-        ],
-        "@babel/plugin-proposal-object-rest-spread",
-        "@babel/plugin-transform-named-capturing-groups-regex",
-        "@loadable/babel-plugin",
-        "jsx-control-statements"
-    ];
+
+    plugins.push("babel-plugin-transform-typescript-metadata");
+
+    plugins.push([
+        "@babel/plugin-proposal-decorators",
+        {
+            legacy: true
+        }
+    ]);
+
+    plugins.push([
+        "@babel/plugin-proposal-class-properties",
+        {
+            loose: true
+        }
+    ]);
+
+    plugins.push("@babel/plugin-proposal-object-rest-spread");
+    plugins.push("@babel/plugin-transform-named-capturing-groups-regex");
+    plugins.push("@loadable/babel-plugin");
+    plugins.push("jsx-control-statements");
 
     if(reactHotLoader){
         plugins.push("react-hot-loader/babel");

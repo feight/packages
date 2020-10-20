@@ -10,21 +10,25 @@ import type {
 } from "webpack";
 
 
+interface EntryObject {
+    [index: string]: string | [string, ...string[]];
+}
+
 const webpackFunctionRegex = /\{\{\s*?webpack\(['"](.*?)['"],\s*?['"](.*?\.js)['"]/gu;
 
-const jsEntrypoints = function(globPath: string, regex: RegExp): Entry{
+const jsEntrypoints = function(globPath: string, regex: RegExp): EntryObject{
 
-    return glob.sync(globPath).reduce((result: Entry, item: string) => ({
+    return glob.sync(globPath).reduce((result: EntryObject, item: string) => ({
         ...result,
         [item.replace(regex, "$1")]: `./${ item }`
     }), {});
 
 };
 
-const htmlEntrypoints = function(): Entry{
+const htmlEntrypoints = function(): EntryObject{
 
-    const entries: Entry = {};
-    const files: Entry = {};
+    const entries: EntryObject = {};
+    const files: EntryObject = {};
 
     /*
      * Loop through all html files in the project looking for calls to the webpack
@@ -74,7 +78,7 @@ const htmlEntrypoints = function(): Entry{
 };
 
 
-const serviceWorkerEntryPoints = function(): Entry{
+const serviceWorkerEntryPoints = function(): EntryObject{
 
     // The default service worker if the client doesn't specifcy one
     return {
@@ -91,7 +95,7 @@ const serviceWorkerEntryPoints = function(): Entry{
             }
 
             // The fallback service worker
-            return "@newsteam/legacy-service-worker/lib/entry";
+            return "@newsteam/legacy-service-worker/lib/entry.js";
 
         })()
     };
@@ -99,7 +103,7 @@ const serviceWorkerEntryPoints = function(): Entry{
 };
 
 
-const assembleEntryPoints = function(): Entry{
+const assembleEntryPoints = function(): EntryObject{
 
     // The default service worker if the client doesn't specifcy one
     return {

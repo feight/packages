@@ -1,6 +1,5 @@
 
 
-import { merge } from "webpack-merge";
 import type { Configuration } from "webpack";
 
 import { rules } from "./rules";
@@ -19,8 +18,6 @@ export const module = function(
     config: Configuration
 ): Configuration{
 
-    return merge(
-        rules(config, options)
-    );
+    return rules(config, options);
 
 };

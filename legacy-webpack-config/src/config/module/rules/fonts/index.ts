@@ -1,7 +1,9 @@
 
 
-import { merge } from "webpack-merge";
-import type { Configuration } from "webpack";
+import type {
+    Configuration,
+    RuleSetRule
+} from "webpack";
 
 import { fileLoader } from "../../../../shared/loaders/file";
 import type { Options } from "../../../..";
@@ -10,23 +12,19 @@ import type { Options } from "../../../..";
 export const fonts = function(
     config: Configuration,
     options: Options
-): Configuration{
+): RuleSetRule[]{
 
-    return merge(config, {
-        module: {
-            rules: [
+    return [
 
-                /*
-                 * .ttf .otf .eot .woff and .woff2 font extensions
-                 */
-                {
-                    test: /.(ttf|ttx|otf|eot|woff(2)?)(\?[a-z0-9]=.*)?$/u,
-                    use: [
-                        fileLoader(config, options)
-                    ]
-                }
+        /*
+         * .ttf .otf .eot .woff and .woff2 font extensions
+         */
+        {
+            test: /.(ttf|ttx|otf|eot|woff(2)?)(\?[a-z0-9]=.*)?$/u,
+            use: [
+                fileLoader(config, options)
             ]
         }
-    });
+    ];
 
 };

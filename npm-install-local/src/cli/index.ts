@@ -48,7 +48,7 @@ program.parse(process.argv);
         align: ["l", "c", "l"]
     }));
 
-    if(pipeline.install.length !== 0 || pipeline.update.length !== 0){
+    if(pipeline.install.length > 0 || pipeline.update.length > 0){
 
         console.log("");
 

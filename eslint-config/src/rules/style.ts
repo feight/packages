@@ -493,7 +493,12 @@ export default {
          *
          * https://eslint.org/docs/rules/no-inline-comments
          */
-        "no-inline-comments": "error",
+        "no-inline-comments": [
+            "error",
+            {
+                ignorePattern: "webpackChunkName:\\s.+"
+            }
+        ],
 
         /*
          * Disallow if statements as the only statement in else blocks

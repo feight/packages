@@ -1,9 +1,9 @@
 
 
-import type { NewLoader } from "webpack";
+import type { RuleSetUseItem } from "webpack";
 
 
-export const cacheLoader = function(): NewLoader{
+export const cacheLoader = function(): RuleSetUseItem{
 
     /*
      * The cache-loader allow to Caches the result of following loaders on disk

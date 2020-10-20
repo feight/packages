@@ -2,12 +2,10 @@
 
 declare module "postcss-minify-font-values" {
 
-    import { Plugin } from "postcss";
+    import { Transformer } from "postcss";
 
-    interface Options {}
+    const transformer: Transformer;
 
-    const plugin: Plugin<Options>;
-
-    export default plugin;
+    export default transformer;
 
 }

@@ -43,7 +43,7 @@ export const skip = function(): stream.Transform{
 
 
 export const task = function(
-    func: (
+    function_: (
         files: string | string[],
         watch?: boolean
     ) => Promise<void>
@@ -68,13 +68,13 @@ export const task = function(
             // eslint-disable-next-line @typescript-eslint/no-misused-promises -- Not sure wtf is wrong with this - but whatever
             }).on("change", async (file): Promise<void> => {
 
-                await func(file, true);
+                await function_(file, true);
 
             });
 
         }else{
 
-            await func(paths);
+            await function_(paths);
 
         }
 

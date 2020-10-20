@@ -13,7 +13,7 @@ const config: Linter.Config = {
         node: true
     },
     extends: [
-        "./rules/plugins/array-func",
+        "./rules/plugins/array-function",
         "./rules/plugins/async-await",
         "./rules/plugins/css-modules",
         "./rules/plugins/es",

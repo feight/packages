@@ -28,8 +28,8 @@ import type { Transformer } from "postcss";
 const plugins: Transformer[] = [
     autoprefixer({
         flexbox: "no-2009"
-    }),
-    postcssCalc,
+    }) as unknown as Transformer,
+    postcssCalc as unknown as Transformer,
     postcssClean,
     postcssColormin,
     postcssDiscardComments,

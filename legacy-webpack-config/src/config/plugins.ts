@@ -25,7 +25,7 @@ export const plugins = function(
         total: 100
     });
 
-    const webpackPlugins = [
+    const webpackPlugins: webpack.WebpackPluginInstance[] = [
         new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.DefinePlugin({
             "process.env.CLIENT": JSON.stringify("browser"),
@@ -46,23 +46,23 @@ export const plugins = function(
             chunkFilename: `build/chunks/${ hash ? "[chunkhash].css" : "[id].css" }`,
             filename: `build/chunks/${ hash ? "[chunkhash].css" : "[name].css" }`
         })
-    ]
-    .concat(options.progress ? [
-        // Don't show progress during the watch, it messes up the other output
-        new webpack.ProgressPlugin({
+    ];
+
+    if(options.progress){
+
+        webpackPlugins.push(new webpack.ProgressPlugin({
             activeModules: false,
             entries: true,
-            handler: (percentage: number) => {
+            handler: (percentage: number): void => {
 
                 bar.update(percentage);
 
             },
             modules: true,
             modulesCount: 10000
+        }));
 
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Needed because the type definitions for this plugin don't match the documentation
-        } as any)
-    ] : []);
+    }
 
     if(options.watch && options.bundleAnalyzer.enabled){
 

@@ -92,6 +92,15 @@ export default {
         "unicorn/import-index": "error",
 
         /*
+         * Enforce specific import styles per module
+         *
+         * Off for now...
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/import-style.md
+         */
+        "unicorn/import-style": "off",
+
+        /*
          * Enforce the use of new for all builtins, except String, Number and Boolean. (fixable)
          *
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/new-for-builtins.md
@@ -240,6 +249,13 @@ export default {
         "unicorn/number-literal-case": "error",
 
         /*
+         * Enforce the style of numeric separators by correctly grouping digits
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/numeric-separators-style.md
+         */
+        "unicorn/numeric-separators-style": "error",
+
+        /*
          * Prefer addEventListener over on-functions. (fixable)
          *
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-add-event-listener.md
@@ -280,6 +296,13 @@ export default {
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-includes.md
          */
         "unicorn/prefer-includes": "error",
+
+        /*
+         * Enforce the use of Math.trunc instead of bitwise operators. (partly fixable)
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-math-trunc.md
+         */
+        "unicorn/prefer-math-trunc": "error",
 
         /*
          * Prefer modern DOM APIs
@@ -373,6 +396,13 @@ export default {
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-string-slice.md
          */
         "unicorn/prefer-string-slice": "error",
+
+        /*
+         * Prefer ternary expressions over simple if-else statements
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-ternary.md
+         */
+        "unicorn/prefer-ternary": "error",
 
         /*
          * Prefer textContent over innerText

@@ -14,13 +14,13 @@ export const optimization = function(
     return {
         optimization: {
             concatenateModules: true,
+            emitOnErrors: !options.watch,
             flagIncludedChunks: true,
             mergeDuplicateChunks: true,
             minimize: options.mode === "production",
             minimizer: [
                 new OptimizeCSSAssetsPlugin({}),
                 new TerserPlugin({
-                    sourceMap: true,
                     terserOptions: {
                         mangle: true,
                         output: {
@@ -30,8 +30,6 @@ export const optimization = function(
                 })
             ],
             nodeEnv: "production",
-            noEmitOnErrors: options.watch,
-            occurrenceOrder: true,
             providedExports: true,
             removeAvailableModules: true,
             removeEmptyChunks: true,
@@ -53,10 +51,8 @@ export const optimization = function(
                 chunks: "async",
                 maxAsyncRequests: 5,
                 maxInitialRequests: 3,
-                maxSize: 0,
                 minChunks: 1,
-                minSize: 30000,
-                name: true
+                name: false
             },
             usedExports: true
         }

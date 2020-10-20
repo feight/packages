@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/imagemin",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Preconfigured imagemin function",
   "main": "lib",
   "scripts": {
@@ -40,17 +40,17 @@
     "lib"
   ],
   "dependencies": {
-    "@newsteam/jasmine": "0.0.9",
+    "@newsteam/jasmine": "0.0.10",
     "imagemin": "7.0.1",
     "imagemin-gifsicle": "7.0.0",
     "imagemin-jpegtran": "7.0.0",
     "imagemin-optipng": "8.0.0",
-    "imagemin-pngquant": "9.0.0",
+    "imagemin-pngquant": "9.0.1",
     "imagemin-svgo": "8.0.0"
   },
   "devDependencies": {
-    "@newsteam/babel": "0.0.9",
-    "@newsteam/eslint": "0.0.10",
-    "@types/node": "14.6.4"
+    "@newsteam/babel": "0.0.11",
+    "@newsteam/eslint": "0.0.11",
+    "@types/node": "14.11.10"
   }
 }

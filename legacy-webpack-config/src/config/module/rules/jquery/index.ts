@@ -1,41 +1,34 @@
 
 
-import { merge } from "webpack-merge";
-import type { Configuration } from "webpack";
+import type { RuleSetRule } from "webpack";
 
 import { cacheLoader } from "../../../../shared/loaders/cache";
 
 
-export const jquery = function(
-    config: Configuration
-): Configuration{
+export const jquery = function(): RuleSetRule[]{
 
-    return merge(config, {
-        module: {
-            rules: [
+    return [
+        {
+            test: require.resolve("jquery"),
+            use: [
+                cacheLoader(),
                 {
-                    test: require.resolve("jquery"),
-                    use: [
-                        cacheLoader(),
-                        {
-                            loader: "expose-loader",
-                            options: {
-                                exposes: [
-                                    {
-                                        globalName: "$",
-                                        override: true
-                                    },
-                                    {
-                                        globalName: "jQuery",
-                                        override: true
-                                    }
-                                ]
+                    loader: "expose-loader",
+                    options: {
+                        exposes: [
+                            {
+                                globalName: "$",
+                                override: true
+                            },
+                            {
+                                globalName: "jQuery",
+                                override: true
                             }
-                        }
-                    ]
+                        ]
+                    }
                 }
             ]
         }
-    });
+    ];
 
 };

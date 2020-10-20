@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/stylelint",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Collection of stylelint dependencies",
   "browserslist": "node 12",
   "engines": {
@@ -32,7 +32,7 @@
   "files": [],
   "dependencies": {
     "@newsteam/stylelint-config": "0.0.9",
-    "stylelint": "13.7.0",
+    "stylelint": "13.7.2",
     "stylelint-a11y": "1.2.3",
     "stylelint-declaration-block-no-ignored-properties": "2.3.0",
     "stylelint-declaration-strict-value": "1.6.0",

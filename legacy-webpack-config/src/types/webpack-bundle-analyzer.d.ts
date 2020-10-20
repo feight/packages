@@ -1,13 +1,13 @@
 
 
 
-declare module "optimize-css-assets-webpack-plugin" {
+declare module "webpack-bundle-analyzer" {
 
     import { DefinePlugin } from 'webpack';
 
     interface PluginOptions{}
 
-    export default class OptimizeCssAssetsWebpackPlugin extends DefinePlugin{
+    export class BundleAnalyzerPlugin extends DefinePlugin{
 
         constructor(options: PluginOptions);
 

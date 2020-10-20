@@ -68,11 +68,25 @@ const rules = {
     "@typescript-eslint/class-literal-property-style": "error",
 
     /*
+     * Require or disallow trailing comma
+     *
+     * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/comma-dangle.md
+     */
+    "@typescript-eslint/comma-dangle": "error",
+
+    /*
      * Enforces consistent spacing before and after commas
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/comma-spacing.md
      */
     "@typescript-eslint/comma-spacing": "error",
+
+    /*
+     * Enforce or disallow the use of the record type
+     *
+     * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/consistent-indexed-object-style.md
+     */
+    "@typescript-eslint/consistent-indexed-object-style": "error",
 
     /*
      * Enforces consistent usage of type assertions.
@@ -374,6 +388,13 @@ const rules = {
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-dupe-class-members.md
      */
     "@typescript-eslint/no-dupe-class-members": "error",
+
+    /*
+     * Disallow duplicate imports
+     *
+     * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-duplicate-imports.md
+     */
+    "@typescript-eslint/no-duplicate-imports": "error",
 
     /*
      * Disallow the delete operator with computed key expressions

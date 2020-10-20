@@ -2,11 +2,11 @@
 
 import type {
     Configuration,
-    NewLoader
+    RuleSetUseItem
 } from "webpack";
 
 
-export const babelLoader = function(config: Configuration, legacy = true): NewLoader{
+export const babelLoader = function(config: Configuration, legacy = true): RuleSetUseItem{
 
     const legacyOptions = {
         babelrc: false,

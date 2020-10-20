@@ -1,6 +1,5 @@
 
 
-import { merge } from "webpack-merge";
 import type { Configuration } from "webpack";
 
 import { files } from "./files";
@@ -27,15 +26,19 @@ export const rules = function(
     options: Options
 ): Configuration{
 
-    return merge(
-        jquery(config),
-        fonts(config, options),
-        images(config, options),
-        scripts(config),
-        styles(config, options),
-        html(config),
-        json(config),
-        files(config, options)
-    );
+    return {
+        module: {
+            rules: [
+                ...jquery(),
+                ...fonts(config, options),
+                ...images(config, options),
+                ...scripts(config),
+                ...styles(config, options),
+                ...html(),
+                ...json(),
+                ...files(config, options)
+            ]
+        }
+    };
 
 };

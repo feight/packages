@@ -224,21 +224,31 @@ export const buildWebpackTask = async function(options: BuildWebpackTaskOptions)
 
                 }
 
-                // Unique compilation errors
-                const compilationErrors = stats.compilation.errors.filter((compilationError, index, self) => self.indexOf(compilationError) === index);
 
-                // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- The types are lying here
                 if(error){
 
                     output(`Build ${ path.resolve(config) }`)(error, stats);
 
                     reject(error);
 
-                }else if(compilationErrors.length > 0){
+                }else if(stats){
 
-                    output(`Error ${ path.resolve(config) }`)(new Error(stats.toString(webpackConfig.stats)), stats);
+                    // Unique compilation errors
+                    const compilationErrors = stats.compilation.errors.filter(
+                        (compilationError, index, self) => self.indexOf(compilationError) === index
+                    );
 
-                    reject(compilationErrors);
+                    if(compilationErrors.length > 0){
+
+                        output(`Error ${ path.resolve(config) }`)(new Error(stats.toString(webpackConfig.stats)), stats);
+
+                        reject(compilationErrors);
+
+                    }else{
+
+                        resolve("");
+
+                    }
 
                 }else{
 

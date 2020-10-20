@@ -1,10 +1,10 @@
 
 
-import { merge } from "webpack-merge";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import type {
     Configuration,
-    RuleSetUseItem
+    RuleSetUseItem,
+    RuleSetRule
 } from "webpack";
 import postcssConfig from "@newsteam/postcss-config";
 import sass from "sass";
@@ -125,50 +125,46 @@ const sassLoader = (): RuleSetUseItem => ({
 export const styles = function(
     config: Configuration,
     options: Options
-): Configuration{
+): RuleSetRule[]{
 
-    return merge(config, {
-        module: {
-            rules: [
-                {
-                    test: /\.min\.css$/u,
-                    use: [
-                        miniCssExtractPlugin(config, options),
-                        cssLoader(options)
-                    ]
-                },
-                {
-                    include: /\.module\.scss$/u,
-                    test: /^(.{0,3}|.*(?!\.min).{4})\.scss$/u,
-                    use: [
-                        miniCssExtractPlugin(config, options),
-                        cssLoader(options, true),
-                        cleanCssLoader(),
-                        postCssLoader(),
-                        sassLoader()
-                    ]
-                },
-                {
-                    exclude: /\.module\.scss$/u,
-                    test: /^(.{0,3}|.*(?!\.min).{4})\.scss$/u,
-                    use: [
-                        miniCssExtractPlugin(config, options),
-                        cssLoader(options),
-                        cleanCssLoader(),
-                        postCssLoader(),
-                        sassLoader()
-                    ]
-                },
-                {
-                    include: /node_modules/u,
-                    test: /^(.{0,3}|.*(?!\.min).{4})\.css$/u,
-                    use: [
-                        miniCssExtractPlugin(config, options),
-                        cssLoader(options)
-                    ]
-                }
+    return [
+        {
+            test: /\.min\.css$/u,
+            use: [
+                miniCssExtractPlugin(config, options),
+                cssLoader(options)
+            ]
+        },
+        {
+            include: /\.module\.scss$/u,
+            test: /^(.{0,3}|.*(?!\.min).{4})\.scss$/u,
+            use: [
+                miniCssExtractPlugin(config, options),
+                cssLoader(options, true),
+                cleanCssLoader(),
+                postCssLoader(),
+                sassLoader()
+            ]
+        },
+        {
+            exclude: /\.module\.scss$/u,
+            test: /^(.{0,3}|.*(?!\.min).{4})\.scss$/u,
+            use: [
+                miniCssExtractPlugin(config, options),
+                cssLoader(options),
+                cleanCssLoader(),
+                postCssLoader(),
+                sassLoader()
+            ]
+        },
+        {
+            include: /node_modules/u,
+            test: /^(.{0,3}|.*(?!\.min).{4})\.css$/u,
+            use: [
+                miniCssExtractPlugin(config, options),
+                cssLoader(options)
             ]
         }
-    });
+    ];
 
 };

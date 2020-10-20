@@ -44,7 +44,7 @@
     "@types/text-table": "0.2.1",
     "chalk": "4.1.0",
     "codeframe": "0.0.1",
-    "justify-text": "1.1.1",
+    "justify-text": "^1.1.1",
     "magicdawn-get-cursor-position": "1.0.5",
     "node-pty": "0.9.0",
     "progress": "2.0.3",
@@ -52,14 +52,14 @@
     "strip-color": "0.1.0",
     "text-table": "0.2.0",
     "through2": "4.0.2",
-    "vinyl": "2.2.0"
+    "vinyl": "2.2.1"
   },
   "devDependencies": {
     "@newsteam/npm-install-local": "0.0.3",
-    "@newsteam/babel": "0.0.9",
-    "@newsteam/eslint": "0.0.10",
-    "@newsteam/jasmine": "0.0.9",
-    "@types/node": "14.6.4",
+    "@newsteam/babel": "0.0.11",
+    "@newsteam/eslint": "0.0.11",
+    "@newsteam/jasmine": "0.0.10",
+    "@types/node": "14.14.0",
     "@types/strip-color": "0.1.0",
     "@types/through2": "2.0.36",
     "@types/vinyl": "2.0.4"

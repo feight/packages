@@ -6,7 +6,6 @@
  */
 
 import type { Configuration } from "webpack";
-import { merge } from "webpack-merge";
 import { config as assembleCliConfig } from "@newsteam/legacy-cli-config";
 
 import * as configs from "./config";
@@ -96,23 +95,26 @@ export const config = function(
     ): Configuration => {
 
         const genOptions = generateOptions(options, environment, args);
-        const configuration = merge(options.config ?? {}, configs.output(genOptions));
+        const configuration = {
+            ...options.config ?? {},
+            ...configs.output(genOptions)
+        };
 
         // Deep merge all base configuration with custom configuration
-        const merged = merge(
-            configs.devtool(genOptions),
-            configs.entry(),
-            configs.module(genOptions, configuration),
-            configs.mode(genOptions),
-            configs.node(),
-            configs.optimization(genOptions),
-            configs.performance(genOptions),
-            configs.plugins(genOptions),
-            configs.resolve(genOptions),
-            configs.stats(),
-            configs.watchOptions(),
-            configuration
-        );
+        const merged = {
+            ...configs.devtool(genOptions),
+            ...configs.entry(),
+            ...configs.module(genOptions, configuration),
+            ...configs.mode(genOptions),
+            ...configs.node(),
+            ...configs.optimization(genOptions),
+            ...configs.performance(genOptions),
+            ...configs.plugins(genOptions),
+            ...configs.resolve(genOptions),
+            ...configs.stats(),
+            ...configs.watchOptions(),
+            ...configuration
+        };
 
         /*
          * Override the entry branch of configuration if one was specified in the
