@@ -199,18 +199,27 @@ export const buildWebpackTask = async function(options: BuildWebpackTaskOptions)
 
         if(watch){
 
+            let lastHash: string | undefined = undefined;
+
             compiler.watch({
                 aggregateTimeout: 600,
                 ignored: [
-                    "node_modules"
+                    "node_modules",
+                    "src/assemble/node_modules"
                 ],
                 poll: 1000
             },
             (error, stats): void => {
 
-                output(`Built ${ path.resolve(config) }`)(error, stats);
+                if(lastHash !== stats?.hash){
 
-                logger.log("");
+                    output(`Built ${ path.resolve(config) }`)(error, stats);
+
+                    logger.log("");
+
+                }
+
+                lastHash = stats?.hash;
 
             });
 
@@ -223,7 +232,6 @@ export const buildWebpackTask = async function(options: BuildWebpackTaskOptions)
                     printBuildStatistics();
 
                 }
-
 
                 if(error){
 
