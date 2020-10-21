@@ -59,7 +59,7 @@ export const plugins = function(
 
             },
             modules: true,
-            modulesCount: 10000
+            modulesCount: 10_000
         }));
 
     }

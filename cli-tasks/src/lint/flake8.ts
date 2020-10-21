@@ -69,9 +69,7 @@ export const flake8LintTask = async function(options: Flake8LintTaskOptions): Pr
 
                 if(response.flake8.errorCount > 0){
 
-                    const errorsMap: {
-                        [ id: string ]: LintErrorData["errors"] | undefined;
-                    } = {};
+                    const errorsMap: Record<string, LintErrorData["errors"] | undefined> = {};
 
                     response.flake8.errorList.forEach((error) => {
 

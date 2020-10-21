@@ -95,9 +95,7 @@ export interface Author {
     homepage?: string;
 }
 
-export interface BinMap {
-    [commandName: string]: string;
-}
+export type BinMap = Record<string, string>;
 
 export interface Bugs {
     email: string;
@@ -110,9 +108,7 @@ export interface Config {
     config?: Record<string, any>;
 }
 
-export interface DependencyMap {
-    [dependencyName: string]: string;
-}
+export type DependencyMap = Record<string, string>;
 
 export interface Directories {
     lib?: string;
@@ -136,9 +132,7 @@ export interface Repository {
     url: string;
 }
 
-export interface ScriptsMap {
-    [scriptName: string]: string;
-}
+export type ScriptsMap = Record<string, string>;
 
 
 export const getPackageJson = async function(directory: string): Promise<PackageJson>{

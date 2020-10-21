@@ -46,7 +46,7 @@ const writeYaml = function(file: string, data: any): void{
 
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any -- This function can snakeify any object
-const snakeify = (object: { [id: string]: any }): { [id: string]: any } => {
+const snakeify = (object: Record<string, any>): Record<string, any> => {
 
     const copy = { ...object };
 

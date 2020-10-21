@@ -71,7 +71,7 @@ export const getPublicationSettings = function(folder = "src/publication/custom"
         throw new Error(`Could not find environment settings path ${ environmentsPath }`);
     }
 
-    const environmentMap = JSON.parse(fs.readFileSync(environmentsPath).toString()) as { [ key: string ]: AssemblePublicationEnvironmentSettings };
+    const environmentMap = JSON.parse(fs.readFileSync(environmentsPath).toString()) as Record<string, AssemblePublicationEnvironmentSettings>;
     const environments: AssemblePublicationEnvironmentSettings[] = [];
 
     Object.keys(environmentMap).forEach((key) => {

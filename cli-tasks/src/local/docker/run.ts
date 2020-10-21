@@ -34,7 +34,7 @@ const normalizePorts = function(ports?: number | number[] | [number, number][]):
 
 
 interface LocalDockerRunTaskConfig{
-    environment?: { [key: string]: string | undefined };
+    environment?: Record<string, string | undefined>;
     network?: string;
     port?: number | number[] | [number, number][];
     name: string;

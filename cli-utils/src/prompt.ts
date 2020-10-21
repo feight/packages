@@ -21,7 +21,7 @@ export const prompt = async function<PromptValue>(id: string, choices: PromptCho
     const previousPath = path.join(process.cwd(), `.newsteam/cache/prompts/${ key }.json`);
     const previousExists = await fs.pathExists(previousPath);
 
-    let choice: { [id: string]: PromptValue } = {};
+    let choice: Record<string, PromptValue> = {};
     let choiceName = "";
 
     let previousIndex = 0;

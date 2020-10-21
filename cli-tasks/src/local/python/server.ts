@@ -100,9 +100,7 @@ const output = (color?: string): (data: any) => void => (data: any): void => {
 };
 
 
-export interface LocalPythonServerEnvironment {
-    [key: string]: string | boolean | number;
-}
+export type LocalPythonServerEnvironment = Record<string, string | boolean | number>;
 
 
 export interface LocalPythonVirtualenvTaskOptions{
@@ -122,7 +120,7 @@ export const localPythonServerTask = async function(
 
     const monitor = options.monitor === undefined ? true : options.monitor;
 
-    const environment: { [id: string ]: string } = {
+    const environment: Record<string, string> = {
         ...options.environment ?? {},
         /* eslint-disable @typescript-eslint/naming-convention -- These are GCloud environment variables, we don't pick the names */
         APPLICATION_ID: "dev~None",

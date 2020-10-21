@@ -61,14 +61,14 @@ const extendedJoi = Joi.extend(
                 try{
 
                     // eslint-disable-next-line @typescript-eslint/no-explicit-any -- It's expected that this is of type any
-                    return { value: JSON.parse(value) as { [id: string]: any } };
+                    return { value: JSON.parse(value) as Record<string, any> };
 
                 }catch{
 
                     try{
 
                         // eslint-disable-next-line @typescript-eslint/no-explicit-any -- It's expected that this is of type any
-                        return { value: JSON5.parse(value) as { [id: string]: any } };
+                        return { value: JSON5.parse(value) as Record<string, any> };
 
                     }catch{
 
@@ -163,7 +163,7 @@ const getRenames = function(type: ObjectSchemaDefinition): Rename[]{
 
     // Filter out any renames with duplicate from values
     const uniqueRenames: Rename[] = [];
-    const lookupObject: { [ from: string ]: Rename } = {};
+    const lookupObject: Record<string, Rename> = {};
 
     renames.forEach((rename: Rename) => {
         lookupObject[rename.from] = rename;

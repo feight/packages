@@ -54,9 +54,7 @@ export type Schema =
     ObjectSchema |
     StringSchema;
 
-export interface SchemaMap {
-    [id: string]: SchemaLike;
-}
+export type SchemaMap = Record<string, SchemaLike>;
 
 export interface ValidationResult<TValue>{
     errors: string[];
@@ -194,7 +192,7 @@ export class Validate{
     static map: Map<Record<string, unknown>, SchemaMap> = new Map<Record<string, unknown>, SchemaMap>();
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Any is expected
-    static compile(target: { [key: string]: any }): SchemaMap{
+    static compile(target: Record<string, any>): SchemaMap{
 
         const compiled = this.map.get(typeof target === "object" ? Object.getPrototypeOf(target) : target) ?? {};
 

@@ -37,7 +37,7 @@ export const exec = function(options: {
     dry?: boolean;
     filter?: string | RegExp | (string | RegExp)[];
     label?: string;
-    environment?: { [key: string]: string | undefined };
+    environment?: Record<string, string | undefined>;
 }): Promise<string>{
 
     return new Promise((resolve: (string: string) => void, reject: (error: Error) => void): void => {
@@ -47,7 +47,7 @@ export const exec = function(options: {
                 ...process.env,
                 ...options.environment ?? undefined
             },
-            maxBuffer: 512000
+            maxBuffer: 512_000
         };
 
         const {
@@ -167,7 +167,7 @@ export const exec = function(options: {
 export const spawn = function(options: {
     cwd?: string;
     command: string;
-    environment?: { [key: string]: string | undefined };
+    environment?: Record<string, string | undefined>;
     filter?: string | RegExp | (string | RegExp)[];
     detatch?: boolean;
     dry?: boolean;

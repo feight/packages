@@ -10,9 +10,7 @@ import type {
 } from "webpack";
 
 
-interface EntryObject {
-    [index: string]: string | [string, ...string[]];
-}
+type EntryObject = Record<string, string | [string, ...string[]]>;
 
 const webpackFunctionRegex = /\{\{\s*?webpack\(['"](.*?)['"],\s*?['"](.*?\.js)['"]/gu;
 

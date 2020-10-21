@@ -11,7 +11,7 @@ interface LocalDockerMachineTaskConfig{
 }
 
 
-export const localDockerMachineTask = async function(config?: LocalDockerMachineTaskConfig): Promise<{ [key: string]: string | undefined }>{
+export const localDockerMachineTask = async function(config?: LocalDockerMachineTaskConfig): Promise<Record<string, string | undefined>>{
 
     const name = config?.name ?? "newsteam";
 
@@ -44,7 +44,7 @@ export const localDockerMachineTask = async function(config?: LocalDockerMachine
     .filter((line) => line.startsWith("export "))
     .map((line) => line.replace(/^export /gu, ""))
     .map((line) => line.split("="))
-    .reduce<{ [key: string]: string | undefined }>((accumulator, current) => {
+    .reduce<Record<string, string | undefined>>((accumulator, current) => {
 
         const [key, value] = current;
 

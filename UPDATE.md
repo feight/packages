@@ -24,7 +24,7 @@ cd ~/code/newsteam/packages/babel-preset            && rm -rf node_modules && rm
 cd ~/code/newsteam/packages/babel                   && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run test &&
 cd ~/code/newsteam/packages/eslint-config           && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run test &&
 cd ~/code/newsteam/packages/eslint                  && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run test &&
-cd ~/code/newsteam/packages/postcss-config          && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run test &&
+cd ~/code/newsteam/packages/postcss-config          && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm install autoprefixer@9.8.6 && npm run test &&
 cd ~/code/newsteam/packages/stylelint-config        && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run test &&
 cd ~/code/newsteam/packages/stylelint               && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run test &&
 cd ~/code/newsteam/packages/imagemin                && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm run test
@@ -36,7 +36,7 @@ cd ~/code/newsteam/packages/babel-preset            && rm -rf node_modules && rm
 cd ~/code/newsteam/packages/babel                   && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm version patch && npm publish &&
 cd ~/code/newsteam/packages/eslint-config           && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm version patch && npm publish &&
 cd ~/code/newsteam/packages/eslint                  && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm version patch && npm publish &&
-cd ~/code/newsteam/packages/postcss-config          && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm version patch && npm publish &&
+cd ~/code/newsteam/packages/postcss-config          && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm install autoprefixer@9.8.6 && npm version patch && npm publish &&
 cd ~/code/newsteam/packages/stylelint-config        && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm version patch && npm publish &&
 cd ~/code/newsteam/packages/stylelint               && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm version patch && npm publish &&
 cd ~/code/newsteam/packages/imagemin                && rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install && npm version patch && npm publish

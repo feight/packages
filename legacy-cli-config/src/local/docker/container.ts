@@ -5,7 +5,7 @@ import { validate } from "@newsteam/schema";
 
 export interface LocalDockerContainerConfig{
 
-    environment: { [key: string]: string | undefined };
+    environment: Record<string, string | undefined>;
 
     name: string;
 
@@ -20,7 +20,7 @@ export class NewsTeamLocalDockerContainerConfig{
     @validate({
         type: "object"
     })
-    environment: { [key: string]: string | undefined };
+    environment: Record<string, string | undefined>;
 
     @validate({
         type: "string"

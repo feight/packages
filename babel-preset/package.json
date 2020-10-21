@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/babel-preset",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Shared preset for babel",
   "main": "lib",
   "types": "lib",
@@ -60,9 +60,9 @@
   "devDependencies": {
     "@babel/cli": "7.12.1",
     "@babel/core": "7.12.3",
-    "@newsteam/jasmine": "0.0.9",
+    "@newsteam/jasmine": "0.0.10",
     "@types/babel__core": "7.1.10",
-    "@types/node": "14.11.10",
+    "@types/node": "14.14.0",
     "jasmine": "3.6.2",
     "renamer": "2.0.1"
   },

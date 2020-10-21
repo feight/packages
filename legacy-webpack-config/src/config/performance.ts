@@ -20,8 +20,8 @@ export const performance = function(
 
             },
             hints: options.mode === "production" ? "warning" : false,
-            maxAssetSize: 250000,
-            maxEntrypointSize: 250000
+            maxAssetSize: 250_000,
+            maxEntrypointSize: 250_000
         }
     };
 

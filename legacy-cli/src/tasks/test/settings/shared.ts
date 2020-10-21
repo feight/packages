@@ -66,7 +66,7 @@ const getDescendantProperty = function(object: any, desc: string): any{
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Shared can be any object
-const commonality = function(shared: { [id: string]: any }, publicationData: PublicationData[]): Commonality{
+const commonality = function(shared: Record<string, any>, publicationData: PublicationData[]): Commonality{
 
     const response: Commonality = {
         publication: [],

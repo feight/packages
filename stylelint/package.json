@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/stylelint",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Collection of stylelint dependencies",
   "browserslist": "node 12",
   "engines": {
@@ -31,7 +31,7 @@
   "homepage": "https://github.com/feight/packages/tree/master/stylelint#readme",
   "files": [],
   "dependencies": {
-    "@newsteam/stylelint-config": "0.0.9",
+    "@newsteam/stylelint-config": "0.0.11",
     "stylelint": "13.7.2",
     "stylelint-a11y": "1.2.3",
     "stylelint-declaration-block-no-ignored-properties": "2.3.0",

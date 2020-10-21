@@ -65,7 +65,7 @@ export interface LoggerColors{
 export interface LoggerOptions{
     colors?: LoggerColors;
     defaultLabel?: string;
-    emojis?: { [id: string]: string };
+    emojis?: Record<string, string>;
 }
 
 
@@ -86,7 +86,7 @@ export class Logger{
 
     defaultLabel: string;
 
-    emojis: { [id: string]: string };
+    emojis: Record<string, string>;
 
     constructor(options: LoggerOptions = {}){
 

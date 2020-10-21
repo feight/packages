@@ -40,8 +40,8 @@
     "ts-node": "^9.0.0"
   },
   "devDependencies": {
-    "@newsteam/babel": "0.0.11",
-    "@newsteam/jasmine": "0.0.10",
+    "@newsteam/babel": "0.0.12",
+    "@newsteam/jasmine": "0.0.11",
     "@newsteam/npm-install-local": "0.0.3",
     "@types/asciichart": "1.5.3",
     "@types/chokidar": "2.1.3",
