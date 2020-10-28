@@ -151,7 +151,7 @@ export const localPythonServerTask = async function(
                 execMap: {
                     py: "cd src; source ../env/bin/activate; python3 -u"
                 },
-                ext: "py",
+                ext: "py json",
                 ignore,
                 script,
                 stdout: false,
