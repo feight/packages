@@ -99,6 +99,7 @@ export const localTask = async function(config: NewsTeamConfig, options: LocalTa
                 PORT: config.local.python.server.port
                 /* eslint-enable @typescript-eslint/naming-convention */
             },
+            monitor: false,
             port: config.local.python.server.port,
             useDevAppServer: config.local.python.server.useDevAppServer
         }),
