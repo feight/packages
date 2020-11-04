@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/postcss-config",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Shared config for postcss",
   "main": "lib",
   "types": "lib",
@@ -42,11 +42,11 @@
     "lib"
   ],
   "dependencies": {
-    "@newsteam/jasmine": "0.0.11",
+    "@newsteam/jasmine": "0.0.12",
     "autoprefixer": "^9.8.6",
     "install": "^0.13.0",
     "npm": "^6.14.8",
-    "postcss": "8.1.2",
+    "postcss": "8.1.4",
     "postcss-calc": "7.0.5",
     "postcss-clean": "1.1.0",
     "postcss-colormin": "4.0.3",
@@ -54,7 +54,7 @@
     "postcss-discard-duplicates": "4.0.2",
     "postcss-discard-empty": "4.0.1",
     "postcss-font-smoothing": "0.1.0",
-    "postcss-font-variant": "4.0.0",
+    "postcss-font-variant": "4.0.1",
     "postcss-image-set-polyfill": "1.0.0",
     "postcss-merge-longhand": "4.0.11",
     "postcss-merge-rules": "4.0.3",
@@ -71,10 +71,10 @@
     "postcss-reduce-transforms": "4.0.2"
   },
   "devDependencies": {
-    "@newsteam/babel": "0.0.12",
-    "@newsteam/eslint": "0.0.13",
+    "@newsteam/babel": "0.0.13",
+    "@newsteam/eslint": "0.0.14",
     "@types/autoprefixer": "9.7.2",
-    "@types/node": "14.14.0",
+    "@types/node": "14.14.6",
     "@types/postcss-calc": "7.0.0"
   }
 }

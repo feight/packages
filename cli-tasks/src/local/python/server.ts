@@ -129,11 +129,12 @@ export const localPythonServerTask = async function(
         GAE_VERSION: "None.1"
         /* eslint-enable @typescript-eslint/naming-convention */
     };
+
     /*
-     * currently there are issues with logging when you run the python server through NodeMon
+     * Currently there are issues with logging when you run the python server through NodeMon
      * i.e. the server stops logging after every second restart
      * we should probably drop this, leaving it here until we are happy with logging
-    */
+     */
     if(monitor){
 
         const script = options.script ?? "main.py";

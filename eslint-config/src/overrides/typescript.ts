@@ -29,6 +29,7 @@ export const typescriptOverrides = {
         quotes: 0,
         "require-await": 0,
         semi: 0,
-        "space-before-function-paren": 0
+        "space-before-function-paren": 0,
+        "space-infix-ops": 0
     }
 };

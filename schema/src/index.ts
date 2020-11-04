@@ -259,7 +259,7 @@ export class Validate{
 
     }
 
-    static register(target: Record<string, unknown>, property: string, propertySchema: Schema): void {
+    static register(target: Record<string, unknown>, property: string, propertySchema: Schema): void{
 
         const schemaMap: SchemaMap = this.map.get(target) ?? {};
 

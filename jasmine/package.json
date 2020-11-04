@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/jasmine",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Collection of jasmine dependencies",
   "browserslist": "node 12",
   "engines": {
@@ -31,8 +31,8 @@
   "homepage": "https://github.com/feight/packages/tree/master/jasmine#readme",
   "files": [],
   "dependencies": {
-    "@types/jasmine": "3.5.14",
-    "jasmine": "3.6.2",
+    "@types/jasmine": "3.6.1",
+    "jasmine": "3.6.3",
     "jasmine-console-reporter": "3.1.0"
   }
 }

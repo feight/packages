@@ -661,6 +661,13 @@ const rules = {
     "@typescript-eslint/no-unnecessary-type-assertion": "error",
 
     /*
+     * Disallows unnecessary constraints on generic types
+     *
+     * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unnecessary-type-constraint.md
+     */
+    "@typescript-eslint/no-unnecessary-type-constraint": "error",
+
+    /*
      * Disallows assigning any to variables and properties
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unsafe-assignment.md
@@ -908,6 +915,13 @@ const rules = {
             named: "never"
         }
     ],
+
+    /*
+     * This rule is aimed at ensuring there are spaces around infix operators.
+     *
+     * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/space-infix-ops.md
+     */
+    "@typescript-eslint/space-infix-ops": "error",
 
     /*
      * Boolean expressions are limited to booleans
