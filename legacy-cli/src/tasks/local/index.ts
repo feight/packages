@@ -55,6 +55,21 @@ const getCredentials = function(): string{
 
 };
 
+const getElasticPort = function(config: NewsTeamConfig): number{
+
+    let port = config.local.docker.elasticsearch.port;
+
+    if(typeof port !== "number"){
+        [port] = port;
+        if(typeof port !== "number"){
+            [port] = port;
+        }
+    }
+
+    return port;
+
+};
+
 
 export type LocalTaskOptions = BuildTaskOptions;
 
@@ -103,7 +118,9 @@ export const localTask = async function(config: NewsTeamConfig, options: LocalTa
             port: config.local.python.server.port,
             useDevAppServer: config.local.python.server.useDevAppServer
         }),
-        openBrowserTask(`http://localhost:${ config.local.python.server.port }`, openDelay)
+        openBrowserTask(`http://localhost:${ config.local.python.server.port }`, openDelay, [
+            `http://localhost:${ getElasticPort(config) }`
+        ])
     ]);
 
 };

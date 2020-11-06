@@ -19,7 +19,8 @@ export class NewsTeamLocalDockerElasticSearchConfig extends NewsTeamLocalDockerC
             environment: config?.environment ?? defaults.local.docker.elasticsearch.environment,
             name: "elasticsearch",
             port: config?.port ?? defaults.local.docker.elasticsearch.port,
-            recipe: config?.recipe ?? defaults.local.docker.elasticsearch.recipe
+            recipe: config?.recipe ?? defaults.local.docker.elasticsearch.recipe,
+            volume: config?.volume ?? defaults.local.docker.elasticsearch.volume
         });
 
     }

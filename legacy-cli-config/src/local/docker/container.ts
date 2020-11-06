@@ -13,6 +13,8 @@ export interface LocalDockerContainerConfig{
 
     recipe: string;
 
+    volume: string;
+
 }
 
 export class NewsTeamLocalDockerContainerConfig{
@@ -61,12 +63,18 @@ export class NewsTeamLocalDockerContainerConfig{
     })
     recipe: string;
 
+    @validate({
+        type: "string"
+    })
+    volume: string;
+
     constructor(config: LocalDockerContainerConfig){
 
         this.environment = config.environment;
         this.name = config.name;
         this.port = config.port;
         this.recipe = config.recipe;
+        this.volume = config.volume;
 
     }
 

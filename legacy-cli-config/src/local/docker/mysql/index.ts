@@ -19,7 +19,8 @@ export class NewsTeamLocalDockerMySQLConfig extends NewsTeamLocalDockerContainer
             environment: config?.environment ?? defaults.local.docker.mysql.environment,
             name: "mysql",
             port: config?.port ?? defaults.local.docker.mysql.port,
-            recipe: config?.recipe ?? defaults.local.docker.mysql.recipe
+            recipe: config?.recipe ?? defaults.local.docker.mysql.recipe,
+            volume: config?.volume ?? defaults.local.docker.elasticsearch.volume
         });
 
     }

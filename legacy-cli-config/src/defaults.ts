@@ -28,7 +28,8 @@ export const defaults = {
                     "discovery.type": "single-node"
                 },
                 port: [9200, 9300],
-                recipe: "elasticsearch:7.6.2"
+                recipe: "elasticsearch:7.7.0",
+                volume: "/usr/share/elasticsearch/data"
             },
             mysql: {
                 environment: {
@@ -36,7 +37,8 @@ export const defaults = {
                 },
                 name: "mysql",
                 port: 3306,
-                recipe: "mysql:5.7"
+                recipe: "mysql:5.7",
+                volume: "/var/lib/mysql"
             }
         },
         emulators: {

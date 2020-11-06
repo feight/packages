@@ -39,6 +39,7 @@ interface LocalDockerRunTaskConfig{
     port?: number | number[] | [number, number][];
     name: string;
     recipe: string;
+    volume: string;
 }
 
 
@@ -47,40 +48,10 @@ export const localDockerRunTask = async function(config: LocalDockerRunTaskConfi
     const bar = logger.progress({
         label,
         tag: config.name,
-        total: 4
+        total: 2
     });
 
     const network = config.network ?? "newsteam-network";
-
-    const containers = (await exec({
-        command: "docker ps -a --format 'table {{.Names}}'",
-        detatch: true
-    }))
-    .split("\n")
-    .filter((line) => Boolean(line.trim()))
-    .filter((line) => line !== "NAMES");
-
-    bar.tick();
-
-    if(containers.includes(config.name)){
-
-        try{
-
-            await exec({
-                command: `docker container kill ${ config.name }`,
-                detatch: true
-            });
-
-        }catch{}
-
-        await exec({
-            command: `docker container rm ${ config.name }`,
-            detatch: true
-        });
-
-    }
-
-    bar.tick();
 
     const networks = (await exec({
         command: "docker network ls --format 'table {{.Name}}'",
@@ -111,12 +82,12 @@ export const localDockerRunTask = async function(config: LocalDockerRunTaskConfi
             --restart always
             --name ${ config.name }
             --net ${ network }
-            -v ${ path.join(process.cwd(), `.newsteam/docker/${ config.name }/data`) }
+            -v ${ path.join(process.cwd(), `.newsteam/docker/${ config.name }:${ config.volume }`) }
             ${ ports.length > 0 ? ports.map((port) => `-p ${ port[0] }:${ port[1] }`).join(" ") : "" }
             -d
             ${ Object.keys(environment).map((key) => `-e ${ key }=${ environment[key] ?? "" }`).join(" ") }
             ${ config.recipe }`,
-        detatch: true,
+        detatch: false,
         label: "docker"
     });
 

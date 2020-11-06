@@ -8,47 +8,95 @@ import { logger } from "@newsteam/legacy-cli-logger";
 const label = "open";
 
 
-export const openBrowserTask = async function(path: string, initialDelay = 0): Promise<void>{
+const testEndpoint = function(path: string): Promise<string | boolean>{
+
+    return new Promise((resolve) => {
+
+        request(path, (error): void => {
+
+            resolve(error ? false : path);
+
+        });
+
+    });
+
+};
+
+
+const testEndpoints = async function(paths: string[]): Promise<string[]>{
+
+    const tests = await Promise.all(paths.map((path) => testEndpoint(path)));
+
+    return tests.filter((test) => typeof test === "string") as string[];
+
+};
+
+
+export const openBrowserTask = async function(path: string, initialDelay = 0, prerequisites: string[] = []): Promise<void>{
 
     try{
 
         await new Promise((resolve): void => {
 
             const oneSecond = 1000;
+            const maxRetryTime = 10;
+            const completedPrerequisites: string[] = [];
 
             let attemptsBeforeRamping = 5;
             let rampingFactor = 1;
 
-            const test = (retry = 1): void => {
+            const test = async (retryTime = 1): Promise<void> => {
 
-                request(path, (error): void => {
+                const retry = retryTime < maxRetryTime ? retryTime : maxRetryTime;
 
-                    if(error){
+                const triggerRetry = function(): void{
 
-                        attemptsBeforeRamping -= 1;
+                    attemptsBeforeRamping -= 1;
 
-                        if(attemptsBeforeRamping <= 0){
+                    if(attemptsBeforeRamping <= 0){
 
-                            rampingFactor = 2;
+                        rampingFactor = 2;
 
-                            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- Unaviodable since type typing for "request" types error as any
-                            logger.log(error.message, { label });
+                        logger.log(`Opening ${ path } in your default browser: retry in ${ retry } ${ retry === 1 ? "second" : "seconds" }`, { label });
 
-                            logger.log(`Opening ${ path } in your default browser: retry in ${ retry } ${ retry === 1 ? "second" : "seconds" }`, { label });
+                    }
 
-                        }
+                    setTimeout((): void => {
 
-                        setTimeout((): void => test(retry * rampingFactor), retry * oneSecond);
+                        // eslint-disable-next-line @typescript-eslint/no-floating-promises -- this is chilled
+                        test(retry * rampingFactor);
 
-                    }else{
+                    }, (retry < maxRetryTime ? retry : maxRetryTime) * oneSecond);
+
+                };
+
+                const prerequisitesTests = await testEndpoints(prerequisites.filter((endpoint) => completedPrerequisites.indexOf(endpoint)));
+
+                prerequisitesTests.forEach((item) => {
+                    completedPrerequisites.push(item);
+                });
+
+                if(completedPrerequisites.length === prerequisites.length){
+
+                    const pathTest = await testEndpoint(path);
+
+                    if(typeof pathTest === "string"){
 
                         open(path);
 
                         resolve();
 
+                    }else{
+
+                        triggerRetry();
+
                     }
 
-                });
+                }else{
+
+                    triggerRetry();
+
+                }
 
             };
 
@@ -56,6 +104,7 @@ export const openBrowserTask = async function(path: string, initialDelay = 0): P
 
                 logger.log(`Opening ${ path } in your default browser`, { label });
 
+                // eslint-disable-next-line @typescript-eslint/no-floating-promises -- this is chilled
                 test();
 
             }, initialDelay);
