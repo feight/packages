@@ -4,10 +4,7 @@ import fs from "fs";
 import path from "path";
 
 import glob from "globby";
-import type {
-    Configuration,
-    Entry
-} from "webpack";
+import type { Configuration } from "webpack";
 
 
 type EntryObject = Record<string, string | [string, ...string[]]>;
@@ -127,12 +124,12 @@ export const entry = function(): Configuration{
                 /src\/publication\/custom\/(devices\/.*?)\/index.js$/gu
             ),
             ...jsEntrypoints(
-                "src/publication/base/pages/**/index.js",
-                /src\/publication\/base\/(.*?)\/index.js$/gu
-            ),
-            ...jsEntrypoints(
                 "src/publication/custom/pages/**/index.js",
                 /src\/publication\/custom\/(.*?)\/index.js$/gu
+            ),
+            ...jsEntrypoints(
+                "src/publication/base/pages/**/index.js",
+                /src\/publication\/base\/(.*?)\/index.js$/gu
             ),
             ...serviceWorkerEntryPoints(),
             ...assembleEntryPoints()

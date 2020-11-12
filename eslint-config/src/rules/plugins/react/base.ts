@@ -53,7 +53,14 @@ export default {
          *
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/forbid-component-props.md
          */
-        "react/forbid-component-props": "error",
+        "react/forbid-component-props": [
+            "error",
+            {
+                "forbid": [
+                    "style"
+                ]
+            }
+        ]
 
         /*
          * Forbid certain props on DOM Nodes
