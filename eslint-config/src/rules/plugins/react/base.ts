@@ -56,11 +56,11 @@ export default {
         "react/forbid-component-props": [
             "error",
             {
-                "forbid": [
+                forbid: [
                     "style"
                 ]
             }
-        ]
+        ],
 
         /*
          * Forbid certain props on DOM Nodes

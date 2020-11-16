@@ -18,8 +18,12 @@ import {
 import { getInstallMap } from "../install-map";
 
 
-process.on("unhandledRejection", (error: Error): void => console.error(error));
-process.on("uncaughtException", (error: Error): void => console.error(error));
+process.on("unhandledRejection", (error: Error): void => {
+    console.error(error);
+});
+process.on("uncaughtException", (error: Error): void => {
+    console.error(error);
+});
 
 
 const packageJsonRaw = fs.readFileSync(path.join(__dirname, "../../package.json"));

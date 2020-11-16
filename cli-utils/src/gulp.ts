@@ -29,13 +29,13 @@ export const skip = function(): stream.Transform{
     ): void{
 
         if(file.isNull()){
-            return done();
+            done(); return;
         }
 
         // eslint-disable-next-line @typescript-eslint/no-invalid-this -- Not invalid since that function is bound by the through library
         this.push(file);
 
-        return done();
+        done();
 
     });
 

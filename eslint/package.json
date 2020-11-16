@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/eslint",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Collection of eslint dependencies",
   "browserslist": "node 12",
   "engines": {
@@ -31,10 +31,10 @@
   "homepage": "https://github.com/feight/packages/tree/master/eslint#readme",
   "files": [],
   "dependencies": {
-    "@newsteam/eslint-config": "0.0.14",
-    "@typescript-eslint/eslint-plugin": "4.6.1",
-    "@typescript-eslint/parser": "4.6.1",
-    "eslint": "7.12.1",
+    "@newsteam/eslint-config": "0.0.15",
+    "@typescript-eslint/eslint-plugin": "4.7.0",
+    "@typescript-eslint/parser": "4.7.0",
+    "eslint": "7.13.0",
     "eslint-plugin-array-func": "3.1.7",
     "eslint-plugin-async-await": "0.0.0",
     "eslint-plugin-compat": "3.8.0",

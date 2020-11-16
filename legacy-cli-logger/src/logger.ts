@@ -288,7 +288,7 @@ export class Logger{
         ): void{
 
             if(file.isNull()){
-                return done();
+                done(); return;
             }
 
             log(`${ tag ? `${ tag } ` : "" }${ file.path }`, {
@@ -299,7 +299,7 @@ export class Logger{
             // eslint-disable-next-line @typescript-eslint/no-invalid-this -- Not invalid since that function is bound by the through library
             this.push(file);
 
-            return done();
+            done();
 
         });
 

@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/postcss-config",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Shared config for postcss",
   "main": "lib",
   "types": "lib",
@@ -42,11 +42,11 @@
     "lib"
   ],
   "dependencies": {
-    "@newsteam/jasmine": "0.0.12",
+    "@newsteam/jasmine": "0.0.13",
     "autoprefixer": "^9.8.6",
     "install": "^0.13.0",
     "npm": "^6.14.8",
-    "postcss": "8.1.4",
+    "postcss": "8.1.7",
     "postcss-calc": "7.0.5",
     "postcss-clean": "1.1.0",
     "postcss-colormin": "4.0.3",
@@ -71,10 +71,10 @@
     "postcss-reduce-transforms": "4.0.2"
   },
   "devDependencies": {
-    "@newsteam/babel": "0.0.13",
-    "@newsteam/eslint": "0.0.14",
+    "@newsteam/babel": "0.0.14",
+    "@newsteam/eslint": "0.0.15",
     "@types/autoprefixer": "9.7.2",
-    "@types/node": "14.14.6",
+    "@types/node": "14.14.7",
     "@types/postcss-calc": "7.0.0"
   }
 }

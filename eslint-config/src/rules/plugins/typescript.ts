@@ -383,6 +383,13 @@ const rules = {
     "@typescript-eslint/no-confusing-non-null-assertion": "error",
 
     /*
+     * Requires expressions of type void to appear in statement position
+     *
+     * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-confusing-void-expression.md
+     */
+    "@typescript-eslint/no-confusing-void-expression": "error",
+
+    /*
      * Disallow duplicate class members
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-dupe-class-members.md

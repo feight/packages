@@ -40,9 +40,9 @@
     "lib"
   ],
   "devDependencies": {
-    "@newsteam/babel": "0.0.13",
-    "@newsteam/eslint": "0.0.14",
-    "@newsteam/jasmine": "0.0.12",
+    "@newsteam/babel": "0.0.14",
+    "@newsteam/eslint": "0.0.15",
+    "@newsteam/jasmine": "0.0.13",
     "@newsteam/npm-install-local": "0.0.3"
   },
   "dependencies": {
