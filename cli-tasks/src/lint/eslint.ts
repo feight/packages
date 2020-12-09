@@ -71,7 +71,7 @@ export const eslintLintTask = async function(options: EslintLintTaskOptions): Pr
 
         bar.tick();
 
-        await new Promise((resolve) => {
+        await new Promise<void>((resolve) => {
 
             const errors: LintErrorData[] = [];
 

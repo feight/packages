@@ -358,6 +358,13 @@ export default {
         "no-new-wrappers": "error",
 
         /*
+         * Disallow \8 and \9 escape sequences in string literals (no-nonoctal-decimal-escape)
+         *
+         * https://eslint.org/docs/rules/no-nonoctal-decimal-escape
+         */
+        "no-nonoctal-decimal-escape": "error",
+
+        /*
          * Disallow octal literals
          *
          * https://eslint.org/docs/rules/no-octal
@@ -578,7 +585,12 @@ export default {
          *
          * https://eslint.org/docs/rules/no-void
          */
-        "no-void": "error",
+        "no-void": [
+            "error",
+            {
+                allowAsStatement: true
+            }
+        ],
 
         /*
          * Disallow specified warning terms in comments

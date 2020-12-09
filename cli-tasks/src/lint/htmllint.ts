@@ -575,7 +575,7 @@ export const htmllintLintTask = async function(options: HtmllintLintTaskOptions)
         bar.tick();
 
         // eslint-disable-next-line @typescript-eslint/no-misused-promises, no-async-promise-executor -- We'll let this slide since it's for automation
-        await Promise.all(files.map((file) => new Promise(async (resolve) => {
+        await Promise.all(files.map((file) => new Promise<void>(async (resolve) => {
 
             const html = fs.readFileSync(file, "utf8");
 

@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/babel",
-  "version": "0.0.14",
+  "version": "0.0.18",
   "description": "Collection of babel dependencies",
   "browserslist": "node 12",
   "engines": {
@@ -31,9 +31,9 @@
   "homepage": "https://github.com/feight/packages/tree/master/babel#readme",
   "files": [],
   "dependencies": {
-    "@babel/cli": "7.12.1",
-    "@babel/core": "7.12.3",
-    "@newsteam/babel-preset": "0.0.13",
+    "@babel/cli": "7.12.8",
+    "@babel/core": "7.12.9",
+    "@newsteam/babel-preset": "0.0.17",
     "renamer": "2.0.1"
   }
 }

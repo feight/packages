@@ -3,7 +3,7 @@
 /*
  *
  *
- * https://mysticatea.github.io/eslint-plugin-es/rules/#es2016
+ * https://eslint-plugin-es.mysticatea.dev/rules/#es2016
  */
 
 export default {
@@ -12,7 +12,7 @@ export default {
         /*
          * Disallow exponential operators.
          *
-         * https://mysticatea.github.io/eslint-plugin-es/rules/no-exponential-operators.html
+         * https://eslint-plugin-es.mysticatea.dev/rules/no-exponential-operators.html
          */
         "es/no-exponential-operators": "off"
 

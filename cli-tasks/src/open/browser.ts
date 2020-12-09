@@ -10,7 +10,7 @@ const label = "open";
 
 const testEndpoint = function(path: string): Promise<string | boolean>{
 
-    return new Promise((resolve) => {
+    return new Promise<string | boolean>((resolve) => {
 
         request(path, (error): void => {
 
@@ -36,7 +36,7 @@ export const openBrowserTask = async function(path: string, initialDelay = 0, pr
 
     try{
 
-        await new Promise((resolve): void => {
+        await new Promise<void>((resolve): void => {
 
             const oneSecond = 1000;
             const maxRetryTime = 10;

@@ -298,6 +298,13 @@ export default {
         "no-unsafe-negation": "error",
 
         /*
+         * Disallow use of optional chaining in contexts where the undefined value is not allowed
+         *
+         * https://eslint.org/docs/rules/no-unsafe-optional-chaining
+         */
+        "no-unsafe-optional-chaining": "error",
+
+        /*
          * Disallow useless backreferences in regular expressions
          *
          * https://eslint.org/docs/rules/no-useless-backreference

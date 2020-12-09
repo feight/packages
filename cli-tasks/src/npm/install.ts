@@ -66,7 +66,7 @@ export const npmInstallTask = async function(...manifests: string[]): Promise<vo
 
             }else{
 
-                await new Promise((resolve) => {
+                await new Promise<void>((resolve) => {
 
                     gulp.src([`./${ manifest }`])
                     .pipe(cache(

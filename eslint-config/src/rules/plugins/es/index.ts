@@ -3,7 +3,7 @@
 /*
  * ESLint rules which disallow each ECMAScript syntax.
  *
- * https://mysticatea.github.io/eslint-plugin-es/
+ * https://eslint-plugin-es.mysticatea.dev/
  */
 
 
@@ -15,7 +15,8 @@ export default {
         "./es2017",
         "./es2018",
         "./es2019",
-        "./es2020"
+        "./es2020",
+        "./es2021"
     ].map((string: string) => require.resolve(string)),
     plugins: ["es"]
 };

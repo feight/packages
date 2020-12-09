@@ -34,7 +34,7 @@ export const minifyHTMLTask = async function(options: MinifyHTMLTaskOptions): Pr
             total: files.length
         });
 
-        await new Promise((resolve) => {
+        await new Promise<void>((resolve) => {
 
             gulp.src(files, { base: options.source })
             .pipe(options.watch ? logger.gulp({

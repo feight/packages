@@ -67,7 +67,7 @@ export const stylelintLintTask = async function(options: StylelintLintTaskOption
         const errors: LintErrorData[] = [];
 
         // eslint-disable-next-line @typescript-eslint/no-misused-promises, no-async-promise-executor -- This is fine for automation
-        await Promise.all(files.map((file) => new Promise(async (resolve) => {
+        await Promise.all(files.map((file) => new Promise<void>(async (resolve) => {
 
             const report = await stylelint.lint({
                 cache: options.cache ?? true,

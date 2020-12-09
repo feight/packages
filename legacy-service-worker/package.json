@@ -41,13 +41,13 @@
   ],
   "devDependencies": {
     "@newsteam/npm-install-local": "0.0.3",
-    "@newsteam/babel": "0.0.14",
-    "@newsteam/eslint": "0.0.15",
-    "@newsteam/jasmine": "0.0.13",
-    "@types/node": "14.14.7",
+    "@newsteam/babel": "0.0.18",
+    "@newsteam/eslint": "0.0.20",
+    "@newsteam/jasmine": "0.0.17",
+    "@types/node": "14.14.11",
     "@types/workbox-sw": "4.3.1"
   },
   "dependencies": {
-    "workbox-sw": "5.1.4"
+    "workbox-sw": "6.0.2"
   }
 }

@@ -57,7 +57,7 @@ export const flake8LintTask = async function(options: Flake8LintTaskOptions): Pr
 
         const errors: LintErrorData[] = [];
 
-        await new Promise((resolve) => {
+        await new Promise<void>((resolve) => {
 
             gulp.src(files, { base: options.source })
             .pipe(options.watch ? logger.gulp({

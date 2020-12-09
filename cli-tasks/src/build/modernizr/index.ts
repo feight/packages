@@ -40,7 +40,7 @@ export const buildModernizrTask = async function(options: BuildModernizrTaskOpti
 
     await watch(options, async (): Promise<void> => {
 
-        await new Promise((resolve) => {
+        await new Promise<void>((resolve): void => {
 
             // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call -- These parens are necessary and the modernizr typing is broken so we need to treat it as any until that gets resolved
             (modernizr as any).build(config, async (result: string) => {

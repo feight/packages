@@ -13,6 +13,15 @@ import { idPattern } from "../../config";
 export default {
     rules: {
 
+        /*
+         * Specify a list of disallowed attribute names.
+         *
+         * https://stylelint.io/user-guide/rules/selector-attribute-name-disallowed-list/
+         */
+        "selector-attribute-name-disallowed-list": [
+            "class",
+            "id"
+        ],
 
         /*
          * Specify a allowed-list of allowed attribute operators.

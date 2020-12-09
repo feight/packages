@@ -36,6 +36,7 @@ export default {
             "error",
             "never",
             {
+                ".css": "always",
                 ".html": "always",
                 ".ico": "always",
                 ".jpeg": "always",

@@ -1,4 +1,14 @@
+/*
 
+    eslint
+
+    max-lines: "off",
+
+    --
+
+    Don't care that this file is so big
+
+*/
 
 import { noMagicNumbersConfig } from "../../settings";
 

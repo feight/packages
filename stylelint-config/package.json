@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/stylelint-config",
-  "version": "0.0.13",
+  "version": "0.0.16",
   "description": "Shared config for stylelint",
   "main": "lib",
   "types": "lib",
@@ -43,16 +43,16 @@
     "lib"
   ],
   "dependencies": {
-    "@newsteam/jasmine": "0.0.13"
+    "@newsteam/jasmine": "0.0.17"
   },
   "devDependencies": {
-    "@newsteam/babel": "0.0.14",
-    "@newsteam/eslint": "0.0.15",
-    "@types/node": "14.14.7",
-    "stylelint": "13.7.2",
+    "@newsteam/babel": "0.0.18",
+    "@newsteam/eslint": "0.0.20",
+    "@types/node": "14.14.11",
+    "stylelint": "13.8.0",
     "stylelint-a11y": "1.2.3",
     "stylelint-declaration-block-no-ignored-properties": "2.3.0",
-    "stylelint-declaration-strict-value": "1.6.1",
+    "stylelint-declaration-strict-value": "1.7.5",
     "stylelint-find-new-rules": "3.0.1",
     "stylelint-high-performance-animation": "1.5.2",
     "stylelint-no-unsupported-browser-features": "4.1.4",
@@ -62,10 +62,10 @@
     "stylelint-use-nesting": "3.0.0"
   },
   "peerDependencies": {
-    "stylelint": "13.7.2",
+    "stylelint": "13.8.0",
     "stylelint-a11y": "1.2.3",
     "stylelint-declaration-block-no-ignored-properties": "2.3.0",
-    "stylelint-declaration-strict-value": "1.6.1",
+    "stylelint-declaration-strict-value": "1.7.5",
     "stylelint-high-performance-animation": "1.5.2",
     "stylelint-no-unsupported-browser-features": "4.1.4",
     "stylelint-order": "4.1.0",

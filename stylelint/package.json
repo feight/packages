@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/stylelint",
-  "version": "0.0.13",
+  "version": "0.0.16",
   "description": "Collection of stylelint dependencies",
   "browserslist": "node 12",
   "engines": {
@@ -31,11 +31,11 @@
   "homepage": "https://github.com/feight/packages/tree/master/stylelint#readme",
   "files": [],
   "dependencies": {
-    "@newsteam/stylelint-config": "0.0.13",
-    "stylelint": "13.7.2",
+    "@newsteam/stylelint-config": "0.0.16",
+    "stylelint": "13.8.0",
     "stylelint-a11y": "1.2.3",
     "stylelint-declaration-block-no-ignored-properties": "2.3.0",
-    "stylelint-declaration-strict-value": "1.6.1",
+    "stylelint-declaration-strict-value": "1.7.5",
     "stylelint-high-performance-animation": "1.5.2",
     "stylelint-no-unsupported-browser-features": "4.1.4",
     "stylelint-order": "4.1.0",
