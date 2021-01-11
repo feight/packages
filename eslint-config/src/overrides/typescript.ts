@@ -9,6 +9,7 @@ export const typescriptOverrides = {
         "comma-dangle": 0,
         "default-param-last": 0,
         "dot-notation": 0,
+        indent: 0,
         "init-declarations": 0,
         "keyword-spacing": 0,
         "lines-between-class-members": 0,

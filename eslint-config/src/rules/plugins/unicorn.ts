@@ -31,6 +31,14 @@ export default {
         ],
 
         /*
+         * Use destructured variables over properties
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/consistent-destructuring.md
+         */
+
+        "unicorn/consistent-destructuring": "error",
+
+        /*
          * Move function definitions to the highest possible scope.
          *
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/consistent-function-scoping.md
@@ -43,6 +51,13 @@ export default {
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/custom-error-definition.md
          */
         "unicorn/custom-error-definition": "error",
+
+        /*
+         * Enforce no spaces between braces. (fixable)
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/empty-brace-spaces.md
+         */
+        "unicorn/empty-brace-spaces": "error",
 
         /*
          * Enforce passing a message value when throwing a built-in error.
@@ -115,11 +130,18 @@ export default {
         "unicorn/no-abusive-eslint-disable": "error",
 
         /*
-         * Require Array.isArray() instead of instanceof Array. (fixable)
+         * Prevent passing a function reference directly to iterator methods
          *
-         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-array-instanceof.md
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-array-callback-reference.md
          */
-        "unicorn/no-array-instanceof": "error",
+        "unicorn/no-array-callback-reference": "error",
+
+        /*
+         * Disallow Array#reduce() and Array#reduceRight()
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-array-reduce.md
+         */
+        "unicorn/no-array-reduce": "error",
 
         /*
          * Do not use leading/trailing space between console.log parameters. (fixable)
@@ -127,13 +149,6 @@ export default {
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-console-spaces.md
          */
         "unicorn/no-console-spaces": "error",
-
-        /*
-         * Prevents passing a function reference directly to iterator methods. (fixable)
-         *
-         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-fn-reference-in-iterator.md
-         */
-        "unicorn/no-fn-reference-in-iterator": "error",
 
         /*
          * Do not use a for loop that can be replaced with a for-of loop
@@ -150,6 +165,13 @@ export default {
         "unicorn/no-hex-escape": "error",
 
         /*
+         * Require Array.isArray() instead of instanceof Array
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-instanceof-array.md
+         */
+        "unicorn/no-instanceof-array": "error",
+
+        /*
          * Disallow identifiers starting with new or class
          *
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-keyword-prefix.md
@@ -157,11 +179,25 @@ export default {
         "unicorn/no-keyword-prefix": "off",
 
         /*
+         * Disallow if statements as the only statement in if blocks without else
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-lonely-if.md
+         */
+        "unicorn/no-lonely-if": "error",
+
+        /*
          * Disallow nested ternary expressions. (partly fixable)
          *
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-nested-ternary.md
          */
         "unicorn/no-nested-ternary": "error",
+
+        /*
+         * Disallow new Array()
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-new-array.md
+         */
+        "unicorn/no-new-array": "error",
 
         /*
          * Enforce the use of Buffer.from() and Buffer.alloc() instead of the deprecated new Buffer(). (fixable)
@@ -192,15 +228,6 @@ export default {
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-process-exit.md
          */
         "unicorn/no-process-exit": "off",
-
-        /*
-         * Disallow Array#reduce() and Array#reduceRight()
-         *
-         * Off because we like reduce
-         *
-         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-reduce.md
-         */
-        "unicorn/no-reduce": "off",
 
         /*
          * Disallow unreadable array destructuring.
@@ -270,25 +297,67 @@ export default {
         "unicorn/prefer-array-find": "error",
 
         /*
-         * Prefer using .dataset on DOM elements over .setAttribute(...). (fixable)
+         * Prefer .flatMap(…) over .map(…).flat()
          *
-         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-dataset.md
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-array-flat-map.md
          */
-        "unicorn/prefer-dataset": "error",
+        "unicorn/prefer-array-flat-map": "error",
 
         /*
-         * Prefer KeyboardEvent#key over KeyboardEvent#keyCode
+         * Prefer Array#indexOf() over Array#findIndex() when looking for the index of an item
          *
-         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-event-key.md
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-array-index-of.md
          */
-        "unicorn/prefer-event-key": "error",
+        "unicorn/prefer-array-index-of": "error",
 
         /*
-         * Prefer .flatMap(...) over .map(...).flat()
+         * Prefer .some(…) over .find(…).
          *
-         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-flat-map.md
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-array-some.md
          */
-        "unicorn/prefer-flat-map": "error",
+        "unicorn/prefer-array-some": "error",
+
+        /*
+         * Prefer Date.now() to get the number of milliseconds since the Unix Epoch
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-date-now.md
+         */
+        "unicorn/prefer-date-now": "error",
+
+        /*
+         * Prefer default parameters over reassignment
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-default-parameters.md
+         */
+        "unicorn/prefer-default-parameters": "error",
+
+        /*
+         * Prefer Node#append() over Node#appendChild()
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-dom-node-append.md
+         */
+        "unicorn/prefer-dom-node-append": "error",
+
+        /*
+         * Prefer using .dataset on DOM elements over .setAttribute(…)
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-dom-node-dataset.md
+         */
+        "unicorn/prefer-dom-node-dataset": "error",
+
+        /*
+         * Prefer childNode.remove() over parentNode.removeChild(childNode)
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-dom-node-remove.md
+         */
+        "unicorn/prefer-dom-node-remove": "error",
+
+        /*
+         * Prefer .textContent over .innerText
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-dom-node-text-content.md
+         */
+        "unicorn/prefer-dom-node-text-content": "error",
 
         /*
          * Prefer .includes() over .indexOf() when checking for existence or non-existence
@@ -296,6 +365,13 @@ export default {
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-includes.md
          */
         "unicorn/prefer-includes": "error",
+
+        /*
+         * Prefer KeyboardEvent#key over KeyboardEvent#keyCode
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-keyboard-event-key.md
+         */
+        "unicorn/prefer-keyboard-event-key": "error",
 
         /*
          * Enforce the use of Math.trunc instead of bitwise operators. (partly fixable)
@@ -317,20 +393,6 @@ export default {
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-negative-index.md
          */
         "unicorn/prefer-negative-index": "error",
-
-        /*
-         * Prefer append over appendChild. (fixable)
-         *
-         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-node-append.md
-         */
-        "unicorn/prefer-node-append": "error",
-
-        /*
-         * Prefer remove over parentNode.removeChild and parentElement.removeChild
-         *
-         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-node-remove.md
-         */
-        "unicorn/prefer-node-remove": "error",
 
         /*
          * Prefer Number static properties over global ones.
@@ -361,11 +423,11 @@ export default {
         "unicorn/prefer-reflect-apply": "error",
 
         /*
-         * Prefer Reflect.apply() over Function#apply(). (fixable)
+         * Prefer RegExp#test() over String#match() and RegExp#exec()
          *
-         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-reflect-apply.md
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-regexp-test.md
          */
-        "unicorn/prefer-replace-all": "error",
+        "unicorn/prefer-regexp-test": "error",
 
         /*
          * Prefer Set#has() over Array#includes() when checking for existence or non-existenc (fixable)
@@ -384,11 +446,11 @@ export default {
         "unicorn/prefer-spread": "error",
 
         /*
-         * Prefer String#startsWith & String#endsWith over more complex alternatives.
+         * Prefer String#replaceAll() over regex searches with the global flag
          *
-         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-starts-ends-with.md
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-string-replace-all.md
          */
-        "unicorn/prefer-starts-ends-with": "error",
+        "unicorn/prefer-string-replace-all": "error",
 
         /*
          * Prefer String#slice() over String#substr() and String#substring()
@@ -398,25 +460,25 @@ export default {
         "unicorn/prefer-string-slice": "error",
 
         /*
+         * Prefer String#startsWith() & String#endsWith() over more complex alternatives
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-string-starts-ends-with.md
+         */
+        "unicorn/prefer-string-starts-ends-with": "error",
+
+        /*
+         * Prefer String#trimStart() / String#trimEnd() over String#trimLeft() / String#trimRight()
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-string-trim-start-end.md
+         */
+        "unicorn/prefer-string-trim-start-end": "error",
+
+        /*
          * Prefer ternary expressions over simple if-else statements
          *
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-ternary.md
          */
         "unicorn/prefer-ternary": "error",
-
-        /*
-         * Prefer textContent over innerText
-         *
-         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-text-content.md
-         */
-        "unicorn/prefer-text-content": "error",
-
-        /*
-         * Prefer String#trimStart() / String#trimEnd() over String#trimLeft() / String#trimRight()
-         *
-         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-trim-start-end.md
-         */
-        "unicorn/prefer-trim-start-end": "error",
 
         /*
          * Enforce throwing TypeError in type checking conditions. (fixable)

@@ -77,7 +77,7 @@ export const flake8LintTask = async function(options: Flake8LintTaskOptions): Pr
 
                         if(errorsMap[error.filename] !== undefined){
 
-                            (errorsMap[error.filename] as LintErrorData["errors"]).push({
+                            errorsMap[error.filename]!.push({
                                 column: Number(error.column),
                                 file: error.filename,
                                 line: Number(error.row),
@@ -91,7 +91,7 @@ export const flake8LintTask = async function(options: Flake8LintTaskOptions): Pr
                     Object.keys(errorsMap).forEach((filename) => {
 
                         errors.push({
-                            errors: errorsMap[filename] as LintErrorData["errors"],
+                            errors: errorsMap[filename]!,
                             file: filename
                         });
 

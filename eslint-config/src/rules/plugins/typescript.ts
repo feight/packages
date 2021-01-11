@@ -10,7 +10,10 @@
 
 */
 
-import { noMagicNumbersConfig } from "../../settings";
+import {
+    indentSpaces,
+    noMagicNumbersConfig
+} from "../../settings";
 
 /*
  * Lint rules for the TypeScript language.
@@ -183,7 +186,14 @@ const rules = {
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/indent.md
      */
-    "@typescript-eslint/indent": "off",
+    "@typescript-eslint/indent": [
+        "error",
+        indentSpaces,
+        {
+            MemberExpression: 0,
+            SwitchCase: 1
+        }
+    ],
 
     /*
      * Require or disallow initialization in variable declarations
@@ -548,7 +558,12 @@ const rules = {
      */
     "@typescript-eslint/no-magic-numbers": [
         "error",
-        noMagicNumbersConfig
+        {
+            ...noMagicNumbersConfig,
+            ignoreEnums: true,
+            ignoreNumericLiteralTypes: true,
+            ignoreReadonlyClassProperties: true
+        }
     ],
 
     /*
@@ -582,9 +597,11 @@ const rules = {
     /*
      * Disallows non-null assertions using the ! postfix operator (no-non-null-assertion from TSLint)
      *
+     * We like this language feature
+     *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-non-null-assertion.md
      */
-    "@typescript-eslint/no-non-null-assertion": "error",
+    "@typescript-eslint/no-non-null-assertion": "off",
 
     /*
      * Disallow the use of parameter properties in class constructors. (no-parameter-properties from TSLint)
@@ -746,6 +763,13 @@ const rules = {
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-var-requires.md
      */
     "@typescript-eslint/no-var-requires": "error",
+
+    /*
+     * This rule detects when an as cast is doing the same job as a ! would, and suggests fixing the code to be an !.
+     *
+     * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/non-nullable-type-assertion-style.md
+     */
+    "@typescript-eslint/non-nullable-type-assertion-style": "error",
 
     /*
      * Prefer usage of as const over literal type
@@ -918,6 +942,13 @@ const rules = {
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/semi.md
      */
     "@typescript-eslint/semi": "error",
+
+    /*
+     * Enforces that members of a type union/intersection are sorted alphabetically
+     *
+     * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/sort-type-union-intersection-members.md
+     */
+    "@typescript-eslint/sort-type-union-intersection-members": "error",
 
     /*
      * Require or disallow a space before function parenthesis

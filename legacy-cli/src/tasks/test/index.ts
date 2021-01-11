@@ -110,7 +110,7 @@ const testErrors = async function(configs: TestTaskConfigurations): Promise<Test
 export const label = "test";
 
 
-export type TestTaskLintType = "eslint" | "stylelint" | "htmllint" | "flake8";
+export type TestTaskLintType = "eslint" | "flake8" | "htmllint" | "stylelint";
 
 
 export interface TestTaskOptions{

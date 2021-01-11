@@ -8,7 +8,8 @@
     "build": "bash ../build.sh",
     "npm-install-local": "npm-install-local",
     "prepublishOnly": "bash ../publish.sh",
-    "test": "bash ../test.sh"
+    "test": "bash ../test.sh",
+    "update": "rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install"
   },
   "engines": {
     "node": ">= 12"
@@ -40,13 +41,14 @@
     "lib"
   ],
   "devDependencies": {
-    "@newsteam/babel": "0.0.18",
-    "@newsteam/eslint": "0.0.20",
-    "@newsteam/jasmine": "0.0.17",
-    "@newsteam/npm-install-local": "0.0.3"
+    "@newsteam/babel": "0.0.23",
+    "@newsteam/eslint": "0.0.25",
+    "@newsteam/jasmine": "0.0.22",
+    "@newsteam/npm-install-local": "0.0.3",
+    "npm-check-updates": "^10.2.5"
   },
   "dependencies": {
     "@types/node-notifier": "8.0.0",
-    "node-notifier": "8.0.0"
+    "node-notifier": "9.0.0"
   }
 }

@@ -11,7 +11,8 @@
     "npm-install-local": "npm-install-local",
     "prepublishOnly": "bash ../publish.sh",
     "test": "bash ../test.sh",
-    "tsc": "tsc --emitDeclarationOnly"
+    "tsc": "tsc --emitDeclarationOnly",
+    "update": "rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install"
   },
   "browserslist": "node 12",
   "engines": {
@@ -42,7 +43,8 @@
     "@newsteam/eslint": "0.0.3",
     "@newsteam/jasmine": "0.0.2",
     "@newsteam/npm-install-local": "0.0.3",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "npm-check-updates": "^10.2.5"
   },
   "localDependencies": {}
 }

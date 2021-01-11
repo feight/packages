@@ -4,7 +4,7 @@ import { defaults } from "../defaults";
 
 
 export interface SettingsSchemaTests{
-    glob: string | string[];
+    glob: string[] | string;
     schema: string;
 }
 
@@ -13,7 +13,7 @@ export class NewsTeamSettingsPathsConfig{
 
     environments: string;
 
-    glob: string | string[];
+    glob: string[] | string;
 
     handlers: string;
 

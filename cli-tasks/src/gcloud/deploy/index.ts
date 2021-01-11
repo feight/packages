@@ -20,7 +20,7 @@ export interface GoogleCloudDeployTaskOptions{
     version?: string;
     project: string;
     promote?: boolean;
-    verbosity?: "debug" | "info" | "warning" | "error" | "critical" | "none";
+    verbosity?: "critical" | "debug" | "error" | "info" | "none" | "warning";
 }
 
 
@@ -29,7 +29,7 @@ export const googleCloudDeployTask = async function(
 ): Promise<void>{
 
     // eslint-disable-next-line @typescript-eslint/no-magic-numbers -- This magic number converts to seconds
-    const version = options.version ?? Math.round(new Date().getTime() / 1000);
+    const version = options.version ?? Math.round(Date.now() / 1000);
     const promote = !options.version;
 
     if(options.version && !Number.isNaN(Number(options.version))){

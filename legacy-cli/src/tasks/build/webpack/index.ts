@@ -145,7 +145,7 @@ export const buildWebpackTask = async function(options: BuildWebpackTaskOptions)
         ): (
             error?: Error,
             stats?: webpack.Stats
-        ) => void => (error, stats): void => {
+            ) => void => (error, stats): void => {
 
             if(error){
 

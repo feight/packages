@@ -22,7 +22,7 @@ const convert = {
 };
 
 
-export type AlternativesSchema = "alternatives" | AlternativesSchemaDefinition;
+export type AlternativesSchema = AlternativesSchemaDefinition | "alternatives";
 
 export interface AlternativesSchemaDefinition extends AnySchemaDefinition{
 

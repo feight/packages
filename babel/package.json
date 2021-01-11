@@ -1,7 +1,10 @@
 {
   "name": "@newsteam/babel",
-  "version": "0.0.18",
+  "version": "0.0.23",
   "description": "Collection of babel dependencies",
+  "scripts": {
+    "update": "rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install"
+  },
   "browserslist": "node 12",
   "engines": {
     "node": ">= 12"
@@ -31,9 +34,12 @@
   "homepage": "https://github.com/feight/packages/tree/master/babel#readme",
   "files": [],
   "dependencies": {
-    "@babel/cli": "7.12.8",
-    "@babel/core": "7.12.9",
-    "@newsteam/babel-preset": "0.0.17",
+    "@babel/cli": "7.12.10",
+    "@babel/core": "7.12.10",
+    "@newsteam/babel-preset": "0.0.23",
     "renamer": "2.0.1"
+  },
+  "devDependencies": {
+    "npm-check-updates": "^10.2.5"
   }
 }

@@ -60,7 +60,11 @@ export class Progress extends ProgressBar{
         ): void{
 
             if(file.isNull()){
-                done(); return;
+
+                done();
+
+                return;
+
             }
 
             tick(tokens);
@@ -79,6 +83,8 @@ export class Progress extends ProgressBar{
 
         if(typeof tokens === "object"){
 
+            // Replacing all object keys with inline formatted properties
+            // eslint-disable-next-line unicorn/no-array-reduce -- see above
             super.tick(Object.keys(tokens).reduce((accumulator, current) => {
 
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- It's not unsafe to check for truthyness

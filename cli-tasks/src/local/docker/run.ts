@@ -12,7 +12,7 @@ import { logger } from "@newsteam/legacy-cli-logger";
 const label = "docker";
 
 
-const normalizePorts = function(ports?: number | number[] | [number, number][]): [number, number][]{
+const normalizePorts = function(ports?: [number, number][] | number[] | number): [number, number][]{
 
     if(!ports){
 
@@ -36,7 +36,7 @@ const normalizePorts = function(ports?: number | number[] | [number, number][]):
 interface LocalDockerRunTaskConfig{
     environment?: Record<string, string | undefined>;
     network?: string;
-    port?: number | number[] | [number, number][];
+    port?: [number, number][] | number[] | number;
     name: string;
     recipe: string;
     volume: string;

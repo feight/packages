@@ -8,9 +8,9 @@ import { logger } from "@newsteam/legacy-cli-logger";
 const label = "open";
 
 
-const testEndpoint = function(path: string): Promise<string | boolean>{
+const testEndpoint = function(path: string): Promise<boolean | string>{
 
-    return new Promise<string | boolean>((resolve) => {
+    return new Promise<boolean | string>((resolve) => {
 
         request(path, (error): void => {
 

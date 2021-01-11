@@ -5,8 +5,8 @@ import chokidar from "chokidar";
 
 
 export interface WatchOptions{
-    glob: string | string[];
-    ignore?: string | string[];
+    glob: string[] | string;
+    ignore?: string[] | string;
     ignoreInitial?: boolean;
     watch?: boolean;
 }

@@ -29,7 +29,7 @@ const readYaml = function(file: string): AppYaml{
 
     }
 
-    return yaml.safeLoad(fs.readFileSync(file).toString()) as AppYaml;
+    return yaml.load(fs.readFileSync(file).toString()) as AppYaml;
 
 };
 
@@ -38,7 +38,7 @@ const readYaml = function(file: string): AppYaml{
 const writeYaml = function(file: string, data: any): void{
 
     fs.ensureDirSync(path.dirname(file));
-    fs.writeFileSync(file, yaml.safeDump(data, {
+    fs.writeFileSync(file, yaml.dump(data, {
         lineWidth: 2000
     }), "utf8");
 

@@ -1,7 +1,10 @@
 {
   "name": "@newsteam/jasmine",
-  "version": "0.0.17",
+  "version": "0.0.22",
   "description": "Collection of jasmine dependencies",
+  "scripts": {
+    "update": "rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install"
+  },
   "browserslist": "node 12",
   "engines": {
     "node": ">= 12"
@@ -34,5 +37,8 @@
     "@types/jasmine": "3.6.2",
     "jasmine": "3.6.3",
     "jasmine-console-reporter": "3.1.0"
+  },
+  "devDependencies": {
+    "npm-check-updates": "^10.2.5"
   }
 }

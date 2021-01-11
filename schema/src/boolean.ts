@@ -43,7 +43,7 @@ const convert = {
 };
 
 
-export type BooleanSchema = "boolean" | BooleanSchemaDefinition;
+export type BooleanSchema = BooleanSchemaDefinition | "boolean";
 
 export interface BooleanSchemaDefinition extends AnySchemaDefinition{
 
@@ -56,7 +56,7 @@ export interface BooleanSchemaDefinition extends AnySchemaDefinition{
      * them to false during validation. String comparisons are by default case insensitive,
      * see `boolean.sensitive` to change this behavior.
      */
-    falsy?: string | number | (string | number)[];
+    falsy?: (number | string)[] | number | string;
 
     /**
      * Allows the values provided to truthy and falsy as well as the "true" and
@@ -69,7 +69,7 @@ export interface BooleanSchemaDefinition extends AnySchemaDefinition{
      * them to true during validation. String comparisons are by default case
      * insensitive, see `boolean.sensitive()` to change this behavior.
      */
-    truthy?: string | number | (string | number)[];
+    truthy?: (number | string)[] | number | string;
 
 }
 

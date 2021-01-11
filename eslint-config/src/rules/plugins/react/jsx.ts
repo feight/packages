@@ -158,6 +158,15 @@ export default {
         "react/jsx-max-props-per-line": "off",
 
         /*
+         * Enforce a new line after jsx elements and expressions (fixable)
+         *
+         * This is off for now because it this would make too much empty space
+         *
+         * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-newline.md
+         */
+        "react/jsx-newline": "off",
+
+        /*
          * Prevent usage of .bind() and arrow functions in JSX props
          *
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md
@@ -170,6 +179,13 @@ export default {
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-comment-textnodes.md
          */
         "react/jsx-no-comment-textnodes": "error",
+
+        /*
+         * Prevent react contexts from taking non-stable values
+         *
+         * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-constructed-context-values.md
+         */
+        "react/jsx-no-constructed-context-values": "error",
 
         /*
          * Prevent duplicate props in JSX

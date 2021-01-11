@@ -36,12 +36,7 @@ export interface AssembleEnvironment{
 
 export interface AssembleEnvironments {
     default: Exclude<AssembleEnvironment,
-        "name" |
-        "id" |
-        "host" |
-        "backendHost" |
-        "instance" |
-        "search"
+    "backendHost" | "host" | "id" | "instance" | "name" | "search"
     >;
     [id: string]: AssembleEnvironment;
 }

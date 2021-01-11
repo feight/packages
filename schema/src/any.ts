@@ -80,9 +80,9 @@ const convert = {
 };
 
 
-export type PresenceMode = "optional" | "required" | "forbidden";
+export type PresenceMode = "forbidden" | "optional" | "required";
 
-export type AnySchema = "any" | AnySchemaDefinition;
+export type AnySchema = AnySchemaDefinition | "any";
 
 export interface AnySchemaDefinition{
 
@@ -90,15 +90,15 @@ export interface AnySchemaDefinition{
      * The schema type
      */
     type:
-        "alternatives" |
-        "any" |
-        "array" |
-        "binary" |
-        "boolean" |
-        "date" |
-        "number" |
-        "object" |
-        "string";
+    "alternatives" |
+    "any" |
+    "array" |
+    "binary" |
+    "boolean" |
+    "date" |
+    "number" |
+    "object" |
+    "string";
 
     /**
      * Whitelists a value
@@ -132,7 +132,7 @@ export interface AnySchemaDefinition{
      *  second parameter is required.
      */
     // eslint-disable-next-line @typescript-eslint/no-explicit-any -- This any type supports default values of any type
-    default?: any | Reference;
+    default?: Reference | any;
 
     /**
      * Annotates the schema
@@ -142,7 +142,7 @@ export interface AnySchemaDefinition{
     /**
      * Adds the provided values into the allowed whitelist and marks them as the only valid values allowed.
      */
-    equal?: string | string[];
+    equal?: string[] | string;
 
     /**
      * Considers anything that matches the schema to be empty (undefined).
@@ -200,7 +200,7 @@ export interface AnySchemaDefinition{
     /**
      * Annotates the key
      */
-    note?: string | string[];
+    note?: string[] | string;
 
     /**
      * Overrides the global validate() options for the current key and any sub-key.
@@ -225,7 +225,7 @@ export interface AnySchemaDefinition{
     /**
      * Annotates the key
      */
-    tag?: string | string[];
+    tag?: string[] | string;
 
     /**
      * Annotates the key with an unit name.
@@ -235,7 +235,7 @@ export interface AnySchemaDefinition{
     /**
      * Adds the provided values into the allowed whitelist and marks them as the only valid values allowed.
      */
-    valid?: string | string[];
+    valid?: string[] | string;
 
 }
 

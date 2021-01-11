@@ -26,7 +26,7 @@ export const spawn = function(options: {
     cwd?: string;
     command: string;
     environment?: string;
-    filter?: string | RegExp | (string | RegExp)[];
+    filter?: (RegExp | string)[] | RegExp | string;
     detatch?: boolean;
 }): Promise<string>{
 
@@ -38,7 +38,7 @@ export const spawn = function(options: {
         detatch = false
     } = options;
 
-    return new Promise((resolve: (string: string) => void, reject: (error: number | Error) => void): void => {
+    return new Promise((resolve: (string: string) => void, reject: (error: Error | number) => void): void => {
 
         if(command){
 

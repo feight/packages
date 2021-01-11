@@ -18,6 +18,8 @@ const resolvePath = function(filepath: string): string{
 
 export const resolveDependencyMapPaths = function(dependencies?: DependencyMap): DependencyMap{
 
+    // Replace all keys in the object with the resolved path
+    // eslint-disable-next-line unicorn/no-array-reduce -- see above
     return dependencies ? Object.keys(dependencies).reduce((accumulator, current) => {
 
         if(dependencies[current]){

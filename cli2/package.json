@@ -50,7 +50,8 @@
     "posttest": "eslint . --ext .ts --config .eslintrc",
     "prepack": "npm run build",
     "test": "echo NO TESTS",
-    "version": "oclif-dev readme && git add README.md"
+    "version": "oclif-dev readme && git add README.md",
+    "update": "rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install"
   },
   "types": "lib/index.d.ts"
 }

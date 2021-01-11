@@ -37,7 +37,7 @@ type Operator = string[] | {
 
 interface WithWithout{
     key: string;
-    peers: string | string[];
+    peers: string[] | string;
     separator?: Joi.HierarchySeparatorOptions["separator"];
 }
 
@@ -88,11 +88,11 @@ const bindOperator = function(
     schema: Joi.ObjectSchema,
     type: Operator,
     operator:
-        "and" |
-        "nand" |
-        "or" |
-        "oxor" |
-        "xor"
+    "and" |
+    "nand" |
+    "or" |
+    "oxor" |
+    "xor"
 ): Joi.ObjectSchema{
 
     const config = type;
@@ -114,8 +114,8 @@ const bindWithWithout = function(
     schema: Joi.ObjectSchema,
     type: WithWithout,
     operator:
-        "with" |
-        "without"
+    "with" |
+    "without"
 ): Joi.ObjectSchema{
 
     const key = type.key;
@@ -179,6 +179,8 @@ const getRenames = function(type: ObjectSchemaDefinition): Rename[]{
 
 const typeMapToJoi = function(map: SchemaMap): Joi.SchemaMap{
 
+    // Replace each key in the Object to the Joi equivalent
+    // eslint-disable-next-line unicorn/no-array-reduce -- see above
     return Object.keys(map).reduce((result: Joi.SchemaMap, key): Joi.SchemaMap => {
         // eslint-disable-next-line no-param-reassign -- Reassignment makes sense in this case
         result[key] = schemaLikeToJoi(map[key]);
@@ -310,7 +312,7 @@ const convert = {
 };
 
 
-export type ObjectSchema = "object" | ObjectSchemaDefinition;
+export type ObjectSchema = ObjectSchemaDefinition | "object";
 
 export interface ObjectSchemaDefinition extends AnySchemaDefinition{
 
@@ -337,7 +339,7 @@ export interface ObjectSchemaDefinition extends AnySchemaDefinition{
      * Verifies an assertion where.
      */
     assert?: {
-        reference: string | Reference;
+        reference: Reference | string;
         schema: SchemaLike;
         message?: string;
     };
@@ -374,12 +376,12 @@ export interface ObjectSchemaDefinition extends AnySchemaDefinition{
     /**
      * Specifies the maximum number of keys in the object.
      */
-    max?: number | Reference;
+    max?: Reference | number;
 
     /**
      * Specifies the minimum number of keys in the object.
      */
-    min?: number | Reference;
+    min?: Reference | number;
 
     /**
      * Defines a relationship between keys where not all peers can be present
@@ -416,7 +418,7 @@ export interface ObjectSchemaDefinition extends AnySchemaDefinition{
         schema: SchemaLike;
         options?: {
             fallthrough?: boolean;
-            matches: SchemaLike | Reference;
+            matches: Reference | SchemaLike;
         };
     };
 

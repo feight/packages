@@ -19,17 +19,17 @@ import { promises as fs } from "fs";
 
 export interface PackageJson extends Object {
 
-    readonly author?: string|Author;
+    readonly author?: Author | string;
 
-    readonly bin?: string|BinMap;
+    readonly bin?: BinMap | string;
 
-    readonly bugs?: string|Bugs;
+    readonly bugs?: Bugs | string;
 
     readonly bundledDependencies?: string[];
 
     readonly config?: Config;
 
-    readonly contributors?: string[]|Author[];
+    readonly contributors?: Author[] | string[];
 
     readonly cpu?: string[];
 
@@ -55,7 +55,7 @@ export interface PackageJson extends Object {
 
     readonly main?: string;
 
-    readonly man?: string|string[];
+    readonly man?: string[] | string;
 
     readonly name: string;
 
@@ -71,7 +71,7 @@ export interface PackageJson extends Object {
 
     readonly publishConfig?: PublishConfig;
 
-    readonly repository?: string|Repository;
+    readonly repository?: Repository | string;
 
     readonly scripts?: ScriptsMap;
 

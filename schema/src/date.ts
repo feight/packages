@@ -16,9 +16,9 @@ import {
 } from "./reference";
 
 
-type DateType = "now" | Date | number | string | Reference;
+type DateType = Date | Reference | number | string | "now";
 
-const formatDateType = function(date: DateType): "now" | Date | number | string | Joi.Reference{
+const formatDateType = function(date: DateType): Date | Joi.Reference | number | string | "now"{
 
     if(typeof date === "string" || typeof date === "number" || date instanceof Date){
 
@@ -52,7 +52,7 @@ const convert = {
 };
 
 
-export type DateSchema = "date" | DateSchemaDefinition;
+export type DateSchema = DateSchemaDefinition | "date";
 
 export interface DateSchemaDefinition extends AnySchemaDefinition{
 
@@ -101,7 +101,7 @@ export interface DateSchemaDefinition extends AnySchemaDefinition{
      * Requires the value to be a timestamp interval from Unix Time.
      * @default "javascript"
      */
-    timestamp?: true | "unix" | "javascript";
+    timestamp?: "javascript" | "unix" | true;
 
 }
 

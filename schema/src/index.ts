@@ -61,9 +61,9 @@ export interface ValidationResult<TValue>{
     value: TValue;
 }
 
-export type SchemaLike = string | number | boolean | Record<string, unknown> | null | Schema | Reference;
+export type SchemaLike = Record<string, unknown> | Reference | Schema | boolean | null | number | string;
 
-export type ValidationSchema = Schema | SchemaMap | Joi.Schema;
+export type ValidationSchema = Joi.Schema | Schema | SchemaMap;
 
 export const schemaToJoi = function(schema: Schema | SchemaMap): Joi.Schema{
 
@@ -134,7 +134,7 @@ export const schemaLikeToJoi = function(schemaLike: SchemaLike): Joi.SchemaLike{
         schemaLike !== null
     ){
 
-        const like = schemaLike as Schema | Reference;
+        const like = schemaLike as Reference | Schema;
 
         switch(typeof like === "string" ? like : like.type){
 

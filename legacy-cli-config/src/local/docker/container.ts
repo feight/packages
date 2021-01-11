@@ -9,7 +9,7 @@ export interface LocalDockerContainerConfig{
 
     name: string;
 
-    port: number | number[] | [number, number][];
+    port: [number, number][] | number[] | number;
 
     recipe: string;
 
@@ -56,7 +56,7 @@ export class NewsTeamLocalDockerContainerConfig{
         ],
         type: "alternatives"
     })
-    port: number | number[] | [number, number][];
+    port: [number, number][] | number[] | number;
 
     @validate({
         type: "string"

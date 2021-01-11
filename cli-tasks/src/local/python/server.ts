@@ -21,7 +21,7 @@ const output = (color?: string): (data: any) => void => (data: any): void => {
 
         const log = JSON.parse(string) as {
             message?: string;
-            level?: "warn" | "error";
+            level?: "error" | "warn";
         };
 
         if(log.message){
@@ -100,7 +100,7 @@ const output = (color?: string): (data: any) => void => (data: any): void => {
 };
 
 
-export type LocalPythonServerEnvironment = Record<string, string | boolean | number>;
+export type LocalPythonServerEnvironment = Record<string, boolean | number | string>;
 
 
 export interface LocalPythonVirtualenvTaskOptions{

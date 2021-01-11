@@ -156,7 +156,7 @@ export class Logger{
 
     }
 
-    error(error: string | Error | CLIError = "", options: { color?: string | true; label?: string } = {}): void{
+    error(error: CLIError | Error | string = "", options: { color?: string | true; label?: string } = {}): void{
 
         const {
             color = this.colors.error,
@@ -191,6 +191,7 @@ export class Logger{
 
                         if(column !== undefined && line !== undefined){
 
+                            // eslint-disable-next-line @typescript-eslint/no-confusing-void-expression -- Feel like this is a lint bug
                             const errorFrame = codeframe.get({
                                 column,
                                 file,
@@ -288,7 +289,11 @@ export class Logger{
         ): void{
 
             if(file.isNull()){
-                done(); return;
+
+                done();
+
+                return;
+
             }
 
             log(`${ tag ? `${ tag } ` : "" }${ file.path }`, {

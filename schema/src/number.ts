@@ -16,8 +16,8 @@ import {
 } from "./reference";
 
 
-const numberReferenceToJoi = function(number?: number | Reference): number | Joi.Reference{
-    return typeof number === "number" ? number : referenceToJoi(number as Reference);
+const numberReferenceToJoi = function(number: Reference | number): Joi.Reference | number{
+    return typeof number === "number" ? number : referenceToJoi(number);
 };
 
 const convert = {
@@ -60,7 +60,7 @@ const convert = {
 };
 
 
-export type NumberSchema = "number" | NumberSchemaDefinition;
+export type NumberSchema = NumberSchemaDefinition | "number";
 
 export interface NumberSchemaDefinition extends AnySchemaDefinition{
 
@@ -72,7 +72,7 @@ export interface NumberSchemaDefinition extends AnySchemaDefinition{
      * Specifies that the value must be greater than limit.
      * It can also be a reference to another field.
      */
-    greater?: number | Reference;
+    greater?: Reference | number;
 
     /**
      * Requires the number to be an integer (no floating point).
@@ -83,24 +83,24 @@ export interface NumberSchemaDefinition extends AnySchemaDefinition{
      * Specifies that the value must be less than limit.
      * It can also be a reference to another field.
      */
-    less?: number | Reference;
+    less?: Reference | number;
 
     /**
      * Specifies the maximum value.
      * It can also be a reference to another field.
      */
-    max?: number | Reference;
+    max?: Reference | number;
 
     /**
      * Specifies the minimum value.
      * It can also be a reference to another field.
      */
-    min?: number | Reference;
+    min?: Reference | number;
 
     /**
      * Specifies that the value must be a multiple of base.
      */
-    multiple?: number | Reference;
+    multiple?: Reference | number;
 
     /**
      * Requires the number to be negative.

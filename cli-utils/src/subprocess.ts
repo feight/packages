@@ -35,7 +35,7 @@ export const exec = function(options: {
     command: string;
     detatch?: boolean;
     dry?: boolean;
-    filter?: string | RegExp | (string | RegExp)[];
+    filter?: (RegExp | string)[] | RegExp | string;
     label?: string;
     environment?: Record<string, string | undefined>;
 }): Promise<string>{
@@ -107,7 +107,7 @@ export const exec = function(options: {
                     process.stdin.pipe(subprocess.stdin);
                 }
 
-                const piper = (std: "stdout" | "stderr"): void => {
+                const piper = (std: "stderr" | "stdout"): void => {
 
                     const proc = std === "stdout" ? subprocess.stdout : subprocess.stderr;
 
@@ -168,7 +168,7 @@ export const spawn = function(options: {
     cwd?: string;
     command: string;
     environment?: Record<string, string | undefined>;
-    filter?: string | RegExp | (string | RegExp)[];
+    filter?: (RegExp | string)[] | RegExp | string;
     detatch?: boolean;
     dry?: boolean;
     label?: string;
@@ -184,7 +184,7 @@ export const spawn = function(options: {
         label = "anonymous"
     } = options;
 
-    return new Promise((resolve: (string: string) => void, reject: (error: number | Error) => void): void => {
+    return new Promise((resolve: (string: string) => void, reject: (error: Error | number) => void): void => {
 
         if(command){
 

@@ -23,19 +23,15 @@ const getChoices = function(publicationRoots: Publication[]): PromptChoice<Publi
 
         const parent = pub.parent;
 
-        if(parent){
+        if(parent && (!lastParent || lastParent !== parent)){
 
-            if(!lastParent || lastParent !== parent){
+            choices.push({
+                separator: " "
+            });
 
-                choices.push({
-                    separator: " "
-                });
-
-                choices.push({
-                    separator: pub.parent
-                });
-
-            }
+            choices.push({
+                separator: pub.parent
+            });
 
         }
 

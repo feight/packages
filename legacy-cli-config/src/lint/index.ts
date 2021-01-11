@@ -31,7 +31,7 @@ export class NewsTeamLintConfig{
 
     }
 
-    glob(extensions: string | string[], all = false): GlobMapping{
+    glob(extensions: string[] | string, all = false): GlobMapping{
 
         const extensionArray = typeof extensions === "string" ? [extensions] : extensions;
         const extension = extensionArray.length === 1 ? extensionArray[0] : `{${ extensionArray.join(",") }}`;

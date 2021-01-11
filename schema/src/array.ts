@@ -132,7 +132,7 @@ const convert = {
 };
 
 
-export type ArraySchema = "array" | ArraySchemaDefinition;
+export type ArraySchema = ArraySchemaDefinition | "array";
 
 export interface ArraySchemaDefinition extends AnySchemaDefinition{
 
@@ -160,17 +160,17 @@ export interface ArraySchemaDefinition extends AnySchemaDefinition{
     /**
      * Specifies the exact number of items in the array.
      */
-    length?: number | Reference;
+    length?: Reference | number;
 
     /**
      * Specifies the maximum number of items in the array.
      */
-    max?: number | Reference;
+    max?: Reference | number;
 
     /**
      * Specifies the minimum number of items in the array.
      */
-    min?: number | Reference;
+    min?: Reference | number;
 
     /**
      * Lists the types in sequence order for the array values where:
@@ -196,7 +196,7 @@ export interface ArraySchemaDefinition extends AnySchemaDefinition{
          * @default "ascending"
          */
         order?: "ascending" | "descending";
-        by?: string | Reference;
+        by?: Reference | string;
     };
 
     /**
@@ -212,8 +212,8 @@ export interface ArraySchemaDefinition extends AnySchemaDefinition{
      * Be aware that a deep equality is performed on elements of the array having a type of object,
      * a performance penalty is to be expected for this kind of operation.
      */
-    unique?: true | string | {
-        comparator: string | Joi.ComparatorFunction;
+    unique?: string | true | {
+        comparator: Joi.ComparatorFunction | string;
         ignoreUndefined: Joi.ArrayUniqueOptions["ignoreUndefined"];
         separator: Joi.HierarchySeparatorOptions["separator"];
     };

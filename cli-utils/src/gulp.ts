@@ -29,7 +29,11 @@ export const skip = function(): stream.Transform{
     ): void{
 
         if(file.isNull()){
-            done(); return;
+
+            done();
+
+            return;
+
         }
 
         // eslint-disable-next-line @typescript-eslint/no-invalid-this -- Not invalid since that function is bound by the through library
@@ -43,14 +47,14 @@ export const skip = function(): stream.Transform{
 
 
 export const task = function(
-    function_: (
-        files: string | string[],
+    taskFunction: (
+        files: string[] | string,
         watch?: boolean
     ) => Promise<void>
 ): () => Promise<void>{
 
     return async function asyncLintTask(
-        paths: string | string[] = __filename,
+        paths: string[] | string = __filename,
         watch = false
     ): Promise<void>{
 
@@ -68,13 +72,13 @@ export const task = function(
             // eslint-disable-next-line @typescript-eslint/no-misused-promises -- Not sure wtf is wrong with this - but whatever
             }).on("change", async (file): Promise<void> => {
 
-                await function_(file, true);
+                await taskFunction(file, true);
 
             });
 
         }else{
 
-            await function_(paths);
+            await taskFunction(paths);
 
         }
 

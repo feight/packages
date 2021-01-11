@@ -8,7 +8,8 @@
     "build": "bash ../build.sh",
     "npm-install-local": "npm-install-local",
     "prepublishOnly": "bash ../publish.sh",
-    "test": "bash ../test.sh"
+    "test": "bash ../test.sh",
+    "update": "rm -rf node_modules && rm -f package-lock.json && ncu -u -x justify-text && npm install"
   },
   "engines": {
     "node": ">= 12"
@@ -55,14 +56,15 @@
     "vinyl": "2.2.1"
   },
   "devDependencies": {
+    "@newsteam/babel": "0.0.23",
+    "@newsteam/eslint": "0.0.25",
+    "@newsteam/jasmine": "0.0.22",
     "@newsteam/npm-install-local": "0.0.3",
-    "@newsteam/babel": "0.0.18",
-    "@newsteam/eslint": "0.0.20",
-    "@newsteam/jasmine": "0.0.17",
-    "@types/node": "14.14.11",
+    "@types/node": "14.14.20",
     "@types/strip-color": "0.1.0",
     "@types/through2": "2.0.36",
-    "@types/vinyl": "2.0.4"
+    "@types/vinyl": "2.0.4",
+    "npm-check-updates": "^10.2.5"
   },
   "localDependencies": {
     "@newsteam/legacy-cli-errors": "../legacy-cli-errors"

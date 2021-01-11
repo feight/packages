@@ -32,7 +32,7 @@ const convert = {
 };
 
 
-export type BinarySchema = "binary" | BinarySchemaDefinition;
+export type BinarySchema = BinarySchemaDefinition | "binary";
 
 export interface BinarySchemaDefinition extends AnySchemaDefinition{
 
@@ -48,17 +48,17 @@ export interface BinarySchemaDefinition extends AnySchemaDefinition{
     /**
      * Specifies the exact length of the buffer:
      */
-    length?: number | Reference;
+    length?: Reference | number;
 
     /**
      * Specifies the maximum length of the buffer.
      */
-    max?: number | Reference;
+    max?: Reference | number;
 
     /**
      * Specifies the minimum length of the buffer.
      */
-    min?: number | Reference;
+    min?: Reference | number;
 }
 
 export const binarySchemaToJoi = function(type: BinarySchema): Joi.AnySchema{

@@ -56,7 +56,7 @@ export const prompt = async function<PromptValue>(id: string, choices: PromptCho
             if(equal(item.value, value)){
 
                 choiceName = item.name ?? "";
-                choice = { [key]: item.value as PromptValue };
+                choice = { [key]: item.value! };
 
             }
 

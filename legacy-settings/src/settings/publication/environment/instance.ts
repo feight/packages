@@ -1,6 +1,6 @@
 
 
-export type AssemblePublicationEnvironmentInstanceClass = "F1" | "F2" | "F4" | "F4_1G" | "B1" | "B2" | "B4" | "B4_1G" | "B8";
+export type AssemblePublicationEnvironmentInstanceClass = "B1" | "B2" | "B4_1G" | "B4" | "B8" | "F1" | "F2" | "F4_1G" | "F4";
 
 
 export interface AssemblePublicationEnvironmentInstanceSettings{

@@ -58,7 +58,7 @@ const getDescendantProperty = function(object: any, desc: string): any{
     const array = desc.split(".");
 
     // eslint-disable-next-line no-param-reassign, no-empty, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment -- I'll be honest, I got this from stack overflow, lets just roll with it
-    while(array.length && (object = object[array.shift() || -1])){}
+    while(array.length > 0 && (object = object[array.shift() || -1])){}
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- Can be any object
     return object;
@@ -120,12 +120,8 @@ const commonality = function(shared: Record<string, any>, publicationData: Publi
 
             }
 
-            if(isEqual(getDescendantProperty(shared, key), getDescendantProperty(test.json, key))){
-
-                if(!preEqual){
-                    response.shared.push([key, test.file]);
-                }
-
+            if(isEqual(getDescendantProperty(shared, key), getDescendantProperty(test.json, key)) && !preEqual){
+                response.shared.push([key, test.file]);
             }
 
         });

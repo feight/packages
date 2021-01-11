@@ -79,7 +79,7 @@ export interface HTMLLintOptions{
          * names used by Angular and other templating methods can be done with
          * the regex {{.*?}}.
          */
-        "attr-name-ignore-regex": string | RegExp | boolean;
+        "attr-name-ignore-regex": RegExp | boolean | string;
 
         /*
          * Default: "dash"
@@ -133,7 +133,7 @@ export interface HTMLLintOptions{
          * values '' and ""). To catch attributes with no values, use
          * attr-req-value.
          */
-        "attr-quote-style": "double" | "single" | "quoted" | false;
+        "attr-quote-style": "double" | "quoted" | "single" | false;
 
         /*
          * If set, attribute values cannot be empty. This does not disallow the
@@ -184,7 +184,7 @@ export interface HTMLLintOptions{
          * "smart": If a head tag is present in the document, then the doctype must come first.
          * false: No restriction.
          */
-        "doctype-first": "smart" | boolean;
+        "doctype-first": boolean | "smart";
 
         /*
          * Default: false
@@ -289,7 +289,7 @@ export interface HTMLLintOptions{
          * but value may be null (equal to "").
          * false: No restriction.
          */
-        "img-req-alt": "allownull" | boolean;
+        "img-req-alt": boolean | "allownull";
 
         /*
          * If set, a source must be given for each img tag.
@@ -312,7 +312,7 @@ export interface HTMLLintOptions{
          * "nonmixed": Either tabs or spaces may be used, but not both in the same file.
          * false: No restriction.
          */
-        "indent-style": "tabs" | "spaces" | "nomixed" | false;
+        "indent-style": "nomixed" | "spaces" | "tabs" | false;
 
         /*
          * Default: 4
@@ -381,7 +381,7 @@ export interface HTMLLintOptions{
          * equal to "case", the tag must be capitalized conventionally (with the
          * language code lowercase and the country code uppercase).
          */
-        "lang-style": "case" | boolean;
+        "lang-style": boolean | "case";
 
         /*
          * Default: "lf"
@@ -393,7 +393,7 @@ export interface HTMLLintOptions{
          * "cr": Ending in CR.
          * false: No restriction.
          */
-        "line-end-style": "lf" | "crlf" | "cr" | false;
+        "line-end-style": "cr" | "crlf" | "lf" | false;
 
         /*
          * Default: false
@@ -411,7 +411,7 @@ export interface HTMLLintOptions{
          * for the line-length rule. For example, lines with long href attributes
          * can be excluded with regex href.
          */
-        "line-max-len-ignore-regex": string | RegExp | false;
+        "line-max-len-ignore-regex": RegExp | string | false;
 
         /*
          * If set, lines may not end with whitespace characters.

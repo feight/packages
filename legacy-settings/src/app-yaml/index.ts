@@ -14,9 +14,9 @@
 */
 
 
-export type InstanceClass = "F1" | "F2" | "F4" | "F4_1G B1" | "B2" | "B4" | "B4_1G" | "B8";
+export type InstanceClass = "B2" | "B4_1G" | "B4" | "B8" | "F1" | "F2" | "F4_1G B1" | "F4";
 
-export type Runtime = "python27" | "python37" | "nodejs10" | "nodejs12";
+export type Runtime = "nodejs10" | "nodejs12" | "python27" | "python37";
 
 
 export interface Handler{
@@ -24,7 +24,7 @@ export interface Handler{
     http_headers: Record<string, string>;
     mime_type: string;
     redirect_http_response_code: number;
-    secure: "optional" | "never" | "always";
+    secure: "always" | "never" | "optional";
     script: string;
     static_dir: string;
     static_files: string;

@@ -6,8 +6,8 @@ import { defaults } from "../defaults";
 
 
 export interface GlobMapping{
-    glob: string | string[];
-    ignore?: string | string[];
+    glob: string[] | string;
+    ignore?: string[] | string;
 }
 
 export interface ModernizrPaths extends GlobMapping{

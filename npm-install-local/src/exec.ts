@@ -9,7 +9,7 @@ export const exec = function(options: {
     cwd?: string;
     command: string;
     detatch?: boolean;
-    filter?: string | RegExp | (string | RegExp)[];
+    filter?: (RegExp | string)[] | RegExp | string;
     label?: string;
 }): Promise<string>{
 
@@ -58,7 +58,7 @@ export const exec = function(options: {
                 process.stdin.pipe(subprocess.stdin);
             }
 
-            const piper = (std: "stdout" | "stderr"): void => {
+            const piper = (std: "stderr" | "stdout"): void => {
 
                 const proc = std === "stdout" ? subprocess.stdout : subprocess.stderr;
 

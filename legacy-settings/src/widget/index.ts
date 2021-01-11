@@ -15,7 +15,7 @@ export type AssembleWidgetFloatDefaults = "left" | "right";
 
 
 export interface AssembleWidgetSettings{
-    category: string | string[];
+    category: string[] | string;
     controls: AssembleWidgetControl[];
     defaults?: {
         float?: AssembleWidgetFloatDefaults;
@@ -25,10 +25,10 @@ export interface AssembleWidgetSettings{
         auto?: boolean;
         background?: string;
         customClose?: true;
-        height?: "auto" | number;
+        height?: number | "auto";
         loader?: string;
         shield?: "light";
-        width?: "auto" | number;
+        width?: number | "auto";
     };
     disabled?: boolean;
     documentWrite?: true;

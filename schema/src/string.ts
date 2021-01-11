@@ -150,7 +150,7 @@ const convert = {
 };
 
 
-export type StringSchema = "string" | StringSchemaDefinition;
+export type StringSchema = StringSchemaDefinition | "string";
 
 export type TopLevelDomainOptions = false | {
 
@@ -214,7 +214,7 @@ export interface StringSchemaDefinition extends AnySchemaDefinition{
     /**
      * Sets the required string case.
      */
-    case?: "upper" | "lower";
+    case?: "lower" | "upper";
 
     /**
      * Requires the number to be a credit card number (Using Luhn Algorithm).
@@ -287,7 +287,7 @@ export interface StringSchemaDefinition extends AnySchemaDefinition{
          *
          * @default ','
          */
-        separator?: string | string[];
+        separator?: string[] | string;
 
         /**
          * Options for TLD (top level domain) validation. By default, the TLD
@@ -313,7 +313,7 @@ export interface StringSchemaDefinition extends AnySchemaDefinition{
      * the version or variant of the guid and just check for general structure
      * format.
      */
-    guid?: boolean | GuidVersions | GuidVersions[];
+    guid?: GuidVersions | GuidVersions[] | boolean;
 
     /**
      * Requires the string value to be a valid hexadecimal string.
@@ -373,7 +373,7 @@ export interface StringSchemaDefinition extends AnySchemaDefinition{
         /**
          * The required string length. It can also be a reference to another field.
          */
-        limit: number | Reference;
+        limit: Reference | number;
 
         /**
          * If specified, the string length is calculated in bytes using the provided encoding.
@@ -394,7 +394,7 @@ export interface StringSchemaDefinition extends AnySchemaDefinition{
         /**
          * The maximum number of string characters allowed. It can also be a reference to another field.
          */
-        limit: number | Reference;
+        limit: Reference | number;
 
         /**
          * If specified, the string length is calculated in bytes using the provided encoding.
@@ -410,7 +410,7 @@ export interface StringSchemaDefinition extends AnySchemaDefinition{
         /**
          * The minimum number of string characters allowed. It can also be a reference to another field.
          */
-        limit: number | Reference;
+        limit: Reference | number;
 
         /**
          * If specified, the string length is calculated in bytes using the provided encoding.
@@ -424,7 +424,7 @@ export interface StringSchemaDefinition extends AnySchemaDefinition{
      * normalized. The unicode normalization form to use. Valid values:
      * NFC [default], NFD, NFKC, NFKD
      */
-    normalize?: true | "NFC" | "NFD" | "NFKC" | "NFKD";
+    normalize?: "NFC" | "NFD" | "NFKC" | "NFKD" | true;
 
     /**
      * Defines a regular expression rule.
@@ -514,7 +514,7 @@ export interface StringSchemaDefinition extends AnySchemaDefinition{
     /**
      * Requires the string value to be a valid RFC 3986 URI.
      */
-    uri?: true | Joi.UriOptions;
+    uri?: Joi.UriOptions | true;
 
     /**
      * Requires the string value to be a valid GUID.
@@ -523,7 +523,7 @@ export interface StringSchemaDefinition extends AnySchemaDefinition{
      * the version or variant of the guid and just check for general structure
      * format.
      */
-    uuid?: boolean | GuidVersions | GuidVersions[];
+    uuid?: GuidVersions | GuidVersions[] | boolean;
 }
 
 export const stringSchemaToJoi = function(type: StringSchema): Joi.AnySchema{

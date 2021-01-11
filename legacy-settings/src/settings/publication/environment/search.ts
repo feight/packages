@@ -1,6 +1,6 @@
 
 
-export type AssemblePublicationEnvironmentSearchFunctionalScore = "on" | "off";
+export type AssemblePublicationEnvironmentSearchFunctionalScore = "off" | "on";
 
 
 export type AssemblePublicationEnvironmentSearchPlugin = "cosmos.api.search2.plugins.elastic";
