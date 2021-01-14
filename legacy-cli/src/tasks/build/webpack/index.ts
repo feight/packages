@@ -211,6 +211,8 @@ export const buildWebpackTask = async function(options: BuildWebpackTaskOptions)
             },
             (error, stats): void => {
 
+                console.log(["x"]);
+
                 if(lastHash !== stats?.hash){
 
                     output(`Built ${ path.resolve(config) }`)(error, stats);
