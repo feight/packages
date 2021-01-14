@@ -56,7 +56,7 @@
     "@types/to-snake-case": "1.0.0",
     "@types/yargs": "15.0.12",
     "npm-check-updates": "^10.2.5",
-    "webpack": "^5.12.3"
+    "webpack": "^5.14.0"
   },
   "localDependencies": {
     "@newsteam/cli-tasks": "../cli-tasks",
