@@ -11,7 +11,7 @@
     "prepublishOnly": "bash ../publish.sh",
     "test": "bash ../test.sh",
     "tsc": "tsc --emitDeclarationOnly",
-    "update": "rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install"
+    "update": "ncu -u"
   },
   "browserslist": "node 12",
   "engines": {

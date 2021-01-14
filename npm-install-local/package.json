@@ -9,7 +9,7 @@
     "build": "bash ../build.sh",
     "prepublishOnly": "bash ../publish.sh",
     "test": "bash ../test.sh",
-    "update": "rm -rf node_modules && rm -f package-lock.json && ncu -u && npm install"
+    "update": "ncu -u"
   },
   "bin": {
     "npm-install-local": "./lib/cli/index.js"
