@@ -13,6 +13,7 @@ const webpackFunctionRegex = /\{\{\s*?webpack\(['"](.*?)['"],\s*?['"](.*?\.js)['
 
 const jsEntrypoints = function(globPath: string, regex: RegExp): EntryObject{
 
+    // eslint-disable-next-line unicorn/no-array-reduce -- replace all items in globPath with relative reference
     return glob.sync(globPath).reduce((result: EntryObject, item: string) => ({
         ...result,
         [item.replace(regex, "$1")]: `./${ item }`

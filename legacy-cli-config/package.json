@@ -34,6 +34,8 @@
     "lib"
   ],
   "dependencies": {
+    "@newsteam/cli-tasks": "0.0.1",
+    "@newsteam/schema": "0.0.2",
     "@types/html-minifier": "^4.0.0",
     "deepmerge": "^4.2.2",
     "fs-extra": "^9.0.1",
@@ -57,9 +59,5 @@
     "@types/yargs": "15.0.12",
     "npm-check-updates": "^10.2.5",
     "webpack": "^5.14.0"
-  },
-  "localDependencies": {
-    "@newsteam/cli-tasks": "../cli-tasks",
-    "@newsteam/schema": "../schema"
   }
 }

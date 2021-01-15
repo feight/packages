@@ -44,7 +44,7 @@
     "@newsteam/babel": "0.0.23",
     "@newsteam/eslint": "0.0.25",
     "@newsteam/jasmine": "0.0.22",
-    "@newsteam/npm-install-local": "0.0.3",
+    "@newsteam/npm-install-local": "0.0.4",
     "@types/fs-extra": "9.0.6",
     "@types/sass": "1.16.0",
     "npm-check-updates": "^10.2.5"
@@ -54,6 +54,8 @@
     "@babel/plugin-transform-react-jsx": "7.12.12",
     "@babel/preset-env": "7.12.11",
     "@newsteam/babel-preset": "0.0.23",
+    "@newsteam/legacy-cli-config": "0.0.1",
+    "@newsteam/legacy-cli-logger": "0.0.1",
     "@newsteam/postcss-config": "0.0.23",
     "assets-webpack-plugin": "7.0.0",
     "babel-loader": "8.2.2",
@@ -85,9 +87,5 @@
     "terser-webpack-plugin": "5.1.1",
     "webpack": "5.14.0",
     "webpack-bundle-analyzer": "4.3.0"
-  },
-  "localDependencies": {
-    "@newsteam/legacy-cli-config": "../legacy-cli-config",
-    "@newsteam/legacy-cli-logger": "../legacy-cli-logger"
   }
 }

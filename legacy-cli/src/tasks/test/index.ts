@@ -37,8 +37,8 @@ const lintErrors = async function(configs: TestTaskConfigurations, fix: boolean,
                 ...configs.eslintLintTask,
                 fix
             });
-        }catch(error){
-            errors.push(error);
+        }catch(error: unknown){
+            errors.push(error as TestError);
         }
 
     }
@@ -50,8 +50,8 @@ const lintErrors = async function(configs: TestTaskConfigurations, fix: boolean,
                 ...configs.htmllintLintTask,
                 fix
             });
-        }catch(error){
-            errors.push(error);
+        }catch(error: unknown){
+            errors.push(error as TestError);
         }
 
     }
@@ -63,8 +63,8 @@ const lintErrors = async function(configs: TestTaskConfigurations, fix: boolean,
                 ...configs.stylelintLintTask,
                 fix
             });
-        }catch(error){
-            errors.push(error);
+        }catch(error: unknown){
+            errors.push(error as TestError);
         }
 
     }
@@ -76,8 +76,8 @@ const lintErrors = async function(configs: TestTaskConfigurations, fix: boolean,
                 ...configs.flake8LintTask,
                 fix
             });
-        }catch(error){
-            errors.push(error);
+        }catch(error: unknown){
+            errors.push(error as TestError);
         }
 
     }
@@ -92,14 +92,14 @@ const testErrors = async function(configs: TestTaskConfigurations): Promise<Test
 
     try{
         await testSettingsTask({ ...configs.testSettingsTask });
-    }catch(error){
-        errors.push(error);
+    }catch(error: unknown){
+        errors.push(error as TestError);
     }
 
     try{
         await testSharedSettingsTask();
-    }catch(error){
-        errors.push(error);
+    }catch(error: unknown){
+        errors.push(error as TestError);
     }
 
     return errors;

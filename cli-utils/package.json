@@ -41,6 +41,7 @@
     "lib"
   ],
   "dependencies": {
+    "@newsteam/legacy-cli-logger": "0.0.1",
     "chokidar": "3.5.0",
     "deep-equal": "2.0.5",
     "fs-extra": "9.0.1",
@@ -55,18 +56,15 @@
     "@newsteam/babel": "0.0.23",
     "@newsteam/eslint": "0.0.25",
     "@newsteam/jasmine": "0.0.22",
-    "@newsteam/npm-install-local": "0.0.3",
+    "@newsteam/npm-install-local": "0.0.4",
     "@types/chokidar": "2.1.3",
     "@types/deep-equal": "1.0.1",
     "@types/fs-extra": "9.0.6",
     "@types/gulp-watch": "4.1.34",
     "@types/inquirer": "7.3.1",
-    "@types/node": "14.14.20",
+    "@types/node": "14.14.21",
     "@types/through2": "2.0.36",
     "@types/vinyl": "2.0.4",
     "npm-check-updates": "^10.2.5"
-  },
-  "localDependencies": {
-    "@newsteam/legacy-cli-logger": "../legacy-cli-logger"
   }
 }

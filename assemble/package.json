@@ -45,6 +45,5 @@
     "@newsteam/npm-install-local": "0.0.3",
     "express": "^4.17.1",
     "npm-check-updates": "^10.2.5"
-  },
-  "localDependencies": {}
+  }
 }

@@ -44,6 +44,7 @@ export const localDockerMachineTask = async function(config?: LocalDockerMachine
     .filter((line) => line.startsWith("export "))
     .map((line) => line.replace(/^export /gu, ""))
     .map((line) => line.split("="))
+    // eslint-disable-next-line unicorn/no-array-reduce -- correct choice in this case
     .reduce<Record<string, string | undefined>>((accumulator, current) => {
 
         const [key, value] = current;

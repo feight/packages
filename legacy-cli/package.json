@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/legacy-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Newsteam command line tools",
   "main": "lib",
   "types": "lib",
@@ -37,8 +37,18 @@
     "lib"
   ],
   "dependencies": {
+    "@newsteam/cli-notify": "0.0.1",
+    "@newsteam/cli-tasks": "0.0.1",
+    "@newsteam/cli-utils": "0.0.1",
+    "@newsteam/legacy-cli-config": "0.0.1",
+    "@newsteam/legacy-cli-errors": "0.0.1",
+    "@newsteam/legacy-cli-logger": "0.0.1",
+    "@newsteam/legacy-service-worker": "0.0.1",
+    "@newsteam/legacy-settings": "0.0.2",
+    "@newsteam/legacy-webpack-config": "0.0.2",
+    "@newsteam/schema": "0.0.2",
     "asciichart": "1.5.25",
-    "commander": "6.2.1",
+    "commander": "7.0.0",
     "core-js": "3.8.2",
     "fs-extra": "9.0.1",
     "glob-promise": "3.4.0",
@@ -56,26 +66,14 @@
   "devDependencies": {
     "@newsteam/babel": "0.0.23",
     "@newsteam/jasmine": "0.0.22",
-    "@newsteam/npm-install-local": "0.0.3",
+    "@newsteam/npm-install-local": "0.0.4",
     "@types/asciichart": "1.5.4",
     "@types/fs-extra": "9.0.6",
     "@types/gulp": "4.0.8",
     "@types/js-yaml": "4.0.0",
     "@types/jsonschema": "1.1.1",
-    "@types/node": "14.14.20",
+    "@types/node": "14.14.21",
     "@types/to-snake-case": "1.0.0",
     "npm-check-updates": "^10.2.5"
-  },
-  "localDependencies": {
-    "@newsteam/legacy-cli-config": "../legacy-cli-config",
-    "@newsteam/legacy-webpack-config": "../legacy-webpack-config",
-    "@newsteam/legacy-service-worker": "../legacy-service-worker",
-    "@newsteam/legacy-settings": "../legacy-settings",
-    "@newsteam/legacy-cli-errors": "../legacy-cli-errors",
-    "@newsteam/legacy-cli-logger": "../legacy-cli-logger",
-    "@newsteam/cli-notify": "../cli-notify",
-    "@newsteam/cli-tasks": "../cli-tasks",
-    "@newsteam/cli-utils": "../cli-utils",
-    "@newsteam/schema": "../schema"
   }
 }

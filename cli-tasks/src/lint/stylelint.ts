@@ -2,6 +2,7 @@
 
 import path from "path";
 
+// eslint-disable-next-line node/no-extraneous-import -- this isn't extraneous, it's a dependency of @newsteam/stylelint
 import stylelint from "stylelint";
 import type vinyl from "vinyl";
 import { logger } from "@newsteam/legacy-cli-logger";
