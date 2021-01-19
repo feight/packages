@@ -14,26 +14,6 @@ export const scripts = function(
 ): RuleSetRule[]{
 
     return [
-        // Tinymce imports provider
-        /*
-         * {
-         *  test: /tinymce5\/(themes|plugins|icons)\//u,
-         *  use: [
-         *      {
-         *          loader: "imports-loader",
-         *          options: {
-         *              imports: [
-         *                  {
-         *                      moduleName: "tinymce5/tinymce",
-         *                      name: "tinymce",
-         *                      syntax: "default"
-         *                  }
-         *              ]
-         *          }
-         *      }
-         *  ]
-         *},
-         */
         // Modernizr integration
         {
             loader: "modernizr-loader",
@@ -69,7 +49,7 @@ export const scripts = function(
             test: /\.tsx?$/u,
             use: [
                 cacheLoader(),
-                babelLoader(config, false)
+                babelLoader(config)
             ]
         }
     ];

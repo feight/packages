@@ -50,16 +50,28 @@ export const plugins = function(
 
     if(options.progress){
 
+        let lastPercentage: number | undefined = undefined;
+
         webpackPlugins.push(new webpack.ProgressPlugin({
             activeModules: false,
+            dependencies: true,
+            dependenciesCount: 10_000,
             entries: true,
             handler: (percentage: number): void => {
 
-                bar.update(percentage);
+                if(lastPercentage !== percentage){
+
+                    bar.update(percentage);
+
+                }
+
+                lastPercentage = percentage;
 
             },
             modules: true,
-            modulesCount: 10_000
+            modulesCount: 5000,
+            percentBy: undefined,
+            profile: false
         }));
 
     }
