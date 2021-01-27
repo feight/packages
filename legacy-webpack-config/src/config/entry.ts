@@ -99,23 +99,12 @@ const serviceWorkerEntryPoints = function(): EntryObject{
 };
 
 
-const assembleEntryPoints = function(): EntryObject{
-
-    // The default service worker if the client doesn't specifcy one
-    return {
-        assemble: "assemble/index.ts"
-    };
-
-};
-
 /*
  * The entrypoint for the application.
  *
  * https://webpack.js.org/concepts/entry-points/
  */
 export const entry = function(): Configuration{
-
-    // Const serviceWorker = path.join(process.cwd(), "node_modules/.cache");
 
     return {
         entry: {
@@ -133,7 +122,8 @@ export const entry = function(): Configuration{
                 /src\/publication\/base\/(.*?)\/index.js$/gu
             ),
             ...serviceWorkerEntryPoints(),
-            ...assembleEntryPoints()
+            assemble: "assemble/index.ts",
+            styleGuide: "style-guide/index.ts"
         }
     };
 

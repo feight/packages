@@ -71,7 +71,7 @@ export const flake8LintTask = async function(options: Flake8LintTaskOptions): Pr
 
                     const errorsMap: Record<string, LintErrorData["errors"] | undefined> = {};
 
-                    response.flake8.errorList.forEach((error) => {
+                    for(const error of response.flake8.errorList){
 
                         errorsMap[error.filename] = errorsMap[error.filename] ?? [];
 
@@ -86,16 +86,16 @@ export const flake8LintTask = async function(options: Flake8LintTaskOptions): Pr
 
                         }
 
-                    });
+                    }
 
-                    Object.keys(errorsMap).forEach((filename) => {
+                    for(const filename of Object.keys(errorsMap)){
 
                         errors.push({
                             errors: errorsMap[filename]!,
                             file: filename
                         });
 
-                    });
+                    }
 
                 }
 

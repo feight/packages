@@ -28,6 +28,21 @@ export const localJavaSetupTask = async function(): Promise<void>{
     }catch{
 
         await spawn({
+            command: "brew tap homebrew/cask-versions",
+            label: "setup"
+        });
+
+        await spawn({
+            command: "brew update",
+            label: "setup"
+        });
+
+        await spawn({
+            command: "brew tap caskroom/cask",
+            label: "setup"
+        });
+
+        await spawn({
             command: "brew cask install java",
             label: "setup"
         });
@@ -35,7 +50,7 @@ export const localJavaSetupTask = async function(): Promise<void>{
     }
 
     const info = await exec({
-        command: "brew cask info java",
+        command: "brew info java --cask",
         detatch: true
     });
 

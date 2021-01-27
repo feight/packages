@@ -72,9 +72,9 @@ export const openBrowserTask = async function(path: string, initialDelay = 0, pr
 
                 const prerequisitesTests = await testEndpoints(prerequisites.filter((endpoint) => completedPrerequisites.indexOf(endpoint)));
 
-                prerequisitesTests.forEach((item) => {
+                for(const item of prerequisitesTests){
                     completedPrerequisites.push(item);
-                });
+                }
 
                 if(completedPrerequisites.length === prerequisites.length){
 

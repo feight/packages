@@ -46,21 +46,23 @@ export const npmInstallTask = async function(...manifests: string[]): Promise<vo
 
                 const localInstallMap = await getInstallMap();
 
-                const dependencies = localInstallMap.pipeline.install.concat(localInstallMap.pipeline.update);
+                const dependencies = [
+                    ...localInstallMap.pipeline.install,
+                    ...localInstallMap.pipeline.update
+                ];
 
                 if(dependencies.length > 0){
 
-                    warnings.push(`local dependencies out of date in ${ path.resolve(manifest) } `);
-                    warnings.push("");
+                    warnings.push(`local dependencies out of date in ${ path.resolve(manifest) } `, "");
 
-                    dependencies.forEach((dependency) => {
+                    // eslint-disable-next-line max-depth -- I'll allow this for now
+                    for(const dependency of dependencies){
 
                         warnings.push(logger.colorizeText(`  ${ dependency.packageName }`, "#ffa500"));
 
-                    });
+                    }
 
-                    warnings.push("");
-                    warnings.push(`to update run ${ logger.colorizeText("npm run npm-install-local", "#0f0") }`);
+                    warnings.push("", `to update run ${ logger.colorizeText("npm run npm-install-local", "#0f0") }`);
 
                 }
 
@@ -102,17 +104,17 @@ export const npmInstallTask = async function(...manifests: string[]): Promise<vo
 
     }
 
-    errors.forEach((error) => {
+    for(const error of errors){
 
         logger.error(error, { label });
 
-    });
+    }
 
-    warnings.forEach((warning) => {
+    for(const warning of warnings){
 
         logger.log(warning, { label });
 
-    });
+    }
 
 };
 

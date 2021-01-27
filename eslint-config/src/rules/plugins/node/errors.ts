@@ -12,6 +12,8 @@ const resolvePaths = [process.cwd()];
 const tryExtensions = [
     ".js",
     ".jsx",
+    ".md",
+    ".mdx",
     ".mjs",
     ".json",
     ".ts",

@@ -37,8 +37,17 @@ export default {
             "error",
             "never",
             {
+                css: "always",
+                html: "always",
+                ico: "always",
+                jpeg: "always",
+                jpg: "always",
                 json: "always",
-                scss: "always"
+                md: "always",
+                mdx: "always",
+                png: "always",
+                scss: "always",
+                svg: "always"
             }
         ],
 

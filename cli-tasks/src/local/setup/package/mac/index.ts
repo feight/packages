@@ -1,5 +1,7 @@
 
 
+import { logger } from "@newsteam/legacy-cli-logger";
+
 import {
     brewFormulae,
     localBrewSetupTask,
@@ -31,6 +33,8 @@ export const localPackageSetupTaskMac = async function(packages: Package[]): Pro
 
     */
     for(const pack of packages){
+
+        logger.log(`Installing brew package ${ pack }`, { label: "setup" });
 
         if(brewFormulae.includes(pack as typeof brewFormulae[number])){
 

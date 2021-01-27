@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/legacy-cli",
-  "version": "0.0.3",
+  "version": "0.0.9",
   "description": "Newsteam command line tools",
   "main": "lib",
   "types": "lib",
@@ -38,19 +38,19 @@
   ],
   "dependencies": {
     "@newsteam/cli-notify": "0.0.1",
-    "@newsteam/cli-tasks": "0.0.1",
+    "@newsteam/cli-tasks": "0.0.6",
     "@newsteam/cli-utils": "0.0.1",
     "@newsteam/legacy-cli-config": "0.0.1",
     "@newsteam/legacy-cli-errors": "0.0.1",
     "@newsteam/legacy-cli-logger": "0.0.1",
     "@newsteam/legacy-service-worker": "0.0.1",
     "@newsteam/legacy-settings": "0.0.2",
-    "@newsteam/legacy-webpack-config": "0.0.3",
+    "@newsteam/legacy-webpack-config": "0.0.5",
     "@newsteam/schema": "0.0.2",
     "asciichart": "1.5.25",
     "commander": "7.0.0",
-    "core-js": "3.8.2",
-    "fs-extra": "9.0.1",
+    "core-js": "3.8.3",
+    "fs-extra": "9.1.0",
     "glob-promise": "3.4.0",
     "globby": "11.0.2",
     "gulp": "4.0.2",
@@ -58,10 +58,10 @@
     "js-yaml": "4.0.0",
     "jsonschema": "1.4.0",
     "regenerator-runtime": "0.13.7",
-    "speed-measure-webpack-plugin": "1.3.3",
+    "speed-measure-webpack-plugin": "1.4.2",
     "to-snake-case": "1.0.0",
     "ts-node": "9.1.1",
-    "webpack": "5.14.0"
+    "webpack": "^5.18.0"
   },
   "devDependencies": {
     "@newsteam/babel": "0.0.23",
@@ -72,8 +72,8 @@
     "@types/gulp": "4.0.8",
     "@types/js-yaml": "4.0.0",
     "@types/jsonschema": "1.1.1",
-    "@types/node": "14.14.21",
+    "@types/node": "14.14.22",
     "@types/to-snake-case": "1.0.0",
-    "npm-check-updates": "^10.2.5"
+    "npm-check-updates": "^11.1.1"
   }
 }

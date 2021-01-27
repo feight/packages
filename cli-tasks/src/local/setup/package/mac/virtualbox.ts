@@ -13,7 +13,7 @@ export const localVirtualboxSetupTask = async function(): Promise<void>{
 
         // Check if virtualbox is installed
         await spawn({
-            command: "brew cask info virtualbox",
+            command: "brew info virtualbox --cask",
             detatch: true
         });
 

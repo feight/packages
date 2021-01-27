@@ -51,9 +51,7 @@ const output = (color?: string): (data: any) => void => (data: any): void => {
 
         if(string){
 
-            String(string)
-            .replace(/\n$/gu, "").split("\n")
-            .forEach((line: string) => {
+            for(const line of String(string).replace(/\n$/gu, "").split("\n")){
 
                 // eslint-disable-next-line security/detect-unsafe-regex, max-len -- not sure why this isn't safe, anyway it's just for local
                 const re = /(?<ip>\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}).*\[(?<date>.*?)\s(?<time>.*?)\]\s"(?<method>[A-Z]*?)\s(?<path>.*?)\sHTTP\/(?<http>.*?)"\s(?<code>\d{1,3}).*/gu;
@@ -91,7 +89,7 @@ const output = (color?: string): (data: any) => void => (data: any): void => {
 
                 }
 
-            });
+            }
 
         }
 

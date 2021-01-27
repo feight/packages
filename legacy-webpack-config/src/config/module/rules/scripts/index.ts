@@ -19,6 +19,17 @@ export const scripts = function(
             loader: "modernizr-loader",
             test: /\.modernizrrc.js$/u
         },
+        // .mdx script extension
+        {
+            test: /\.mdx?$/u,
+            use: [
+                cacheLoader(),
+                babelLoader(config),
+                {
+                    loader: "@mdx-js/loader"
+                }
+            ]
+        },
         // .mjs script extension
         {
             test: /\.mjs$/u,

@@ -5,8 +5,12 @@
  *  project root.
  */
 
-
+import type { Configuration } from "webpack";
 import { config as configuration } from "@newsteam/legacy-webpack-config";
+import type {
+    Args,
+    Environment
+} from "@newsteam/legacy-webpack-config";
 
 
-export const config = configuration();
+export const config = configuration() as (environment?: Environment | undefined, args?: Args | undefined) => Configuration;

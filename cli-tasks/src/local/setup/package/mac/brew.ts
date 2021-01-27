@@ -100,7 +100,7 @@ export type BrewInfoJson = {
 export const localBrewPackageSetupTask = async function(formula: BrewFormula): Promise<void>{
 
     const list = await exec({
-        command: "brew list",
+        command: "brew list --formula",
         detatch: true
     });
 

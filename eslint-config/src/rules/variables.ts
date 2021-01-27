@@ -42,8 +42,9 @@ export default {
         "no-restricted-globals": [
             "error",
             "isFinite",
-            "isNaN"
-        ].concat(confusingBrowserGlobals),
+            "isNaN",
+            ...confusingBrowserGlobals
+        ],
 
         /*
          * Disallow variable declarations from shadowing variables declared in

@@ -772,6 +772,16 @@ const rules = {
     "@typescript-eslint/non-nullable-type-assertion-style": "error",
 
     /*
+     * Enforce consistent spacing inside braces
+     *
+     * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/object-curly-spacing.md
+     */
+    "@typescript-eslint/object-curly-spacing": [
+        "error",
+        "always"
+    ],
+
+    /*
      * Prefer usage of as const over literal type
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/prefer-as-const.md

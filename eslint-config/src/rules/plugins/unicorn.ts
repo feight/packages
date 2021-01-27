@@ -137,6 +137,20 @@ export default {
         "unicorn/no-array-callback-reference": "error",
 
         /*
+         * Prefer for...of over Array#forEach(...)
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-array-for-each.md
+         */
+        "unicorn/no-array-for-each": "error",
+
+        /*
+         * Enforce combining multiple Array#push() into one call
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-array-push-push.md
+         */
+        "unicorn/no-array-push-push": "error",
+
+        /*
          * Disallow Array#reduce() and Array#reduceRight()
          *
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-array-reduce.md
@@ -230,6 +244,13 @@ export default {
         "unicorn/no-process-exit": "off",
 
         /*
+         * Disallow assigning this to a variable
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-this-assignment.md
+         */
+        "unicorn/no-this-assignment": "error",
+
+        /*
          * Disallow unreadable array destructuring.
          *
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-unreadable-array-destructuring.md
@@ -297,7 +318,7 @@ export default {
         "unicorn/prefer-array-find": "error",
 
         /*
-         * Prefer .flatMap(…) over .map(…).flat()
+         * Prefer .flatMap(...) over .map(...).flat()
          *
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-array-flat-map.md
          */
@@ -311,7 +332,7 @@ export default {
         "unicorn/prefer-array-index-of": "error",
 
         /*
-         * Prefer .some(…) over .find(…).
+         * Prefer .some(...) over .find(...).
          *
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-array-some.md
          */
@@ -339,7 +360,7 @@ export default {
         "unicorn/prefer-dom-node-append": "error",
 
         /*
-         * Prefer using .dataset on DOM elements over .setAttribute(…)
+         * Prefer using .dataset on DOM elements over .setAttribute(...)
          *
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-dom-node-dataset.md
          */

@@ -42,6 +42,8 @@ export default {
                 ".jpeg": "always",
                 ".jpg": "always",
                 ".json": "always",
+                ".md": "always",
+                ".mdx": "always",
                 ".png": "always",
                 ".scss": "always",
                 ".svg": "always",

@@ -34,6 +34,8 @@ export const resolve = function(
                 ".mjs",
                 ".js",
                 ".jsx",
+                ".md",
+                ".mdx",
                 ".scss",
                 ".css",
                 ".html",
