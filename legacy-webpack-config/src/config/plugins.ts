@@ -48,7 +48,7 @@ export const plugins = function(
         })
     ];
 
-    if(options.progress){
+    if(!options.watch && options.progress){
 
         let lastPercentage: number | undefined = undefined;
 

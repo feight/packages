@@ -33,7 +33,7 @@ const htmlEntrypoints = function(): EntryObject{
      *
      * {{ webpack("entry-id, "src/script.js")|safe }}
      */
-    glob.sync("src/publication/{base,custom,shared}/**/*.html").forEach((htmlFile) => {
+    for(const htmlFile of glob.sync("src/publication/{base,custom,shared}/**/*.html")){
 
         const html = fs.readFileSync(htmlFile).toString();
 
@@ -67,7 +67,7 @@ const htmlEntrypoints = function(): EntryObject{
 
         matcher(webpackFunctionRegex.exec(html));
 
-    });
+    }
 
     return entries;
 

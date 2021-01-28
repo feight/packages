@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/babel",
-  "version": "0.0.23",
+  "version": "0.0.24",
   "description": "Collection of babel dependencies",
   "scripts": {
     "update": "ncu -u"
@@ -36,10 +36,10 @@
   "dependencies": {
     "@babel/cli": "7.12.10",
     "@babel/core": "7.12.10",
-    "@newsteam/babel-preset": "0.0.23",
+    "@newsteam/babel-preset": "0.0.24",
     "renamer": "2.0.1"
   },
   "devDependencies": {
-    "npm-check-updates": "^10.2.5"
+    "npm-check-updates": "^11.1.1"
   }
 }

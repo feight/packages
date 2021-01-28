@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/jasmine",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "description": "Collection of jasmine dependencies",
   "scripts": {
     "update": "ncu -u"
@@ -34,11 +34,11 @@
   "homepage": "https://github.com/feight/packages/tree/master/jasmine#readme",
   "files": [],
   "dependencies": {
-    "@types/jasmine": "3.6.2",
-    "jasmine": "3.6.3",
+    "@types/jasmine": "3.6.3",
+    "jasmine": "3.6.4",
     "jasmine-console-reporter": "3.1.0"
   },
   "devDependencies": {
-    "npm-check-updates": "^10.2.5"
+    "npm-check-updates": "^11.1.1"
   }
 }

@@ -2,12 +2,10 @@
 
 import autoprefixer from "autoprefixer";
 import postcssCalc from "postcss-calc";
-import postcssClean from "postcss-clean";
 import postcssColormin from "postcss-colormin";
 import postcssDiscardComments from "postcss-discard-comments";
 import postcssDiscardDuplicates from "postcss-discard-duplicates";
 import postcssDiscardEmpty from "postcss-discard-empty";
-import postcssFontSmoothing from "postcss-font-smoothing";
 import postcssFontVariant from "postcss-font-variant";
 import postcssImageSetPolyfill from "postcss-image-set-polyfill";
 import postcssMergeLonghand from "postcss-merge-longhand";
@@ -30,12 +28,10 @@ const plugins: Transformer[] = [
         flexbox: "no-2009"
     }) as unknown as Transformer,
     postcssCalc as unknown as Transformer,
-    postcssClean,
     postcssColormin,
     postcssDiscardComments,
     postcssDiscardDuplicates,
     postcssDiscardEmpty,
-    postcssFontSmoothing,
     postcssFontVariant,
     postcssImageSetPolyfill,
     postcssMergeLonghand,
