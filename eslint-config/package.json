@@ -50,13 +50,13 @@
     "confusing-browser-globals": "1.0.10"
   },
   "devDependencies": {
-    "@newsteam/babel": "0.0.23",
-    "@newsteam/jasmine": "0.0.22",
+    "@newsteam/babel": "0.0.24",
+    "@newsteam/jasmine": "0.0.23",
     "@types/eslint": "7.2.6",
     "@types/node": "14.14.22",
     "@typescript-eslint/eslint-plugin": "4.14.1",
     "@typescript-eslint/parser": "4.14.1",
-    "eslint": "7.18.0",
+    "eslint": "7.19.0",
     "eslint-find-rules": "3.6.1",
     "eslint-plugin-array-func": "3.1.7",
     "eslint-plugin-async-await": "0.0.0",
@@ -92,7 +92,7 @@
   "peerDependencies": {
     "@typescript-eslint/eslint-plugin": "4.14.1",
     "@typescript-eslint/parser": "4.14.1",
-    "eslint": "7.18.0",
+    "eslint": "7.19.0",
     "eslint-plugin-array-func": "3.1.7",
     "eslint-plugin-async-await": "0.0.0",
     "eslint-plugin-css-modules": "2.11.0",

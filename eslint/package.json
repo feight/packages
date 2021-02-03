@@ -37,7 +37,7 @@
     "@newsteam/eslint-config": "0.0.26",
     "@typescript-eslint/eslint-plugin": "4.14.1",
     "@typescript-eslint/parser": "4.14.1",
-    "eslint": "7.18.0",
+    "eslint": "7.19.0",
     "eslint-plugin-array-func": "3.1.7",
     "eslint-plugin-async-await": "0.0.0",
     "eslint-plugin-compat": "3.9.0",

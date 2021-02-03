@@ -35,7 +35,7 @@
   "files": [],
   "dependencies": {
     "@newsteam/stylelint-config": "0.0.21",
-    "stylelint": "13.8.0",
+    "stylelint": "13.9.0",
     "stylelint-a11y": "1.2.3",
     "stylelint-declaration-block-no-ignored-properties": "2.3.0",
     "stylelint-declaration-strict-value": "1.7.7",
@@ -47,6 +47,6 @@
     "stylelint-use-nesting": "3.0.0"
   },
   "devDependencies": {
-    "npm-check-updates": "^10.2.5"
+    "npm-check-updates": "^11.1.1"
   }
 }

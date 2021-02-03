@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/legacy-cli",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Newsteam command line tools",
   "main": "lib",
   "types": "lib",
@@ -45,13 +45,13 @@
     "@newsteam/legacy-cli-logger": "0.0.1",
     "@newsteam/legacy-service-worker": "0.0.1",
     "@newsteam/legacy-settings": "0.0.2",
-    "@newsteam/legacy-webpack-config": "0.0.6",
+    "@newsteam/legacy-webpack-config": "0.0.7",
     "@newsteam/schema": "0.0.2",
     "asciichart": "1.5.25",
     "commander": "7.0.0",
     "core-js": "3.8.3",
     "fs-extra": "9.1.0",
-    "glob-promise": "3.4.0",
+    "glob-promise": "4.0.1",
     "globby": "11.0.2",
     "gulp": "4.0.2",
     "is-equal": "1.6.1",
@@ -61,11 +61,11 @@
     "speed-measure-webpack-plugin": "1.4.2",
     "to-snake-case": "1.0.0",
     "ts-node": "9.1.1",
-    "webpack": "^5.18.0"
+    "webpack": "^5.20.0"
   },
   "devDependencies": {
-    "@newsteam/babel": "0.0.23",
-    "@newsteam/jasmine": "0.0.22",
+    "@newsteam/babel": "0.0.24",
+    "@newsteam/jasmine": "0.0.23",
     "@newsteam/npm-install-local": "0.0.4",
     "@types/asciichart": "1.5.4",
     "@types/fs-extra": "9.0.6",

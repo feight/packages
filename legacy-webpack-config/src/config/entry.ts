@@ -110,20 +110,20 @@ export const entry = function(): Configuration{
         entry: {
             ...htmlEntrypoints(),
             ...jsEntrypoints(
-                "src/publication/custom/devices/*/pages/**/index.js",
-                /src\/publication\/custom\/(devices\/.*?)\/index.js$/gu
+                "src/publication/custom/devices/*/pages/**/index.+(js|jsx|ts|tsx)",
+                /src\/publication\/custom\/(devices\/.*?)\/index.(js|jsx|ts|tsx)$/gu
             ),
             ...jsEntrypoints(
-                "src/publication/custom/pages/**/index.js",
-                /src\/publication\/custom\/(.*?)\/index.js$/gu
+                "src/publication/custom/pages/**/index.+(js|jsx|ts|tsx)",
+                /src\/publication\/custom\/(.*?)\/index.(js|jsx|ts|tsx)$/gu
             ),
             ...jsEntrypoints(
-                "src/publication/base/pages/**/index.js",
-                /src\/publication\/base\/(.*?)\/index.js$/gu
+                "src/publication/base/pages/**/index.+(js|jsx|ts|tsx)",
+                /src\/publication\/base\/(.*?)\/index.(js|jsx|ts|tsx)$/gu
             ),
             ...serviceWorkerEntryPoints(),
-            assemble: "assemble/index.ts",
-            styleGuide: "style-guide/index.ts"
+            assemble: "assemble/index",
+            styleGuide: "style-guide/index"
         }
     };
 
