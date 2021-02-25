@@ -46,6 +46,9 @@ export const resolve = function(
                 ".otf",
                 ".eot"
             ],
+            fallback: {
+                path: require.resolve("path-browserify")
+            },
             mainFields: [
                 "browser",
                 "module",
