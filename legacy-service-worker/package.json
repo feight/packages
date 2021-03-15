@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/legacy-service-worker",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Exports a ServiceWorker class that can be used to automatically configure a server worker for the Assemble framework.",
   "main": "lib",
   "types": "lib",

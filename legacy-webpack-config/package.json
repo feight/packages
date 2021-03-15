@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/legacy-webpack-config",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Webpack configuration for the assemble framework.",
   "main": "lib",
   "types": "lib",
@@ -44,7 +44,7 @@
     "@newsteam/babel": "0.0.25",
     "@newsteam/eslint": "0.0.30",
     "@newsteam/jasmine": "0.0.24",
-    "@newsteam/npm-install-local": "0.0.4",
+    "@newsteam/npm-install-local": "0.0.5",
     "@types/fs-extra": "9.0.8",
     "@types/sass": "1.16.0",
     "npm-check-updates": "^11.3.0"
@@ -55,8 +55,8 @@
     "@babel/preset-env": "7.13.10",
     "@mdx-js/loader": "^1.6.22",
     "@newsteam/babel-preset": "0.0.25",
-    "@newsteam/legacy-cli-config": "0.0.1",
-    "@newsteam/legacy-cli-logger": "0.0.1",
+    "@newsteam/legacy-cli-config": "0.0.2",
+    "@newsteam/legacy-cli-logger": "0.0.3",
     "@newsteam/postcss-config": "0.0.25",
     "assets-webpack-plugin": "7.0.0",
     "babel-loader": "8.2.2",

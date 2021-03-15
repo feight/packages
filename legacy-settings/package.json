@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/legacy-settings",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Assemble framework settings.",
   "main": "lib",
   "types": "lib",

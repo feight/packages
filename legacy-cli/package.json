@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/legacy-cli",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "Newsteam command line tools",
   "main": "lib",
   "types": "lib",
@@ -14,7 +14,7 @@
     "update": "ncu -u"
   },
   "bin": {
-    "newsteam": "./lib/cli/index.js"
+    "newsteam": "lib/cli/index.js"
   },
   "browserslist": "node 12",
   "engines": {
@@ -37,16 +37,16 @@
     "lib"
   ],
   "dependencies": {
-    "@newsteam/cli-notify": "0.0.1",
-    "@newsteam/cli-tasks": "0.0.10",
-    "@newsteam/cli-utils": "0.0.1",
-    "@newsteam/legacy-cli-config": "0.0.1",
-    "@newsteam/legacy-cli-errors": "0.0.1",
-    "@newsteam/legacy-cli-logger": "0.0.1",
-    "@newsteam/legacy-service-worker": "0.0.1",
-    "@newsteam/legacy-settings": "0.0.2",
-    "@newsteam/legacy-webpack-config": "0.0.9",
-    "@newsteam/schema": "0.0.2",
+    "@newsteam/cli-notify": "0.0.2",
+    "@newsteam/cli-tasks": "0.0.11",
+    "@newsteam/cli-utils": "0.0.2",
+    "@newsteam/legacy-cli-config": "0.0.2",
+    "@newsteam/legacy-cli-errors": "0.0.2",
+    "@newsteam/legacy-cli-logger": "0.0.3",
+    "@newsteam/legacy-service-worker": "0.0.2",
+    "@newsteam/legacy-settings": "0.0.3",
+    "@newsteam/legacy-webpack-config": "0.0.10",
+    "@newsteam/schema": "0.0.3",
     "asciichart": "1.5.25",
     "commander": "7.1.0",
     "core-js": "3.9.1",
@@ -66,7 +66,7 @@
   "devDependencies": {
     "@newsteam/babel": "0.0.25",
     "@newsteam/jasmine": "0.0.24",
-    "@newsteam/npm-install-local": "0.0.4",
+    "@newsteam/npm-install-local": "0.0.5",
     "@types/asciichart": "1.5.4",
     "@types/fs-extra": "9.0.8",
     "@types/gulp": "4.0.8",

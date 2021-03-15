@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/npm-install-local",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "NPM linking tool for local development",
   "main": "lib",
   "types": "lib",
@@ -12,7 +12,7 @@
     "update": "ncu -u"
   },
   "bin": {
-    "npm-install-local": "./lib/cli/index.js"
+    "npm-install-local": "lib/cli/index.js"
   },
   "browserslist": "node 12",
   "engines": {
