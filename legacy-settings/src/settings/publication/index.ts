@@ -74,13 +74,13 @@ export const getPublicationSettings = function(folder = "src/publication/custom"
     const environmentMap = JSON.parse(fs.readFileSync(environmentsPath).toString()) as Record<string, AssemblePublicationEnvironmentSettings>;
     const environments: AssemblePublicationEnvironmentSettings[] = [];
 
-    Object.keys(environmentMap).forEach((key) => {
+    for(const key of Object.keys(environmentMap)){
 
         if(key !== "default"){
             environments.push(environmentMap[key]);
         }
 
-    });
+    }
 
     return {
         ...JSON.parse(fs.readFileSync(settingsPath).toString()),

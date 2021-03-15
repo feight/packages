@@ -16,11 +16,10 @@ const modernizrConfig: ModernizrConfig = {
             cwd: process.cwd()
         })?.config ?? {}
     ], {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- This is safe in this context
-        arrayMerge: (target, source) => target.concat(source.filter((item) => !target.includes(item)))
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-assignment -- This is safe in this context
+        arrayMerge: (target, source) => [...target, ...source.filter((item) => !target.includes(item))]
     })
 };
-
 
 export class NewsTeamModernizrConfig{
 

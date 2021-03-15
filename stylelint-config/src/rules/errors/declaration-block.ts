@@ -11,6 +11,13 @@ export default {
     rules: {
 
         /*
+         * Disallow duplicate custom properties within declaration blocks.
+         *
+         * https://stylelint.io/user-guide/rules/declaration-block-no-duplicate-custom-properties/
+         */
+        "declaration-block-no-duplicate-custom-properties": true,
+
+        /*
          * Disallow duplicate properties within declaration blocks.
          *
          * https://stylelint.io/user-guide/rules/declaration-block-no-duplicate-properties/

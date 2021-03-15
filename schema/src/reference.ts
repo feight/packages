@@ -20,7 +20,7 @@ export const referenceToJoi = function(type: Reference): Joi.Reference{
         separator: type.separator
     };
 
-    Object.keys(options).forEach((key) => {
+    for(const key of Object.keys(options)){
         /*
             eslint-disable
 
@@ -41,7 +41,7 @@ export const referenceToJoi = function(type: Reference): Joi.Reference{
             @typescript-eslint/no-explicit-any,
             @typescript-eslint/no-dynamic-delete
         */
-    });
+    }
 
     return Joi.ref(type.key, options);
 

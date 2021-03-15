@@ -50,7 +50,7 @@ export const testSettingsTask = async function(options: TestSettingsTaskOptions)
 
         const files = await glob(validation.glob);
 
-        files.forEach((file) => {
+        for(const file of files){
 
             logger.log(`schema ${ path.resolve(file) }`, { label });
 
@@ -72,7 +72,7 @@ export const testSettingsTask = async function(options: TestSettingsTaskOptions)
 
             }
 
-        });
+        }
 
     }));
 

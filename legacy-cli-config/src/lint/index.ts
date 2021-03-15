@@ -60,8 +60,7 @@ export class NewsTeamLintConfig{
 
         if(extensions.includes("js")){
 
-            glob.ignore.push("*.json");
-            glob.ignore.push("*.min.js");
+            glob.ignore.push("*.json", "*.min.js");
 
         }
 

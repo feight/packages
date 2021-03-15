@@ -22,7 +22,7 @@ export class EqualityTest<TType, TMethod extends Function>{
 
         describe(`{ ${ this.name } }`, () => {
 
-            this.tests.forEach(([joi, json]) => {
+            for(const [joi, json] of this.tests){
 
                 it(`${ this.name }(${ JSON.stringify(json, undefined, 2) }) returns ${ JSON.stringify(joi.describe(), undefined, 2) }`, () => {
 
@@ -31,7 +31,7 @@ export class EqualityTest<TType, TMethod extends Function>{
 
                 });
 
-            });
+            }
 
         });
 

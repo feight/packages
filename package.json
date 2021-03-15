@@ -1,7 +1,10 @@
 {
   "name": "@newsteam/packages",
   "version": "0.0.1",
+  "scripts": {
+    "lint": "make lint"
+  },
   "dependencies": {
-    "@newsteam/eslint": "0.0.27"
+    "@newsteam/eslint": "0.0.30"
   }
 }

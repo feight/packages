@@ -165,7 +165,7 @@ export class Logger{
 
         if(error instanceof CLIError){
 
-            error.data.forEach((cliError) => {
+            for(const cliError of error.data){
 
                 const {
                     errors,
@@ -213,7 +213,7 @@ export class Logger{
 
                 }
 
-            });
+            }
 
         }else if(error instanceof Error){
 
@@ -359,7 +359,7 @@ export class Logger{
 
         this.setLastLabel(label);
 
-        formattedMessage.split("\n").forEach((line): void => {
+        for(const line of formattedMessage.split("\n")){
 
             const cursor = getCursorPosition.sync();
             const output = color ? line : this.inLineFormat(line);
@@ -371,7 +371,7 @@ export class Logger{
 
             }
 
-        });
+        }
 
         started = true;
 
@@ -400,7 +400,10 @@ export class Logger{
 
     table(label: string, labels: string[], data: string[][], options: table.Options): void{
 
-        this.log(table([labels.map((lbl: string): string => chalk.bold(lbl))].concat(data), {
+        this.log(table([
+            labels.map((lbl: string): string => chalk.bold(lbl)),
+            ...data
+        ], {
             ...options,
             stringLength(string): number{
 

@@ -75,9 +75,9 @@ export const spawn = function(options: {
 
                 let formatted = data;
 
-                (Array.isArray(filter) ? filter : [filter]).forEach((filt): void => {
+                for(const filt of Array.isArray(filter) ? filter : [filter]){
                     formatted = formatted.replace(filt, "");
-                });
+                }
 
                 if(!detatch){
                     process.stdout.write(formatted);

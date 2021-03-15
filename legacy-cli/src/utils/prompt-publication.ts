@@ -19,7 +19,7 @@ const getChoices = function(publicationRoots: Publication[]): PromptChoice<Publi
 
     let lastParent: string | undefined = undefined;
 
-    publicationRoots.forEach((pub) => {
+    for(const pub of publicationRoots){
 
         const parent = pub.parent;
 
@@ -27,9 +27,7 @@ const getChoices = function(publicationRoots: Publication[]): PromptChoice<Publi
 
             choices.push({
                 separator: " "
-            });
-
-            choices.push({
+            }, {
                 separator: pub.parent
             });
 
@@ -50,7 +48,7 @@ const getChoices = function(publicationRoots: Publication[]): PromptChoice<Publi
 
         lastParent = parent;
 
-    });
+    }
 
     return choices;
 

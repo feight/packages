@@ -32,6 +32,7 @@ export const exec = function(options: {
             .replace(/\s\s+/gu, " ")
             .replace(/^\s/gu, "");
 
+            // eslint-disable-next-line promise/prefer-await-to-callbacks -- no choice
             const subprocess = childProcess.exec(cmd, { cwd }, (error, stdout): void => {
 
                 if(error){
@@ -68,9 +69,9 @@ export const exec = function(options: {
 
                         let formattedString = string;
 
-                        (Array.isArray(filter) ? filter : [filter]).forEach((filt): void => {
+                        for(const filt of Array.isArray(filter) ? filter : [filter]){
                             formattedString = String(formattedString).replace(filt, "");
-                        });
+                        }
 
                         if(!detatch){
                             process.stdout.write(formattedString);

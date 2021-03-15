@@ -33,19 +33,22 @@ const getKeys = function(object: any, current?: string): string[]{
 
     let keys: string[] = [];
 
-    Object.keys(object).forEach((key) => {
+    for(const key of Object.keys(object)){
 
         keys.push(current ? `${ current }.${ key }` : key);
 
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- This is safe
         if(typeof object[key] === "object" && !Array.isArray(object[key])){
 
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- This is safe
-            keys = keys.concat(getKeys(object[key], current ? `${ current }.${ key }` : key));
+            keys = [
+                ...keys,
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- This is safe
+                ...getKeys(object[key], current ? `${ current }.${ key }` : key)
+            ];
 
         }
 
-    });
+    }
 
     return keys;
 
@@ -78,7 +81,7 @@ const commonality = function(shared: Record<string, any>, publicationData: Publi
 
     const pubKeys = getKeys(base.json);
 
-    pubKeys.forEach((key) => {
+    for(const key of pubKeys){
 
         let equal = true;
 
@@ -98,13 +101,13 @@ const commonality = function(shared: Record<string, any>, publicationData: Publi
             response.publication.push(key);
         }
 
-    });
+    }
 
     const sharedKeys = getKeys(shared);
 
-    sharedKeys.forEach((key) => {
+    for(const key of sharedKeys){
 
-        publicationData.forEach((test: PublicationData) => {
+        for(const test of publicationData){
 
             let preEqual = false;
 
@@ -124,9 +127,9 @@ const commonality = function(shared: Record<string, any>, publicationData: Publi
                 response.shared.push([key, test.file]);
             }
 
-        });
+        }
 
-    });
+    }
 
     return response;
 

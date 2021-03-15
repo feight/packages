@@ -15,7 +15,7 @@ import { label } from ".";
 
 const getFolders = (directory: string, filelist: string[] = []): string[] => {
 
-    fs.readdirSync(directory).forEach((file): void => {
+    for(const file of fs.readdirSync(directory)){
 
         if(fs.statSync(`${ directory }/${ file }`).isDirectory()){
             filelist.push(`${ directory }/${ file }`);
@@ -23,7 +23,7 @@ const getFolders = (directory: string, filelist: string[] = []): string[] => {
             filelist = getFolders(`${ directory }/${ file }`, filelist);
         }
 
-    });
+    }
 
     return filelist;
 
@@ -81,9 +81,11 @@ export const buildEntriesTask = async function(options: BuildEntriesTaskOptions)
         const entryOutputFolder = path.join(destination, "entries/entry");
         const entryPushOutputFolder = path.join(destination, "entries/push");
 
-        writes.push([path.join(entryOutputFolder, "index.js"), entryJsContent]);
-        writes.push([path.join(entryPushOutputFolder, "index.js"), entryPushJsContent]);
-        writes.push([path.join(entryOutputFolder, "index.scss"), entryScssContent]);
+        writes.push(
+            [path.join(entryOutputFolder, "index.js"), entryJsContent],
+            [path.join(entryPushOutputFolder, "index.js"), entryPushJsContent],
+            [path.join(entryOutputFolder, "index.scss"), entryScssContent]
+        );
 
         const ampScssExists = fs.existsSync("src/publication/custom/app/entry/amp/index.scss");
         const ampScssContent = `@import "${ ampScssExists ? "custom" : "base" }/app/entry/amp/index.scss";`;

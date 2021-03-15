@@ -61,7 +61,7 @@ export interface ValidationResult<TValue>{
     value: TValue;
 }
 
-export type SchemaLike = Record<string, unknown> | Reference | Schema | boolean | null | number | string;
+export type SchemaLike = Record<string, unknown> | Reference | Schema | boolean | number | string | null;
 
 export type ValidationSchema = Joi.Schema | Schema | SchemaMap;
 
@@ -179,6 +179,7 @@ export const validateSchema = function<TValue>(value: TValue, schema: Validation
     const errors: Joi.ValidationErrorItem[] = result.error?.details ?? [];
 
     return {
+        // eslint-disable-next-line promise/prefer-await-to-callbacks -- bug in the linter
         errors: errors.map((error: Joi.ValidationErrorItem) => error.message),
         value
     };
@@ -196,7 +197,7 @@ export class Validate{
 
         const compiled = this.map.get(typeof target === "object" ? Object.getPrototypeOf(target) : target) ?? {};
 
-        Object.keys(target).forEach((key) => {
+        for(const key of Object.keys(target)){
 
             if(!compiled[key]){
 
@@ -253,7 +254,7 @@ export class Validate{
 
             }
 
-        });
+        }
 
         return compiled;
 
@@ -277,11 +278,13 @@ export class Validate{
         if(validation.errors.length > 0){
 
             const SettingsSchemaValidationError = [
-                "Settings Schema Validation Error",
+                ...[
+                    "Settings Schema Validation Error",
+                    "",
+                    ...validation.errors
+                ],
                 ""
             ]
-            .concat(validation.errors)
-            .concat([""])
             .join("\n");
 
             throw new Error(SettingsSchemaValidationError);

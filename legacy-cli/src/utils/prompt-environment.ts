@@ -15,14 +15,14 @@ const getChoices = function(environments: AssemblePublicationEnvironmentSettings
 
     const choices: PromptChoice<AssemblePublicationEnvironmentSettings>[] = [];
 
-    environments.forEach((environment) => {
+    for(const environment of environments){
 
         choices.push({
             name: `${ environment.name } (${ environment.id })`,
             value: environment
         });
 
-    });
+    }
 
     return choices;
 

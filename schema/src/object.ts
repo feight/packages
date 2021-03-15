@@ -67,8 +67,8 @@ const extendedJoi = Joi.extend(
 
                     try{
 
-                        // eslint-disable-next-line @typescript-eslint/no-explicit-any -- It's expected that this is of type any
-                        return { value: JSON5.parse(value) as Record<string, any> };
+                        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- It's expected that this is of type any
+                        return { value: JSON5.parse(value)! };
 
                     }catch{
 
@@ -138,13 +138,16 @@ const getRenames = function(type: ObjectSchemaDefinition): Rename[]{
 
     if(type.rename){
 
-        renames = renames.concat(Array.isArray(type.rename) ? type.rename : [type.rename]);
+        renames = [
+            ...renames,
+            ...Array.isArray(type.rename) ? type.rename : [type.rename]
+        ];
 
     }
 
     if(type.keys){
 
-        Object.keys(type.keys).forEach((key) => {
+        for(const key of Object.keys(type.keys)){
 
             const from = key.replace(/([a-z])([A-Z])/gu, "$1_$2").toLowerCase();
 
@@ -157,7 +160,7 @@ const getRenames = function(type: ObjectSchemaDefinition): Rename[]{
 
             }
 
-        });
+        }
 
     }
 
@@ -165,13 +168,13 @@ const getRenames = function(type: ObjectSchemaDefinition): Rename[]{
     const uniqueRenames: Rename[] = [];
     const lookupObject: Record<string, Rename> = {};
 
-    renames.forEach((rename: Rename) => {
+    for(const rename of renames){
         lookupObject[rename.from] = rename;
-    });
+    }
 
-    Object.keys(lookupObject).forEach((key) => {
+    for(const key of Object.keys(lookupObject)){
         uniqueRenames.push(lookupObject[key]);
-    });
+    }
 
     return uniqueRenames;
 
@@ -283,15 +286,15 @@ const convert = {
 
             let base = schema;
 
-            renames.forEach(({
+            for(const {
                 from,
                 to,
                 options
-            }) => {
+            } of renames){
 
                 base = base.rename(from, to, options);
 
-            });
+            }
 
             return base;
 

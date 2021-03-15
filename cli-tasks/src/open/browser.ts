@@ -12,6 +12,7 @@ const testEndpoint = function(path: string): Promise<boolean | string>{
 
     return new Promise<boolean | string>((resolve) => {
 
+        // eslint-disable-next-line promise/prefer-await-to-callbacks -- no choice here
         request(path, (error): void => {
 
             resolve(error ? false : path);

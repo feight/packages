@@ -533,6 +533,10 @@ export default {
                     envs: {
                         environments: true
                     },
+                    params: {
+                        // This is used extremely frequently in react-router-dom and we don't want to change it
+                        parameters: false
+                    },
                     props: {
                         // This is used extremely frequently in react and we don't want to change it
                         properties: false

@@ -31,7 +31,7 @@ export const buildReleaseTask = async function(config: NewsTeamConfig): Promise<
     const rawCommits: string[][] = [];
     let commit = [lines[0]];
 
-    lines.forEach((line, index) => {
+    for(const [index, line] of lines.entries()){
         if(index >= 1){
             if(line.startsWith("commit ")){
                 rawCommits.push(commit);
@@ -41,7 +41,7 @@ export const buildReleaseTask = async function(config: NewsTeamConfig): Promise<
                 commit.push(line);
             }
         }
-    });
+    }
 
     const commits = rawCommits.map((item) => {
 
@@ -53,11 +53,11 @@ export const buildReleaseTask = async function(config: NewsTeamConfig): Promise<
 
             const minItemIndex = 7;
 
-            item.forEach((string, index) => {
+            for(const [index, string] of item.entries()){
                 if(index >= minItemIndex){
                     message += string.trim();
                 }
-            });
+            }
 
             return {
                 author: {

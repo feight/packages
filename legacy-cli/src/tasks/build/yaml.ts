@@ -51,17 +51,17 @@ const snakeify = (object: Record<string, any>): Record<string, any> => {
     const copy = { ...object };
 
     // Snake case all properties in automatic scaling
-    Object.keys(copy).forEach((key: string) => {
+    for(const key of Object.keys(copy)){
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- This is safe in this context
         copy[snake(key)] = copy[key];
-    });
+    }
 
-    Object.keys(copy).forEach((key: string) => {
+    for(const key of Object.keys(copy)){
         if(key.toLowerCase() !== key){
             // eslint-disable-next-line @typescript-eslint/no-dynamic-delete -- This is necessary to snakeify an object
             delete copy[key];
         }
-    });
+    }
 
     return copy;
 
@@ -113,7 +113,10 @@ export const buildYamlTask = async function(options: BuildYamlTaskOptions): Prom
         const automaticScaling = environmentInstance?.scaling ? environmentInstance.scaling : appYaml.automatic_scaling;
 
         // Prepend custom handlers
-        appYaml.handlers = (handlers ?? []).concat(appYaml.handlers ?? []);
+        appYaml.handlers = [
+            ...handlers ?? [],
+            ...appYaml.handlers ?? []
+        ];
 
         /*
          *  Enforce secure at a handler level across all routes and snakeify

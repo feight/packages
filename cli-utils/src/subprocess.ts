@@ -53,6 +53,7 @@ export const exec = function(options: {
         const {
             command = "",
             detatch = false,
+            dry = false,
             filter = [],
             label = "anonymous"
         } = options;
@@ -70,17 +71,18 @@ export const exec = function(options: {
 
             if(!detatch){
 
-                logger.log(`${ options.dry ? dryLabel : "" }${ logger.chalk.hex(commandColor)(bashCmd) }`, { label });
+                logger.log(`${ dry ? dryLabel : "" }${ logger.chalk.hex(commandColor)(bashCmd) }`, { label });
 
             }
 
             // Bail out if this is a dry run
-            if(options.dry){
+            if(dry){
 
                 resolve("");
 
             }else{
 
+                // eslint-disable-next-line promise/prefer-await-to-callbacks -- no choice
                 const subprocess = childProcess.exec(cmd, execOptions, (error, stdout): void => {
 
                     if(error){
@@ -117,9 +119,9 @@ export const exec = function(options: {
 
                             let formattedString = string;
 
-                            (Array.isArray(filter) ? filter : [filter]).forEach((filt): void => {
+                            for(const filt of Array.isArray(filter) ? filter : [filter]){
                                 formattedString = formattedString.replace(filt, "");
-                            });
+                            }
 
                             if(!detatch && formattedString.trim()){
                                 logger.write(formattedString, { label });
@@ -233,9 +235,9 @@ export const spawn = function(options: {
 
                     let formatted = data;
 
-                    (Array.isArray(filter) ? filter : [filter]).forEach((filt): void => {
+                    for(const filt of Array.isArray(filter) ? filter : [filter]){
                         formatted = formatted.replace(filt, "");
-                    });
+                    }
 
                     if(!detatch && formatted.trim()){
                         logger.write(formatted, { label });

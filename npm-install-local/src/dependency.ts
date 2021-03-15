@@ -131,14 +131,20 @@ export const getDependencyMap = async function(directory: string): Promise<Depen
 
         const children = await getDependencyMap(path.join(directory, locals[packageName]));
 
-        dependencies = dependencies.concat(children);
+        dependencies = [
+            ...dependencies,
+            ...children
+        ];
 
     }
 
-    dependencies = dependencies.concat(Object.keys(locals).map((packageName) => ({
-        directory: path.join(directory, locals[packageName]),
-        packageName
-    })));
+    dependencies = [
+        ...dependencies,
+        ...Object.keys(locals).map((packageName) => ({
+            directory: path.join(directory, locals[packageName]),
+            packageName
+        }))
+    ];
 
     const existing: Record<string, boolean> = {};
 

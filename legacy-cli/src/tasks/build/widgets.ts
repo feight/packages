@@ -88,7 +88,7 @@ export const buildWidgetsTask = async function(options: BuildWidgetsTaskOptions)
         source
     } = options;
 
-    // eslint-disable-next-line max-lines-per-function -- Simpler to leave this as one function
+    // eslint-disable-next-line max-lines-per-function, max-statements, complexity -- Simpler to leave this as one function
     await watch(options, async (): Promise<void> => {
 
         const rawSharedSettings = await fs.readFile("src/publication/shared/settings/index.json", "utf8");
@@ -109,11 +109,11 @@ export const buildWidgetsTask = async function(options: BuildWidgetsTaskOptions)
 
         const widgets: Record<string, AssembleWidgetSettings | undefined> = {};
 
-        roots.forEach((root) => {
+        for(const root of roots){
 
             const directories = getDirectories(path.join(root, "widgets"));
 
-            directories.forEach((directory) => {
+            for(const directory of directories){
 
                 const id = directory.split("/")[directory.split("/").length - 1];
                 const metaPath = path.join(`${ root }/widgets/${ id }`, "index.json");
@@ -153,11 +153,11 @@ export const buildWidgetsTask = async function(options: BuildWidgetsTaskOptions)
 
                 }
 
-            });
+            }
 
-        });
+        }
 
-        Object.keys(widgets).forEach((key) => {
+        for(const key of Object.keys(widgets)){
 
             const meta = widgets[key];
 
@@ -186,7 +186,7 @@ export const buildWidgetsTask = async function(options: BuildWidgetsTaskOptions)
 
             widgets[key] = meta;
 
-        });
+        }
 
         const baseJSModules: Record<string, string> = {};
         const editJSModules: Record<string, string> = {};
@@ -194,11 +194,11 @@ export const buildWidgetsTask = async function(options: BuildWidgetsTaskOptions)
         const editSCSSModules: Record<string, string> = {};
         const ampSCSSModules: Record<string, string> = {};
 
-        Object.keys(widgets).forEach((key) => {
+        for(const key of Object.keys(widgets)){
 
             let found = false;
 
-            roots.forEach((root) => {
+            for(const root of roots){
 
                 const base = `${ root }/widgets/${ key }`;
 
@@ -230,9 +230,9 @@ export const buildWidgetsTask = async function(options: BuildWidgetsTaskOptions)
                     ampSCSSModules[key] = `${ base.replace(new RegExp(`^${ source }/`, "gu"), "") }/modes/amp/index.scss`;
                 }
 
-            });
+            }
 
-        });
+        }
 
         const baseJS = createJSBundle(baseJSModules);
         const editJS = createJSBundle(editJSModules);
@@ -240,12 +240,11 @@ export const buildWidgetsTask = async function(options: BuildWidgetsTaskOptions)
         const editSCSS = createCSSBundle(editSCSSModules);
         const ampSCSS = createCSSBundle(ampSCSSModules);
 
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- The lint is a lie
         const dialogEntryFactoryLogic = roots.filter((root) => {
 
             let matched = false;
 
-            Object.keys(widgets).forEach((key) => {
+            for(const key of Object.keys(widgets)){
 
                 const widget = widgets[key];
 
@@ -253,7 +252,7 @@ export const buildWidgetsTask = async function(options: BuildWidgetsTaskOptions)
                     matched = true;
                 }
 
-            });
+            }
 
             return matched;
 

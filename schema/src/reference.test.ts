@@ -36,13 +36,13 @@ describe("{ referenceToJoi }", () => {
         ]
     ];
 
-    equalities.forEach(([joi, json]) => {
+    for(const [joi, json] of equalities){
 
         it(`referenceToJoi(${ JSON.stringify(json) }) returns ${ JSON.stringify(joi) }`, () => {
             expect(reference.referenceToJoi(json)).toEqual(joi);
         });
 
-    });
+    }
 
 });
 

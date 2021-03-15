@@ -181,26 +181,29 @@ export const testTask = async function(config: NewsTeamConfig, options: TestTask
 
     let errors: TestError[] = [];
 
-    errors = errors.concat(tests ? await testErrors(configs) : []);
-    errors = errors.concat(await lintErrors(configs, fix, type));
+    errors = [
+        ...errors,
+        ...tests ? await testErrors(configs) : [],
+        ...await lintErrors(configs, fix, type)
+    ];
 
-    errors.forEach((error) => {
+    for(const error of errors){
 
         logger.error(error);
 
-    });
+    }
 
     let totalErrors = 0;
 
-    errors.forEach((file) => {
+    for(const file of errors){
 
-        file.data.forEach((error) => {
+        for(const error of file.data){
 
             totalErrors += error.errors.length;
 
-        });
+        }
 
-    });
+    }
 
     const message = `${ totalErrors } error${ totalErrors === 1 ? "" : "s" } found`;
     const title = `${ tests ? "Testing" : "Linting" } Complete`;

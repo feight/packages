@@ -12,6 +12,7 @@ export default {
         "./general",
         "./keyframe-declaration",
         "./media-feature",
+        "./named-grid-areas",
         "./property",
         "./selector",
         "./string",

@@ -41,8 +41,8 @@ const extendedJoi = Joi.extend(
 
                     try{
 
-                        // eslint-disable-next-line @typescript-eslint/no-explicit-any -- It's expected that this is of type any
-                        return { value: JSON5.parse(value) as any[] };
+                        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- It's expected that this is of type any
+                        return { value: JSON5.parse(value)! };
 
                     }catch{
 

@@ -34,13 +34,13 @@ export const prompt = async function<PromptValue>(id: string, choices: PromptCho
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- No real choice here, we're read JSON
         const previous = JSON.parse(raw.toString())[key] as PromptChoice<PromptValue>;
 
-        choices.forEach((item, index) => {
+        for(const [index, item] of choices.entries()){
 
             if(equal(item.value, previous)){
                 previousIndex = index;
             }
 
-        });
+        }
 
     }
 
@@ -51,7 +51,7 @@ export const prompt = async function<PromptValue>(id: string, choices: PromptCho
 
     }else if(value){
 
-        choices.forEach((item) => {
+        for(const item of choices){
 
             if(equal(item.value, value)){
 
@@ -60,7 +60,7 @@ export const prompt = async function<PromptValue>(id: string, choices: PromptCho
 
             }
 
-        });
+        }
 
     }
 
@@ -72,7 +72,7 @@ export const prompt = async function<PromptValue>(id: string, choices: PromptCho
 
         logger.setLastLabel("select");
 
-        // eslint-disable-next-line require-atomic-updates, @typescript-eslint/no-unsafe-assignment -- afaik this isn't a problem here
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- afaik this isn't a problem here
         choice = await inquirer.prompt([{
             choices: choices.map((item) => item.separator ? new inquirer.Separator(item.separator) : item),
             default: previousIndex,

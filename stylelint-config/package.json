@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/stylelint-config",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "description": "Shared config for stylelint",
   "main": "lib",
   "types": "lib",
@@ -44,34 +44,34 @@
     "lib"
   ],
   "dependencies": {
-    "@newsteam/jasmine": "0.0.23"
+    "@newsteam/jasmine": "0.0.24"
   },
   "devDependencies": {
-    "@newsteam/babel": "0.0.24",
-    "@newsteam/eslint": "0.0.27",
-    "@types/node": "14.14.22",
-    "npm-check-updates": "^11.1.1",
-    "stylelint": "13.9.0",
+    "@newsteam/babel": "0.0.25",
+    "@newsteam/eslint": "0.0.30",
+    "@types/node": "14.14.34",
+    "npm-check-updates": "^11.3.0",
+    "stylelint": "13.12.0",
     "stylelint-a11y": "1.2.3",
     "stylelint-declaration-block-no-ignored-properties": "2.3.0",
-    "stylelint-declaration-strict-value": "1.7.7",
+    "stylelint-declaration-strict-value": "1.7.9",
     "stylelint-find-new-rules": "3.0.1",
     "stylelint-high-performance-animation": "1.5.2",
     "stylelint-no-unsupported-browser-features": "4.1.4",
     "stylelint-order": "4.1.0",
-    "stylelint-scss": "3.18.0",
+    "stylelint-scss": "3.19.0",
     "stylelint-selector-tag-no-without-class": "2.0.3",
     "stylelint-use-nesting": "3.0.0"
   },
   "peerDependencies": {
-    "stylelint": "13.9.0",
+    "stylelint": "13.12.0",
     "stylelint-a11y": "1.2.3",
     "stylelint-declaration-block-no-ignored-properties": "2.3.0",
-    "stylelint-declaration-strict-value": "1.7.7",
+    "stylelint-declaration-strict-value": "1.7.9",
     "stylelint-high-performance-animation": "1.5.2",
     "stylelint-no-unsupported-browser-features": "4.1.4",
     "stylelint-order": "4.1.0",
-    "stylelint-scss": "3.18.0",
+    "stylelint-scss": "3.19.0",
     "stylelint-selector-tag-no-without-class": "2.0.3",
     "stylelint-use-nesting": "3.0.0"
   }
