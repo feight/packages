@@ -1,8 +1,8 @@
 
 
-import OptimizeCSSAssetsPlugin from "optimize-css-assets-webpack-plugin";
 import TerserPlugin from "terser-webpack-plugin";
 import type { Configuration } from "webpack";
+import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 
 import type { Options } from "..";
 
@@ -13,13 +13,21 @@ export const optimization = function(
 
     return {
         optimization: {
-            concatenateModules: true,
+
+            /*
+             * Setting this to false temporarily because it's breaking
+             * the build.
+             *
+             * Setting this to true causes webpack to lose some modules
+             * and throw a 'Cannot read property 'call' of undefined'
+             */
+            concatenateModules: false,
             emitOnErrors: !options.watch,
             flagIncludedChunks: true,
             mergeDuplicateChunks: true,
             minimize: options.mode === "production",
             minimizer: [
-                new OptimizeCSSAssetsPlugin({}),
+                new CssMinimizerPlugin(),
                 new TerserPlugin({
                     terserOptions: {
                         mangle: true,
@@ -29,7 +37,7 @@ export const optimization = function(
                     }
                 })
             ],
-            nodeEnv: "production",
+            nodeEnv: options.mode,
             providedExports: true,
             removeAvailableModules: true,
             removeEmptyChunks: true,

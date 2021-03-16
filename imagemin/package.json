@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/imagemin",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "description": "Preconfigured imagemin function",
   "main": "lib",
   "scripts": {
@@ -51,8 +51,8 @@
   },
   "devDependencies": {
     "@newsteam/babel": "0.0.25",
-    "@newsteam/eslint": "0.0.30",
-    "@types/node": "14.14.34",
+    "@newsteam/eslint": "0.0.31",
+    "@types/node": "14.14.35",
     "npm-check-updates": "^11.3.0"
   }
 }

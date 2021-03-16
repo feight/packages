@@ -1,9 +1,4 @@
 
-/*
- *  Integrate https://webpack.js.org/loaders/cache-loader/
- *      clean this cache in the clean cache task and add that task to the postinstall
- * maybe use https://webpack.js.org/loaders/thread-loader/
- */
 
 import type { Configuration } from "webpack";
 import { config as assembleCliConfig } from "@newsteam/legacy-cli-config";
@@ -102,6 +97,7 @@ export const config = function(
 
         // Deep merge all base configuration with custom configuration
         const merged = {
+            ...configs.cache(genOptions),
             ...configs.devtool(genOptions),
             ...configs.entry(),
             ...configs.module(genOptions, configuration),

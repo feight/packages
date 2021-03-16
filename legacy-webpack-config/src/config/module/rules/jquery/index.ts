@@ -2,8 +2,6 @@
 
 import type { RuleSetRule } from "webpack";
 
-import { cacheLoader } from "../../../../shared/loaders/cache";
-
 
 export const jquery = function(): RuleSetRule[]{
 
@@ -11,7 +9,6 @@ export const jquery = function(): RuleSetRule[]{
         {
             test: require.resolve("jquery"),
             use: [
-                cacheLoader(),
                 {
                     loader: "expose-loader",
                     options: {

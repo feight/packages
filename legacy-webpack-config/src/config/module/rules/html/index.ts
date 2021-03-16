@@ -2,8 +2,6 @@
 
 import type { RuleSetRule } from "webpack";
 
-import { cacheLoader } from "../../../../shared/loaders/cache";
-
 
 export const html = function(): RuleSetRule[]{
 
@@ -12,14 +10,14 @@ export const html = function(): RuleSetRule[]{
         {
             test: /\.html$/u,
             use: [
-                cacheLoader(),
                 {
                     loader: "html-loader",
                     options: {
                         minimize: {
                             collapseWhitespace: true,
                             removeComments: true
-                        }
+                        },
+                        sources: false
                     }
                 }
             ]

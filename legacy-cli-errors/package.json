@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/legacy-cli-errors",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "This package provides a collection of cli error classes.",
   "main": "lib",
   "types": "lib",
@@ -42,9 +42,9 @@
   ],
   "devDependencies": {
     "@newsteam/babel": "0.0.25",
-    "@newsteam/eslint": "0.0.30",
+    "@newsteam/eslint": "0.0.31",
     "@newsteam/jasmine": "0.0.24",
-    "@newsteam/npm-install-local": "0.0.4",
+    "@newsteam/npm-install-local": "0.0.7",
     "npm-check-updates": "^11.3.0"
   }
 }

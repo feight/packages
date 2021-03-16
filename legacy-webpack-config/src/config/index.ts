@@ -1,5 +1,6 @@
 
 
+export { cache } from "./cache";
 export { entry } from "./entry";
 export { devtool } from "./devtool";
 export { mode } from "./mode";

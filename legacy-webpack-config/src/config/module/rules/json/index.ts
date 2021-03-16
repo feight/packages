@@ -2,8 +2,6 @@
 
 import type { RuleSetRule } from "webpack";
 
-import { cacheLoader } from "../../../../shared/loaders/cache";
-
 
 export const json = function(): RuleSetRule[]{
 
@@ -13,7 +11,6 @@ export const json = function(): RuleSetRule[]{
             test: /\.json$/u,
             type: "javascript/auto",
             use: [
-                cacheLoader(),
                 "json-loader"
             ]
         }

@@ -5,6 +5,6 @@
     "lint": "make lint"
   },
   "dependencies": {
-    "@newsteam/eslint": "0.0.30"
+    "@newsteam/eslint": "0.0.31"
   }
 }

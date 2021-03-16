@@ -13,7 +13,9 @@ import type { Configuration } from "webpack";
 export const stats = function(): Configuration{
 
     return {
-        stats: "minimal"
+        stats: {
+            preset: "minimal"
+        }
     };
 
 };

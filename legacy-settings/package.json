@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/legacy-settings",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Assemble framework settings.",
   "main": "lib",
   "types": "lib",
@@ -42,9 +42,9 @@
   ],
   "devDependencies": {
     "@newsteam/babel": "0.0.25",
-    "@newsteam/eslint": "0.0.30",
+    "@newsteam/eslint": "0.0.31",
     "@newsteam/jasmine": "0.0.24",
-    "@newsteam/npm-install-local": "0.0.4",
+    "@newsteam/npm-install-local": "0.0.7",
     "@types/fs-extra": "9.0.8",
     "npm-check-updates": "^11.3.0"
   },

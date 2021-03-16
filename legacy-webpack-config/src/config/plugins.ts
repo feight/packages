@@ -27,11 +27,6 @@ export const plugins = function(
 
     const webpackPlugins: webpack.WebpackPluginInstance[] = [
         new webpack.optimize.ModuleConcatenationPlugin(),
-        new webpack.DefinePlugin({
-            "process.env.CLIENT": JSON.stringify("browser"),
-            // eslint-disable-next-line @typescript-eslint/naming-convention -- This is alright since it's an override of a process env variable
-            "process.env.NODE_ENV": JSON.stringify(options.mode)
-        }),
         new webpack.ProvidePlugin({
             // eslint-disable-next-line id-length -- This is alright because we need to provide $
             $: "jquery",
@@ -45,6 +40,9 @@ export const plugins = function(
         new MiniCssExtractPlugin({
             chunkFilename: `build/chunks/${ hash ? "[chunkhash].css" : "[id].css" }`,
             filename: `build/chunks/${ hash ? "[chunkhash].css" : "[name].css" }`
+        }),
+        new webpack.DefinePlugin({
+            "process.env.CLIENT": JSON.stringify("browser")
         })
     ];
 
