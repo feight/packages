@@ -3,9 +3,7 @@
 import "jasmine";
 
 
-import {
-    notify
-} from ".";
+import { notify } from ".";
 
 
 describe("{ notify }", () => {

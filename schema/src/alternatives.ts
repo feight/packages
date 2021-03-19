@@ -2,17 +2,11 @@
 
 import Joi from "@hapi/joi";
 
-import type {
-    AnySchemaDefinition
-} from "./any";
-import {
-    extendAnySchema
-} from "./any";
+import type { AnySchemaDefinition } from "./any";
+import { extendAnySchema } from "./any";
 
 import type { Schema } from ".";
-import {
-    schemaToJoi
-} from ".";
+import { schemaToJoi } from ".";
 
 
 const convert = {

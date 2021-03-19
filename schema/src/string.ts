@@ -6,15 +6,9 @@ import type {
     AnySchemaDefinition,
     PresenceMode
 } from "./any";
-import {
-    extendAnySchema
-} from "./any";
-import type {
-    Reference
-} from "./reference";
-import {
-    referenceToJoi
-} from "./reference";
+import { extendAnySchema } from "./any";
+import type { Reference } from "./reference";
+import { referenceToJoi } from "./reference";
 
 
 const convert = {

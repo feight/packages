@@ -88,9 +88,11 @@ export default {
         /*
          * Ensure imports point to a file/module that can be resolved.
          *
+         * This rule has no way to resolve aliases of any kind - off for now
+         *
          * https://github.com/benmosher/eslint-plugin-import/blob/HEAD/docs/rules/no-unresolved.md
          */
-        "import/no-unresolved": "error",
+        "import/no-unresolved": "off",
 
         /*
          * Forbid modules without any export, and exports not imported by any modules

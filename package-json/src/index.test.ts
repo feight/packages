@@ -5,9 +5,7 @@ import path from "path";
 import "jasmine";
 
 
-import {
-    getPackageJson
-} from ".";
+import { getPackageJson } from ".";
 
 
 describe("{ getPackageJson }", () => {

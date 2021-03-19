@@ -3,9 +3,7 @@
 import "jasmine";
 
 
-import {
-    npmInstallTask
-} from "..";
+import { npmInstallTask } from "..";
 
 
 describe("{ npmInstallTask }", () => {

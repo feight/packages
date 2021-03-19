@@ -3,9 +3,7 @@
 import "jasmine";
 
 
-import {
-    TestError
-} from ".";
+import { TestError } from ".";
 
 
 describe("{ TestError }", () => {

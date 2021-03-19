@@ -3,9 +3,7 @@
 import "jasmine";
 
 
-import {
-    cleanTask
-} from "..";
+import { cleanTask } from ".";
 
 
 describe("{ cleanTask }", () => {

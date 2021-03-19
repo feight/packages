@@ -17,12 +17,8 @@ import type { NewsTeamConfig } from "@newsteam/legacy-cli-config";
 
 import { localWatchTask } from "./watch";
 
-import type {
-    BuildTaskOptions
-} from "../build";
-import {
-    buildTask
-} from "../build";
+import type { BuildTaskOptions } from "../build";
+import { buildTask } from "../build";
 
 
 const getCredentials = function(): string{

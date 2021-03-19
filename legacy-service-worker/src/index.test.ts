@@ -3,9 +3,7 @@
 import "jasmine";
 
 
-import {
-    ServiceWorker
-} from ".";
+import { ServiceWorker } from ".";
 
 
 describe("{ ServiceWorker }", () => {

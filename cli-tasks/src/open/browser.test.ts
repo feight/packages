@@ -3,9 +3,7 @@
 import "jasmine";
 
 
-import {
-    openBrowserTask
-} from "..";
+import { openBrowserTask } from "..";
 
 
 describe("{ openBrowserTask }", () => {

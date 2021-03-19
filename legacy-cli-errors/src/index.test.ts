@@ -3,9 +3,7 @@
 import "jasmine";
 
 
-import {
-    CLIError
-} from ".";
+import { CLIError } from ".";
 
 
 describe("{ CLIError }", () => {

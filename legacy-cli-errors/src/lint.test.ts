@@ -3,9 +3,7 @@
 import "jasmine";
 
 
-import {
-    LintError
-} from ".";
+import { LintError } from ".";
 
 
 describe("{ LintError }", () => {

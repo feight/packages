@@ -17,12 +17,8 @@ import {
 } from "@newsteam/cli-tasks";
 import type { NewsTeamConfig } from "@newsteam/legacy-cli-config";
 
-import type {
-    TestSettingsTaskOptions
-} from "./settings";
-import {
-    testSettingsTask
-} from "./settings";
+import type { TestSettingsTaskOptions } from "./settings";
+import { testSettingsTask } from "./settings";
 import { testSharedSettingsTask } from "./settings/shared";
 
 

@@ -3,25 +3,17 @@
 import Joi from "@hapi/joi";
 import JSON5 from "json5";
 
-import type {
-    AnySchemaDefinition
-} from "./any";
-import {
-    extendAnySchema
-} from "./any";
+import type { AnySchemaDefinition } from "./any";
+import { extendAnySchema } from "./any";
 import type { Reference } from "./reference";
-import {
-    referenceToJoi
-} from "./reference";
+import { referenceToJoi } from "./reference";
 
 import type {
     Schema,
     SchemaLike,
     SchemaMap
 } from ".";
-import {
-    schemaLikeToJoi
-} from ".";
+import { schemaLikeToJoi } from ".";
 
 
 type Operator = string[] | {

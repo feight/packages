@@ -4,12 +4,8 @@ import type commander from "commander";
 
 import { assembleCliOptions } from "../options";
 import { action } from "../../../utils/action";
-import type {
-    SetupTaskOptions
-} from "../../../tasks/setup";
-import {
-    setupTask
-} from "../../../tasks/setup";
+import type { SetupTaskOptions } from "../../../tasks/setup";
+import { setupTask } from "../../../tasks/setup";
 
 
 export const assembleSetupCommand = function(command: commander.Command): commander.Command{

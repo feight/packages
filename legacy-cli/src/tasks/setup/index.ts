@@ -1,8 +1,6 @@
 
 
-import {
-    prompt
-} from "@newsteam/cli-utils";
+import { prompt } from "@newsteam/cli-utils";
 
 import { setupFrontEndTask } from "./front-end";
 import { setupLocalTask } from "./local";

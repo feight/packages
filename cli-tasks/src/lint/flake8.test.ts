@@ -3,9 +3,7 @@
 import "jasmine";
 
 
-import {
-    flake8LintTask
-} from "..";
+import { flake8LintTask } from "..";
 
 
 describe("{ flake8LintTask }", () => {

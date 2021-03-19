@@ -64,7 +64,7 @@ export default {
          * https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-missing-import.md
          */
         "node/no-missing-import": [
-            "error",
+            "off",
             {
                 resolvePaths,
                 tryExtensions
@@ -77,7 +77,7 @@ export default {
          * https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-missing-require.md
          */
         "node/no-missing-require": [
-            "error",
+            "off",
             {
                 resolvePaths,
                 tryExtensions

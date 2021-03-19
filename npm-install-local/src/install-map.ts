@@ -1,9 +1,7 @@
 
 import { getCache } from "./cache";
 import type { Dependency } from "./dependency";
-import {
-    getDependencyMap
-} from "./dependency";
+import { getDependencyMap } from "./dependency";
 import {
     getDependenciesHash,
     getSourceCodeHash

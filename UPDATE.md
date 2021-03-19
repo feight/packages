@@ -27,21 +27,7 @@ cd ~/code/newsteam/packages/eslint                  && rm -rf node_modules && rm
 cd ~/code/newsteam/packages/postcss-config          && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm run test &&
 cd ~/code/newsteam/packages/stylelint-config        && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm run test &&
 cd ~/code/newsteam/packages/stylelint               && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm run test &&
-cd ~/code/newsteam/packages/imagemin                && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm run test
-
-# publish all published packages
-
-cd ~/code/newsteam/packages/jasmine                 && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm version patch && npm publish &&
-cd ~/code/newsteam/packages/babel-preset            && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm version patch && npm publish &&
-cd ~/code/newsteam/packages/babel                   && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm version patch && npm publish &&
-cd ~/code/newsteam/packages/eslint-config           && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm version patch && npm publish &&
-cd ~/code/newsteam/packages/eslint                  && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm version patch && npm publish &&
-cd ~/code/newsteam/packages/postcss-config          && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm version patch && npm publish &&
-cd ~/code/newsteam/packages/stylelint-config        && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm version patch && npm publish &&
-cd ~/code/newsteam/packages/stylelint               && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm version patch && npm publish &&
-cd ~/code/newsteam/packages/imagemin                && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm version patch && npm publish
-
-# update all unpublished packages
+cd ~/code/newsteam/packages/imagemin                && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm run test &&
 
 cd ~/code/newsteam/packages/npm-install-local       && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm run test &&
 cd ~/code/newsteam/packages/legacy-service-worker   && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm run npm-install-local && npm run test &&
@@ -56,4 +42,30 @@ cd ~/code/newsteam/packages/cli-tasks               && rm -rf node_modules && rm
 cd ~/code/newsteam/packages/legacy-cli-config       && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm run npm-install-local && npm run test &&
 cd ~/code/newsteam/packages/legacy-webpack-config   && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm run npm-install-local && npm run test &&
 cd ~/code/newsteam/packages/legacy-cli              && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm run npm-install-local && npm run test
+
+
+# publish all published packages
+
+cd ~/code/newsteam/packages/jasmine                 && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm version patch && npm publish && sleep 30 &&
+cd ~/code/newsteam/packages/babel-preset            && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm version patch && npm publish && sleep 30 &&
+cd ~/code/newsteam/packages/babel                   && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm version patch && npm publish && sleep 30 &&
+cd ~/code/newsteam/packages/eslint-config           && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm version patch && npm publish && sleep 30 &&
+cd ~/code/newsteam/packages/eslint                  && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm version patch && npm publish && sleep 30 &&
+cd ~/code/newsteam/packages/postcss-config          && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm version patch && npm publish && sleep 30 &&
+cd ~/code/newsteam/packages/stylelint-config        && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm version patch && npm publish && sleep 30 &&
+cd ~/code/newsteam/packages/stylelint               && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm version patch && npm publish && sleep 30 &&
+cd ~/code/newsteam/packages/imagemin                && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm version patch && npm publish && sleep 30 &&
+cd ~/code/newsteam/packages/npm-install-local       && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm version patch && npm publish && sleep 30 &&
+cd ~/code/newsteam/packages/legacy-service-worker   && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm version patch && npm publish && sleep 30 &&
+cd ~/code/newsteam/packages/legacy-settings         && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm version patch && npm publish && sleep 30 &&
+cd ~/code/newsteam/packages/legacy-cli-errors       && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm version patch && npm publish && sleep 30 &&
+cd ~/code/newsteam/packages/cli-notify              && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm version patch && npm publish && sleep 30 &&
+cd ~/code/newsteam/packages/package-json            && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm version patch && npm publish && sleep 30 &&
+cd ~/code/newsteam/packages/schema                  && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm version patch && npm publish && sleep 30 &&
+cd ~/code/newsteam/packages/legacy-cli-logger       && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm version patch && npm publish && sleep 30 &&
+cd ~/code/newsteam/packages/cli-utils               && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm version patch && npm publish && sleep 30 &&
+cd ~/code/newsteam/packages/cli-tasks               && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm version patch && npm publish && sleep 30 &&
+cd ~/code/newsteam/packages/legacy-cli-config       && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm version patch && npm publish && sleep 30 &&
+cd ~/code/newsteam/packages/legacy-webpack-config   && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm version patch && npm publish && sleep 30 &&
+cd ~/code/newsteam/packages/legacy-cli              && rm -rf node_modules && rm -f package-lock.json && npm run update && npm install && npm version patch && npm publish
 

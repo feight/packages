@@ -3,9 +3,7 @@
 import "jasmine";
 
 
-import {
-    localPythonVirtualenvTask
-} from "../..";
+import { localPythonVirtualenvTask } from "../..";
 
 
 describe("{ localPythonVirtualenvTask }", () => {

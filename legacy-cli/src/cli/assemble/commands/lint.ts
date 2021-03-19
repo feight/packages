@@ -5,12 +5,8 @@ import { config } from "@newsteam/legacy-cli-config";
 
 import { assembleCliOptions } from "../options";
 import { action } from "../../../utils/action";
-import type {
-    TestTaskLintType
-} from "../../../tasks/test";
-import {
-    testTask
-} from "../../../tasks/test";
+import type { TestTaskLintType } from "../../../tasks/test";
+import { testTask } from "../../../tasks/test";
 
 
 export interface AssembleLintCommandOptions{

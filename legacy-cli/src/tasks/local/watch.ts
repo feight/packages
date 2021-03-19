@@ -7,9 +7,7 @@ import {
 import type { NewsTeamConfig } from "@newsteam/legacy-cli-config";
 
 import type { BuildTaskOptions } from "../build";
-import {
-    generateBuildTaskConfigs
-} from "../build";
+import { generateBuildTaskConfigs } from "../build";
 import { buildEntriesTask } from "../build/entries";
 import { buildRSSTask } from "../build/rss";
 import { buildSettingsTask } from "../build/settings";

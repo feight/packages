@@ -3,9 +3,7 @@
 import "jasmine";
 
 
-import {
-    localMemcachedEmulatorTask
-} from "../..";
+import { localMemcachedEmulatorTask } from "../..";
 
 
 describe("{ localMemcachedEmulatorTask }", () => {

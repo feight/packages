@@ -4,19 +4,11 @@ import path from "path";
 
 import gulp from "gulp";
 import flake8 from "@thollingshead/gulp-flake8";
-import type {
-    WatchOptions
-} from "@newsteam/cli-utils";
-import {
-    watch
-} from "@newsteam/cli-utils";
+import type { WatchOptions } from "@newsteam/cli-utils";
+import { watch } from "@newsteam/cli-utils";
 import { logger } from "@newsteam/legacy-cli-logger";
-import type {
-    LintErrorData
-} from "@newsteam/legacy-cli-errors";
-import {
-    LintError
-} from "@newsteam/legacy-cli-errors";
+import type { LintErrorData } from "@newsteam/legacy-cli-errors";
+import { LintError } from "@newsteam/legacy-cli-errors";
 
 
 export class Flake8LintError extends LintError{

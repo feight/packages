@@ -3,45 +3,25 @@
 import Joi from "@hapi/joi";
 
 import type { AlternativesSchema } from "./alternatives";
-import {
-    alternativesSchemaToJoi
-} from "./alternatives";
+import { alternativesSchemaToJoi } from "./alternatives";
 import type { AnySchema } from "./any";
-import {
-    anySchemaToJoi
-} from "./any";
+import { anySchemaToJoi } from "./any";
 import type { ArraySchema } from "./array";
-import {
-    arraySchemaToJoi
-} from "./array";
+import { arraySchemaToJoi } from "./array";
 import type { BinarySchema } from "./binary";
-import {
-    binarySchemaToJoi
-} from "./binary";
+import { binarySchemaToJoi } from "./binary";
 import type { BooleanSchema } from "./boolean";
-import {
-    booleanSchemaToJoi
-} from "./boolean";
+import { booleanSchemaToJoi } from "./boolean";
 import type { DateSchema } from "./date";
-import {
-    dateSchemaToJoi
-} from "./date";
+import { dateSchemaToJoi } from "./date";
 import type { NumberSchema } from "./number";
-import {
-    numberSchemaToJoi
-} from "./number";
+import { numberSchemaToJoi } from "./number";
 import type { ObjectSchema } from "./object";
-import {
-    objectSchemaToJoi
-} from "./object";
+import { objectSchemaToJoi } from "./object";
 import type { StringSchema } from "./string";
-import {
-    stringSchemaToJoi
-} from "./string";
+import { stringSchemaToJoi } from "./string";
 import type { Reference } from "./reference";
-import {
-    referenceToJoi
-} from "./reference";
+import { referenceToJoi } from "./reference";
 
 export type Schema =
     AlternativesSchema |

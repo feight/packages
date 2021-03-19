@@ -3,23 +3,13 @@
 import Joi from "@hapi/joi";
 import JSON5 from "json5";
 
-import type {
-    AnySchemaDefinition
-} from "./any";
-import {
-    extendAnySchema
-} from "./any";
-import type {
-    Reference
-} from "./reference";
-import {
-    referenceToJoi
-} from "./reference";
+import type { AnySchemaDefinition } from "./any";
+import { extendAnySchema } from "./any";
+import type { Reference } from "./reference";
+import { referenceToJoi } from "./reference";
 
 import type { Schema } from ".";
-import {
-    schemaToJoi
-} from ".";
+import { schemaToJoi } from ".";
 
 /*
  * Create an extension of Joi.array that coerces strings into arrays since this

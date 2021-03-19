@@ -1,12 +1,13 @@
 
+
 export interface ModernizrConfig{
-    "classPrefix"?: string;
-    "enableClasses"?: boolean;
-    "enableJSClass"?: boolean;
-    "scriptGlobalName"?: "window";
-    "usePrefixes"?: boolean;
-    "minify"?: boolean;
-    "options"?: (
+    classPrefix?: string;
+    enableClasses?: boolean;
+    enableJSClass?: boolean;
+    scriptGlobalName?: "window";
+    usePrefixes?: boolean;
+    minify?: boolean;
+    options?: (
         "addTest"
         | "atRule"
         | "domPrefixes"

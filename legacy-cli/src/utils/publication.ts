@@ -4,9 +4,7 @@ import path from "path";
 
 import globby from "globby";
 import type { AssemblePublicationSettings } from "@newsteam/legacy-settings";
-import {
-    getPublicationSettings
-} from "@newsteam/legacy-settings";
+import { getPublicationSettings } from "@newsteam/legacy-settings";
 
 
 export interface Publication{

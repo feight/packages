@@ -17,6 +17,20 @@ export default {
     ].map((string: string) => require.resolve(string)),
     plugins: ["import"],
     settings: {
+        "import/extensions": [
+            ".js",
+            ".jsx",
+            ".ts",
+            ".tsx",
+            ".md",
+            ".mdx"
+        ],
+        "import/parsers": {
+            "@typescript-eslint/parser": [
+                ".ts",
+                ".tsx"
+            ]
+        },
         "import/resolver": {
             node: {
                 extensions: [
@@ -27,6 +41,9 @@ export default {
                     ".md",
                     ".mdx"
                 ]
+            },
+            typescript: {
+                project: "."
             }
         }
     }

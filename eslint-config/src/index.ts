@@ -2,7 +2,6 @@
 
 import type { Linter } from "eslint";
 
-
 import { overrides } from "./overrides";
 
 
@@ -51,7 +50,8 @@ const config: Linter.Config = {
     parserOptions: {
         ecmaVersion: 2020,
         project: "./tsconfig.json",
-        sourceType: "module"
+        sourceType: "module",
+        tsconfigRootDir: "./"
     },
     plugins: ["@typescript-eslint"]
 };

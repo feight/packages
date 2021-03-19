@@ -3,9 +3,7 @@
 import "jasmine";
 
 
-import {
-    config
-} from ".";
+import { config } from ".";
 
 
 describe("{ config }", () => {

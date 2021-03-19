@@ -3,9 +3,7 @@
 import "jasmine";
 
 
-import {
-    eslintLintTask
-} from "..";
+import { eslintLintTask } from "..";
 
 
 describe("{ eslintLintTask }", () => {

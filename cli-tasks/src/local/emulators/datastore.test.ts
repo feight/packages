@@ -3,9 +3,7 @@
 import "jasmine";
 
 
-import {
-    localDatastoreEmulatorTask
-} from "../..";
+import { localDatastoreEmulatorTask } from "../..";
 
 
 describe("{ localDatastoreEmulatorTask }", () => {

@@ -3,12 +3,8 @@
 import { hashElement } from "folder-hash";
 import objectHash from "object-hash";
 
-import type {
-    PackageJson
-} from "../package-json";
-import {
-    getPackageJson
-} from "../package-json";
+import type { PackageJson } from "../package-json";
+import { getPackageJson } from "../package-json";
 import type { Dependency } from "../dependency";
 
 

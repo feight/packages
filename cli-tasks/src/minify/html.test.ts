@@ -3,9 +3,7 @@
 import "jasmine";
 
 
-import {
-    minifyHTMLTask
-} from "..";
+import { minifyHTMLTask } from "..";
 
 
 describe("{ minifyHTMLTask }", () => {

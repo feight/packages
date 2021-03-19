@@ -1,8 +1,10 @@
 {
   "name": "@newsteam/babel",
-  "version": "0.0.25",
+  "version": "0.0.31",
   "description": "Collection of babel dependencies",
   "scripts": {
+    "build": "echo 'no build'",
+    "test": "echo 'no test'",
     "update": "ncu -u"
   },
   "browserslist": "node 12",
@@ -36,7 +38,7 @@
   "dependencies": {
     "@babel/cli": "7.13.10",
     "@babel/core": "7.13.10",
-    "@newsteam/babel-preset": "0.0.25",
+    "@newsteam/babel-preset": "0.0.31",
     "renamer": "2.0.1"
   },
   "devDependencies": {

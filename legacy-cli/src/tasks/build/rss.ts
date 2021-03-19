@@ -1,12 +1,8 @@
 
 
 import gulp from "gulp";
-import type {
-    WatchOptions
-} from "@newsteam/cli-utils";
-import {
-    watch
-} from "@newsteam/cli-utils";
+import type { WatchOptions } from "@newsteam/cli-utils";
+import { watch } from "@newsteam/cli-utils";
 import { logger } from "@newsteam/legacy-cli-logger";
 
 

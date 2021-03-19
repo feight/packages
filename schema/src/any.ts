@@ -2,20 +2,14 @@
 
 import Joi from "@hapi/joi";
 
-import type {
-    Reference
-} from "./reference";
-import {
-    referenceToJoi
-} from "./reference";
+import type { Reference } from "./reference";
+import { referenceToJoi } from "./reference";
 
 import type {
     Schema,
     SchemaLike
 } from ".";
-import {
-    schemaLikeToJoi
-} from ".";
+import { schemaLikeToJoi } from ".";
 
 
 const convert = {

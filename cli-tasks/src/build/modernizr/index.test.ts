@@ -3,9 +3,7 @@
 import "jasmine";
 
 
-import {
-    buildModernizrTask
-} from ".";
+import { buildModernizrTask } from ".";
 
 
 describe("{ buildModernizrTask }", () => {

@@ -3,9 +3,7 @@
 import "jasmine";
 
 
-import {
-    localPythonServerTask
-} from "../..";
+import { localPythonServerTask } from "../..";
 
 
 describe("{ localPythonServerTask }", () => {

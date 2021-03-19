@@ -26,49 +26,21 @@ import type {
 } from "@newsteam/legacy-cli-config";
 
 import { buildConsoleTask } from "./console";
-import type {
-    BuildEntriesTaskOptions
-} from "./entries";
-import {
-    buildEntriesTask
-} from "./entries";
+import type { BuildEntriesTaskOptions } from "./entries";
+import { buildEntriesTask } from "./entries";
 import { buildReleaseTask } from "./release";
-import type {
-    BuildRSSTaskOptions
-} from "./rss";
-import {
-    buildRSSTask
-} from "./rss";
-import type {
-    BuildSettingsTaskOptions
-} from "./settings";
-import {
-    buildSettingsTask
-} from "./settings";
-import type {
-    BuildStaticAssetsTaskOptions
-} from "./static";
-import {
-    buildStaticAssetsTask
-} from "./static";
-import type {
-    BuildWebpackTaskOptions
-} from "./webpack";
-import {
-    buildWebpackTask
-} from "./webpack";
-import type {
-    BuildWidgetsTaskOptions
-} from "./widgets";
-import {
-    buildWidgetsTask
-} from "./widgets";
-import type {
-    BuildYamlTaskOptions
-} from "./yaml";
-import {
-    buildYamlTask
-} from "./yaml";
+import type { BuildRSSTaskOptions } from "./rss";
+import { buildRSSTask } from "./rss";
+import type { BuildSettingsTaskOptions } from "./settings";
+import { buildSettingsTask } from "./settings";
+import type { BuildStaticAssetsTaskOptions } from "./static";
+import { buildStaticAssetsTask } from "./static";
+import type { BuildWebpackTaskOptions } from "./webpack";
+import { buildWebpackTask } from "./webpack";
+import type { BuildWidgetsTaskOptions } from "./widgets";
+import { buildWidgetsTask } from "./widgets";
+import type { BuildYamlTaskOptions } from "./yaml";
+import { buildYamlTask } from "./yaml";
 
 import { linkTask } from "../link";
 import { cleanTask } from "../clean";

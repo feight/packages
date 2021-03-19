@@ -3,9 +3,7 @@
 import "jasmine";
 
 
-import {
-    localRedisServerTask
-} from "./server";
+import { localRedisServerTask } from "./server";
 
 
 describe("{ localRedisServerTask }", () => {

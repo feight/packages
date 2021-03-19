@@ -7,9 +7,7 @@ import {
 
 
 import type { GcloudAppVersion } from "../version";
-import {
-    getVersions
-} from "../version";
+import { getVersions } from "../version";
 
 
 const label = "promote";

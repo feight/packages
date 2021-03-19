@@ -6,18 +6,10 @@ import path from "path";
 import { CLIEngine } from "eslint";
 import type vinyl from "vinyl";
 import { logger } from "@newsteam/legacy-cli-logger";
-import type {
-    WatchOptions
-} from "@newsteam/cli-utils";
-import {
-    watch
-} from "@newsteam/cli-utils";
-import type {
-    LintErrorData
-} from "@newsteam/legacy-cli-errors";
-import {
-    LintError
-} from "@newsteam/legacy-cli-errors";
+import type { WatchOptions } from "@newsteam/cli-utils";
+import { watch } from "@newsteam/cli-utils";
+import type { LintErrorData } from "@newsteam/legacy-cli-errors";
+import { LintError } from "@newsteam/legacy-cli-errors";
 
 
 export class ESLintError extends LintError{

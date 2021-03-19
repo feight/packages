@@ -106,10 +106,13 @@ export const config = function(
             ...configs.optimization(genOptions),
             ...configs.performance(genOptions),
             ...configs.plugins(genOptions),
-            ...configs.resolve(genOptions),
+            ...configs.resolve(genOptions, configuration),
             ...configs.stats(),
             ...configs.watchOptions(),
-            ...configuration
+            ...{
+                // Force output config
+                ...configs.output(genOptions)
+            }
         };
 
         /*

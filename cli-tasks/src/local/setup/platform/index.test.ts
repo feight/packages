@@ -3,9 +3,7 @@
 import "jasmine";
 
 
-import {
-    localPlatformSetupTask
-} from "../../..";
+import { localPlatformSetupTask } from "../../..";
 
 
 describe("{ localPlatformSetupTask }", () => {

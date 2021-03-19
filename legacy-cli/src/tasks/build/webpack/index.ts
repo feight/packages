@@ -32,9 +32,7 @@ import SpeedMeasurePlugin from "speed-measure-webpack-plugin";
 import type { Configuration } from "webpack";
 import webpack from "webpack";
 import type { Mode } from "@newsteam/legacy-cli-config";
-import {
-    config as assembleCliConfig
-} from "@newsteam/legacy-cli-config";
+import { config as assembleCliConfig } from "@newsteam/legacy-cli-config";
 import { kill } from "@newsteam/cli-utils";
 
 

@@ -8,19 +8,22 @@ import type { Options } from "..";
 
 
 export const resolve = function(
-    options: Options
+    options: Options,
+    config: Configuration
 ): Configuration{
 
 
     return {
         resolve: {
             alias: {
+                "@src": path.resolve(__dirname, "src"),
                 base: path.resolve(options.cwd, "src/publication/base"),
                 build: path.resolve(options.cwd, "src/build"),
                 custom: path.resolve(options.cwd, "src/publication/custom"),
                 modernizr$: path.resolve(path.join(options.cwd, ".modernizr.js")),
                 settings: path.resolve(options.cwd, "src/settings"),
-                shared: path.resolve(options.cwd, "src/publication/shared")
+                shared: path.resolve(options.cwd, "src/publication/shared"),
+                ...config.resolve?.alias
             },
 
             /*
