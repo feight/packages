@@ -258,6 +258,13 @@ export default {
         "react/no-unsafe": "error",
 
         /*
+         * Prevent creating unstable components inside components
+         *
+         * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unstable-nested-components.md
+         */
+        "react/no-unstable-nested-components": "error",
+
+        /*
          * Prevent definitions of unused prop types
          *
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unused-prop-types.md

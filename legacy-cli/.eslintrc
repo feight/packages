@@ -3,6 +3,7 @@
   "rules": {
     "compat/compat": "off",
     "import/named": "off",
+    "import/no-cycle": "off",
     "security/detect-non-literal-fs-filename": "off",
     "no-await-in-loop": "off",
     "no-process-exit": "off",

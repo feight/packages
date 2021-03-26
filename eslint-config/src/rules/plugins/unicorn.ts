@@ -244,6 +244,13 @@ export default {
         "unicorn/no-process-exit": "off",
 
         /*
+         * Forbid classes that only have static members
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-static-only-class.md
+         */
+        "unicorn/no-static-only-class": "error",
+
+        /*
          * Disallow assigning this to a variable
          *
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-this-assignment.md
@@ -316,6 +323,13 @@ export default {
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-array-find.md
          */
         "unicorn/prefer-array-find": "error",
+
+        /*
+         * Prefer Array#flat() over legacy techniques to flatten arrays
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-array-flat.md
+         */
+        "unicorn/prefer-array-flat": "error",
 
         /*
          * Prefer .flatMap(...) over .map(...).flat()
