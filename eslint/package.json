@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/eslint",
-  "version": "0.0.37",
+  "version": "0.0.42",
   "description": "Collection of eslint dependencies",
   "scripts": {
     "build": "echo 'no build'",
@@ -36,10 +36,10 @@
   "homepage": "https://github.com/feight/packages/tree/master/eslint#readme",
   "files": [],
   "dependencies": {
-    "@newsteam/eslint-config": "0.0.39",
-    "@typescript-eslint/eslint-plugin": "4.19.0",
-    "@typescript-eslint/parser": "4.19.0",
-    "eslint": "7.22.0",
+    "@newsteam/eslint-config": "0.0.43",
+    "@typescript-eslint/eslint-plugin": "4.20.0",
+    "@typescript-eslint/parser": "4.20.0",
+    "eslint": "7.23.0",
     "eslint-import-resolver-typescript": "^2.4.0",
     "eslint-plugin-array-func": "3.1.7",
     "eslint-plugin-async-await": "0.0.0",
@@ -51,6 +51,7 @@
     "eslint-plugin-format-message": "6.2.3",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-control-statements": "2.2.1",
+    "eslint-plugin-mdx": "^1.11.1",
     "eslint-plugin-more": "1.0.0",
     "eslint-plugin-no-unsanitized": "3.1.4",
     "eslint-plugin-no-useless-assign": "1.0.3",

@@ -21,6 +21,7 @@ const config: Linter.Config = {
         "./rules/plugins/format-message",
         "./rules/plugins/jsx-control-statements",
         "./rules/plugins/import",
+        "./rules/plugins/mdx",
         "./rules/plugins/more",
         "./rules/plugins/no-unsanitized",
         "./rules/plugins/no-useless-assign",

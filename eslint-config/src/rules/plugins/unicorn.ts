@@ -541,10 +541,19 @@ export default {
                 checkProperties: false,
                 replacements: {
                     args: {
-                        // This is a reserved keyword in sone cases - don't replace into this
+                        // This is a reserved keyword in some cases - don't replace into this
                         arguments: false
                     },
+                    doc: {
+                        // Term isn't overloaded - allow abbreviation
+                        document: true
+                    },
+                    docs: {
+                        // Term isn't overloaded - allow abbreviation
+                        documents: true
+                    },
                     envs: {
+                        // Term isn't overloaded - allow abbreviation
                         environments: true
                     },
                     params: {

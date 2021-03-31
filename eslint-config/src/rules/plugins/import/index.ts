@@ -21,9 +21,7 @@ export default {
             ".js",
             ".jsx",
             ".ts",
-            ".tsx",
-            ".md",
-            ".mdx"
+            ".tsx"
         ],
         "import/parsers": {
             "@typescript-eslint/parser": [
@@ -37,9 +35,7 @@ export default {
                     ".js",
                     ".jsx",
                     ".ts",
-                    ".tsx",
-                    ".md",
-                    ".mdx"
+                    ".tsx"
                 ]
             },
             typescript: {
