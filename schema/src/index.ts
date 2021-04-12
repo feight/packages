@@ -1,27 +1,87 @@
 
 
-import Joi from "@hapi/joi";
+import Joi from "joi";
 
-import type { AlternativesSchema } from "./alternatives";
-import { alternativesSchemaToJoi } from "./alternatives";
-import type { AnySchema } from "./any";
-import { anySchemaToJoi } from "./any";
-import type { ArraySchema } from "./array";
-import { arraySchemaToJoi } from "./array";
-import type { BinarySchema } from "./binary";
-import { binarySchemaToJoi } from "./binary";
-import type { BooleanSchema } from "./boolean";
-import { booleanSchemaToJoi } from "./boolean";
-import type { DateSchema } from "./date";
-import { dateSchemaToJoi } from "./date";
-import type { NumberSchema } from "./number";
-import { numberSchemaToJoi } from "./number";
-import type { ObjectSchema } from "./object";
-import { objectSchemaToJoi } from "./object";
-import type { StringSchema } from "./string";
-import { stringSchemaToJoi } from "./string";
+import type {
+    AlternativesSchema,
+    AlternativesSchemaDefinition
+} from "./alternatives";
+import type {
+    AnySchema,
+    AnySchemaDefinition
+} from "./any";
+import type {
+    ArraySchema,
+    ArraySchemaDefinition
+} from "./array";
+import type {
+    BinarySchema,
+    BinarySchemaDefinition
+} from "./binary";
+import type {
+    BooleanSchema,
+    BooleanSchemaDefinition
+} from "./boolean";
+import type {
+    DateSchema,
+    DateSchemaDefinition
+} from "./date";
+import type {
+    NumberSchema,
+    NumberSchemaDefinition
+} from "./number";
+import type {
+    ObjectSchema,
+    ObjectSchemaDefinition
+} from "./object";
+import type {
+    StringSchema,
+    StringSchemaDefinition
+} from "./string";
 import type { Reference } from "./reference";
+import { alternativesSchemaToJoi } from "./alternatives";
+import { anySchemaToJoi } from "./any";
+import { arraySchemaToJoi } from "./array";
+import { binarySchemaToJoi } from "./binary";
+import { booleanSchemaToJoi } from "./boolean";
+import { dateSchemaToJoi } from "./date";
+import { numberSchemaToJoi } from "./number";
+import { objectSchemaToJoi } from "./object";
+import { stringSchemaToJoi } from "./string";
 import { referenceToJoi } from "./reference";
+
+
+export type { AlternativesSchema } from "./alternatives";
+export type { AlternativesSchemaDefinition } from "./alternatives";
+export type { AnySchema } from "./any";
+export type { AnySchemaDefinition } from "./any";
+export type { ArraySchema } from "./array";
+export type { ArraySchemaDefinition } from "./array";
+export type { BinarySchema } from "./binary";
+export type { BinarySchemaDefinition } from "./binary";
+export type { BooleanSchema } from "./boolean";
+export type { BooleanSchemaDefinition } from "./boolean";
+export type { DateSchema } from "./date";
+export type { DateSchemaDefinition } from "./date";
+export type { NumberSchema } from "./number";
+export type { NumberSchemaDefinition } from "./number";
+export type { ObjectSchema } from "./object";
+export type { ObjectSchemaDefinition } from "./object";
+export type { StringSchema } from "./string";
+export type { StringSchemaDefinition } from "./string";
+
+
+export type SchemaDefinition =
+    AlternativesSchemaDefinition |
+    AnySchemaDefinition |
+    ArraySchemaDefinition |
+    BinarySchemaDefinition |
+    BooleanSchemaDefinition |
+    DateSchemaDefinition |
+    NumberSchemaDefinition |
+    ObjectSchemaDefinition |
+    StringSchemaDefinition;
+
 
 export type Schema =
     AlternativesSchema |
@@ -34,16 +94,21 @@ export type Schema =
     ObjectSchema |
     StringSchema;
 
+
 export type SchemaMap = Record<string, SchemaLike>;
+
 
 export interface ValidationResult<TValue>{
     errors: string[];
     value: TValue;
 }
 
+
 export type SchemaLike = Record<string, unknown> | Reference | Schema | boolean | number | string | null;
 
+
 export type ValidationSchema = Joi.Schema | Schema | SchemaMap;
+
 
 export const schemaToJoi = function(schema: Schema | SchemaMap): Joi.Schema{
 
@@ -106,6 +171,7 @@ export const schemaToJoi = function(schema: Schema | SchemaMap): Joi.Schema{
 
 };
 
+
 export const schemaLikeToJoi = function(schemaLike: SchemaLike): Joi.SchemaLike{
 
     if(
@@ -148,6 +214,7 @@ export const schemaLikeToJoi = function(schemaLike: SchemaLike): Joi.SchemaLike{
 
 };
 
+
 export const validateSchema = function<TValue>(value: TValue, schema: ValidationSchema): ValidationResult<TValue>{
 
     const validator = Joi.isSchema(schema) ? schema as Joi.Schema : schemaToJoi(schema as Schema | SchemaMap);
@@ -159,7 +226,6 @@ export const validateSchema = function<TValue>(value: TValue, schema: Validation
     const errors: Joi.ValidationErrorItem[] = result.error?.details ?? [];
 
     return {
-        // eslint-disable-next-line promise/prefer-await-to-callbacks -- bug in the linter
         errors: errors.map((error: Joi.ValidationErrorItem) => error.message),
         value
     };
@@ -167,14 +233,17 @@ export const validateSchema = function<TValue>(value: TValue, schema: Validation
 };
 
 
-// eslint-disable-next-line @typescript-eslint/no-extraneous-class -- This class isn't extraneous, it gets exported
-export class Validate{
+export const Validate: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- expected
+    compile: (target: Record<string, any>) => SchemaMap;
+    map: Map<Record<string, unknown>, SchemaMap>;
+    register: (target: Record<string, unknown>, property: string, propertySchema: Schema) => void;
+    validate: <ValidateType>(settings: ValidateType) => ValidateType;
+} = {
 
-    static map: Map<Record<string, unknown>, SchemaMap> = new Map<Record<string, unknown>, SchemaMap>();
+    compile(target): SchemaMap{
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Any is expected
-    static compile(target: Record<string, any>): SchemaMap{
-
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- expected
         const compiled = this.map.get(typeof target === "object" ? Object.getPrototypeOf(target) : target) ?? {};
 
         for(const key of Object.keys(target)){
@@ -197,6 +266,7 @@ export class Validate{
                         }else{
 
                             compiled[key] = {
+                                // eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- expected
                                 keys: this.compile(target[key]),
                                 type: "object"
                             };
@@ -238,9 +308,11 @@ export class Validate{
 
         return compiled;
 
-    }
+    },
 
-    static register(target: Record<string, unknown>, property: string, propertySchema: Schema): void{
+    map: new Map<Record<string, unknown>, SchemaMap>(),
+
+    register(target, property, propertySchema): void{
 
         const schemaMap: SchemaMap = this.map.get(target) ?? {};
 
@@ -248,9 +320,9 @@ export class Validate{
 
         this.map.set(target, schemaMap);
 
-    }
+    },
 
-    static validate<ValidateType>(settings: ValidateType): ValidateType{
+    validate<ValidateType>(settings: ValidateType): ValidateType{
 
         const schemaMap = this.compile(settings);
         const validation = validateSchema(settings, schemaMap);
@@ -275,13 +347,15 @@ export class Validate{
 
     }
 
-}
+};
+
 
 export const validate = function(propertySchema: Schema){
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types -- Since target could be of any type, this is unavoidable
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any -- expected
     return function value(target: any, propertyKey: string): void{
 
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- expected
         Validate.register(target, propertyKey, propertySchema);
 
     };

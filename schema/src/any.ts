@@ -1,6 +1,6 @@
 
 
-import Joi from "@hapi/joi";
+import Joi from "joi";
 
 import type { Reference } from "./reference";
 import { referenceToJoi } from "./reference";
@@ -14,13 +14,14 @@ import { schemaLikeToJoi } from ".";
 
 const convert = {
     allow(schema: Joi.Schema, value: AnySchemaDefinition["allow"]): Joi.Schema{
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- This needs to be type any
         return typeof value === "undefined" ? schema : schema.allow(...Array.isArray(value) ? value : [value]);
     },
     custom(schema: Joi.Schema, value: AnySchemaDefinition["custom"]): Joi.Schema{
         return value ? schema.custom(value.method, value.description) : schema;
     },
     default(schema: Joi.Schema, value: AnySchemaDefinition["default"]): Joi.Schema{
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- This needs to be type any
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-argument -- This needs to be type any
         return value ? schema.default(value.type === "reference" ? referenceToJoi(value) : value) : schema;
     },
     description(schema: Joi.Schema, value: AnySchemaDefinition["description"]): Joi.Schema{

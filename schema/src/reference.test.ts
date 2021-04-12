@@ -2,7 +2,7 @@
 
 import "jasmine";
 
-import Joi from "@hapi/joi";
+import Joi from "joi";
 
 import * as reference from "./reference";
 

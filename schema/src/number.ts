@@ -1,6 +1,6 @@
 
 
-import Joi from "@hapi/joi";
+import Joi from "joi";
 
 import type { AnySchemaDefinition } from "./any";
 import { extendAnySchema } from "./any";

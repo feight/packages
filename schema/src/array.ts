@@ -1,6 +1,6 @@
 
 
-import Joi from "@hapi/joi";
+import Joi from "joi";
 import JSON5 from "json5";
 
 import type { AnySchemaDefinition } from "./any";

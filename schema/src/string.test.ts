@@ -1,7 +1,7 @@
 
 import "jasmine";
 
-import Joi from "@hapi/joi";
+import Joi from "joi";
 
 import { EqualityTest } from "./utils/test";
 import * as string from "./string";

@@ -1,6 +1,6 @@
 
 
-import Joi from "@hapi/joi";
+import Joi from "joi";
 
 
 export interface Reference extends Joi.ReferenceOptions{

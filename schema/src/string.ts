@@ -1,6 +1,6 @@
 
 
-import Joi from "@hapi/joi";
+import Joi from "joi";
 
 import type {
     AnySchemaDefinition,
@@ -161,9 +161,20 @@ export type TopLevelDomainOptions = false | {
     deny?: Set<string> | string[];
 };
 
-export type GuidVersions = "uuidv1" | "uuidv2" | "uuidv3" | "uuidv4" | "uuidv5";
 
-export type IPVersions = "ipv4" | "ipv6" | "ipvfuture";
+export type GuidVersions =
+    "uuidv1" |
+    "uuidv2" |
+    "uuidv3" |
+    "uuidv4" |
+    "uuidv5";
+
+
+export type IPVersions =
+    "ipv4" |
+    "ipv6" |
+    "ipvfuture";
+
 
 export interface StringSchemaDefinition extends AnySchemaDefinition{
 
@@ -227,6 +238,7 @@ export interface StringSchemaDefinition extends AnySchemaDefinition{
          */
         paddingRequired?: boolean;
     };
+
     domain?: boolean | {
 
         /**
@@ -250,7 +262,9 @@ export interface StringSchemaDefinition extends AnySchemaDefinition{
          * @default 2
          */
         minDomainSegments?: number;
+
     };
+
     email?: boolean | {
 
         /**
@@ -347,6 +361,7 @@ export interface StringSchemaDefinition extends AnySchemaDefinition{
          * Used to determine if a CIDR is allowed or not.
          */
         cidr?: PresenceMode;
+
     };
 
     /**
@@ -373,6 +388,7 @@ export interface StringSchemaDefinition extends AnySchemaDefinition{
          * If specified, the string length is calculated in bytes using the provided encoding.
          */
         encoding?: string;
+
     };
 
     /**
@@ -394,6 +410,7 @@ export interface StringSchemaDefinition extends AnySchemaDefinition{
          * If specified, the string length is calculated in bytes using the provided encoding.
          */
         encoding?: string;
+
     };
 
     /**
@@ -410,6 +427,7 @@ export interface StringSchemaDefinition extends AnySchemaDefinition{
          * If specified, the string length is calculated in bytes using the provided encoding.
          */
         encoding?: string;
+
     };
 
     /**
@@ -441,6 +459,7 @@ export interface StringSchemaDefinition extends AnySchemaDefinition{
          * A regular expression object the string value must match against
          */
         regex: RegExp;
+
     };
 
     /**
@@ -464,6 +483,7 @@ export interface StringSchemaDefinition extends AnySchemaDefinition{
          * A regular expression object the string value must match against
          */
         regex: RegExp;
+
     };
 
     /**
@@ -480,6 +500,7 @@ export interface StringSchemaDefinition extends AnySchemaDefinition{
          * The string that will replace the pattern.
          */
         replacement: string;
+
     };
 
     /**
@@ -518,7 +539,9 @@ export interface StringSchemaDefinition extends AnySchemaDefinition{
      * format.
      */
     uuid?: GuidVersions | GuidVersions[] | boolean;
+
 }
+
 
 export const stringSchemaToJoi = function(type: StringSchema): Joi.AnySchema{
 

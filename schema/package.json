@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/schema",
-  "version": "0.0.6",
+  "version": "0.0.11",
   "description": "Assemble Schema",
   "main": "lib",
   "types": "lib",
@@ -33,18 +33,17 @@
     "lib"
   ],
   "dependencies": {
-    "@hapi/joi": "17.1.1",
-    "@types/hapi__joi": "17.1.6",
+    "joi": "^17.4.0",
     "json5": "2.2.0"
   },
   "devDependencies": {
     "@newsteam/babel": "0.0.31",
-    "@newsteam/eslint": "0.0.35",
+    "@newsteam/eslint": "0.0.43",
     "@newsteam/jasmine": "0.0.27",
     "@newsteam/npm-install-local": "0.0.9",
     "@types/json5": "0.0.30",
-    "@types/node": "14.14.35",
-    "npm-check-updates": "^11.3.0",
-    "typescript": "4.2.3"
+    "@types/node": "14.14.37",
+    "npm-check-updates": "^11.4.1",
+    "typescript": "4.2.4"
   }
 }
