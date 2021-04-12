@@ -38,7 +38,10 @@ export default {
          */
         "react/destructuring-assignment": [
             "error",
-            "never"
+            "always",
+            {
+                ignoreClassFields: true
+            }
         ],
 
         /*

@@ -702,6 +702,13 @@ const rules = {
     "@typescript-eslint/no-unnecessary-type-constraint": "error",
 
     /*
+     * Disallows calling an function with an any type value
+     *
+     * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unsafe-argument.md
+     */
+    "@typescript-eslint/no-unsafe-argument": "error",
+
+    /*
      * Disallows assigning any to variables and properties
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unsafe-assignment.md
