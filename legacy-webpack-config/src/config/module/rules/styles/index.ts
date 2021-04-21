@@ -8,6 +8,7 @@ import type {
 } from "webpack";
 import postcssConfig from "@newsteam/postcss-config";
 import sass from "sass";
+import jsonImporter from "node-sass-json-importer";
 
 import type { Options } from "../../../..";
 
@@ -110,6 +111,7 @@ const sassLoader = (): RuleSetUseItem => ({
     options: {
         implementation: sass,
         sassOptions: {
+            importer: jsonImporter(),
             includePaths: [
                 "src/publication",
                 "src/publication/node_modules",

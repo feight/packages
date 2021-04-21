@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/legacy-cli",
-  "version": "0.0.34",
+  "version": "0.0.35",
   "description": "Newsteam command line tools",
   "main": "lib",
   "types": "lib",
@@ -45,23 +45,23 @@
     "@newsteam/legacy-cli-logger": "0.0.6",
     "@newsteam/legacy-service-worker": "0.0.5",
     "@newsteam/legacy-settings": "0.0.6",
-    "@newsteam/legacy-webpack-config": "0.0.23",
+    "@newsteam/legacy-webpack-config": "^0.0.24",
     "@newsteam/schema": "0.0.11",
     "asciichart": "1.5.25",
     "commander": "7.2.0",
-    "core-js": "3.10.1",
+    "core-js": "3.10.2",
     "fs-extra": "9.1.0",
     "glob-promise": "4.1.0",
     "globby": "11.0.3",
     "gulp": "4.0.2",
     "is-equal": "1.6.1",
-    "js-yaml": "4.0.0",
+    "js-yaml": "4.1.0",
     "jsonschema": "1.4.0",
     "regenerator-runtime": "0.13.7",
     "speed-measure-webpack-plugin": "1.5.0",
     "to-snake-case": "1.0.0",
     "ts-node": "9.1.1",
-    "webpack": "^5.31.2"
+    "webpack": "^5.35.0"
   },
   "devDependencies": {
     "@newsteam/babel": "0.0.31",
@@ -72,8 +72,8 @@
     "@types/gulp": "4.0.8",
     "@types/js-yaml": "4.0.0",
     "@types/jsonschema": "1.1.1",
-    "@types/node": "14.14.37",
+    "@types/node": "14.14.41",
     "@types/to-snake-case": "1.0.0",
-    "npm-check-updates": "^11.4.1"
+    "npm-check-updates": "^11.5.1"
   }
 }

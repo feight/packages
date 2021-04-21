@@ -509,6 +509,19 @@ export default {
         "unicorn/prefer-string-trim-start-end": "error",
 
         /*
+         * Prefer switch over multiple else-if
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-switch.md
+         */
+        "unicorn/prefer-switch": [
+            "error",
+            {
+                emptyDefaultCase: "do-nothing-comment",
+                minimumCases: 3
+            }
+        ],
+
+        /*
          * Prefer ternary expressions over simple if-else statements
          *
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-ternary.md
