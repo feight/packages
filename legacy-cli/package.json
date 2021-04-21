@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/legacy-cli",
-  "version": "0.0.35",
+  "version": "0.0.36",
   "description": "Newsteam command line tools",
   "main": "lib",
   "types": "lib",
@@ -45,7 +45,7 @@
     "@newsteam/legacy-cli-logger": "0.0.6",
     "@newsteam/legacy-service-worker": "0.0.5",
     "@newsteam/legacy-settings": "0.0.6",
-    "@newsteam/legacy-webpack-config": "^0.0.24",
+    "@newsteam/legacy-webpack-config": "^0.0.25",
     "@newsteam/schema": "0.0.11",
     "asciichart": "1.5.25",
     "commander": "7.2.0",

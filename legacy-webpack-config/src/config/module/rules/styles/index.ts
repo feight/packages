@@ -111,7 +111,9 @@ const sassLoader = (): RuleSetUseItem => ({
     options: {
         implementation: sass,
         sassOptions: {
-            importer: jsonImporter(),
+            importer: jsonImporter({
+                convertCase: true
+            }),
             includePaths: [
                 "src/publication",
                 "src/publication/node_modules",
