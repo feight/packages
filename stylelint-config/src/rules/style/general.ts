@@ -58,6 +58,13 @@ export default {
         "no-eol-whitespace": true,
 
         /*
+         * Disallow irregular whitespace.
+         *
+         * https://stylelint.io/user-guide/rules/no-irregular-whitespace/
+         */
+        "no-irregular-whitespace": true,
+
+        /*
          * Disallow missing end-of-source newlines (Autofixable).
          *
          * https://stylelint.io/user-guide/rules/no-missing-end-of-source-newline/

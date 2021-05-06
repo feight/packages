@@ -30,7 +30,6 @@ export default {
          */
         "selector-attribute-operator-allowed-list": null,
 
-
         /*
          * Specify a list of disallowed attribute operators.
          *
@@ -45,7 +44,6 @@ export default {
          */
         "selector-class-pattern": idPattern,
 
-
         /*
          * Specify a allowed-list of allowed combinators.
          *
@@ -53,13 +51,19 @@ export default {
          */
         "selector-combinator-allowed-list": null,
 
-
         /*
          * Specify a list of disallowed combinators.
          *
          * https://stylelint.io/user-guide/rules/selector-combinator-disallowed-list/
          */
         "selector-combinator-disallowed-list": null,
+
+        /*
+         * Specify a list of disallowed selectors.
+         *
+         * https://stylelint.io/user-guide/rules/selector-combinator-disallowed-list/
+         */
+        "selector-disallowed-list": null,
 
         /*
          * Specify a pattern for ID selectors.

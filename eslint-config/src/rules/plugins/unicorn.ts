@@ -423,11 +423,29 @@ export default {
         "unicorn/prefer-modern-dom-apis": "error",
 
         /*
+         * Prefer JavaScript modules (ESM) over CommonJS
+         *
+         * This is only a problem in node 16 - so it's off for now
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-module.md
+         */
+        "unicorn/prefer-module": "off",
+
+        /*
          * Prefer negative index over .length - index for {String,Array,TypedArray}#slice() and Array#splice()
          *
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-negative-index.md
          */
         "unicorn/prefer-negative-index": "error",
+
+        /*
+         * Prefer using the node: protocol when importing Node.js builtin modules
+         *
+         * Off for now since this isn't supported in node < 16 in require() and we compile down to require()
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-node-protocol.md
+         */
+        "unicorn/prefer-node-protocol": "off",
 
         /*
          * Prefer Number static properties over global ones.

@@ -70,7 +70,7 @@ export const task = function(
                     "unlinkDir"
                 ]
             // eslint-disable-next-line @typescript-eslint/no-misused-promises -- Not sure wtf is wrong with this - but whatever
-            }).on("change", async (file): Promise<void> => {
+            }).on("change", async (file: string): Promise<void> => {
 
                 await taskFunction(file, true);
 

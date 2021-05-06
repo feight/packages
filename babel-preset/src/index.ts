@@ -74,6 +74,12 @@ export default declare((
                 loose: true
             }
         ],
+        [
+            "@babel/plugin-proposal-private-methods",
+            {
+                loose: true
+            }
+        ],
         "@babel/plugin-proposal-object-rest-spread",
         "@babel/plugin-transform-named-capturing-groups-regex",
         "@loadable/babel-plugin",

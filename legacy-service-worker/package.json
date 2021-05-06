@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/legacy-service-worker",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Exports a ServiceWorker class that can be used to automatically configure a server worker for the Assemble framework.",
   "main": "lib",
   "types": "lib",
@@ -41,15 +41,15 @@
     "lib"
   ],
   "devDependencies": {
-    "@newsteam/babel": "0.0.31",
-    "@newsteam/eslint": "0.0.35",
-    "@newsteam/jasmine": "0.0.27",
-    "@newsteam/npm-install-local": "0.0.9",
-    "@types/node": "14.14.35",
+    "@newsteam/babel": "0.0.33",
+    "@newsteam/eslint": "0.0.46",
+    "@newsteam/jasmine": "0.0.29",
+    "@newsteam/npm-install-local": "0.0.10",
+    "@types/node": "15.0.2",
     "@types/workbox-sw": "4.3.1",
-    "npm-check-updates": "^11.3.0"
+    "npm-check-updates": "^11.5.10"
   },
   "dependencies": {
-    "workbox-sw": "6.1.2"
+    "workbox-sw": "6.1.5"
   }
 }

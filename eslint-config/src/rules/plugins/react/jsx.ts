@@ -271,7 +271,12 @@ export default {
          *
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-sort-props.md
          */
-        "react/jsx-sort-props": "error",
+        "react/jsx-sort-props": [
+            "error",
+            {
+                ignoreCase: true
+            }
+        ],
 
         /*
          * Validate whitespace in and around the JSX opening and closing brackets (fixable)

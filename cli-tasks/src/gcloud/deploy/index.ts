@@ -48,10 +48,13 @@ export const googleCloudDeployTask = async function(
 
         // Only gcpVersions with numeric ids
         gcpVersions = gcpVersions.filter((gcpVersion) => !Number.isNaN(Number(gcpVersion.id)));
+
         // Sorted by id because the id is a timestamp and we wanted the oldest
-        gcpVersions = gcpVersions.sort((gcpVersionA, gcpVersionB) => Number(gcpVersionA.id) - Number(gcpVersionB.id));
+        gcpVersions.sort((gcpVersionA, gcpVersionB) => Number(gcpVersionA.id) - Number(gcpVersionB.id));
+
         // Of those, only select gcpVersions that aren't being used
         gcpVersions = gcpVersions.filter((gcpVersion) => !gcpVersion.traffic_split);
+
         // Of those, select all but the most recent so we always have fallbacks
         gcpVersions = gcpVersions.filter((gcpVersion, index) => index < gcpVersions.length - persistOldVersions);
 

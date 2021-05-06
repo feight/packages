@@ -50,7 +50,14 @@ export default {
          *
          * https://stylelint.io/user-guide/rules/no-invalid-double-slash-comments/
          */
-        "no-invalid-double-slash-comments": null
+        "no-invalid-double-slash-comments": null,
+
+        /*
+         * Disallow invalid position @import rules within a stylesheet.
+         *
+         * https://stylelint.io/user-guide/rules/no-invalid-position-at-import-rule/
+         */
+        "no-invalid-position-at-import-rule": true
 
     }
 };

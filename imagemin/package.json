@@ -1,13 +1,13 @@
 {
   "name": "@newsteam/imagemin",
-  "version": "0.0.25",
+  "version": "0.0.26",
   "description": "Preconfigured imagemin function",
   "main": "lib",
   "scripts": {
     "build": "bash ../build.sh",
     "prepublishOnly": "bash ../publish.sh",
     "test": "bash ../test.sh",
-    "update": "ncu -u"
+    "update": "ncu -u -x imagemin"
   },
   "browserslist": "node 12",
   "engines": {
@@ -41,8 +41,8 @@
     "lib"
   ],
   "dependencies": {
-    "@newsteam/jasmine": "0.0.27",
-    "imagemin": "7.0.1",
+    "@newsteam/jasmine": "0.0.29",
+    "imagemin": "^7.0.1",
     "imagemin-gifsicle": "7.0.0",
     "imagemin-jpegtran": "7.0.0",
     "imagemin-optipng": "8.0.0",
@@ -50,9 +50,9 @@
     "imagemin-svgo": "9.0.0"
   },
   "devDependencies": {
-    "@newsteam/babel": "0.0.31",
-    "@newsteam/eslint": "0.0.35",
-    "@types/node": "14.14.35",
-    "npm-check-updates": "^11.3.0"
+    "@newsteam/babel": "0.0.33",
+    "@newsteam/eslint": "0.0.45",
+    "@types/node": "15.0.2",
+    "npm-check-updates": "^11.5.10"
   }
 }
