@@ -1,10 +1,11 @@
 
 
-import type commander from "commander";
 import { config } from "@newsteam/legacy-cli-config";
 
 import { action } from "../../../utils/action";
 import { cleanTask } from "../../../tasks/clean";
+
+import type commander from "commander";
 
 
 export const assembleCleanCommand = function(command: commander.Command): commander.Command{

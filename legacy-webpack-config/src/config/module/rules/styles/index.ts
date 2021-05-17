@@ -1,14 +1,14 @@
 
 
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import postcssConfig from "@newsteam/postcss-config";
+import sass from "sass";
+
 import type {
     Configuration,
     RuleSetUseItem,
     RuleSetRule
 } from "webpack";
-import postcssConfig from "@newsteam/postcss-config";
-import sass from "sass";
-
 import type { Options } from "../../../..";
 
 /*

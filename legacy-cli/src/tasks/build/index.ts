@@ -11,39 +11,41 @@
 
 */
 
-import type {
-    BuildModernizrTaskOptions,
-    MinifyHTMLTaskOptions
-} from "@newsteam/cli-tasks";
 import {
     buildModernizrTask,
     minifyHTMLTask,
     npmInstallTask
 } from "@newsteam/cli-tasks";
-import type {
-    Mode,
-    NewsTeamConfig
-} from "@newsteam/legacy-cli-config";
+
 
 import { buildConsoleTask } from "./console";
-import type { BuildEntriesTaskOptions } from "./entries";
 import { buildEntriesTask } from "./entries";
 import { buildReleaseTask } from "./release";
-import type { BuildRSSTaskOptions } from "./rss";
 import { buildRSSTask } from "./rss";
-import type { BuildSettingsTaskOptions } from "./settings";
 import { buildSettingsTask } from "./settings";
-import type { BuildStaticAssetsTaskOptions } from "./static";
 import { buildStaticAssetsTask } from "./static";
-import type { BuildWebpackTaskOptions } from "./webpack";
 import { buildWebpackTask } from "./webpack";
-import type { BuildWidgetsTaskOptions } from "./widgets";
 import { buildWidgetsTask } from "./widgets";
-import type { BuildYamlTaskOptions } from "./yaml";
 import { buildYamlTask } from "./yaml";
 
 import { linkTask } from "../link";
 import { cleanTask } from "../clean";
+
+import type { BuildYamlTaskOptions } from "./yaml";
+import type { BuildWidgetsTaskOptions } from "./widgets";
+import type { BuildWebpackTaskOptions } from "./webpack";
+import type { BuildStaticAssetsTaskOptions } from "./static";
+import type { BuildSettingsTaskOptions } from "./settings";
+import type { BuildRSSTaskOptions } from "./rss";
+import type { BuildEntriesTaskOptions } from "./entries";
+import type {
+    Mode,
+    NewsTeamConfig
+} from "@newsteam/legacy-cli-config";
+import type {
+    BuildModernizrTaskOptions,
+    MinifyHTMLTaskOptions
+} from "@newsteam/cli-tasks";
 
 
 export const label = "build";

@@ -3,7 +3,6 @@
 import path from "path";
 
 import type { Configuration } from "webpack";
-
 import type { Options } from "..";
 
 
@@ -37,8 +36,6 @@ export const resolve = function(
                 ".mjs",
                 ".js",
                 ".jsx",
-                ".md",
-                ".mdx",
                 ".scss",
                 ".css",
                 ".html",

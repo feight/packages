@@ -6,10 +6,11 @@ import { logger } from "@newsteam/legacy-cli-logger";
 import fs from "fs-extra";
 import glob from "glob-promise";
 import isEqual from "is-equal";
-import type { TestErrorData } from "@newsteam/legacy-cli-errors";
 import { TestError } from "@newsteam/legacy-cli-errors";
 
 import { label } from "..";
+
+import type { TestErrorData } from "@newsteam/legacy-cli-errors";
 
 
 interface PublicationData{
@@ -25,7 +26,7 @@ interface Commonality{
 
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Can be any object
-const getKeys = function(object: any, current?: string): string[]{
+const getKeys = function(object: Record<string, any>, current?: string): string[]{
 
     let keys: string[] = [];
 
@@ -33,13 +34,12 @@ const getKeys = function(object: any, current?: string): string[]{
 
         keys.push(current ? `${ current }.${ key }` : key);
 
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- This is safe
         if(typeof object[key] === "object" && !Array.isArray(object[key])){
 
             keys = [
                 ...keys,
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- This is safe
-                ...getKeys(object[key], current ? `${ current }.${ key }` : key)
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any -- This is safe
+                ...getKeys(object[key] as Record<string, any>, current ? `${ current }.${ key }` : key)
             ];
 
         }
@@ -75,7 +75,8 @@ const commonality = function(shared: Record<string, any>, publicationData: Publi
     const [base] = publicationData;
     const tests = publicationData.slice(1);
 
-    const pubKeys = getKeys(base.json);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- safe
+    const pubKeys = getKeys(base.json as Record<string, any>);
 
     for(const key of pubKeys){
 
@@ -186,7 +187,8 @@ export const testSharedSettingsTask = async function(): Promise<void>{
 
     }));
 
-    const common = commonality(sharedData, data);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- safe
+    const common = commonality(sharedData as Record<string, any>, data);
 
     if(common.publication.length > 0){
 

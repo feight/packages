@@ -1,12 +1,13 @@
 
 
-import type commander from "commander";
 import { config } from "@newsteam/legacy-cli-config";
 
 import { assembleCliOptions } from "../options";
 import { action } from "../../../utils/action";
-import type { PromoteTaskOptions } from "../../../tasks/promote";
 import { promoteTask } from "../../../tasks/promote";
+
+import type { PromoteTaskOptions } from "../../../tasks/promote";
+import type commander from "commander";
 
 
 export const assemblePromoteCommand = function(command: commander.Command): commander.Command{

@@ -3,10 +3,11 @@ import path from "path";
 
 import fs from "fs-extra";
 import { logger } from "@newsteam/legacy-cli-logger";
-import type { WatchOptions } from "@newsteam/cli-utils";
 import { watch } from "@newsteam/cli-utils";
 
 import { label } from ".";
+
+import type { WatchOptions } from "@newsteam/cli-utils";
 
 
 const getFolders = (directory: string, filelist: string[] = []): string[] => {

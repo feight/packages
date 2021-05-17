@@ -1,25 +1,26 @@
 
 
-import type { TestError } from "@newsteam/legacy-cli-errors";
 import { logger } from "@newsteam/legacy-cli-logger";
 import { notify } from "@newsteam/cli-notify";
-import type {
-    EslintLintTaskOptions,
-    Flake8LintTaskOptions,
-    HtmllintLintTaskOptions,
-    StylelintLintTaskOptions
-} from "@newsteam/cli-tasks";
 import {
     eslintLintTask,
     flake8LintTask,
     htmllintLintTask,
     stylelintLintTask
 } from "@newsteam/cli-tasks";
-import type { NewsTeamConfig } from "@newsteam/legacy-cli-config";
 
-import type { TestSettingsTaskOptions } from "./settings";
 import { testSettingsTask } from "./settings";
 import { testSharedSettingsTask } from "./settings/shared";
+
+import type {
+    EslintLintTaskOptions,
+    Flake8LintTaskOptions,
+    HtmllintLintTaskOptions,
+    StylelintLintTaskOptions
+} from "@newsteam/cli-tasks";
+import type { NewsTeamConfig } from "@newsteam/legacy-cli-config";
+import type { TestSettingsTaskOptions } from "./settings";
+import type { TestError } from "@newsteam/legacy-cli-errors";
 
 
 const lintErrors = async function(configs: TestTaskConfigurations, fix: boolean, type?: TestTaskLintType): Promise<TestError[]>{

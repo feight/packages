@@ -1,9 +1,8 @@
 
 
-import type { Configuration } from "webpack";
-
 import { rules } from "./rules";
 
+import type { Configuration } from "webpack";
 import type { Options } from "../..";
 
 

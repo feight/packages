@@ -16,7 +16,7 @@ export const localJavaSetupTask = async function(): Promise<void>{
 
         // Check if java is installed
         await spawn({
-            command: "java --version",
+            command: "java -version",
             detatch: true
         });
 
@@ -27,32 +27,62 @@ export const localJavaSetupTask = async function(): Promise<void>{
 
     }catch{
 
-        await spawn({
-            command: "brew tap homebrew/cask-versions",
-            label: "setup"
-        });
+        try{
 
-        await spawn({
-            command: "brew update",
-            label: "setup"
-        });
+            // Check if java is installed
+            await spawn({
+                command: "java --version",
+                detatch: true
+            });
 
-        await spawn({
-            command: "brew tap caskroom/cask",
-            label: "setup"
-        });
+            logger.log("✔ java", {
+                color: "#00ff00",
+                label
+            });
 
-        await spawn({
-            command: "brew cask install java",
-            label: "setup"
-        });
+        }catch{
+
+            await spawn({
+                command: "brew tap homebrew/cask-versions",
+                label: "setup"
+            });
+
+            await spawn({
+                command: "brew update",
+                label: "setup"
+            });
+
+            await spawn({
+                command: "brew tap homebrew/cask",
+                label: "setup"
+            });
+
+            await spawn({
+                command: "brew install java",
+                label: "setup"
+            });
+
+        }
 
     }
 
-    const info = await exec({
-        command: "brew info java --cask",
-        detatch: true
-    });
+    let info = "";
+
+    try{
+
+        info = await exec({
+            command: "brew info java --cask",
+            detatch: true
+        });
+
+    }catch{
+
+        info = await exec({
+            command: "brew info java",
+            detatch: true
+        });
+
+    }
 
     const [match] = (/(\/Library\/Java\/JavaVirtualMachines\/.*?\.jdk)/gu).exec(info) ?? [];
 

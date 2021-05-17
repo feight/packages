@@ -1,12 +1,13 @@
 
 
-import type commander from "commander";
 import { config } from "@newsteam/legacy-cli-config";
 
 import { assembleCliOptions } from "../options";
 import { action } from "../../../utils/action";
-import type { DeployTaskOptions } from "../../../tasks/deploy";
 import { deployTask } from "../../../tasks/deploy";
+
+import type { DeployTaskOptions } from "../../../tasks/deploy";
+import type commander from "commander";
 
 
 export const assembleDeployCommand = function(command: commander.Command): commander.Command{

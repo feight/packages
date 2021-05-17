@@ -96,9 +96,13 @@ export default {
         /*
          * Prohibits the use of comparison array.indexOf() == -1 and ask to use 'includes' instead
          *
+         * This rule has a bug in it preventing eslint from running correctly
+         * https://github.com/WebbyLab/eslint-plugin-more/issues/44
+         * Turing it off until this issue is resolved
+         *
          * https://github.com/WebbyLab/eslint-plugin-more/blob/HEAD/docs/prefer-includes.md
          */
-        "more/prefer-includes": "error"
+        "more/prefer-includes": "off"
 
     }
 };

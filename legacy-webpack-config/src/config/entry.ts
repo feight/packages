@@ -4,6 +4,7 @@ import fs from "fs";
 import path from "path";
 
 import glob from "globby";
+
 import type { Configuration } from "webpack";
 
 
@@ -122,8 +123,7 @@ export const entry = function(): Configuration{
                 /src\/publication\/base\/(.*?)\/index.(js|jsx|ts|tsx)$/gu
             ),
             ...serviceWorkerEntryPoints(),
-            assemble: "assemble/index",
-            styleGuide: "style-guide/index"
+            assemble: "assemble/index"
         }
     };
 

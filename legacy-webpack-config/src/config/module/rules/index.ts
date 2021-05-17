@@ -1,7 +1,5 @@
 
 
-import type { Configuration } from "webpack";
-
 import { files } from "./files";
 import { fonts } from "./fonts";
 import { html } from "./html";
@@ -11,6 +9,7 @@ import { json } from "./json";
 import { scripts } from "./scripts";
 import { styles } from "./styles";
 
+import type { Configuration } from "webpack";
 import type { Options } from "../../..";
 
 

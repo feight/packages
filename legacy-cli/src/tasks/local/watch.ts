@@ -4,9 +4,8 @@ import {
     buildModernizrTask,
     minifyHTMLTask
 } from "@newsteam/cli-tasks";
-import type { NewsTeamConfig } from "@newsteam/legacy-cli-config";
 
-import type { BuildTaskOptions } from "../build";
+
 import { generateBuildTaskConfigs } from "../build";
 import { buildEntriesTask } from "../build/entries";
 import { buildRSSTask } from "../build/rss";
@@ -15,6 +14,9 @@ import { buildStaticAssetsTask } from "../build/static";
 import { buildWebpackTask } from "../build/webpack";
 import { buildWidgetsTask } from "../build/widgets";
 import { buildYamlTask } from "../build/yaml";
+
+import type { BuildTaskOptions } from "../build";
+import type { NewsTeamConfig } from "@newsteam/legacy-cli-config";
 
 
 export const label = "watch";

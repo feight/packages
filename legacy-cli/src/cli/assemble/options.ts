@@ -1,10 +1,11 @@
 
 
-import type { Mode } from "@newsteam/legacy-cli-config";
 import {
     config,
     modes
 } from "@newsteam/legacy-cli-config";
+
+import type { Mode } from "@newsteam/legacy-cli-config";
 
 
 export const assembleCliOptions = {

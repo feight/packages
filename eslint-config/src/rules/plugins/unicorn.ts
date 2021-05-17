@@ -165,6 +165,13 @@ export default {
         "unicorn/no-console-spaces": "error",
 
         /*
+         * Do not use document.cookie directly
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-document-cookie.md
+         */
+        "unicorn/no-document-cookie": "error",
+
+        /*
          * Do not use a for loop that can be replaced with a for-of loop
          *
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-for-loop.md
@@ -583,9 +590,17 @@ export default {
                         // Term isn't overloaded - allow abbreviation
                         documents: true
                     },
+                    env: {
+                        // Term isn't overloaded - allow abbreviation
+                        environment: true
+                    },
                     envs: {
                         // Term isn't overloaded - allow abbreviation
                         environments: true
+                    },
+                    param: {
+                        // This is used extremely frequently in react-router-dom and we don't want to change it
+                        parameter: false
                     },
                     params: {
                         // This is used extremely frequently in react-router-dom and we don't want to change it

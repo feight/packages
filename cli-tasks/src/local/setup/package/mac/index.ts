@@ -40,22 +40,40 @@ export const localPackageSetupTaskMac = async function(packages: Package[]): Pro
 
             await localBrewPackageSetupTask(pack as typeof brewFormulae[number]);
 
-        }else if(pack === "virtualbox"){
-
-            await localVirtualboxSetupTask();
-
-        }else if(pack === "java"){
-
-            await localJavaSetupTask();
-
-        }else if(pack === "pip"){
-
-            await localPipSetupTask();
-
         }else{
+            switch(pack){
 
-            throw new Error(`Package '${ pack }' setup not implemented on platform '${ process.platform }'`);
+                case "virtualbox" :{
 
+                    await localVirtualboxSetupTask();
+
+
+                    break;
+                }
+
+                case "java" :{
+
+                    await localJavaSetupTask();
+
+
+                    break;
+                }
+
+                case "pip" :{
+
+                    await localPipSetupTask();
+
+
+                    break;
+                }
+
+                default :{
+
+                    throw new Error(`Package '${ pack }' setup not implemented on platform '${ process.platform }'`);
+
+                }
+
+            }
         }
 
     }

@@ -6,8 +6,9 @@ import {
 } from "@newsteam/cli-utils";
 
 
-import type { GcloudAppVersion } from "../version";
 import { getVersions } from "../version";
+
+import type { GcloudAppVersion } from "../version";
 
 
 const label = "promote";

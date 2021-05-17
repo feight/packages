@@ -5,8 +5,9 @@
  *  project root.
  */
 
-import type { Configuration } from "webpack";
 import { config as configuration } from "@newsteam/legacy-webpack-config";
+
+import type { Configuration } from "webpack";
 import type {
     Args,
     Environment

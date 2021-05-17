@@ -27,13 +27,14 @@ import { plot } from "asciichart";
 import fs from "fs-extra";
 import glob from "globby";
 import { logger } from "@newsteam/legacy-cli-logger";
-import type { SpeedMeasureWebpackPluginData } from "speed-measure-webpack-plugin";
 import SpeedMeasurePlugin from "speed-measure-webpack-plugin";
-import type { Configuration } from "webpack";
 import webpack from "webpack";
-import type { Mode } from "@newsteam/legacy-cli-config";
 import { config as assembleCliConfig } from "@newsteam/legacy-cli-config";
 import { kill } from "@newsteam/cli-utils";
+
+import type { Mode } from "@newsteam/legacy-cli-config";
+import type { Configuration } from "webpack";
+import type { SpeedMeasureWebpackPluginData } from "speed-measure-webpack-plugin";
 
 
 const label = "webpack";

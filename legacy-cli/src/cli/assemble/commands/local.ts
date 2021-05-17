@@ -1,12 +1,13 @@
 
 
-import type commander from "commander";
 import { config } from "@newsteam/legacy-cli-config";
 
 import { assembleCliOptions } from "../options";
 import { action } from "../../../utils/action";
-import type { LocalTaskOptions } from "../../../tasks/local";
 import { localTask } from "../../../tasks/local";
+
+import type { LocalTaskOptions } from "../../../tasks/local";
+import type commander from "commander";
 
 export const assembleLocalCommand = function(command: commander.Command): commander.Command{
 

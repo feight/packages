@@ -1,10 +1,11 @@
 
 
-import type { PromptChoice } from "@newsteam/cli-utils";
 import { prompt } from "@newsteam/cli-utils";
 
-import type { Publication } from "./publication";
 import { getPublications } from "./publication";
+
+import type { PromptChoice } from "@newsteam/cli-utils";
+import type { Publication } from "./publication";
 
 
 const getChoices = function(publicationRoots: Publication[]): PromptChoice<Publication>[]{

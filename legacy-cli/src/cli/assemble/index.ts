@@ -1,8 +1,5 @@
 
 
-import type commander from "commander";
-
-
 import { assembleBuildCommand } from "./commands/build";
 import { assembleCleanCommand } from "./commands/clean";
 import { assembleCleanCacheCommand } from "./commands/clean-cache";
@@ -16,6 +13,8 @@ import { assembleSetupCommand } from "./commands/setup";
 import { assembleTestCommand } from "./commands/test";
 
 import { bind } from "../../utils/bind";
+
+import type commander from "commander";
 
 
 export const assembleCommand = function(name: string, parent: commander.CommanderStatic): commander.Command{
