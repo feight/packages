@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/legacy-webpack-config",
-  "version": "0.0.29",
+  "version": "0.0.35",
   "description": "Webpack configuration for the assemble framework.",
   "main": "lib",
   "types": "lib",
@@ -51,12 +51,12 @@
   },
   "dependencies": {
     "@babel/plugin-syntax-dynamic-import": "7.8.3",
-    "@babel/plugin-transform-react-jsx": "7.13.12",
+    "@babel/plugin-transform-react-jsx": "7.14.3",
     "@babel/preset-env": "7.14.2",
     "@newsteam/babel-preset": "0.0.34",
     "@newsteam/legacy-cli-config": "0.0.10",
     "@newsteam/legacy-cli-logger": "0.0.6",
-    "@newsteam/postcss-config": "0.0.30",
+    "@newsteam/postcss-config": "0.0.39",
     "assets-webpack-plugin": "7.1.0",
     "babel-loader": "8.2.2",
     "babel-runtime": "6.26.0",
@@ -72,7 +72,7 @@
     "globby": "11.0.3",
     "html-loader": "2.1.2",
     "image-process-loader": "1.1.1",
-    "imports-loader": "2.0.0",
+    "imports-loader": "3.0.0",
     "jquery": "3.6.0",
     "json-loader": "0.5.7",
     "mini-css-extract-plugin": "1.6.0",
@@ -85,7 +85,7 @@
     "sharp": "0.28.2",
     "svg-inline-loader": "0.8.2",
     "terser-webpack-plugin": "5.1.2",
-    "webpack": "5.37.0",
-    "webpack-bundle-analyzer": "4.4.1"
+    "webpack": "5.37.1",
+    "webpack-bundle-analyzer": "4.4.2"
   }
 }
