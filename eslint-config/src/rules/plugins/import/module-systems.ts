@@ -26,6 +26,13 @@ export default {
         "import/no-commonjs": "error",
 
         /*
+         * Forbid imports with CommonJS exports
+         *
+         * https://github.com/benmosher/eslint-plugin-import/blob/HEAD/docs/rules/no-import-module-exports.md
+         */
+        "import/no-import-module-exports": "error",
+
+        /*
          * No Node.js builtin modules.
          *
          * Off for now since we're assuming that most code is nodejs code

@@ -63,6 +63,15 @@ export default {
         "import/no-internal-modules": "off",
 
         /*
+         * Prevent importing packages through relative paths
+         *
+         * Off for now because we use relative imports
+         *
+         * https://github.com/benmosher/eslint-plugin-import/blob/HEAD/docs/rules/no-relative-packages.md
+         */
+        "import/no-relative-packages": "off",
+
+        /*
          * Forbid importing modules from parent directories
          *
          * Off for now because doing something like a utils collection would become impossible

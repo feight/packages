@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/legacy-cli",
-  "version": "0.0.47",
+  "version": "0.0.48",
   "description": "Newsteam command line tools",
   "main": "lib",
   "types": "lib",
@@ -45,7 +45,7 @@
     "@newsteam/legacy-cli-logger": "0.0.6",
     "@newsteam/legacy-service-worker": "0.0.6",
     "@newsteam/legacy-settings": "0.0.7",
-    "@newsteam/legacy-webpack-config": "0.0.34",
+    "@newsteam/legacy-webpack-config": "0.0.36",
     "@newsteam/schema": "0.0.12",
     "asciichart": "1.5.25",
     "commander": "7.2.0",
@@ -72,7 +72,7 @@
     "@types/gulp": "4.0.8",
     "@types/js-yaml": "4.0.1",
     "@types/jsonschema": "1.1.1",
-    "@types/node": "15.3.0",
+    "@types/node": "15.3.1",
     "@types/to-snake-case": "1.0.0",
     "npm-check-updates": "11.5.13"
   }
