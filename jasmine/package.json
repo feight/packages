@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/jasmine",
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "Collection of jasmine dependencies",
   "scripts": {
     "test": "echo 'no tests'",
@@ -35,11 +35,11 @@
   "homepage": "https://github.com/feight/packages/tree/master/jasmine#readme",
   "files": [],
   "dependencies": {
-    "@types/jasmine": "3.6.11",
+    "@types/jasmine": "3.7.5",
     "jasmine": "3.7.0",
     "jasmine-console-reporter": "3.1.0"
   },
   "devDependencies": {
-    "npm-check-updates": "^11.5.10"
+    "npm-check-updates": "^11.5.13"
   }
 }

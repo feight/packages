@@ -7,7 +7,6 @@ import { logger } from "@newsteam/legacy-cli-logger";
 import { watch } from "@newsteam/cli-utils";
 import fs from "fs-extra";
 import filesize from "filesize";
-
 import type { WatchOptions } from "@newsteam/cli-utils";
 
 

@@ -7,10 +7,9 @@ import fs from "fs-extra";
 import glob from "glob-promise";
 import isEqual from "is-equal";
 import { TestError } from "@newsteam/legacy-cli-errors";
+import type { TestErrorData } from "@newsteam/legacy-cli-errors";
 
 import { label } from "..";
-
-import type { TestErrorData } from "@newsteam/legacy-cli-errors";
 
 
 interface PublicationData{

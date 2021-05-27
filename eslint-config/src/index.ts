@@ -1,8 +1,8 @@
 
 
-import { overrides } from "./overrides";
-
 import type { Linter } from "eslint";
+
+import { overrides } from "./overrides";
 
 
 const config: Linter.Config = {

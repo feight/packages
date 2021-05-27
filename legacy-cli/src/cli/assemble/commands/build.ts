@@ -1,13 +1,12 @@
 
 
 import { config } from "@newsteam/legacy-cli-config";
+import type commander from "commander";
 
 import { assembleCliOptions } from "../options";
 import { action } from "../../../utils/action";
 import { buildTask } from "../../../tasks/build";
-
 import type { BuildTaskOptions } from "../../../tasks/build";
-import type commander from "commander";
 
 
 export const assembleBuildCommand = function(command: commander.Command): commander.Command{

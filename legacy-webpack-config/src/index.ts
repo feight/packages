@@ -1,10 +1,9 @@
 
 
 import { config as assembleCliConfig } from "@newsteam/legacy-cli-config";
+import type { Configuration } from "webpack";
 
 import * as configs from "./config";
-
-import type { Configuration } from "webpack";
 
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any -- This provides a stack trace for deprecation warnings

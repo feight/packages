@@ -1,15 +1,13 @@
 
 
 import { googleCloudDeployTask } from "@newsteam/cli-tasks";
-
+import type { NewsTeamConfig } from "@newsteam/legacy-cli-config";
 
 import { buildTask } from "./build";
 import { cleanTask } from "./clean";
 import { linkTask } from "./link";
 
 import { promptEnvironment } from "../utils/prompt-environment";
-
-import type { NewsTeamConfig } from "@newsteam/legacy-cli-config";
 
 
 export interface DeployTaskOptions{

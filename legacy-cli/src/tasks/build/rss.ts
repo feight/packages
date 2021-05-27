@@ -3,7 +3,6 @@
 import gulp from "gulp";
 import { watch } from "@newsteam/cli-utils";
 import { logger } from "@newsteam/legacy-cli-logger";
-
 import type { WatchOptions } from "@newsteam/cli-utils";
 
 

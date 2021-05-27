@@ -6,8 +6,8 @@ import fs from "fs-extra";
 import modernizr from "modernizr";
 import { logger } from "@newsteam/legacy-cli-logger";
 import { watch } from "@newsteam/cli-utils";
-
 import type { WatchOptions } from "@newsteam/cli-utils";
+
 import type { ModernizrConfig } from "./types";
 
 

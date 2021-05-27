@@ -1,11 +1,11 @@
 
 
-import { babelLoader } from "../../../../shared/loaders/babel";
-
 import type {
     Configuration,
     RuleSetRule
 } from "webpack";
+
+import { babelLoader } from "../../../../shared/loaders/babel";
 
 
 export const scripts = function(

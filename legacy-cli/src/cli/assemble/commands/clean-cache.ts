@@ -1,10 +1,9 @@
 
 
 import { cleanCacheTask } from "@newsteam/cli-tasks";
+import type commander from "commander";
 
 import { action } from "../../../utils/action";
-
-import type commander from "commander";
 
 
 export const assembleCleanCacheCommand = function(command: commander.Command): commander.Command{

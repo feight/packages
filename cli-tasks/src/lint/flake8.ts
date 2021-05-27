@@ -7,7 +7,6 @@ import flake8 from "@thollingshead/gulp-flake8";
 import { watch } from "@newsteam/cli-utils";
 import { logger } from "@newsteam/legacy-cli-logger";
 import { LintError } from "@newsteam/legacy-cli-errors";
-
 import type { LintErrorData } from "@newsteam/legacy-cli-errors";
 import type { WatchOptions } from "@newsteam/cli-utils";
 

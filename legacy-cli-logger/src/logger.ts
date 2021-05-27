@@ -425,7 +425,7 @@ export class Logger{
 
     }
 
-    write(message? : string, options?: {
+    write(message?: string, options?: {
         error?: boolean;
         label: string;
     }): void{

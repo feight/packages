@@ -16,7 +16,14 @@ import {
     minifyHTMLTask,
     npmInstallTask
 } from "@newsteam/cli-tasks";
-
+import type {
+    Mode,
+    NewsTeamConfig
+} from "@newsteam/legacy-cli-config";
+import type {
+    BuildModernizrTaskOptions,
+    MinifyHTMLTaskOptions
+} from "@newsteam/cli-tasks";
 
 import { buildConsoleTask } from "./console";
 import { buildEntriesTask } from "./entries";
@@ -27,10 +34,6 @@ import { buildStaticAssetsTask } from "./static";
 import { buildWebpackTask } from "./webpack";
 import { buildWidgetsTask } from "./widgets";
 import { buildYamlTask } from "./yaml";
-
-import { linkTask } from "../link";
-import { cleanTask } from "../clean";
-
 import type { BuildYamlTaskOptions } from "./yaml";
 import type { BuildWidgetsTaskOptions } from "./widgets";
 import type { BuildWebpackTaskOptions } from "./webpack";
@@ -38,14 +41,9 @@ import type { BuildStaticAssetsTaskOptions } from "./static";
 import type { BuildSettingsTaskOptions } from "./settings";
 import type { BuildRSSTaskOptions } from "./rss";
 import type { BuildEntriesTaskOptions } from "./entries";
-import type {
-    Mode,
-    NewsTeamConfig
-} from "@newsteam/legacy-cli-config";
-import type {
-    BuildModernizrTaskOptions,
-    MinifyHTMLTaskOptions
-} from "@newsteam/cli-tasks";
+
+import { cleanTask } from "../clean";
+import { linkTask } from "../link";
 
 
 export const label = "build";

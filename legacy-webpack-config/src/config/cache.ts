@@ -2,6 +2,7 @@
 import path from "path";
 
 import type { Configuration } from "webpack";
+
 import type { Options } from "..";
 
 

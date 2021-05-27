@@ -7,7 +7,6 @@ import { logger } from "@newsteam/legacy-cli-logger";
 
 import { promptPublication } from "../utils/prompt-publication";
 import { getPublication } from "../utils/publication";
-
 import type { Publication } from "../utils/publication";
 
 

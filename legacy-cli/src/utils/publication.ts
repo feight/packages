@@ -4,7 +4,6 @@ import path from "path";
 
 import globby from "globby";
 import { getPublicationSettings } from "@newsteam/legacy-settings";
-
 import type { AssemblePublicationSettings } from "@newsteam/legacy-settings";
 
 

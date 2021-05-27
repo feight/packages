@@ -1,14 +1,13 @@
 
 
 import { config } from "@newsteam/legacy-cli-config";
+import type commander from "commander";
 
+import type { AssembleLintCommandOptions } from "./lint";
 
 import { assembleCliOptions } from "../options";
 import { action } from "../../../utils/action";
 import { testTask } from "../../../tasks/test";
-
-import type { AssembleLintCommandOptions } from "./lint";
-import type commander from "commander";
 
 
 type AssembleTestCommandOptions = AssembleLintCommandOptions;

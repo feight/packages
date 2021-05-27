@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/legacy-cli-logger",
-  "version": "0.0.6",
+  "version": "0.0.9",
   "description": "This package provides a logger for command line interfaces",
   "main": "lib",
   "types": "lib",
@@ -9,7 +9,7 @@
     "npm-install-local": "npm-install-local",
     "prepublishOnly": "bash ../publish.sh",
     "test": "bash ../test.sh",
-    "update": "ncu -u -x justify-text"
+    "update": "ncu -u --reject justify-text,strip-ansi"
   },
   "engines": {
     "node": ">= 12"
@@ -41,14 +41,14 @@
     "lib"
   ],
   "dependencies": {
-    "@newsteam/legacy-cli-errors": "0.0.5",
+    "@newsteam/legacy-cli-errors": "0.0.7",
     "@types/progress": "2.0.3",
     "@types/text-table": "0.2.1",
-    "chalk": "4.1.0",
+    "chalk": "4.1.1",
     "codeframe": "0.0.1",
     "justify-text": "1.1.1",
     "magicdawn-get-cursor-position": "1.0.5",
-    "node-pty": "0.10.0",
+    "node-pty": "0.10.1",
     "progress": "2.0.3",
     "strip-ansi": "6.0.0",
     "strip-color": "0.1.0",
@@ -57,14 +57,14 @@
     "vinyl": "2.2.1"
   },
   "devDependencies": {
-    "@newsteam/babel": "0.0.31",
-    "@newsteam/eslint": "0.0.35",
-    "@newsteam/jasmine": "0.0.27",
-    "@newsteam/npm-install-local": "0.0.9",
-    "@types/node": "14.14.35",
+    "@newsteam/babel": "0.0.34",
+    "@newsteam/eslint": "0.0.48",
+    "@newsteam/jasmine": "0.0.30",
+    "@newsteam/npm-install-local": "0.0.11",
+    "@types/node": "15.6.1",
     "@types/strip-color": "0.1.0",
     "@types/through2": "2.0.36",
     "@types/vinyl": "2.0.4",
-    "npm-check-updates": "^11.3.0"
+    "npm-check-updates": "^11.5.13"
   }
 }

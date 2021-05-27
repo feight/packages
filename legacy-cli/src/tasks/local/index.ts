@@ -13,12 +13,11 @@ import {
 } from "@newsteam/cli-tasks";
 import { logger } from "@newsteam/legacy-cli-logger";
 import { getPublicationSettings } from "@newsteam/legacy-settings";
+import type { NewsTeamConfig } from "@newsteam/legacy-cli-config";
 
 import { localWatchTask } from "./watch";
 
 import { buildTask } from "../build";
-
-import type { NewsTeamConfig } from "@newsteam/legacy-cli-config";
 import type { BuildTaskOptions } from "../build";
 
 

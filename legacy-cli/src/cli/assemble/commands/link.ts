@@ -1,9 +1,9 @@
 
 
+import type commander from "commander";
+
 import { action } from "../../../utils/action";
 import { linkTask } from "../../../tasks/link";
-
-import type commander from "commander";
 
 
 export const assembleLinkCommand = function(command: commander.Command): commander.Command{

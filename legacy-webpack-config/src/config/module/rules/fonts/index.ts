@@ -1,11 +1,11 @@
 
 
-import { fileLoader } from "../../../../shared/loaders/file";
-
 import type {
     Configuration,
     RuleSetRule
 } from "webpack";
+
+import { fileLoader } from "../../../../shared/loaders/file";
 import type { Options } from "../../../..";
 
 

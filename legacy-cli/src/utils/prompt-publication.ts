@@ -1,10 +1,9 @@
 
 
 import { prompt } from "@newsteam/cli-utils";
+import type { PromptChoice } from "@newsteam/cli-utils";
 
 import { getPublications } from "./publication";
-
-import type { PromptChoice } from "@newsteam/cli-utils";
 import type { Publication } from "./publication";
 
 

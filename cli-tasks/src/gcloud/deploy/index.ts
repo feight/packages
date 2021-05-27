@@ -77,7 +77,6 @@ export const googleCloudDeployTask = async function(
             ${ promote ? "" : "--no-promote" }
             --quiet
         `,
-        dry: true,
         label: "deploy"
     });
 
