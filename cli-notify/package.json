@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/cli-notify",
-  "version": "0.0.7",
+  "version": "0.0.11",
   "description": "This package provides a notification function used to signal completion of cli tasks.",
   "main": "lib",
   "types": "lib",
@@ -41,14 +41,14 @@
     "lib"
   ],
   "devDependencies": {
-    "@newsteam/babel": "0.0.34",
-    "@newsteam/eslint": "0.0.48",
-    "@newsteam/jasmine": "0.0.30",
-    "@newsteam/npm-install-local": "0.0.11",
-    "npm-check-updates": "^11.5.13"
+    "@newsteam/babel": "0.0.39",
+    "@newsteam/eslint": "0.0.52",
+    "@newsteam/jasmine": "0.0.36",
+    "@newsteam/npm-install-local": "0.0.17",
+    "npm-check-updates": "^11.8.3"
   },
   "dependencies": {
-    "@types/node-notifier": "8.0.0",
+    "@types/node-notifier": "8.0.1",
     "node-notifier": "10.0.0"
   }
 }

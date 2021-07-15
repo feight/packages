@@ -217,7 +217,7 @@ export const schemaLikeToJoi = function(schemaLike: SchemaLike): Joi.SchemaLike{
 
 export const validateSchema = function<TValue>(value: TValue, schema: ValidationSchema): ValidationResult<TValue>{
 
-    const validator = Joi.isSchema(schema) ? schema as Joi.Schema : schemaToJoi(schema as Schema | SchemaMap);
+    const validator = Joi.isSchema(schema) ? schema : schemaToJoi(schema);
 
     const result = validator.validate(value, {
         abortEarly: false

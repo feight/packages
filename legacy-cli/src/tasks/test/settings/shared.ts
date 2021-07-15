@@ -58,7 +58,6 @@ const getDescendantProperty = function(object: any, desc: string): any{
     // eslint-disable-next-line no-param-reassign, no-empty, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment -- I'll be honest, I got this from stack overflow, lets just roll with it
     while(array.length > 0 && (object = object[array.shift() || -1])){}
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- Can be any object
     return object;
 
 };

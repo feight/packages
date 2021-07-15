@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/legacy-cli-logger",
-  "version": "0.0.9",
+  "version": "0.0.14",
   "description": "This package provides a logger for command line interfaces",
   "main": "lib",
   "types": "lib",
@@ -41,9 +41,9 @@
     "lib"
   ],
   "dependencies": {
-    "@newsteam/legacy-cli-errors": "0.0.7",
-    "@types/progress": "2.0.3",
-    "@types/text-table": "0.2.1",
+    "@newsteam/legacy-cli-errors": "0.0.12",
+    "@types/progress": "2.0.4",
+    "@types/text-table": "0.2.2",
     "chalk": "4.1.1",
     "codeframe": "0.0.1",
     "justify-text": "1.1.1",
@@ -57,14 +57,14 @@
     "vinyl": "2.2.1"
   },
   "devDependencies": {
-    "@newsteam/babel": "0.0.34",
-    "@newsteam/eslint": "0.0.48",
-    "@newsteam/jasmine": "0.0.30",
-    "@newsteam/npm-install-local": "0.0.11",
-    "@types/node": "15.6.1",
+    "@newsteam/babel": "0.0.39",
+    "@newsteam/eslint": "0.0.52",
+    "@newsteam/jasmine": "0.0.36",
+    "@newsteam/npm-install-local": "0.0.17",
+    "@types/node": "16.3.2",
     "@types/strip-color": "0.1.0",
     "@types/through2": "2.0.36",
-    "@types/vinyl": "2.0.4",
-    "npm-check-updates": "^11.5.13"
+    "@types/vinyl": "2.0.5",
+    "npm-check-updates": "^11.8.3"
   }
 }

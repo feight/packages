@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/stylelint-config",
-  "version": "0.0.29",
+  "version": "0.0.33",
   "description": "Shared config for stylelint",
   "main": "lib",
   "types": "lib",
@@ -44,13 +44,13 @@
     "lib"
   ],
   "dependencies": {
-    "@newsteam/jasmine": "0.0.30"
+    "@newsteam/jasmine": "0.0.36"
   },
   "devDependencies": {
-    "@newsteam/babel": "0.0.34",
-    "@newsteam/eslint": "0.0.48",
-    "@types/node": "15.6.1",
-    "npm-check-updates": "^11.5.13",
+    "@newsteam/babel": "0.0.39",
+    "@newsteam/eslint": "0.0.52",
+    "@types/node": "16.3.2",
+    "npm-check-updates": "^11.8.3",
     "stylelint": "13.13.1",
     "stylelint-a11y": "1.2.3",
     "stylelint-declaration-block-no-ignored-properties": "2.3.0",

@@ -15,7 +15,7 @@ export interface TamlandServiceWorkerOptions{
      * The assets you would like the service worker to precache
      *
      */
-    precache: (string|{
+    precache: (string | {
         url: string;
         revision: string;
     })[];
@@ -25,7 +25,7 @@ export interface TamlandServiceWorkerOptions{
 
 export class ServiceWorker{
 
-    precache: (string|{
+    precache: (string | {
         url: string;
         revision: string;
     })[];

@@ -7,7 +7,7 @@ import path from "path";
 
 import chalk from "chalk";
 import fs from "fs-extra";
-import program from "commander";
+import { program } from "commander";
 import table from "text-table";
 
 import { setCache } from "../cache";

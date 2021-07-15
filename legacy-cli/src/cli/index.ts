@@ -6,7 +6,7 @@ import "core-js/stable";
 import "regenerator-runtime/runtime";
 
 import fs from "fs-extra";
-import program from "commander";
+import { program } from "commander";
 import { logger } from "@newsteam/legacy-cli-logger";
 
 import { assembleCommand } from "./assemble";

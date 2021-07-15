@@ -1,6 +1,6 @@
 
 
-import type commander from "commander";
+import type { Command } from "commander";
 
 import { assembleBuildCommand } from "./commands/build";
 import { assembleCleanCommand } from "./commands/clean";
@@ -17,9 +17,9 @@ import { assembleTestCommand } from "./commands/test";
 import { bind } from "../../utils/bind";
 
 
-export const assembleCommand = function(name: string, parent: commander.CommanderStatic): commander.Command{
+export const assembleCommand = function(name: string, parent: Command): Command{
 
-    const program = new parent.Command(name);
+    const program = parent.command(name);
 
     bind("build", assembleBuildCommand, program);
     bind("clean", assembleCleanCommand, program);

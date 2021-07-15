@@ -144,6 +144,13 @@ export default {
         "unicorn/no-array-for-each": "error",
 
         /*
+         * Disallow using the this argument in array methods
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-array-method-this-argument.md
+         */
+        "unicorn/no-array-method-this-argument": "error",
+
+        /*
          * Enforce combining multiple Array#push() into one call
          *
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-array-push-push.md
@@ -360,6 +367,15 @@ export default {
         "unicorn/prefer-array-some": "error",
 
         /*
+         * Prefer .at() method for index access and String#charAt()
+         *
+         * This breaks typescript array typings at the moment
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-at.md
+         */
+        "unicorn/prefer-at": "off",
+
+        /*
          * Prefer Date.now() to get the number of milliseconds since the Unix Epoch
          *
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-date-now.md
@@ -462,11 +478,25 @@ export default {
         "unicorn/prefer-number-properties": "error",
 
         /*
+         * Prefer Object.hasOwn(...) over Object.prototype.hasOwnProperty.call(...)
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-object-has-own.md
+         */
+        "unicorn/prefer-object-has-own": "error",
+
+        /*
          * Prefer omitting the catch binding parameter
          *
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-optional-catch-binding.md
          */
         "unicorn/prefer-optional-catch-binding": "error",
+
+        /*
+         * Prefer borrowing methods from the prototype instead of methods from an instance
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-prototype-methods.md
+         */
+        "unicorn/prefer-prototype-methods": "error",
 
         /*
          * Prefer String#replaceAll() over regex searches with the global flag
@@ -554,6 +584,15 @@ export default {
         "unicorn/prefer-ternary": "error",
 
         /*
+         * Prefer top-level await over top-level promises and async function calls
+         *
+         * Off for now because we don't have ESM yet
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-top-level-await.md
+         */
+        "unicorn/prefer-top-level-await": "off",
+
+        /*
          * Enforce throwing TypeError in type checking conditions. (fixable)
          *
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-type-error.md
@@ -613,6 +652,27 @@ export default {
                 }
             }
         ],
+
+        /*
+         * Enforce using the separator argument with Array#join()
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/require-array-join-separator.md
+         */
+        "unicorn/require-array-join-separator": "error",
+
+        /*
+         * Enforce using the digits argument with Number#toFixed()
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/require-number-to-fixed-digits-argument.md
+         */
+        "unicorn/require-number-to-fixed-digits-argument": "error",
+
+        /*
+         * Enforce using the targetOrigin argument with window.postMessage()
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/require-post-message-target-origin.md
+         */
+        "unicorn/require-post-message-target-origin": "error",
 
         /*
          * Enforce certain things about the contents of strings. For example, you

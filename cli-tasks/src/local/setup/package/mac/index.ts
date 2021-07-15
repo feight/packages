@@ -17,7 +17,7 @@ import type { Package } from "..";
 export const localPackageSetupTaskMac = async function(packages: Package[]): Promise<void>{
 
     // If any of the packages are brew packages install brew
-    if(packages.filter((item) => brewFormulae.includes(item as typeof brewFormulae[number])).length > 0){
+    if(packages.some((item) => brewFormulae.includes(item as typeof brewFormulae[number]))){
 
         await localBrewSetupTask();
 
