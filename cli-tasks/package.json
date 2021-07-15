@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/cli-tasks",
-  "version": "0.0.38",
+  "version": "0.0.39",
   "description": "This package provides a collection of cli tasks.",
   "main": "lib",
   "types": "lib",
@@ -42,7 +42,7 @@
   ],
   "dependencies": {
     "@newsteam/cli-utils": "0.0.15",
-    "@newsteam/eslint": "0.0.52",
+    "@newsteam/eslint": "0.0.53",
     "@newsteam/imagemin": "0.0.31",
     "@newsteam/legacy-cli-errors": "0.0.12",
     "@newsteam/legacy-cli-logger": "0.0.14",
