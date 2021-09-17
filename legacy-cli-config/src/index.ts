@@ -43,7 +43,8 @@ const cwd = process.cwd();
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access -- This is required for runtime ts execution
 require("ts-node").register({
-    project: path.join(cwd, "tsconfig.json")
+    project: path.join(cwd, "tsconfig.json"),
+    transpileOnly: true
 });
 
 const configPathBase = path.resolve(path.join(cwd, ".newsteam.ts"));

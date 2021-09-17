@@ -9,7 +9,7 @@
     "npm-install-local": "npm-install-local",
     "prepublishOnly": "bash ../publish.sh",
     "test": "bash ../test.sh",
-    "update": "ncu -u --reject node-fetch @types/node-fetch"
+    "update": "ncu -u --reject node-fetch,@types/node-fetch"
   },
   "engines": {
     "node": ">= 12"

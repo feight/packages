@@ -95,7 +95,8 @@ export const buildWebpackTask = async function(options: BuildWebpackTaskOptions)
     await new Promise((resolve, reject): void => {
 
         require("ts-node").register({
-            project: "./tsconfig.json"
+            project: "./tsconfig.json",
+            transpileOnly: true
         });
 
         const webpackBasePath = "./config.js";
