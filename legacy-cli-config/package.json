@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/legacy-cli-config",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "description": "Newsteam command line tools",
   "main": "lib",
   "types": "lib",
@@ -40,7 +40,7 @@
     "deepmerge": "4.2.2",
     "fs-extra": "10.0.0",
     "reflect-metadata": "0.1.13",
-    "ts-node": "9.1.1"
+    "ts-node": "10.2.1"
   },
   "devDependencies": {
     "@newsteam/babel": "0.0.40",

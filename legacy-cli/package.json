@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/legacy-cli",
-  "version": "0.0.73",
+  "version": "0.0.74",
   "description": "Newsteam command line tools",
   "main": "lib",
   "types": "lib",
@@ -40,7 +40,7 @@
     "@newsteam/cli-notify": "0.0.11",
     "@newsteam/cli-tasks": "0.0.41",
     "@newsteam/cli-utils": "0.0.15",
-    "@newsteam/legacy-cli-config": "0.0.21",
+    "@newsteam/legacy-cli-config": "0.0.22",
     "@newsteam/legacy-cli-errors": "0.0.12",
     "@newsteam/legacy-cli-logger": "0.0.14",
     "@newsteam/legacy-service-worker": "0.0.11",
@@ -60,7 +60,7 @@
     "regenerator-runtime": "0.13.9",
     "speed-measure-webpack-plugin": "1.5.0",
     "to-snake-case": "1.0.0",
-    "ts-node": "9.1.1",
+    "ts-node": "10.2.1",
     "webpack": "5.53.0"
   },
   "devDependencies": {
