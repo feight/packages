@@ -66,7 +66,6 @@ export const optimizeTask = async function(options: OptimizeTaskOptions): Promis
 
         if(savings.length > 0){
 
-            // eslint-disable-next-line unicorn/no-array-reduce -- legitimate use of reduce
             const saved = filesize(savings.reduce((accumulator, current): number => Number(current) + Number(accumulator)));
 
             logger.log(`Saved a total of ${ logger.colorizeText(saved, "#00ff00") }`, { label });

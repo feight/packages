@@ -12,7 +12,8 @@ const noMagicNumbersConfig = {
         1,
         2
     ],
-    ignoreArrayIndexes: true
+    ignoreArrayIndexes: true,
+    ignoreDefaultValues: true
 };
 
 

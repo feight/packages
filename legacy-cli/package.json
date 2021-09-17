@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/legacy-cli",
-  "version": "0.0.64",
+  "version": "0.0.68",
   "description": "Newsteam command line tools",
   "main": "lib",
   "types": "lib",
@@ -11,7 +11,7 @@
     "prepublishOnly": "bash ../publish.sh",
     "test": "bash ../test.sh",
     "tsc": "tsc --emitDeclarationOnly",
-    "update": "ncu -u"
+    "update": "ncu -u --reject globby"
   },
   "bin": {
     "newsteam": "lib/cli/index.js"
@@ -38,42 +38,42 @@
   ],
   "dependencies": {
     "@newsteam/cli-notify": "0.0.11",
-    "@newsteam/cli-tasks": "0.0.39",
+    "@newsteam/cli-tasks": "0.0.41",
     "@newsteam/cli-utils": "0.0.15",
-    "@newsteam/legacy-cli-config": "0.0.18",
+    "@newsteam/legacy-cli-config": "0.0.19",
     "@newsteam/legacy-cli-errors": "0.0.12",
     "@newsteam/legacy-cli-logger": "0.0.14",
     "@newsteam/legacy-service-worker": "0.0.11",
     "@newsteam/legacy-settings": "0.0.12",
-    "@newsteam/legacy-webpack-config": "^0.0.49",
+    "@newsteam/legacy-webpack-config": "^0.0.53",
     "@newsteam/schema": "0.0.19",
     "asciichart": "1.5.25",
-    "commander": "8.0.0",
-    "core-js": "3.15.2",
+    "commander": "8.2.0",
+    "core-js": "3.17.3",
     "fs-extra": "10.0.0",
     "glob-promise": "4.2.0",
     "globby": "11.0.4",
     "gulp": "4.0.2",
-    "is-equal": "1.6.2",
+    "is-equal": "1.6.3",
     "js-yaml": "4.1.0",
     "jsonschema": "1.4.0",
-    "regenerator-runtime": "0.13.7",
+    "regenerator-runtime": "0.13.9",
     "speed-measure-webpack-plugin": "1.5.0",
     "to-snake-case": "1.0.0",
-    "ts-node": "10.1.0",
-    "webpack": "5.44.0"
+    "ts-node": "10.2.1",
+    "webpack": "5.53.0"
   },
   "devDependencies": {
-    "@newsteam/babel": "0.0.39",
-    "@newsteam/jasmine": "0.0.36",
+    "@newsteam/babel": "0.0.40",
+    "@newsteam/jasmine": "0.0.37",
     "@newsteam/npm-install-local": "0.0.17",
     "@types/asciichart": "1.5.6",
     "@types/fs-extra": "9.0.12",
     "@types/gulp": "4.0.9",
-    "@types/js-yaml": "4.0.2",
+    "@types/js-yaml": "4.0.3",
     "@types/jsonschema": "1.1.1",
-    "@types/node": "16.3.2",
+    "@types/node": "16.9.2",
     "@types/to-snake-case": "1.0.0",
-    "npm-check-updates": "11.8.3"
+    "npm-check-updates": "11.8.5"
   }
 }

@@ -25,7 +25,7 @@ import path from "path";
 
 import { plot } from "asciichart";
 import fs from "fs-extra";
-import glob from "globby";
+import globby from "globby";
 import { logger } from "@newsteam/legacy-cli-logger";
 import SpeedMeasurePlugin from "speed-measure-webpack-plugin";
 import webpack from "webpack";
@@ -42,7 +42,7 @@ const buildStatsFolder = path.join(process.cwd(), ".newsteam/webpack-build-stats
 
 const printBuildStatistics = function(): void{
 
-    const files = glob.sync(path.join(buildStatsFolder, "*.json"));
+    const files = globby.sync(path.join(buildStatsFolder, "*.json"));
     const max = 50;
 
     files.sort((fileA: string, fileB: string) => fileA > fileB ? 1 : -1);

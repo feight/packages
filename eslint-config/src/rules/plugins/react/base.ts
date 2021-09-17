@@ -296,6 +296,13 @@ export default {
         "react/prefer-es6-class": "error",
 
         /*
+         * Prefer exact proptype definitions
+         *
+         * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-exact-props.md
+         */
+        "react/prefer-exact-props": "error",
+
+        /*
          * Enforce that props are read-only
          *
          * Off for now because this only works in Flow

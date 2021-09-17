@@ -567,6 +567,13 @@ const rules = {
     ],
 
     /*
+     * Disallow the void operator except when used to discard a value
+     *
+     * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-meaningless-void-operator.md
+     */
+    "@typescript-eslint/no-meaningless-void-operator": "error",
+
+    /*
      * Enforce valid definition of new and constructor. (no-misused-new from TSLint)
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-misused-new.md
@@ -789,6 +796,33 @@ const rules = {
     ],
 
     /*
+     * Require or disallow padding lines between statements
+     *
+     * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/padding-line-between-statements.md
+     */
+    "@typescript-eslint/padding-line-between-statements": [
+        "error",
+        {
+            blankLine: "always",
+            next: [
+                "const",
+                "directive",
+                "interface",
+                "let",
+                "multiline-block-like",
+                "return",
+                "type",
+                "var"
+            ],
+            prev: [
+                "directive",
+                "multiline-block-like",
+                "return"
+            ]
+        }
+    ],
+
+    /*
      * Prefer usage of as const over literal type
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/prefer-as-const.md
@@ -880,6 +914,13 @@ const rules = {
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/prefer-regexp-exec.md
      */
     "@typescript-eslint/prefer-regexp-exec": "error",
+
+    /*
+     * Enforce that this is used when only this type is returned
+     *
+     * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/prefer-return-this-type.md
+     */
+    "@typescript-eslint/prefer-return-this-type": "error",
 
     /*
      * Enforce the use of String#startsWith and String#endsWith instead of other equivalent methods of checking substrings

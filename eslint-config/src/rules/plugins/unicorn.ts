@@ -200,6 +200,13 @@ export default {
         "unicorn/no-instanceof-array": "error",
 
         /*
+         * Prevent calling EventTarget#removeEventListener() with the result of an expression
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-invalid-remove-event-listener.md
+         */
+        "unicorn/no-invalid-remove-event-listener": "error",
+
+        /*
          * Disallow identifiers starting with new or class
          *
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-keyword-prefix.md
@@ -293,6 +300,27 @@ export default {
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-unused-properties.md
          */
         "unicorn/no-unused-properties": "error",
+
+        /*
+         * Forbid useless fallback when spreading in object literals
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-useless-fallback-in-spread.md
+         */
+        "unicorn/no-useless-fallback-in-spread": "error",
+
+        /*
+         * Disallow useless array length check
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-useless-length-check.md
+         */
+        "unicorn/no-useless-length-check": "error",
+
+        /*
+         * Disallow useless spread
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-useless-spread.md
+         */
+        "unicorn/no-useless-spread": "error",
 
         /*
          * Disallow useless undefined
@@ -476,6 +504,13 @@ export default {
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-number-properties.md
          */
         "unicorn/prefer-number-properties": "error",
+
+        /*
+         * Prefer using Object.fromEntries(…) to transform a list of key-value pairs into an object
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-object-from-entries.md
+         */
+        "unicorn/prefer-object-from-entries": "error",
 
         /*
          * Prefer Object.hasOwn(...) over Object.prototype.hasOwnProperty.call(...)
