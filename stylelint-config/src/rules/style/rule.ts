@@ -3,7 +3,7 @@
 /*
  * Stylistic issues Rule
  *
- * https://stylelint.io/user-guide/rules/#stylistic-issues
+ * https://stylelint.io/user-guide/rules/list/#stylistic-issues
  */
 
 
@@ -13,7 +13,7 @@ export default {
         /*
          * Require or disallow an empty line before rules (Autofixable).
          *
-         * https://stylelint.io/user-guide/rules/rule-empty-line-before/
+         * https://stylelint.io/user-guide/rules/list/rule-empty-line-before/
          */
         "rule-empty-line-before": [
             "always",

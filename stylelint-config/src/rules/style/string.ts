@@ -3,7 +3,7 @@
 /*
  * Stylistic issues String
  *
- * https://stylelint.io/user-guide/rules/#stylistic-issues
+ * https://stylelint.io/user-guide/rules/list/#stylistic-issues
  */
 
 
@@ -13,7 +13,7 @@ export default {
         /*
          * Specify single or double quotes around strings (Autofixable).
          *
-         * https://stylelint.io/user-guide/rules/string-quotes/
+         * https://stylelint.io/user-guide/rules/list/string-quotes/
          */
         "string-quotes": "double"
 

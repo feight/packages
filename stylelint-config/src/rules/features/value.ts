@@ -3,7 +3,7 @@
 /*
  * Limit language features Value
  *
- * https://stylelint.io/user-guide/rules/#limit-language-features
+ * https://stylelint.io/user-guide/rules/list/#limit-language-features
  */
 
 
@@ -13,7 +13,7 @@ export default {
         /*
          * Disallow vendor prefixes for values.
          *
-         * https://stylelint.io/user-guide/rules/value-no-vendor-prefix/
+         * https://stylelint.io/user-guide/rules/list/value-no-vendor-prefix/
          */
         "value-no-vendor-prefix": true
 

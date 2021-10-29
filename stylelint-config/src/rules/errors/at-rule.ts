@@ -3,7 +3,7 @@
 /*
  * Possible errors At rules
  *
- * https://stylelint.io/user-guide/rules/#possible-errors
+ * https://stylelint.io/user-guide/rules/list/#possible-errors
  */
 
 
@@ -16,7 +16,7 @@ export default {
         /*
          * Disallow unknown at-rules.
          *
-         * https://stylelint.io/user-guide/rules/at-rule-no-unknown/
+         * https://stylelint.io/user-guide/rules/list/at-rule-no-unknown/
          */
         "at-rule-no-unknown": [
             true,

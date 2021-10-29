@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/stylelint-config",
-  "version": "0.0.33",
+  "version": "0.0.34",
   "description": "Shared config for stylelint",
   "main": "lib",
   "types": "lib",
@@ -44,34 +44,34 @@
     "lib"
   ],
   "dependencies": {
-    "@newsteam/jasmine": "0.0.36"
+    "@newsteam/jasmine": "0.0.37"
   },
   "devDependencies": {
-    "@newsteam/babel": "0.0.39",
-    "@newsteam/eslint": "0.0.52",
-    "@types/node": "16.3.2",
-    "npm-check-updates": "^11.8.3",
-    "stylelint": "13.13.1",
+    "@newsteam/babel": "0.0.40",
+    "@newsteam/eslint": "0.0.55",
+    "@types/node": "16.11.6",
+    "npm-check-updates": "^11.8.5",
+    "stylelint": "14.0.1",
     "stylelint-a11y": "1.2.3",
-    "stylelint-declaration-block-no-ignored-properties": "2.3.0",
+    "stylelint-declaration-block-no-ignored-properties": "2.4.0",
     "stylelint-declaration-strict-value": "1.7.12",
-    "stylelint-find-new-rules": "3.0.1",
+    "stylelint-find-new-rules": "3.0.2",
     "stylelint-high-performance-animation": "1.5.2",
-    "stylelint-no-unsupported-browser-features": "5.0.1",
-    "stylelint-order": "4.1.0",
-    "stylelint-scss": "3.19.0",
+    "stylelint-no-unsupported-browser-features": "5.0.2",
+    "stylelint-order": "5.0.0",
+    "stylelint-scss": "4.0.0",
     "stylelint-selector-tag-no-without-class": "2.0.4",
     "stylelint-use-nesting": "3.0.0"
   },
   "peerDependencies": {
-    "stylelint": "13.13.1",
+    "stylelint": "14.0.1",
     "stylelint-a11y": "1.2.3",
-    "stylelint-declaration-block-no-ignored-properties": "2.3.0",
+    "stylelint-declaration-block-no-ignored-properties": "2.4.0",
     "stylelint-declaration-strict-value": "1.7.12",
     "stylelint-high-performance-animation": "1.5.2",
-    "stylelint-no-unsupported-browser-features": "5.0.1",
-    "stylelint-order": "4.1.0",
-    "stylelint-scss": "3.19.0",
+    "stylelint-no-unsupported-browser-features": "5.0.2",
+    "stylelint-order": "5.0.0",
+    "stylelint-scss": "4.0.0",
     "stylelint-selector-tag-no-without-class": "2.0.4",
     "stylelint-use-nesting": "3.0.0"
   }

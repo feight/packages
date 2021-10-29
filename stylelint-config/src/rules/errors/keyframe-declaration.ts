@@ -3,7 +3,7 @@
 /*
  * Possible errors Keyframe declaration
  *
- * https://stylelint.io/user-guide/rules/#possible-errors
+ * https://stylelint.io/user-guide/rules/list/#possible-errors
  */
 
 
@@ -13,7 +13,7 @@ export default {
         /*
          * Disallow !important within keyframe declarations.
          *
-         * https://stylelint.io/user-guide/rules/keyframe-declaration-no-important/
+         * https://stylelint.io/user-guide/rules/list/keyframe-declaration-no-important/
          */
         "keyframe-declaration-no-important": true
 

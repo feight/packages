@@ -3,7 +3,7 @@
 /*
  * Possible errors Property
  *
- * https://stylelint.io/user-guide/rules/#possible-errors
+ * https://stylelint.io/user-guide/rules/list/#possible-errors
  */
 
 
@@ -13,7 +13,7 @@ export default {
         /*
          * Disallow unknown properties.
          *
-         * https://stylelint.io/user-guide/rules/property-no-unknown/
+         * https://stylelint.io/user-guide/rules/list/property-no-unknown/
          */
         "property-no-unknown": [
             true,

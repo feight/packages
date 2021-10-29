@@ -3,7 +3,7 @@
 /*
  * Limit language features Time
  *
- * https://stylelint.io/user-guide/rules/#limit-language-features
+ * https://stylelint.io/user-guide/rules/list/#limit-language-features
  */
 
 
@@ -13,7 +13,7 @@ export default {
         /*
          * Specify the minimum number of milliseconds for time values.
          *
-         * https://stylelint.io/user-guide/rules/time-min-milliseconds/
+         * https://stylelint.io/user-guide/rules/list/time-min-milliseconds/
          */
         "time-min-milliseconds": null
 

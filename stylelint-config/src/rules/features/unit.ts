@@ -3,7 +3,7 @@
 /*
  * Limit language features Unit
  *
- * https://stylelint.io/user-guide/rules/#limit-language-features
+ * https://stylelint.io/user-guide/rules/list/#limit-language-features
  */
 
 
@@ -14,7 +14,7 @@ export default {
         /*
          * Specify a allowed-list of allowed units.
          *
-         * https://stylelint.io/user-guide/rules/unit-allowed-list/
+         * https://stylelint.io/user-guide/rules/list/unit-allowed-list/
          */
         "unit-allowed-list": null,
 
@@ -22,7 +22,7 @@ export default {
         /*
          * Specify a list of disallowed units.
          *
-         * https://stylelint.io/user-guide/rules/unit-disallowed-list/
+         * https://stylelint.io/user-guide/rules/list/unit-disallowed-list/
          */
         "unit-disallowed-list": null
 

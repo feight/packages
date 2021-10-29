@@ -3,7 +3,7 @@
 /*
  * Stylistic issues Comment
  *
- * https://stylelint.io/user-guide/rules/#stylistic-issues
+ * https://stylelint.io/user-guide/rules/list/#stylistic-issues
  */
 
 
@@ -13,14 +13,14 @@ export default {
         /*
          * Require or disallow an empty line before comments (Autofixable).
          *
-         * https://stylelint.io/user-guide/rules/comment-empty-line-before/
+         * https://stylelint.io/user-guide/rules/list/comment-empty-line-before/
          */
         "comment-empty-line-before": "always",
 
         /*
          * Require or disallow whitespace on the inside of comment markers (Autofixable).
          *
-         * https://stylelint.io/user-guide/rules/comment-whitespace-inside/
+         * https://stylelint.io/user-guide/rules/list/comment-whitespace-inside/
          */
         "comment-whitespace-inside": "always"
 

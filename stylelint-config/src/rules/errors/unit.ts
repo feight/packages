@@ -3,7 +3,7 @@
 /*
  * Possible errors Unit
  *
- * https://stylelint.io/user-guide/rules/#possible-errors
+ * https://stylelint.io/user-guide/rules/list/#possible-errors
  */
 
 
@@ -13,7 +13,7 @@ export default {
         /*
          * Disallow unknown units.
          *
-         * https://stylelint.io/user-guide/rules/unit-no-unknown/
+         * https://stylelint.io/user-guide/rules/list/unit-no-unknown/
          */
         "unit-no-unknown": true
 

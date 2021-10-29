@@ -3,7 +3,7 @@
 /*
  * Stylistic issues Unit
  *
- * https://stylelint.io/user-guide/rules/#stylistic-issues
+ * https://stylelint.io/user-guide/rules/list/#stylistic-issues
  */
 
 
@@ -13,7 +13,7 @@ export default {
         /*
          * Specify lowercase or uppercase for units (Autofixable).
          *
-         * https://stylelint.io/user-guide/rules/unit-case/
+         * https://stylelint.io/user-guide/rules/list/unit-case/
          */
         "unit-case": "lower"
 

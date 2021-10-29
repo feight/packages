@@ -3,7 +3,7 @@
 /*
  * Possible errors Comment
  *
- * https://stylelint.io/user-guide/rules/#possible-errors
+ * https://stylelint.io/user-guide/rules/list/#possible-errors
  */
 
 
@@ -13,7 +13,7 @@ export default {
         /*
          * Disallow empty comments.
          *
-         * https://stylelint.io/user-guide/rules/comment-no-empty/
+         * https://stylelint.io/user-guide/rules/list/comment-no-empty/
          */
         "comment-no-empty": true
 

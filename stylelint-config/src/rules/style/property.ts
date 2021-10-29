@@ -3,7 +3,7 @@
 /*
  * Stylistic issues Property
  *
- * https://stylelint.io/user-guide/rules/#stylistic-issues
+ * https://stylelint.io/user-guide/rules/list/#stylistic-issues
  */
 
 
@@ -13,7 +13,7 @@ export default {
         /*
          *  Specify lowercase or uppercase for properties (Autofixable).
          *
-         * https://stylelint.io/user-guide/rules/property-case/
+         * https://stylelint.io/user-guide/rules/list/property-case/
          */
         "property-case": "lower"
 

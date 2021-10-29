@@ -3,7 +3,7 @@
 /*
  * Possible errors String
  *
- * https://stylelint.io/user-guide/rules/#possible-errors
+ * https://stylelint.io/user-guide/rules/list/#possible-errors
  */
 
 
@@ -13,7 +13,7 @@ export default {
         /*
          * Disallow (unescaped) newlines in strings.
          *
-         * https://stylelint.io/user-guide/rules/string-no-newline/
+         * https://stylelint.io/user-guide/rules/list/string-no-newline/
          */
         "string-no-newline": true
 

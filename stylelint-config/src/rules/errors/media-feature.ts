@@ -3,7 +3,7 @@
 /*
  * Possible errors Media feature
  *
- * https://stylelint.io/user-guide/rules/#possible-errors
+ * https://stylelint.io/user-guide/rules/list/#possible-errors
  */
 
 
@@ -13,7 +13,7 @@ export default {
         /*
          * Disallow unknown media feature names.
          *
-         * https://stylelint.io/user-guide/rules/media-feature-name-no-unknown/
+         * https://stylelint.io/user-guide/rules/list/media-feature-name-no-unknown/
          */
         "media-feature-name-no-unknown": true
 

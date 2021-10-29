@@ -3,7 +3,7 @@
 /*
  * Limit language features Custom media
  *
- * https://stylelint.io/user-guide/rules/#limit-language-features
+ * https://stylelint.io/user-guide/rules/list/#limit-language-features
  */
 
 
@@ -13,7 +13,7 @@ export default {
         /*
          * Specify a pattern for custom media query names.
          *
-         * https://stylelint.io/user-guide/rules/custom-media-pattern/
+         * https://stylelint.io/user-guide/rules/list/custom-media-pattern/
          */
         "custom-media-pattern": null
 

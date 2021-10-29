@@ -3,7 +3,7 @@
 /*
  * Stylistic issues Declaration block
  *
- * https://stylelint.io/user-guide/rules/#stylistic-issues
+ * https://stylelint.io/user-guide/rules/list/#stylistic-issues
  */
 
 
@@ -14,7 +14,7 @@ export default {
         /*
          * Require a newline or disallow whitespace after the semicolons of declaration blocks (Autofixable).
          *
-         * https://stylelint.io/user-guide/rules/declaration-block-semicolon-newline-after/
+         * https://stylelint.io/user-guide/rules/list/declaration-block-semicolon-newline-after/
          */
         "declaration-block-semicolon-newline-after": "always",
 
@@ -22,7 +22,7 @@ export default {
         /*
          * Require a newline or disallow whitespace before the semicolons of declaration blocks.
          *
-         * https://stylelint.io/user-guide/rules/declaration-block-semicolon-newline-before/
+         * https://stylelint.io/user-guide/rules/list/declaration-block-semicolon-newline-before/
          */
         "declaration-block-semicolon-newline-before": "never-multi-line",
 
@@ -30,7 +30,7 @@ export default {
         /*
          * Require a single space or disallow whitespace after the semicolons of declaration blocks (Autofixable).
          *
-         * https://stylelint.io/user-guide/rules/declaration-block-semicolon-space-after/
+         * https://stylelint.io/user-guide/rules/list/declaration-block-semicolon-space-after/
          */
         "declaration-block-semicolon-space-after": "always-single-line",
 
@@ -38,7 +38,7 @@ export default {
         /*
          * Require a single space or disallow whitespace before the semicolons of declaration blocks (Autofixable).
          *
-         * https://stylelint.io/user-guide/rules/declaration-block-semicolon-space-before/
+         * https://stylelint.io/user-guide/rules/list/declaration-block-semicolon-space-before/
          */
         "declaration-block-semicolon-space-before": "never",
 
@@ -46,7 +46,7 @@ export default {
         /*
          * Require or disallow a trailing semicolon within declaration blocks (Autofixable).
          *
-         * https://stylelint.io/user-guide/rules/declaration-block-trailing-semicolon/
+         * https://stylelint.io/user-guide/rules/list/declaration-block-trailing-semicolon/
          */
         "declaration-block-trailing-semicolon": "always"
 

@@ -3,7 +3,7 @@
 /*
  * Stylistic issues Color
  *
- * https://stylelint.io/user-guide/rules/#stylistic-issues
+ * https://stylelint.io/user-guide/rules/list/#stylistic-issues
  */
 
 
@@ -13,14 +13,14 @@ export default {
         /*
          * Specify lowercase or uppercase for hex colors (Autofixable).
          *
-         * https://stylelint.io/user-guide/rules/color-hex-case/
+         * https://stylelint.io/user-guide/rules/list/color-hex-case/
          */
         "color-hex-case": "lower",
 
         /*
          * Specify short or long notation for hex colors (Autofixable).
          *
-         * https://stylelint.io/user-guide/rules/color-hex-length/
+         * https://stylelint.io/user-guide/rules/list/color-hex-length/
          */
         "color-hex-length": "short"
 

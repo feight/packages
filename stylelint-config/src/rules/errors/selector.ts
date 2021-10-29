@@ -3,7 +3,7 @@
 /*
  * Possible errors Selector
  *
- * https://stylelint.io/user-guide/rules/#possible-errors
+ * https://stylelint.io/user-guide/rules/list/#possible-errors
  */
 
 
@@ -13,7 +13,7 @@ export default {
         /*
          * Disallow unknown pseudo-class selectors.
          *
-         * https://stylelint.io/user-guide/rules/selector-pseudo-class-no-unknown/
+         * https://stylelint.io/user-guide/rules/list/selector-pseudo-class-no-unknown/
          */
         "selector-pseudo-class-no-unknown": [
             true,
@@ -34,14 +34,14 @@ export default {
         /*
          * Disallow unknown pseudo-element selectors.
          *
-         * https://stylelint.io/user-guide/rules/selector-pseudo-element-no-unknown/
+         * https://stylelint.io/user-guide/rules/list/selector-pseudo-element-no-unknown/
          */
         "selector-pseudo-element-no-unknown": true,
 
         /*
          * Disallow unknown type selectors.
          *
-         * https://stylelint.io/user-guide/rules/selector-type-no-unknown/
+         * https://stylelint.io/user-guide/rules/list/selector-type-no-unknown/
          */
         "selector-type-no-unknown": [
             true,

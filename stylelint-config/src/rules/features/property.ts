@@ -3,7 +3,7 @@
 /*
  * Limit language features Property
  *
- * https://stylelint.io/user-guide/rules/#limit-language-features
+ * https://stylelint.io/user-guide/rules/list/#limit-language-features
  */
 
 
@@ -14,7 +14,7 @@ export default {
         /*
          * Specify a allowed-list of allowed properties.
          *
-         * https://stylelint.io/user-guide/rules/property-allowed-list/
+         * https://stylelint.io/user-guide/rules/list/property-allowed-list/
          */
         "property-allowed-list": null,
 
@@ -22,7 +22,7 @@ export default {
         /*
          * Specify a list of disallowed properties.
          *
-         * https://stylelint.io/user-guide/rules/property-disallowed-list/
+         * https://stylelint.io/user-guide/rules/list/property-disallowed-list/
          */
         "property-disallowed-list": null,
 
@@ -30,7 +30,7 @@ export default {
         /*
          * Disallow vendor prefixes for properties.
          *
-         * https://stylelint.io/user-guide/rules/property-no-vendor-prefix/
+         * https://stylelint.io/user-guide/rules/list/property-no-vendor-prefix/
          */
         "property-no-vendor-prefix": true
 

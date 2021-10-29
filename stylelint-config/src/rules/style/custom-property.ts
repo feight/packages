@@ -3,7 +3,7 @@
 /*
  * Stylistic issues Custom property
  *
- * https://stylelint.io/user-guide/rules/#stylistic-issues
+ * https://stylelint.io/user-guide/rules/list/#stylistic-issues
  */
 
 
@@ -13,7 +13,7 @@ export default {
         /*
          * Require or disallow an empty line before custom properties (Autofixable).
          *
-         * https://stylelint.io/user-guide/rules/custom-property-empty-line-before/
+         * https://stylelint.io/user-guide/rules/list/custom-property-empty-line-before/
          */
         "custom-property-empty-line-before": [
             "always",

@@ -3,7 +3,7 @@
 /*
  * Limit language features General
  *
- * https://stylelint.io/user-guide/rules/#limit-language-features
+ * https://stylelint.io/user-guide/rules/list/#limit-language-features
  */
 
 
@@ -13,14 +13,14 @@ export default {
         /*
          * Limit the depth of nesting.
          *
-         * https://stylelint.io/user-guide/rules/max-nesting-depth/
+         * https://stylelint.io/user-guide/rules/list/max-nesting-depth/
          */
         "max-nesting-depth": 12,
 
         /*
          * Disallow unknown animations.
          *
-         * https://stylelint.io/user-guide/rules/no-unknown-animations/
+         * https://stylelint.io/user-guide/rules/list/no-unknown-animations/
          */
         "no-unknown-animations": true
 

@@ -6,6 +6,7 @@ export default {
         "./block",
         "./color",
         "./comment",
+        "./custom-property",
         "./declaration-block",
         "./font-family",
         "./function",

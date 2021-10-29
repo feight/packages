@@ -3,7 +3,7 @@
 /*
  * Limit language features At rule
  *
- * https://stylelint.io/user-guide/rules/#limit-language-features
+ * https://stylelint.io/user-guide/rules/list/#limit-language-features
  */
 
 
@@ -16,28 +16,28 @@ export default {
         /*
          * Specify a whitelist of allowed at-rules.
          *
-         * https://stylelint.io/user-guide/rules/at-rule-allowed-list/
+         * https://stylelint.io/user-guide/rules/list/at-rule-allowed-list/
          */
         "at-rule-allowed-list": atRules,
 
         /*
          * Specify a list of disallowed at-rules.
          *
-         * https://stylelint.io/user-guide/rules/at-rule-disallowed-list/
+         * https://stylelint.io/user-guide/rules/list/at-rule-disallowed-list/
          */
         "at-rule-disallowed-list": ["extend"],
 
         /*
          * Disallow vendor prefixes for at-rules.
          *
-         * https://stylelint.io/user-guide/rules/at-rule-no-vendor-prefix/
+         * https://stylelint.io/user-guide/rules/list/at-rule-no-vendor-prefix/
          */
         "at-rule-no-vendor-prefix": true,
 
         /*
          * Specify a requirelist of properties for an at-rule.
          *
-         * https://stylelint.io/user-guide/rules/at-rule-property-required-list/
+         * https://stylelint.io/user-guide/rules/list/at-rule-property-required-list/
          */
         "at-rule-property-required-list": {
             "font-face": [

@@ -3,7 +3,7 @@
 /*
  * Limit language features Number
  *
- * https://stylelint.io/user-guide/rules/#limit-language-features
+ * https://stylelint.io/user-guide/rules/list/#limit-language-features
  */
 
 
@@ -13,7 +13,7 @@ export default {
         /*
          * Limit the number of decimal places allowed in numbers.
          *
-         * https://stylelint.io/user-guide/rules/number-max-precision/
+         * https://stylelint.io/user-guide/rules/list/number-max-precision/
          */
         "number-max-precision": 8
 

@@ -3,7 +3,7 @@
 /*
  * Stylistic issues Font family
  *
- * https://stylelint.io/user-guide/rules/#stylistic-issues
+ * https://stylelint.io/user-guide/rules/list/#stylistic-issues
  */
 
 
@@ -13,7 +13,7 @@ export default {
         /*
          * Specify whether or not quotation marks should be used around font family names.
          *
-         * https://stylelint.io/user-guide/rules/font-family-name-quotes/
+         * https://stylelint.io/user-guide/rules/list/font-family-name-quotes/
          */
         "font-family-name-quotes": "always-unless-keyword"
 

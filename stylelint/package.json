@@ -1,6 +1,6 @@
 {
   "name": "@newsteam/stylelint",
-  "version": "0.0.32",
+  "version": "0.0.33",
   "description": "Collection of stylelint dependencies",
   "scripts": {
     "test": "echo 'no tests'",
@@ -35,19 +35,19 @@
   "homepage": "https://github.com/feight/packages/tree/master/stylelint#readme",
   "files": [],
   "dependencies": {
-    "@newsteam/stylelint-config": "0.0.33",
-    "stylelint": "13.13.1",
+    "@newsteam/stylelint-config": "0.0.34",
+    "stylelint": "14.0.1",
     "stylelint-a11y": "1.2.3",
-    "stylelint-declaration-block-no-ignored-properties": "2.3.0",
+    "stylelint-declaration-block-no-ignored-properties": "2.4.0",
     "stylelint-declaration-strict-value": "1.7.12",
     "stylelint-high-performance-animation": "1.5.2",
-    "stylelint-no-unsupported-browser-features": "5.0.1",
-    "stylelint-order": "4.1.0",
-    "stylelint-scss": "3.19.0",
+    "stylelint-no-unsupported-browser-features": "5.0.2",
+    "stylelint-order": "5.0.0",
+    "stylelint-scss": "4.0.0",
     "stylelint-selector-tag-no-without-class": "2.0.4",
     "stylelint-use-nesting": "3.0.0"
   },
   "devDependencies": {
-    "npm-check-updates": "^11.8.3"
+    "npm-check-updates": "^11.8.5"
   }
 }

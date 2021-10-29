@@ -39,7 +39,8 @@ export const plugins = function(
         }),
         new MiniCssExtractPlugin({
             chunkFilename: `build/chunks/${ hash ? "[chunkhash].css" : "[id].css" }`,
-            filename: `build/chunks/${ hash ? "[chunkhash].css" : "[name].css" }`
+            filename: `build/chunks/${ hash ? "[chunkhash].css" : "[name].css" }`,
+            ignoreOrder: true
         }),
         new webpack.DefinePlugin({
             "process.env.CLIENT": JSON.stringify("browser")

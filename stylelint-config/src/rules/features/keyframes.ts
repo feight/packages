@@ -3,7 +3,7 @@
 /*
  * Limit language features Keyframes
  *
- * https://stylelint.io/user-guide/rules/#limit-language-features
+ * https://stylelint.io/user-guide/rules/list/#limit-language-features
  */
 
 
@@ -16,7 +16,7 @@ export default {
         /*
          * Specify a pattern for keyframe names.
          *
-         * https://stylelint.io/user-guide/rules/keyframes-name-pattern/
+         * https://stylelint.io/user-guide/rules/list/keyframes-name-pattern/
          */
         "keyframes-name-pattern": idPattern
 

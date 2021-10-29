@@ -3,7 +3,7 @@
 /*
  * Limit language features Declaration
  *
- * https://stylelint.io/user-guide/rules/#limit-language-features
+ * https://stylelint.io/user-guide/rules/list/#limit-language-features
  */
 
 
@@ -13,42 +13,42 @@ export default {
         /*
          * Disallow longhand properties that can be combined into one shorthand property.
          *
-         * https://stylelint.io/user-guide/rules/declaration-block-no-redundant-longhand-properties/
+         * https://stylelint.io/user-guide/rules/list/declaration-block-no-redundant-longhand-properties/
          */
         "declaration-block-no-redundant-longhand-properties": true,
 
         /*
          * Disallow !important within declarations.
          *
-         * https://stylelint.io/user-guide/rules/declaration-no-important/
+         * https://stylelint.io/user-guide/rules/list/declaration-no-important/
          */
         "declaration-no-important": true,
 
         /*
          * Specify a allowed-list of allowed property and unit pairs within declarations.
          *
-         * https://stylelint.io/user-guide/rules/declaration-property-unit-allowed-list/
+         * https://stylelint.io/user-guide/rules/list/declaration-property-unit-allowed-list/
          */
         "declaration-property-unit-allowed-list": null,
 
         /*
          * Specify a list of disallowed property and unit pairs within declarations.
          *
-         * https://stylelint.io/user-guide/rules/declaration-property-unit-disallowed-list/
+         * https://stylelint.io/user-guide/rules/list/declaration-property-unit-disallowed-list/
          */
         "declaration-property-unit-disallowed-list": null,
 
         /*
          * Specify a allowed-list of allowed property and value pairs within declarations.
          *
-         * https://stylelint.io/user-guide/rules/declaration-property-value-allowed-list/
+         * https://stylelint.io/user-guide/rules/list/declaration-property-value-allowed-list/
          */
         "declaration-property-value-allowed-list": null,
 
         /*
          * Specify a list of disallowed property and value pairs within declarations.
          *
-         * https://stylelint.io/user-guide/rules/declaration-property-value-disallowed-list/
+         * https://stylelint.io/user-guide/rules/list/declaration-property-value-disallowed-list/
          */
         "declaration-property-value-disallowed-list": null
 

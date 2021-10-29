@@ -37,6 +37,7 @@ export const localDatastoreEmulatorTask = async function(config: LocalDatastoreE
         command: `
             gcloud beta emulators datastore start
                 --host-port=${ config.host }:${ config.port }
+                --consistency=1
                 ${ directory ? `--data-dir=${ directory }` : "" }
                 ${ config.persist ? "--store-on-disk" : "--no-store-on-disk" }
         `,

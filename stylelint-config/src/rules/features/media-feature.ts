@@ -3,7 +3,7 @@
 /*
  * Limit language features Media feature
  *
- * https://stylelint.io/user-guide/rules/#limit-language-features
+ * https://stylelint.io/user-guide/rules/list/#limit-language-features
  */
 
 
@@ -14,7 +14,7 @@ export default {
         /*
          * Specify a allowed-list of allowed media feature names.
          *
-         * https://stylelint.io/user-guide/rules/media-feature-name-allowed-list/
+         * https://stylelint.io/user-guide/rules/list/media-feature-name-allowed-list/
          */
         "media-feature-name-allowed-list": null,
 
@@ -22,7 +22,7 @@ export default {
         /*
          * Specify a list of disallowed media feature names.
          *
-         * https://stylelint.io/user-guide/rules/media-feature-name-disallowed-list/
+         * https://stylelint.io/user-guide/rules/list/media-feature-name-disallowed-list/
          */
         "media-feature-name-disallowed-list": null,
 
@@ -30,7 +30,7 @@ export default {
         /*
          * Disallow vendor prefixes for media feature names.
          *
-         * https://stylelint.io/user-guide/rules/media-feature-name-no-vendor-prefix/
+         * https://stylelint.io/user-guide/rules/list/media-feature-name-no-vendor-prefix/
          */
         "media-feature-name-no-vendor-prefix": true,
 
@@ -38,7 +38,7 @@ export default {
         /*
          * Specify a allowed-list of allowed media feature name and value pairs.
          *
-         * https://stylelint.io/user-guide/rules/media-feature-name-value-allowed-list/
+         * https://stylelint.io/user-guide/rules/list/media-feature-name-value-allowed-list/
          */
         "media-feature-name-value-allowed-list": null
 

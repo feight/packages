@@ -3,7 +3,7 @@
 /*
  * Limit language features Shorthand property
  *
- * https://stylelint.io/user-guide/rules/#limit-language-features
+ * https://stylelint.io/user-guide/rules/list/#limit-language-features
  */
 
 
