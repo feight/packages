@@ -2,7 +2,7 @@
 
 import type { Linter } from "eslint";
 
-import * as typescript from "../rules/plugins/typescript";
+import * as typescript from "../plugins/typescript";
 
 
 export const javascriptOverrides: Linter.ConfigOverride = {

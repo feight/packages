@@ -85,9 +85,7 @@ export default {
                     ".js",
                     ".jsx",
                     ".ts",
-                    ".tsx",
-                    ".md",
-                    ".mdx"
+                    ".tsx"
                 ]
             }
         ],

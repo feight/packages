@@ -128,6 +128,13 @@ export default {
         "react/no-array-index-key": "error",
 
         /*
+         * Lifecycle methods should be methods on the prototype, not class fields
+         *
+         * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-arrow-function-lifecycle.md
+         */
+        "react/no-arrow-function-lifecycle": "error",
+
+        /*
          * Prevent passing children as props
          *
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-children-prop.md
@@ -184,6 +191,13 @@ export default {
         "react/no-find-dom-node": "error",
 
         /*
+         * Prevent usage of invalid attributes
+         *
+         * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-invalid-html-attribute.md
+         */
+        "react/no-invalid-html-attribute": "error",
+
+        /*
          * Prevent usage of isMounted
          *
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-is-mounted.md
@@ -196,6 +210,13 @@ export default {
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-multi-comp.md
          */
         "react/no-multi-comp": "error",
+
+        /*
+         * Enforce that namespaces are not used in React elements
+         *
+         * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-namespace.md
+         */
+        "react/no-namespace": "error",
 
         /*
          * Prevent usage of shouldComponentUpdate when extending React.PureComponent
@@ -266,6 +287,13 @@ export default {
          * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unstable-nested-components.md
          */
         "react/no-unstable-nested-components": "error",
+
+        /*
+         * Prevent declaring unused methods of component class
+         *
+         * https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unused-class-component-methods.md
+         */
+        "react/no-unused-class-component-methods": "error",
 
         /*
          * Prevent definitions of unused prop types

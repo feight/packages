@@ -6,14 +6,14 @@
 
     --
 
-    Don't care that this file is so big
+    Splitting this file up would make things worse
 
 */
 
 import {
     indentSpaces,
     noMagicNumbersConfig
-} from "../../settings";
+} from "../settings";
 
 /*
  * Lint rules for the TypeScript language.
@@ -25,21 +25,21 @@ import {
 const rules = {
 
     /*
-     * Require that member overloads be consecutive (adjacent-overload-signatures from TSLint)
+     * Require that member overloads be consecutive
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/adjacent-overload-signatures.md
      */
     "@typescript-eslint/adjacent-overload-signatures": "error",
 
     /*
-     * Requires using either T[] or Array<T> for arrays (array-type from TSLint)
+     * Requires using either T[] or Array<T> for arrays
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/array-type.md
      */
     "@typescript-eslint/array-type": "error",
 
     /*
-     * Disallows awaiting a value that is not a Promise (await-thenable)
+     * Disallows awaiting a value that is not a Promise
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/await-thenable.md
      */
@@ -60,7 +60,7 @@ const rules = {
     "@typescript-eslint/ban-tslint-comment": "error",
 
     /*
-     * Enforces that types will not to be used (ban-types from TSLint)
+     * Enforces that types will not to be used
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/ban-types.md
      */
@@ -125,7 +125,14 @@ const rules = {
     ],
 
     /*
-     * Enforces consistent usage of type imports (consistent-type-imports)
+     * Enforces consistent usage of type exports
+     *
+     * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/consistent-type-exports.md
+     */
+    "@typescript-eslint/consistent-type-exports": "error",
+
+    /*
+     * Enforces consistent usage of type imports
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/consistent-type-imports.md
      */
@@ -153,7 +160,7 @@ const rules = {
     "@typescript-eslint/explicit-function-return-type": "error",
 
     /*
-     * Require explicit accessibility modifiers on class properties and methods (member-access from TSLint)
+     * Require explicit accessibility modifiers on class properties and methods
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/explicit-member-accessibility.md
      */
@@ -172,14 +179,14 @@ const rules = {
     "@typescript-eslint/explicit-module-boundary-types": "error",
 
     /*
-     * Require or disallow spacing between function identifiers and their invocations (func-call-spacing)
+     * Require or disallow spacing between function identifiers and their invocations
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/func-call-spacing.md
      */
     "@typescript-eslint/func-call-spacing": "error",
 
     /*
-     * Enforce consistent indentation (indent from TSLint)
+     * Enforce consistent indentation
      *
      * This is off because it's handled by the built in eslint indent rule,
      * and in some cases it can conflict.
@@ -285,7 +292,7 @@ const rules = {
     "@typescript-eslint/member-delimiter-style": "error",
 
     /*
-     * Require a consistent member declaration order (member-ordering from TSLint)
+     * Require a consistent member declaration order
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/member-ordering.md
      */
@@ -389,7 +396,7 @@ const rules = {
     "@typescript-eslint/no-array-constructor": "error",
 
     /*
-     * Requires that .toString() is only called on objects which provide useful information when stringified (no-base-to-string)
+     * Requires that .toString() is only called on objects which provide useful information when stringified
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-base-to-string.md
      */
@@ -438,14 +445,14 @@ const rules = {
     "@typescript-eslint/no-empty-function": "error",
 
     /*
-     * Disallow the declaration of empty interfaces (no-empty-interface from TSLint)
+     * Disallow the declaration of empty interfaces
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-empty-interface.md
      */
     "@typescript-eslint/no-empty-interface": "error",
 
     /*
-     * Disallow usage of the any type (no-any from TSLint)
+     * Disallow usage of the any type
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-explicit-any.md
      */
@@ -479,7 +486,7 @@ const rules = {
     "@typescript-eslint/no-extra-semi": "error",
 
     /*
-     * Forbids the use of classes as namespaces (no-unnecessary-class from TSLint)
+     * Forbids the use of classes as namespaces
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-extraneous-class.md
      */
@@ -493,18 +500,11 @@ const rules = {
     "@typescript-eslint/no-floating-promises": "error",
 
     /*
-     * Disallow iterating over an array with a for-in loop (no-for-in-array)
+     * Disallow iterating over an array with a for-in loop
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-for-in-array.md
      */
     "@typescript-eslint/no-for-in-array": "error",
-
-    /*
-     * Disallow usage of the implicit any type in catch clauses (no-implicit-any-catch)
-     *
-     * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-implicit-any-catch.md
-     */
-    "@typescript-eslint/no-implicit-any-catch": "error",
 
     /*
      * Disallow the use of eval()-like methods
@@ -514,7 +514,7 @@ const rules = {
     "@typescript-eslint/no-implied-eval": "error",
 
     /*
-     * Disallows explicit type declarations for variables or parameters initialized to a number, string, or boolean. (no-inferrable-types from TSLint)
+     * Disallows explicit type declarations for variables or parameters initialized to a number, string, or boolean.
      *
      * This is off for now
      *
@@ -574,7 +574,7 @@ const rules = {
     "@typescript-eslint/no-meaningless-void-operator": "error",
 
     /*
-     * Enforce valid definition of new and constructor. (no-misused-new from TSLint)
+     * Enforce valid definition of new and constructor.
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-misused-new.md
      */
@@ -588,11 +588,18 @@ const rules = {
     "@typescript-eslint/no-misused-promises": "error",
 
     /*
-     * Disallow the use of custom TypeScript modules and namespaces (no-namespace from TSLint)
+     * Disallow the use of custom TypeScript modules and namespaces
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-namespace.md
      */
     "@typescript-eslint/no-namespace": "error",
+
+    /*
+     * Disallows using a non-null assertion in the left operand of the nullish coalescing operator
+     *
+     * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-non-null-asserted-nullish-coalescing.md
+     */
+    "@typescript-eslint/no-non-null-asserted-nullish-coalescing": "error",
 
     /*
      * Disallows using a non-null assertion after an optional chain expression
@@ -602,7 +609,7 @@ const rules = {
     "@typescript-eslint/no-non-null-asserted-optional-chain": "error",
 
     /*
-     * Disallows non-null assertions using the ! postfix operator (no-non-null-assertion from TSLint)
+     * Disallows non-null assertions using the ! postfix operator
      *
      * We like this language feature
      *
@@ -611,14 +618,14 @@ const rules = {
     "@typescript-eslint/no-non-null-assertion": "off",
 
     /*
-     * Disallow the use of parameter properties in class constructors. (no-parameter-properties from TSLint)
+     * Disallow the use of parameter properties in class constructors.
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-parameter-properties.md
      */
     "@typescript-eslint/no-parameter-properties": "error",
 
     /*
-     * Disallow variable redeclaration (no-redeclare)
+     * Disallow variable redeclaration
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-redeclare.md
      */
@@ -632,14 +639,21 @@ const rules = {
     "@typescript-eslint/no-require-imports": "error",
 
     /*
-     * Disallow variable declarations from shadowing variables declared in the outer scope (no-shadow)
+     * Disallows invocation of require()
+     *
+     * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-restricted-imports.md
+     */
+    "@typescript-eslint/no-restricted-imports": "error",
+
+    /*
+     * Disallow variable declarations from shadowing variables declared in the outer scope
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-shadow.md
      */
     "@typescript-eslint/no-shadow": "error",
 
     /*
-     * Disallow aliasing this (no-this-assignment from TSLint)
+     * Disallow aliasing this
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-this-alias.md
      */
@@ -653,7 +667,7 @@ const rules = {
     "@typescript-eslint/no-throw-literal": "error",
 
     /*
-     * Disallow the use of type aliases (interface-over-type-literal from TSLint)
+     * Disallow the use of type aliases
      *
      * Off for now because these seem like they're too useful to pass up
      *
@@ -695,7 +709,7 @@ const rules = {
     "@typescript-eslint/no-unnecessary-type-arguments": "error",
 
     /*
-     * Warns if a type assertion does not change the type of an expression (no-unnecessary-type-assertion from TSLint)
+     * Warns if a type assertion does not change the type of an expression
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unnecessary-type-assertion.md
      */
@@ -751,7 +765,7 @@ const rules = {
     "@typescript-eslint/no-unused-expressions": "error",
 
     /*
-     * Disallow unused variables (no-unused-variable from TSLint)
+     * Disallow unused variables
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unused-vars.md
      */
@@ -772,7 +786,7 @@ const rules = {
     "@typescript-eslint/no-useless-constructor": "error",
 
     /*
-     * Disallows the use of require statements except in import statements (no-var-requires from TSLint)
+     * Disallows the use of require statements except in import statements
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-var-requires.md
      */
@@ -865,7 +879,7 @@ const rules = {
     "@typescript-eslint/prefer-literal-enum-member": "error",
 
     /*
-     * Require the use of the namespace keyword instead of the module keyword to declare custom TypeScript modules. (no-internal-module from TSLint)
+     * Require the use of the namespace keyword instead of the module keyword to declare custom TypeScript modules.
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/prefer-namespace-keyword.md
      */
@@ -967,7 +981,7 @@ const rules = {
     "@typescript-eslint/require-await": "error",
 
     /*
-     * When adding two variables, operands must both be of type number or of type string. (restrict-plus-operands from TSLint)
+     * When adding two variables, operands must both be of type number or of type string.
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/restrict-plus-operands.md
      */
@@ -1060,7 +1074,7 @@ const rules = {
     ],
 
     /*
-     * Require consistent spacing around type annotations (typedef-whitespace from TSLint)
+     * Require consistent spacing around type annotations
      *
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/type-annotation-spacing.md
      */

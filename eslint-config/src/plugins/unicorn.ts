@@ -6,7 +6,6 @@
  * https://github.com/sindresorhus/eslint-plugin-unicorn
  */
 
-
 export default {
     plugins: ["unicorn"],
     rules: {
@@ -165,6 +164,13 @@ export default {
         "unicorn/no-array-reduce": "error",
 
         /*
+         * Forbid member access from await expression
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-await-expression-member.md
+         */
+        "unicorn/no-await-expression-member": "error",
+
+        /*
          * Do not use leading/trailing space between console.log parameters. (fixable)
          *
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-console-spaces.md
@@ -177,6 +183,13 @@ export default {
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-document-cookie.md
          */
         "unicorn/no-document-cookie": "error",
+
+        /*
+         * Disallow empty files
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-empty-file.md
+         */
+        "unicorn/no-empty-file": "error",
 
         /*
          * Do not use a for loop that can be replaced with a for-of loop
@@ -272,6 +285,13 @@ export default {
         "unicorn/no-static-only-class": "error",
 
         /*
+         * Disallow then property
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-thenable.md
+         */
+        "unicorn/no-thenable": "error",
+
+        /*
          * Disallow assigning this to a variable
          *
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-this-assignment.md
@@ -314,6 +334,13 @@ export default {
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-useless-length-check.md
          */
         "unicorn/no-useless-length-check": "error",
+
+        /*
+         * Disallow returning/yielding Promise.resolve/reject() in async functions or promise callbacks
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-useless-promise-resolve-reject.md
+         */
+        "unicorn/no-useless-promise-resolve-reject": "error",
 
         /*
          * Disallow useless spread
@@ -404,6 +431,13 @@ export default {
         "unicorn/prefer-at": "off",
 
         /*
+         * Prefer String#codePointAt(...) over String#charCodeAt(...) and String.fromCodePoint(...) over String.fromCharCode(...)
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-code-point.md
+         */
+        "unicorn/prefer-code-point": "error",
+
+        /*
          * Prefer Date.now() to get the number of milliseconds since the Unix Epoch
          *
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-date-now.md
@@ -446,11 +480,25 @@ export default {
         "unicorn/prefer-dom-node-text-content": "error",
 
         /*
+         * Prefer export... from when re-exporting
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-export-from.md
+         */
+        "unicorn/prefer-export-from": "error",
+
+        /*
          * Prefer .includes() over .indexOf() when checking for existence or non-existence
          *
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-includes.md
          */
         "unicorn/prefer-includes": "error",
+
+        /*
+         * Prefer reading a JSON file as a buffer
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-json-parse-buffer.md
+         */
+        "unicorn/prefer-json-parse-buffer": "error",
 
         /*
          * Prefer KeyboardEvent#key over KeyboardEvent#keyCode
@@ -506,18 +554,11 @@ export default {
         "unicorn/prefer-number-properties": "error",
 
         /*
-         * Prefer using Object.fromEntries(…) to transform a list of key-value pairs into an object
+         * Prefer using Object.fromEntries(...) to transform a list of key-value pairs into an object
          *
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-object-from-entries.md
          */
         "unicorn/prefer-object-from-entries": "error",
-
-        /*
-         * Prefer Object.hasOwn(...) over Object.prototype.hasOwnProperty.call(...)
-         *
-         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-object-has-own.md
-         */
-        "unicorn/prefer-object-has-own": "error",
 
         /*
          * Prefer omitting the catch binding parameter
@@ -689,6 +730,16 @@ export default {
         ],
 
         /*
+         * Enforce consistent relative URL style
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/relative-url-style.md
+         */
+        "unicorn/relative-url-style": [
+            "error",
+            "always"
+        ],
+
+        /*
          * Enforce using the separator argument with Array#join()
          *
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/require-array-join-separator.md
@@ -719,6 +770,15 @@ export default {
          * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/string-content.md
          */
         "unicorn/string-content": "off",
+
+        /*
+         * Fix whitespace-insensitive template indentation
+         *
+         * Leaving this off for now because it might cause chaos.
+         *
+         * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/template-indent.md
+         */
+        "unicorn/template-indent": "off",
 
         /*
          * Require new when throwing an error. (fixable)
