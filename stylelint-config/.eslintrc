@@ -1,6 +1,0 @@
-{
-  "extends": "@newsteam",
-  "rules": {
-    "unicorn/no-null": "off"
-  }
-}
