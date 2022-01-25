@@ -13,7 +13,7 @@ export class NewsTeamLocalDockerMySQLConfig extends NewsTeamLocalDockerContainer
 
         super({
             environment: config?.environment ?? defaults.local.docker.mysql.environment,
-            name: "mysql",
+            name: "cosmos-mysql",
             port: config?.port ?? defaults.local.docker.mysql.port,
             recipe: config?.recipe ?? defaults.local.docker.mysql.recipe,
             volume: config?.volume ?? defaults.local.docker.elasticsearch.volume

@@ -25,7 +25,7 @@ describe("{ config.local.docker.mysql }", () => {
     });
 
     it("config.local.docker.mysql.name defaults correctly", () => {
-        expect(config.local.docker.mysql.name).toEqual("mysql");
+        expect(config.local.docker.mysql.name).toEqual("cosmos-mysql");
     });
 
     it("config.local.docker.mysql.port is defined", () => {

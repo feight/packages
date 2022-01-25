@@ -25,7 +25,7 @@ describe("{ config.local.docker.elasticsearch }", () => {
     });
 
     it("config.local.docker.elasticsearch.name defaults correctly", () => {
-        expect(config.local.docker.elasticsearch.name).toEqual("elasticsearch");
+        expect(config.local.docker.elasticsearch.name).toEqual("cosmos-elasticsearch");
     });
 
     it("config.local.docker.elasticsearch.port is defined", () => {
