@@ -1,8 +1,9 @@
 
 
-import type { LocalDockerContainerConfig } from "../container";
 import { NewsTeamLocalDockerContainerConfig } from "../container";
 import { defaults } from "../../../defaults";
+
+import type { LocalDockerContainerConfig } from "../container";
 
 
 export type LocalDockerMySQLConfig = LocalDockerContainerConfig;

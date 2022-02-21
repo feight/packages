@@ -1,10 +1,10 @@
 
 
-import type stream from "stream";
-
 import gulpWatch from "gulp-watch";
 import through from "through2";
 import { logger } from "@newsteam/legacy-cli-logger";
+
+import type stream from "stream";
 import type vinyl from "vinyl";
 
 

@@ -35,26 +35,26 @@ export class NewsTeamLocalDatastoreEmulatorConfig{
         allow: undefined,
         type: "string"
     })
-    directory?: string;
+        directory?: string;
 
     @validate({
         hostname: true,
         ip: true,
         type: "string"
     })
-    host: string;
+        host: string;
 
     @validate({
         allow: undefined,
         type: "boolean"
     })
-    persist: boolean;
+        persist: boolean;
 
     @validate({
         port: true,
         type: "number"
     })
-    port: number;
+        port: number;
 
     constructor(config?: LocalDatastoreEmulatorConfig){
 

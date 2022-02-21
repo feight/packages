@@ -41,7 +41,7 @@ type ElementType < T extends readonly unknown[] > = T extends readonly (infer El
 
 const cwd = process.cwd();
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access -- This is required for runtime ts execution
+// eslint-disable-next-line @typescript-eslint/no-unsafe-call -- This is required for runtime ts execution
 require("ts-node").register({
     project: path.join(cwd, "tsconfig.json"),
     transpileOnly: true
@@ -74,8 +74,8 @@ export type Mode = ElementType<typeof modes>;
 export type Target = ElementType<typeof targets>;
 
 
-export { ModernizrConfig } from "./modernizr/types";
-export { SettingsSchemaTests } from "./paths/settings";
+export type { ModernizrConfig } from "./modernizr/types";
+export type { SettingsSchemaTests } from "./paths/settings";
 
 
 export interface Config{

@@ -4,8 +4,8 @@ import { logger } from "@newsteam/legacy-cli-logger";
 
 import {
     brewFormulae,
-    localBrewSetupTask,
-    localBrewPackageSetupTask
+    localBrewPackageSetupTask,
+    localBrewSetupTask
 } from "./brew";
 import { localJavaSetupTask } from "./java";
 import { localPipSetupTask } from "./pip";

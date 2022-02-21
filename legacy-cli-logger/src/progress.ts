@@ -1,12 +1,11 @@
 
 
-import type stream from "stream";
-
 import ProgressBar from "progress";
 import through from "through2";
-import type vinyl from "vinyl";
 import chalk from "chalk";
 
+import type vinyl from "vinyl";
+import type stream from "stream";
 import type { Logger } from ".";
 
 
@@ -84,15 +83,15 @@ export class Progress extends ProgressBar{
         if(typeof tokens === "object"){
 
             // Replacing all object keys with inline formatted properties
-            // eslint-disable-next-line unicorn/no-array-reduce -- see above
+            // eslint-disable-next-line unicorn/no-array-reduce, unicorn/prefer-object-from-entries, @typescript-eslint/no-unsafe-argument -- see above
             super.tick(Object.keys(tokens).reduce((accumulator, current) => {
 
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- It's not unsafe to check for truthyness
+
                 if(tokens[current]){
 
                     return {
                         ...accumulator,
-                        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- This is safe enough
+
                         [current]: this.logger.inLineFormat(String(tokens[current]))
                     };
 

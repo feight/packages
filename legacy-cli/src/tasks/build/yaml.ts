@@ -7,6 +7,7 @@ import fs from "fs-extra";
 import snake from "to-snake-case";
 import { logger } from "@newsteam/legacy-cli-logger";
 import { watch } from "@newsteam/cli-utils";
+
 import type { WatchOptions } from "@newsteam/cli-utils";
 import type {
     AppYaml,
@@ -95,11 +96,11 @@ export const buildYamlTask = async function(options: BuildYamlTaskOptions): Prom
         }
 
         const appYamlPath = path.join(process.cwd(), options.paths.yaml);
-        const environmentsRaw = await fs.readFile(options.paths.environments, "utf8");
+        const environmentsRaw = await fs.readFile(options.paths.environments);
         const handlersExist = fs.existsSync(options.paths.handlers);
         const handlersRaw = handlersExist ? fs.readFileSync(options.paths.handlers).toString() : "[]";
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- It's safe enough
-        const environments: AssembleEnvironments = JSON.parse(environmentsRaw);
+        const environments: AssembleEnvironments = JSON.parse(environmentsRaw.toString());
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- It's safe enough
         const handlers: AppYaml["handlers"] = JSON.parse(handlersRaw);
         const environment: AssembleEnvironment = environments[options.environment ?? "default"];

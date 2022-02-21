@@ -2,10 +2,11 @@
 
 import Joi from "joi";
 
-import type { AnySchemaDefinition } from "./any";
 import { extendAnySchema } from "./any";
-import type { Reference } from "./reference";
 import { referenceToJoi } from "./reference";
+
+import type { AnySchemaDefinition } from "./any";
+import type { Reference } from "./reference";
 
 
 type DateType = Date | Reference | number | string | "now";

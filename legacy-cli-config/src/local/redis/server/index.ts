@@ -31,20 +31,20 @@ export class NewsTeamLocalRedisServerConfig{
         allow: undefined,
         type: "string"
     })
-    config: string;
+        config: string;
 
     @validate({
         hostname: true,
         ip: true,
         type: "string"
     })
-    host: string;
+        host: string;
 
     @validate({
         port: true,
         type: "number"
     })
-    port: number;
+        port: number;
 
     constructor(config?: LocalRedisServerConfig){
 

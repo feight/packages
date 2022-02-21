@@ -4,8 +4,8 @@ import "jasmine";
 
 
 import {
-    logger,
-    Logger
+    Logger,
+    logger
 } from ".";
 
 

@@ -2,6 +2,17 @@
 
 import Joi from "joi";
 
+import { alternativesSchemaToJoi } from "./alternatives";
+import { anySchemaToJoi } from "./any";
+import { arraySchemaToJoi } from "./array";
+import { binarySchemaToJoi } from "./binary";
+import { booleanSchemaToJoi } from "./boolean";
+import { dateSchemaToJoi } from "./date";
+import { numberSchemaToJoi } from "./number";
+import { objectSchemaToJoi } from "./object";
+import { stringSchemaToJoi } from "./string";
+import { referenceToJoi } from "./reference";
+
 import type {
     AlternativesSchema,
     AlternativesSchemaDefinition
@@ -39,16 +50,6 @@ import type {
     StringSchemaDefinition
 } from "./string";
 import type { Reference } from "./reference";
-import { alternativesSchemaToJoi } from "./alternatives";
-import { anySchemaToJoi } from "./any";
-import { arraySchemaToJoi } from "./array";
-import { binarySchemaToJoi } from "./binary";
-import { booleanSchemaToJoi } from "./boolean";
-import { dateSchemaToJoi } from "./date";
-import { numberSchemaToJoi } from "./number";
-import { objectSchemaToJoi } from "./object";
-import { stringSchemaToJoi } from "./string";
-import { referenceToJoi } from "./reference";
 
 
 export type { AlternativesSchema } from "./alternatives";
@@ -330,11 +331,10 @@ export const Validate: {
         if(validation.errors.length > 0){
 
             const SettingsSchemaValidationError = [
-                ...[
-                    "Settings Schema Validation Error",
-                    "",
-                    ...validation.errors
-                ],
+
+                "Settings Schema Validation Error",
+                "",
+                ...validation.errors,
                 ""
             ]
             .join("\n");

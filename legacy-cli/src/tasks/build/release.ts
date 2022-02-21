@@ -5,9 +5,10 @@ import path from "path";
 import fs from "fs-extra";
 import { exec } from "@newsteam/cli-utils";
 import { logger } from "@newsteam/legacy-cli-logger";
-import type { NewsTeamConfig } from "@newsteam/legacy-cli-config";
 
 import { label } from ".";
+
+import type { NewsTeamConfig } from "@newsteam/legacy-cli-config";
 
 
 export const buildReleaseTask = async function(config: NewsTeamConfig): Promise<void>{

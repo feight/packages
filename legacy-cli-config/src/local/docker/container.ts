@@ -22,12 +22,12 @@ export class NewsTeamLocalDockerContainerConfig{
     @validate({
         type: "object"
     })
-    environment: Record<string, string | undefined>;
+        environment: Record<string, string | undefined>;
 
     @validate({
         type: "string"
     })
-    name: string;
+        name: string;
 
     @validate({
         try: [
@@ -56,17 +56,17 @@ export class NewsTeamLocalDockerContainerConfig{
         ],
         type: "alternatives"
     })
-    port: [number, number][] | number[] | number;
+        port: [number, number][] | number[] | number;
 
     @validate({
         type: "string"
     })
-    recipe: string;
+        recipe: string;
 
     @validate({
         type: "string"
     })
-    volume: string;
+        volume: string;
 
     constructor(config: LocalDockerContainerConfig){
 

@@ -1,11 +1,13 @@
 
 
 import { config } from "@newsteam/legacy-cli-config";
-import type commander from "commander";
+
 
 import { assembleCliOptions } from "../options";
 import { action } from "../../../utils/action";
 import { promoteTask } from "../../../tasks/promote";
+
+import type commander from "commander";
 import type { PromoteTaskOptions } from "../../../tasks/promote";
 
 

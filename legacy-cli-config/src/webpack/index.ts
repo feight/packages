@@ -1,9 +1,9 @@
 
 
+import { defaults } from "../defaults";
+
 import * as bundleAnalyzer from "./bundle-analyzer";
 import * as developmentServer from "./development-server";
-
-import { defaults } from "../defaults";
 
 
 export interface WebpackConfig{

@@ -3,10 +3,11 @@
 import path from "path";
 
 // eslint-disable-next-line node/no-extraneous-import -- this isn't extraneous, it's a dependency of @newsteam/eslint
-import { CLIEngine } from "eslint";
+import { ESLint } from "eslint";
 import { logger } from "@newsteam/legacy-cli-logger";
 import { watch } from "@newsteam/cli-utils";
 import { LintError } from "@newsteam/legacy-cli-errors";
+
 import type vinyl from "vinyl";
 import type { WatchOptions } from "@newsteam/cli-utils";
 import type { LintErrorData } from "@newsteam/legacy-cli-errors";
@@ -47,7 +48,7 @@ export const eslintLintTask = async function(options: EslintLintTaskOptions): Pr
 
     const label = options.label ?? "lint";
 
-    const eslintCLI = new CLIEngine({
+    const eslintCLI = new ESLint({
         cache: options.cache ?? true,
         cacheLocation: ".newsteam/cache/.eslintcache",
         fix: options.fix ?? false,
@@ -64,65 +65,71 @@ export const eslintLintTask = async function(options: EslintLintTaskOptions): Pr
 
         bar.tick();
 
-        await new Promise<void>((resolve) => {
+        const errors: LintErrorData[] = [];
 
-            const errors: LintErrorData[] = [];
+        const reportings = await Promise.all(files.map(async (file) => {
 
-            for(const file of files){
+            const results = await eslintCLI.lintFiles([file]);
 
-                const report = eslintCLI.executeOnFiles([file]);
+            if(options.fix){
+                await ESLint.outputFixes(results);
+            }
 
-                if(options.fix){
-                    CLIEngine.outputFixes(report);
-                }
+            return {
+                file,
+                report: results[0]
+            };
 
-                const [result] = report.results;
+        }));
 
-                if(result.errorCount > 0){
+        for(const reporting of reportings){
 
-                    errors.push({
-                        errors: result.messages.map((error) => ({
-                            column: error.column,
-                            file,
-                            line: error.line,
-                            message: `${ error.message } ${ error.ruleId ? `(${ error.ruleId })` : "" }`
-                        })),
-                        file
-                    });
+            const {
+                file,
+                report
+            } = reporting;
 
-                }
+            if(report.errorCount > 0){
 
-                if(options.watch){
-
-                    logger.log(`lint ${ path.resolve(file) }`, { label });
-
-                }else{
-
-                    bar.tick();
-
-                }
+                errors.push({
+                    errors: report.messages.map((error) => ({
+                        column: error.column,
+                        file,
+                        line: error.line,
+                        message: `${ error.message } ${ error.ruleId ? `(${ error.ruleId })` : "" }`
+                    })),
+                    file
+                });
 
             }
 
-            const error = new ESLintError(errors);
+            if(options.watch){
 
-            if(errors.length > 0){
+                logger.log(`lint ${ path.resolve(file) }`, { label });
 
-                if(options.watch){
+            }else{
 
-                    logger.error(error);
-
-                }else{
-
-                    throw error;
-
-                }
+                bar.tick();
 
             }
 
-            resolve();
+        }
 
-        });
+        const error = new ESLintError(errors);
+
+        if(errors.length > 0){
+
+            if(options.watch){
+
+                logger.error(error);
+
+            }else{
+
+                throw error;
+
+            }
+
+        }
 
     });
 

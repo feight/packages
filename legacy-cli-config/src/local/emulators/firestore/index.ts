@@ -26,13 +26,13 @@ export class NewsTeamLocalFirestoreEmulatorConfig{
         ip: true,
         type: "string"
     })
-    host: string;
+        host: string;
 
     @validate({
         port: true,
         type: "number"
     })
-    port: number;
+        port: number;
 
     constructor(config?: LocalFirestoreEmulatorConfig){
 

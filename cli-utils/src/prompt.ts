@@ -31,7 +31,7 @@ export const prompt = async function<PromptValue>(id: string, choices: PromptCho
         // eslint-disable-next-line security/detect-non-literal-fs-filename -- This previousPath is sanatized and probably safe
         const raw = await fs.readFile(previousPath);
 
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- No real choice here, we're read JSON
+
         const previous = JSON.parse(raw.toString())[key] as PromptChoice<PromptValue>;
 
         for(const [index, item] of choices.entries()){

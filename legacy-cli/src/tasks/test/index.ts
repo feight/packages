@@ -8,6 +8,10 @@ import {
     htmllintLintTask,
     stylelintLintTask
 } from "@newsteam/cli-tasks";
+
+import { testSettingsTask } from "./settings";
+import { testSharedSettingsTask } from "./settings/shared";
+
 import type {
     EslintLintTaskOptions,
     Flake8LintTaskOptions,
@@ -16,9 +20,6 @@ import type {
 } from "@newsteam/cli-tasks";
 import type { NewsTeamConfig } from "@newsteam/legacy-cli-config";
 import type { TestError } from "@newsteam/legacy-cli-errors";
-
-import { testSettingsTask } from "./settings";
-import { testSharedSettingsTask } from "./settings/shared";
 import type { TestSettingsTaskOptions } from "./settings";
 
 

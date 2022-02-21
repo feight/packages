@@ -1,31 +1,20 @@
 
-export {
-    buildModernizrTask,
-    BuildModernizrTaskOptions
-} from "./build/modernizr";
+export type { BuildModernizrTaskOptions } from "./build/modernizr";
+export { buildModernizrTask } from "./build/modernizr";
 export { cleanCacheTask } from "./cache/clean";
 export { cleanTask } from "./clean";
-export {
-    googleCloudDeployTask,
-    GoogleCloudDeployTaskOptions
-} from "./gcloud/deploy";
-export {
-    googleCloudPromoteTask,
-    GoogleCloudPromoteTaskOptions
-} from "./gcloud/promote";
-export {
-    eslintLintTask,
-    EslintLintTaskOptions
-} from "./lint/eslint";
-export {
-    flake8LintTask,
-    Flake8LintTaskOptions
-} from "./lint/flake8";
-export {
-    HTMLLintOptions,
-    htmllintLintTask,
-    HtmllintLintTaskOptions
+export type { GoogleCloudDeployTaskOptions } from "./gcloud/deploy";
+export { googleCloudDeployTask } from "./gcloud/deploy";
+export type { GoogleCloudPromoteTaskOptions } from "./gcloud/promote";
+export { googleCloudPromoteTask } from "./gcloud/promote";
+export type { EslintLintTaskOptions } from "./lint/eslint";
+export { eslintLintTask } from "./lint/eslint";
+export type { Flake8LintTaskOptions } from "./lint/flake8";
+export { flake8LintTask } from "./lint/flake8";
+export type {
+    HTMLLintOptions, HtmllintLintTaskOptions
 } from "./lint/htmllint";
+export { htmllintLintTask } from "./lint/htmllint";
 export { localDatastoreEmulatorTask } from "./local/emulators/datastore";
 export { localDockerMachineTask } from "./local/docker/machine";
 export { localDockerRunTask } from "./local/docker/run";
@@ -37,18 +26,12 @@ export { localGCloudSetupTask } from "./local/setup/gcloud";
 export { localPackageSetupTask } from "./local/setup/package";
 export { localPlatformSetupTask } from "./local/setup/platform";
 export { localRedisServerTask } from "./local/redis/server";
-export {
-    minifyHTMLTask,
-    MinifyHTMLTaskOptions
-} from "./minify/html";
-export { ModernizrConfig } from "./build/modernizr/types";
+export type { MinifyHTMLTaskOptions } from "./minify/html";
+export { minifyHTMLTask } from "./minify/html";
+export type { ModernizrConfig } from "./build/modernizr/types";
 export { npmInstallTask } from "./npm/install";
 export { openBrowserTask } from "./open/browser";
-export {
-    optimizeTask,
-    OptimizeTaskOptions
-} from "./optimize";
-export {
-    stylelintLintTask,
-    StylelintLintTaskOptions
-} from "./lint/stylelint";
+export type { OptimizeTaskOptions } from "./optimize";
+export { optimizeTask } from "./optimize";
+export type { StylelintLintTaskOptions } from "./lint/stylelint";
+export { stylelintLintTask } from "./lint/stylelint";

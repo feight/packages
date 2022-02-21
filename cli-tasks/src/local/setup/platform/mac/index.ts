@@ -1,8 +1,3 @@
 
 
-import { localXcodeSelectSetupTask } from "./xcode-select";
-
-
-export {
-    localXcodeSelectSetupTask
-};
+export { localXcodeSelectSetupTask } from "./xcode-select";

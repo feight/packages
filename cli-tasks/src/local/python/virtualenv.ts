@@ -29,11 +29,11 @@ const getCache = async function(): Promise<Cache>{
 
     if(exists){
 
-        const raw = await fs.readFile(filename, "utf-8");
+        const raw = await fs.readFile(filename);
 
         try{
 
-            cache = JSON.parse(raw) as Cache;
+            cache = JSON.parse(raw.toString()) as Cache;
 
         }catch{}
 

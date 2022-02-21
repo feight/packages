@@ -1,6 +1,6 @@
 
 
-import type { Command } from "commander";
+import { bind } from "../../utils/bind";
 
 import { assembleBuildCommand } from "./commands/build";
 import { assembleCleanCommand } from "./commands/clean";
@@ -14,7 +14,7 @@ import { assemblePromoteCommand } from "./commands/promote";
 import { assembleSetupCommand } from "./commands/setup";
 import { assembleTestCommand } from "./commands/test";
 
-import { bind } from "../../utils/bind";
+import type { Command } from "commander";
 
 
 export const assembleCommand = function(name: string, parent: Command): Command{

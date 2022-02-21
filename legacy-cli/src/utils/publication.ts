@@ -4,6 +4,7 @@ import path from "path";
 
 import globby from "globby";
 import { getPublicationSettings } from "@newsteam/legacy-settings";
+
 import type { AssemblePublicationSettings } from "@newsteam/legacy-settings";
 
 
@@ -37,10 +38,12 @@ export const getPublication = function(publicationFolder: string): Publication{
 
 export const getPublications = async function(publication?: string): Promise<Publication[]>{
 
-    const publicationFolders = (await globby([
+    const publicationFoldersResponse = await globby([
         "publications/*/settings/index.json",
         "publications/*/*/settings/index.json"
-    ])).map((folder) => path.normalize(path.join(folder, "../..")));
+    ]);
+
+    const publicationFolders = publicationFoldersResponse.map((folder) => path.normalize(path.join(folder, "../..")));
 
     const publications = publicationFolders.map((publicationFolder) => getPublication(publicationFolder));
 

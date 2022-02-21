@@ -5,8 +5,9 @@ import "jasmine";
 import Joi from "joi";
 
 import { EqualityTest } from "./utils/test";
-import type * as number from "./number";
 import * as any from "./any";
+
+import type * as number from "./number";
 
 
 class ArrayEqualityTest extends EqualityTest<any.AnySchema, typeof any.anySchemaToJoi | typeof number.numberSchemaToJoi>{}

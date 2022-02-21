@@ -1,8 +1,8 @@
 
 
-import * as settings from "./settings";
-
 import { defaults } from "../defaults";
+
+import * as settings from "./settings";
 
 
 export interface GlobMapping{

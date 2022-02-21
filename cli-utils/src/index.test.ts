@@ -4,8 +4,8 @@ import "jasmine";
 
 
 import {
-    gulp,
     exec,
+    gulp,
     kill,
     prompt,
     spawn,

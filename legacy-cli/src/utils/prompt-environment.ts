@@ -1,9 +1,9 @@
 
 
 import { prompt } from "@newsteam/cli-utils";
+
 import type { PromptChoice } from "@newsteam/cli-utils";
 import type { AssemblePublicationEnvironmentSettings } from "@newsteam/legacy-settings";
-
 import type { Publication } from "./publication";
 
 

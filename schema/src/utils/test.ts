@@ -26,7 +26,7 @@ export class EqualityTest<TType, TMethod extends Function>{
 
                 it(`${ this.name }(${ JSON.stringify(json, undefined, 2) }) returns ${ JSON.stringify(joi.describe(), undefined, 2) }`, () => {
 
-                    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access -- This is just for testing
+                    // eslint-disable-next-line @typescript-eslint/no-unsafe-call -- This is just for testing
                     expect(this.method(json).describe()).toEqual(joi.describe());
 
                 });

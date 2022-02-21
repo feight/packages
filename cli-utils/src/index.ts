@@ -1,28 +1,14 @@
 
-
-import * as gulp from "./gulp";
-import { kill } from "./kill";
-import {
-    prompt,
-    PromptChoice
-} from "./prompt";
-import {
+export * as gulp from "./gulp";
+export { kill } from "./kill";
+export {
     exec,
     spawn
 } from "./subprocess";
-import {
-    watch,
-    WatchOptions
-} from "./watch";
-
+export type { PromptChoice } from "./prompt";
+export { prompt } from "./prompt";
 
 export {
-    gulp,
-    exec,
-    kill,
-    prompt,
-    PromptChoice,
-    spawn,
     watch,
-    WatchOptions
-};
+    type WatchOptions
+} from "./watch";

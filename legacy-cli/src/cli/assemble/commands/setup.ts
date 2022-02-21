@@ -1,10 +1,10 @@
 
 
-import type commander from "commander";
-
 import { assembleCliOptions } from "../options";
 import { action } from "../../../utils/action";
 import { setupTask } from "../../../tasks/setup";
+
+import type commander from "commander";
 import type { SetupTaskOptions } from "../../../tasks/setup";
 
 

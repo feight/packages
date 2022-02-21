@@ -6,9 +6,10 @@ import { logger } from "@newsteam/legacy-cli-logger";
 import { watch } from "@newsteam/cli-utils";
 import fs from "fs-extra";
 import glob from "globby";
-import type { WatchOptions } from "@newsteam/cli-utils";
 
 import { label } from ".";
+
+import type { WatchOptions } from "@newsteam/cli-utils";
 
 
 export interface BuildStaticAssetsTaskOptions extends WatchOptions{

@@ -2,8 +2,9 @@
 
 import Joi from "joi";
 
-import type { AnySchemaDefinition } from "./any";
 import { extendAnySchema } from "./any";
+
+import type { AnySchemaDefinition } from "./any";
 
 
 const convert = {

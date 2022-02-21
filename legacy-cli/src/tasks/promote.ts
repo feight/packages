@@ -1,11 +1,12 @@
 
 
 import { googleCloudPromoteTask } from "@newsteam/cli-tasks";
-import type { NewsTeamConfig } from "@newsteam/legacy-cli-config";
+
+import { promptEnvironment } from "../utils/prompt-environment";
 
 import { linkTask } from "./link";
 
-import { promptEnvironment } from "../utils/prompt-environment";
+import type { NewsTeamConfig } from "@newsteam/legacy-cli-config";
 
 
 export interface PromoteTaskOptions{

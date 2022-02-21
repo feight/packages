@@ -1,11 +1,11 @@
 
 
+import { defaults } from "../defaults";
+
 import * as docker from "./docker";
 import * as emulators from "./emulators";
 import * as python from "./python";
 import * as redis from "./redis";
-
-import { defaults } from "../defaults";
 
 
 export interface LocalConfig{

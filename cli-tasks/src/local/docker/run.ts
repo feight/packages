@@ -53,11 +53,13 @@ export const localDockerRunTask = async function(config: LocalDockerRunTaskConfi
 
     const network = config.network ?? "newsteam-network";
 
-    const networks = (await exec({
+    const dockerNetworksResult = await exec({
         command: "docker network ls --format 'table {{.Name}}'",
         detatch: true
-    }))
-    .split("\n")
+    });
+
+
+    const networks = dockerNetworksResult.split("\n")
     .filter((line) => Boolean(line.trim()))
     .filter((line) => line !== "NAME");
 

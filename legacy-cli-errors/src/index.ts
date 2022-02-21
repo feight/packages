@@ -1,16 +1,10 @@
 
 
-export {
-    CLIError,
-    CLIErrorData
-} from "./cli";
+export type { CLIErrorData } from "./cli";
+export { CLIError } from "./cli";
 
-export {
-    LintError,
-    LintErrorData
-} from "./lint";
+export type { LintErrorData } from "./lint";
+export { LintError } from "./lint";
 
-export {
-    TestError,
-    TestErrorData
-} from "./test";
+export type { TestErrorData } from "./test";
+export { TestError } from "./test";

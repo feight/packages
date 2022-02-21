@@ -7,6 +7,7 @@ import stylelint from "stylelint";
 import { logger } from "@newsteam/legacy-cli-logger";
 import { watch } from "@newsteam/cli-utils";
 import { LintError } from "@newsteam/legacy-cli-errors";
+
 import type vinyl from "vinyl";
 import type { WatchOptions } from "@newsteam/cli-utils";
 import type { LintErrorData } from "@newsteam/legacy-cli-errors";

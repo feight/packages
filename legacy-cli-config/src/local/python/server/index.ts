@@ -25,10 +25,10 @@ export class NewsTeamLocalServerConfig{
         port: true,
         type: "number"
     })
-    port: number;
+        port: number;
 
     @validate("boolean")
-    useDevAppServer: boolean;
+        useDevAppServer: boolean;
 
     constructor(config?: LocalPythonServerConfig){
 

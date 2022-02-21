@@ -1,7 +1,5 @@
 
 
-import type stream from "stream";
-
 import chalk from "chalk";
 import { CLIError } from "@newsteam/legacy-cli-errors";
 import codeframe from "codeframe";
@@ -11,14 +9,16 @@ import strip from "strip-color";
 import stripAnsi from "strip-ansi";
 import table from "text-table";
 import through from "through2";
-import type vinyl from "vinyl";
-import type ProgressBar from "progress";
 
 import { Progress } from "./progress";
 
+import type vinyl from "vinyl";
+import type ProgressBar from "progress";
+import type stream from "stream";
+
 
 const nonBreakingCharacterCode = 160;
-const nonBreakingCharacter = String.fromCharCode(nonBreakingCharacterCode);
+const nonBreakingCharacter = String.fromCodePoint(nonBreakingCharacterCode);
 const cwd = process.cwd();
 const columnWidth = 12;
 
@@ -145,7 +145,7 @@ export class Logger{
             test: "🔬",
             watch: "😳",
             webpack: "📦",
-            ...options.emojis ?? {}
+            ...options.emojis
         };
 
     }

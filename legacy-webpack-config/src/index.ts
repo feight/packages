@@ -1,12 +1,13 @@
 
 
 import { config as assembleCliConfig } from "@newsteam/legacy-cli-config";
-import type { Configuration } from "webpack";
 
 import * as configs from "./config";
 
+import type { Configuration } from "webpack";
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any -- This provides a stack trace for deprecation warnings
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- This provides a stack trace for deprecation warnings
 (process as any).traceDeprecation = true;
 
 
@@ -91,7 +92,7 @@ export const config = function(
 
         const genOptions = generateOptions(options, environment, args);
         const configuration = {
-            ...options.config ?? {},
+            ...options.config,
             ...configs.output(genOptions)
         };
 
@@ -109,10 +110,10 @@ export const config = function(
             ...configs.resolve(genOptions, configuration),
             ...configs.stats(),
             ...configs.watchOptions(),
-            ...{
-                // Force output config
-                ...configs.output(genOptions)
-            }
+
+            // Force output config
+            ...configs.output(genOptions)
+
         };
 
         /*

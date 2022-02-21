@@ -4,6 +4,7 @@ import path from "path";
 
 import { rcFile } from "rc-config-loader";
 import merge from "deepmerge";
+
 import type { HTMLLintOptions } from "@newsteam/cli-tasks";
 
 

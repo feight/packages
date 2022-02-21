@@ -18,6 +18,7 @@ import fs from "fs-extra";
 import { logger } from "@newsteam/legacy-cli-logger";
 import { watch } from "@newsteam/cli-utils";
 import { getPublicationSettings } from "@newsteam/legacy-settings";
+
 import type { WatchOptions } from "@newsteam/cli-utils";
 import type {
     AssemblePublicationSettings,
@@ -85,14 +86,14 @@ export const buildWidgetsTask = async function(options: BuildWidgetsTaskOptions)
     // eslint-disable-next-line max-lines-per-function, max-statements, complexity -- Simpler to leave this as one function
     await watch(options, async (): Promise<void> => {
 
-        const rawSharedSettings = await fs.readFile("src/publication/shared/settings/index.json", "utf8");
+        const rawSharedSettings = await fs.readFile("src/publication/shared/settings/index.json");
 
         const settings = getPublicationSettings();
 
         let sharedSettings: AssemblePublicationSettings | undefined = undefined;
 
         try{
-            sharedSettings = JSON.parse(rawSharedSettings) as AssemblePublicationSettings;
+            sharedSettings = JSON.parse(rawSharedSettings.toString()) as AssemblePublicationSettings;
         }catch{
             throw new Error("Shared settings file could not be parsed as valid json");
         }
@@ -114,7 +115,7 @@ export const buildWidgetsTask = async function(options: BuildWidgetsTaskOptions)
 
                 if(fs.existsSync(metaPath)){
 
-                    const meta = JSON.parse(fs.readFileSync(metaPath, "utf8")) as AssembleWidgetSettings;
+                    const meta = JSON.parse(fs.readFileSync(metaPath).toString()) as AssembleWidgetSettings;
 
                     if(
 
@@ -290,9 +291,9 @@ export const buildWidgetsTask = async function(options: BuildWidgetsTaskOptions)
             const [filename, contents] = write;
 
             const exists = fs.existsSync(filename);
-            const existing = exists ? (await fs.readFile(filename)).toString() : undefined;
+            const existing = exists ? await fs.readFile(filename) : undefined;
 
-            if(existing !== contents){
+            if(existing?.toString() !== contents){
 
                 await fs.ensureDir(path.dirname(filename));
                 await fs.writeFile(filename, contents, "utf8");

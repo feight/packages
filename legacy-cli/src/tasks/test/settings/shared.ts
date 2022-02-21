@@ -7,9 +7,10 @@ import fs from "fs-extra";
 import glob from "glob-promise";
 import isEqual from "is-equal";
 import { TestError } from "@newsteam/legacy-cli-errors";
-import type { TestErrorData } from "@newsteam/legacy-cli-errors";
 
 import { label } from "..";
+
+import type { TestErrorData } from "@newsteam/legacy-cli-errors";
 
 
 interface PublicationData{
@@ -55,7 +56,7 @@ const getDescendantProperty = function(object: any, desc: string): any{
 
     const array = desc.split(".");
 
-    // eslint-disable-next-line no-param-reassign, no-empty, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment -- I'll be honest, I got this from stack overflow, lets just roll with it
+    // eslint-disable-next-line no-param-reassign, no-empty, @typescript-eslint/no-unsafe-assignment -- I'll be honest, I got this from stack overflow, lets just roll with it
     while(array.length > 0 && (object = object[array.shift() || -1])){}
 
     return object;
@@ -166,13 +167,13 @@ export const testSharedSettingsTask = async function(): Promise<void>{
     const files = await glob("publications/**/settings/index.json");
     const data = await Promise.all(files.map(async (file) => {
 
-        const raw = await fs.readFile(file, "utf8");
+        const raw = await fs.readFile(file);
 
         let json = undefined;
 
         try{
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- Lets just pretend this is safe
-            json = JSON.parse(raw);
+            json = JSON.parse(raw.toString());
         }catch{
             throw new Error("Settings file could not be parsed as valid json");
         }

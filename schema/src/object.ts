@@ -3,17 +3,18 @@
 import Joi from "joi";
 import JSON5 from "json5";
 
-import type { AnySchemaDefinition } from "./any";
 import { extendAnySchema } from "./any";
-import type { Reference } from "./reference";
 import { referenceToJoi } from "./reference";
 
+import { schemaLikeToJoi } from ".";
+
+import type { AnySchemaDefinition } from "./any";
+import type { Reference } from "./reference";
 import type {
     Schema,
     SchemaLike,
     SchemaMap
 } from ".";
-import { schemaLikeToJoi } from ".";
 
 
 type Operator = string[] | {
@@ -175,7 +176,7 @@ const getRenames = function(type: ObjectSchemaDefinition): Rename[]{
 const typeMapToJoi = function(map: SchemaMap): Joi.SchemaMap{
 
     // Replace each key in the Object to the Joi equivalent
-    // eslint-disable-next-line unicorn/no-array-reduce -- see above
+    // eslint-disable-next-line unicorn/no-array-reduce, unicorn/prefer-object-from-entries -- see above
     return Object.keys(map).reduce((result: Joi.SchemaMap, key): Joi.SchemaMap => {
         // eslint-disable-next-line no-param-reassign -- Reassignment makes sense in this case
         result[key] = schemaLikeToJoi(map[key]);

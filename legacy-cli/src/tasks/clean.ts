@@ -1,9 +1,10 @@
 
 
 import {
-    cleanCacheTask,
-    cleanTask as clean
+    cleanTask as clean,
+    cleanCacheTask
 } from "@newsteam/cli-tasks";
+
 import type { NewsTeamConfig } from "@newsteam/legacy-cli-config";
 
 

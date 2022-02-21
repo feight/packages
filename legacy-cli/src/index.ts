@@ -1,3 +1,3 @@
 
 
-export { Config } from "@newsteam/legacy-cli-config";
+export type { Config } from "@newsteam/legacy-cli-config";

@@ -3,13 +3,15 @@
 import Joi from "joi";
 import JSON5 from "json5";
 
-import type { AnySchemaDefinition } from "./any";
 import { extendAnySchema } from "./any";
-import type { Reference } from "./reference";
 import { referenceToJoi } from "./reference";
 
-import type { Schema } from ".";
 import { schemaToJoi } from ".";
+
+import type { AnySchemaDefinition } from "./any";
+import type { Reference } from "./reference";
+import type { Schema } from ".";
+
 
 /*
  * Create an extension of Joi.array that coerces strings into arrays since this
